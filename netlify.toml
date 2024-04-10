@@ -1,0 +1,9 @@
+[[headers]]
+for = "/*"
+[headers.values]
+## X-Frame-Options = "SAMEORIGIN"
+## X-XSS-Protection = "1; mode=block"
+##  Referrer-Policy = "no-referrer"
+##  X-Content-Type-Options = "nosniff"
+Access-Control-Allow-Origin = "*"
+X-Greeting = "Hello from Chicago!"
