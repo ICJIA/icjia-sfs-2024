@@ -1,6 +1,6 @@
-# URI Demo
+# Safe From the Start (SFS)
 
-https://icjia-link-demo.netlify.app/
+The Safe From the Start (SFS) program provides developmentally and culturally appropriate direct services to children, ages 0 – 5, who have witnessed or been exposed to violence and their families. SFS focuses on serving young children who are victims of abuse, neglect, or maltreatment, and/or witnesses to domestic violence, sexual assault, or other violent crimes.
 
 Make sure to install the dependencies:
 
@@ -69,5 +69,3 @@ yarn preview
 # bun
 bun run preview
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
