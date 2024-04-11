@@ -1,4 +1,5 @@
 import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
+import vue from "@vitejs/plugin-vue";
 export default defineNuxtConfig({
   devtools: { enabled: true },
   build: {
@@ -21,6 +22,7 @@ export default defineNuxtConfig({
   },
   vite: {
     vue: {
+      plugins: [vue(), vuetify()],
       template: {
         transformAssetUrls,
       },

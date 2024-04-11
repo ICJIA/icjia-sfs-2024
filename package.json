@@ -1,13 +1,15 @@
 {
   "name": "nuxt-app",
   "private": true,
-  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "rm -rf .nuxt && nuxt dev --port=8000 -o",
     "generate": "nuxt generate",
+    "generate:serve": "nuxt generate && serve ./dist",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "build:serve": "npm run scripts && nuxt build && node .output/server/index.mjs ",
+    "clear:cache": "rm -rf .nuxt .output"
   },
   "devDependencies": {
     "@nuxt/content": "^2.12.1",
