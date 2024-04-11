@@ -5,6 +5,8 @@ export default defineNuxtConfig({
     transpile: ["vuetify"],
   },
   modules: [
+    "@nuxt/content",
+    "@nuxt/image",
     "@vueuse/nuxt",
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
@@ -14,6 +16,9 @@ export default defineNuxtConfig({
     },
     //...
   ],
+  content: {
+    // ... options
+  },
   vite: {
     vue: {
       template: {
