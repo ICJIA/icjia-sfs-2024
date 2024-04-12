@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxt/image",
     "@vueuse/nuxt",
+    // "@nuxtjs/plausible",
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
         // @ts-expect-error
@@ -20,6 +21,13 @@ export default defineNuxtConfig({
   content: {
     // ... options
   },
+  // plausible: {
+  //   apiHost: "https://plausible.icjia.cloud",
+  //   // Prevent tracking on localhost
+  //   ignoredHostnames: ["localhost"],
+  //   autoOutboundTracking: true,
+  // logIgnoredEvents: true,
+  // },
   vite: {
     vue: {
       plugins: [vue(), vuetify()],
