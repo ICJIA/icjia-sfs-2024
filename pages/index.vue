@@ -1,8 +1,14 @@
 <template>
   <div>
-    <v-container class="mt-12"
-      ><v-row fill-height><v-col>SFS Content here </v-col></v-row></v-container
-    >
+    <v-img
+      class="bg-grey-lighten-2"
+      src="/splash-01.jpg"
+      width="100%"
+      height="800"
+      cover
+      style="margin-top: -65px; filter: grayscale(50%)"
+      gradient="to bottom, rgba(0,0,0,.3), rgba(0,0,0,0)"
+    ></v-img>
   </div>
 </template>
 
