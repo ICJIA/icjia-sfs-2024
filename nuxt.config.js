@@ -1,5 +1,6 @@
 import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 import vue from "@vitejs/plugin-vue";
+import { nodePolyfills } from "vite-plugin-node-polyfills";
 export default defineNuxtConfig({
   devtools: { enabled: true },
   build: {
@@ -42,7 +43,7 @@ export default defineNuxtConfig({
   // },
   vite: {
     vue: {
-      plugins: [vue(), vuetify()],
+      plugins: [vue(), vuetify(), nodePolyfills()],
       template: {
         transformAssetUrls,
       },
