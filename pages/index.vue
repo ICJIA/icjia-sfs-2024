@@ -3,8 +3,19 @@
     <div>
       <v-img
         class="bg-grey-lighten-2"
-        :src="getThumborUrl({})"
-        :lazy-src="getThumborUrl({})"
+        :src="
+          getThumborUrl({
+            url: 'https://r3.icjia-api.cloud/uploads/getty_images_Q_Ygr_G6nkm4g_unsplash_c29c2710e6.jpg',
+          })
+        "
+        :lazy-src="
+          getThumborUrl({
+            url: 'https://r3.icjia-api.cloud/uploads/thumbnail_getty_images_Q_Ygr_G6nkm4g_unsplash_c29c2710e6.jpg',
+            width: 125,
+            height: 125,
+            quality: 90,
+          })
+        "
         width="100%"
         height="700"
         cover
@@ -27,7 +38,7 @@ const thumbor = new ThumborUrlBuilder(
 
 const getThumborUrl = ({ url, width, height, quality, format }) => {
   let options = {
-    url: url || "https://icjia-sfs.netlify.app/splash-01.jpg",
+    url: url || "https://icjia-sfs.netlify.app/error.jpg",
     width: width || 2048,
     height: height || 1536,
     quality: quality || 50,
