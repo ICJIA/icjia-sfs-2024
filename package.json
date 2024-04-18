@@ -29,7 +29,6 @@
     "@mdi/font": "^7.4.47",
     "dotenv": "^16.4.5",
     "eslint": "^9.0.0",
-    "thumbor-js-url-builder": "^2.2.0",
     "thumbor-url-builder-ts": "^0.1.9"
   }
 }
