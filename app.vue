@@ -2,7 +2,7 @@
   <NuxtLayout>
     <v-app>
       <NavHome></NavHome>
-      <NuxtPage style="min-height: 100vh" />
+      <NuxtPage style="background: #eee" />
     </v-app>
   </NuxtLayout>
 </template>

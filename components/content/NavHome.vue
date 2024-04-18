@@ -1,22 +1,24 @@
 <template>
   <div>
-    <!-- <v-app-bar elevation="0" color="transparent">
-      <template v-slot:prepend>
-        <v-app-bar-nav-icon color="white"></v-app-bar-nav-icon>
-      </template>
-
-      <v-app-bar-title style="font-weight: 900; color: #fff"
-        >SFS | Safe From the Start</v-app-bar-title
-      >
-    </v-app-bar> -->
     <v-toolbar dense floating style="z-index: 999" color="transparent">
       <template v-slot:prepend>
-        <v-app-bar-nav-icon color="white"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon
+          color="white"
+          style="font-size: 20px"
+        ></v-app-bar-nav-icon>
       </template>
 
-      <v-toolbar-title style="font-weight: 900; color: #fff"
+      <v-toolbar-title style="font-weight: 900; color: #fff; font-size: 24px"
         >SFS | Safe From the Start</v-toolbar-title
       >
+      <v-spacer></v-spacer>
+      <v-btn icon color="white" style="font-size: 20px">
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+
+      <v-btn icon color="white" style="font-size: 20px">
+        <v-icon>mdi-dots-vertical</v-icon>
+      </v-btn>
     </v-toolbar>
   </div>
 </template>
