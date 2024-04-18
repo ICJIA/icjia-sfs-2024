@@ -5,15 +5,17 @@
         class="bg-grey-lighten-2"
         :src="
           getThumborUrl({
-            url: 'https://r3.icjia-api.cloud/uploads/getty_images_Q_Ygr_G6nkm4g_unsplash_c29c2710e6.jpg',
+            url: 'https://icjia-sfs.netlify.app/splash-02.jpg',
+            width: 2048,
+            height: 1500,
           })
         "
         :lazy-src="
           getThumborUrl({
-            url: 'https://r3.icjia-api.cloud/uploads/thumbnail_getty_images_Q_Ygr_G6nkm4g_unsplash_c29c2710e6.jpg',
-            width: 125,
+            url: 'https://icjia-sfs.netlify.app/splash-02.jpg',
+            width: 425,
             height: 125,
-            quality: 90,
+            quality: 20,
           })
         "
         width="100%"
@@ -39,8 +41,8 @@ const thumbor = new ThumborUrlBuilder(
 const getThumborUrl = ({ url, width, height, quality, format }) => {
   let options = {
     url: url || "https://icjia-sfs.netlify.app/error.jpg",
-    width: width || 2048,
-    height: height || 1536,
+    width: width || 1024,
+    height: height || 768,
     quality: quality || 50,
     format: format || "jpg",
   };
