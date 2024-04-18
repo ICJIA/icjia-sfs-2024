@@ -5,7 +5,7 @@
         class="bg-grey-lighten-2"
         :src="
           getThumborUrl({
-            url: 'https://icjia-sfs.netlify.app/splash-02.jpg',
+            url: 'https://icjia-sfs.netlify.app/splash-02-large.jpg',
             width: 2000,
             height: 1200,
             quality: 40,
@@ -16,7 +16,7 @@
             url: 'https://icjia-sfs.netlify.app/splash-02-thumbnail.jpg',
             width: 425,
             height: 125,
-            quality: 20,
+            quality: 10,
           })
         "
         width="100%"
@@ -43,11 +43,6 @@ import { ThumborUrlBuilder } from "thumbor-url-builder-ts";
 
 let isMounted = ref(false);
 
-const thumbor = new ThumborUrlBuilder(
-  import.meta.env.VITE_THUMBOR_KEY,
-  "https://image.icjia.cloud"
-);
-
 const getThumborUrl = ({ url, width, height, quality, format }) => {
   let options = {
     url: url || "https://icjia-sfs.netlify.app/error.jpg",
@@ -56,8 +51,10 @@ const getThumborUrl = ({ url, width, height, quality, format }) => {
     quality: quality || 50,
     format: format || "webp",
   };
-
-  // console.log(options);
+  const thumbor = new ThumborUrlBuilder(
+    import.meta.env.VITE_THUMBOR_KEY,
+    "https://image.icjia.cloud"
+  );
 
   return thumbor
     .setImagePath(options.url)
