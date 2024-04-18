@@ -1,7 +1,7 @@
 import Thumbor from "thumbor-js-url-builder";
 import "dotenv/config";
 const thumbor = new Thumbor(
-  process.env.THUMBOR_KEY,
+  process.env.VITE_THUMBOR_KEY,
   "https://image.icjia.cloud"
 );
 

@@ -1,19 +1,18 @@
 import Thumbor from "thumbor-js-url-builder";
 import "dotenv/config";
 
-const thumbor = new Thumbor(
-  process.env.THUMBOR_KEY,
-  "https://image.icjia.cloud"
-);
-
 export default defineEventHandler((event) => {
+  const thumbor = new Thumbor(
+    process.env.THUMBOR_KEY,
+    "https://image.icjia.cloud"
+  );
   const url = getRouterParam(event, "url");
   const query = getQuery(event);
   let options = {
     width: query.width || 1024,
     height: query.height || 768,
     quality: query.quality || 60,
-    format: query.format || "jpeg",
+    format: query.format || "webp",
     smartCrop: query.smartCrop || true,
   };
 
