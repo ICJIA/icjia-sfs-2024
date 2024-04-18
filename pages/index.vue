@@ -22,7 +22,7 @@
         width="100%"
         height="700"
         cover
-        style="margin-top: -65px; filter: grayscale(60%)"
+        style="margin-top: -65px; filter: grayscale(10%)"
         gradient="to bottom, rgba(0,0,0,.6), rgba(0,0,0,0)"
         ><template v-slot:placeholder>
           <div class="d-flex align-center justify-center fill-height">
