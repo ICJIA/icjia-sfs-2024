@@ -6,13 +6,14 @@
         :src="
           getThumborUrl({
             url: 'https://icjia-sfs.netlify.app/splash-02.jpg',
-            width: 2048,
-            height: 1500,
+            width: 2000,
+            height: 1200,
+            quality: 40,
           })
         "
         :lazy-src="
           getThumborUrl({
-            url: 'https://icjia-sfs.netlify.app/splash-02.jpg',
+            url: 'https://icjia-sfs.netlify.app/splash-02-thumbnail.jpg',
             width: 425,
             height: 125,
             quality: 20,
@@ -21,8 +22,15 @@
         width="100%"
         height="700"
         cover
-        style="margin-top: -65px; filter: grayscale(40%)"
+        style="margin-top: -65px; filter: grayscale(30%)"
         gradient="to bottom, rgba(0,0,0,.6), rgba(0,0,0,0)"
+        ><template v-slot:placeholder>
+          <div class="d-flex align-center justify-center fill-height">
+            <v-progress-circular
+              color="grey-lighten-4"
+              indeterminate
+            ></v-progress-circular>
+          </div> </template
       ></v-img>
     </div>
   </div>
@@ -44,7 +52,7 @@ const getThumborUrl = ({ url, width, height, quality, format }) => {
     width: width || 1024,
     height: height || 768,
     quality: quality || 50,
-    format: format || "jpg",
+    format: format || "webp",
   };
 
   // console.log(options);
