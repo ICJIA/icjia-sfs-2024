@@ -52,7 +52,7 @@ export default defineNuxtConfig({
   // runtimeConfig: {
   //   apiSecret: process.env.NUXT_THUMBOR_KEY,
   //   public: {
-  //     thumbor: process.env.NUXT_THUMBOR_KEY,
+  //
   //   },
   // },
 });
