@@ -23,7 +23,7 @@
         height="700"
         cover
         style="margin-top: -65px; filter: grayscale(10%); position: relative"
-        gradient="to bottom, rgba(0,0,0,.6), rgba(0,0,0,.3)"
+        gradient="to bottom, rgba(0,0,0,.6), rgba(0,0,0,.1)"
         ><template v-slot:placeholder>
           <div class="d-flex align-center justify-center fill-height">
             <v-progress-circular
@@ -42,7 +42,7 @@
           class="text-center"
           style="
             position: absolute;
-            bottom: 20%;
+            bottom: 35%;
             width: 100%;
             font-size: 35px;
             font-weight: 700;
