@@ -1,0 +1,95 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.app-title {
+    font-family: 'Roboto' !important;
+
+}
+
+
+
+a {
+    font-family: 'Roboto' !important;
+    font-weight: 700;
+}
+
+.hover-anchor {
+    font-family: 'Roboto' !important;
+        font-weight: 700;
+        text-decoration: none;
+}
+
+.hover-anchor:hover {
+   text-decoration: underline !important;
+}
+
+.hover {
+    cursor: pointer !important
+}
+
+ul.cohort-list {
+    -webkit-columns: 1;
+    -moz-columns: 1;
+    columns: 1;
+    padding-left: 0;
+}
+
+ul.cohort-list li {
+    list-style-position: inside;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+@media only screen and (min-width: 768px) {
+    ul.cohort-list {
+        -webkit-columns: 2;
+        -moz-columns: 2;
+        columns: 2;
+        padding-left: 0;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    ul.cohort-list {
+        -webkit-columns: 3;
+        -moz-columns: 3;
+        columns: 3;
+        padding-left: 0;
+    }
+}
+
+
+.info-card:hover,
+.event-card:hover,
+.news-card:hover,
+.info-box:hover
+.tool-card:hover {
+    box-shadow: 0px 0px 25px #000000;
+    z-index: 2;
+    -webkit-transition: all 100ms ease-in;
+    -webkit-transform: scale(1.04);
+    -ms-transition: all 100ms ease-in;
+    -ms-transform: scale(1.04);
+    -moz-transition: all 100ms ease-in;
+    -moz-transform: scale(1.04);
+    transition: all 100ms ease-in;
+    transform: scale(1.04);
+    cursor: pointer;
+}
+
+.pending {
+    color: red;
+}
+
+
