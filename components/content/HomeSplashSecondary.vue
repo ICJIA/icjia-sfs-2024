@@ -5,7 +5,7 @@
         class="bg-grey-lighten-2"
         :src="
           getThumborUrl({
-            url: 'https://icjia-sfs.netlify.app/splash-01.jpg',
+            url: 'https://icjia-sfs.netlify.app/splash-03.jpg',
             width: 2000,
             height: 1200,
             quality: 30,
@@ -13,14 +13,14 @@
         "
         :lazy-src="
           getThumborUrl({
-            url: 'https://icjia-sfs.netlify.app/splash-01.jpg',
+            url: 'https://icjia-sfs.netlify.app/splash-03.jpg',
             width: 250,
             height: 150,
             quality: 10,
           })
         "
         width="100%"
-        height="500"
+        height="650"
         cover
         style="
           margin-top: -65px;
