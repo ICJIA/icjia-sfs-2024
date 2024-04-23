@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxt/image",
     "@vueuse/nuxt",
-    // "@nuxtjs/google-fonts",
+    "@nuxtjs/google-fonts",
     "nuxt-gtag",
 
     // "@nuxtjs/plausible",
@@ -22,32 +22,32 @@ export default defineNuxtConfig({
     },
     //...
   ],
-  // googleFonts: {
-  //   inject: true,
-  //   download: true,
-  //   display: "swap",
-  //   prefetch: true,
-  //   base64: true,
-  //   families: {
-  //     Roboto: {
-  //       wght: [100, 400, 700, 900],
-  //       ital: [100, 400],
-  //     },
-  //     Lato: {
-  //       wght: [100, 300, 400, 700, 900],
-  //       ital: [100, 400],
-  //     },
-  //   },
-  // },
+  googleFonts: {
+    inject: true,
+    download: true,
+    display: "swap",
+    prefetch: true,
+    base64: true,
+    families: {
+      Roboto: {
+        wght: [100, 400, 700, 900],
+        ital: [100, 400],
+      },
+      Lato: {
+        wght: [100, 300, 400, 700, 900],
+        ital: [100, 400],
+      },
+    },
+  },
   content: {
     documentDriven: false,
-    // markdown: {
-    //   mdc: true,
-    //   anchorLinks: {
-    //     depth: 0,
-    //     exclude: [1, 2, 3, 4, 5, 6],
-    //   },
-    // },
+    markdown: {
+      mdc: true,
+      anchorLinks: {
+        depth: 0,
+        exclude: [1, 2, 3, 4, 5, 6],
+      },
+    },
   },
   image: {
     // The screen sizes predefined by `@nuxt/image`:
