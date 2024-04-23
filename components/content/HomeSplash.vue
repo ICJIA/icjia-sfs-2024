@@ -51,8 +51,7 @@
             padding-right: 30px;
           "
         >
-          Developmentally and culturally appropriate direct services to children, ages 0 –
-          5
+          Developmentally and culturally appropriate direct services to children
           <div class="mt-6">
             <v-btn color="blue-darken-3">Learn More</v-btn>&nbsp;&nbsp;<v-btn
               varient="outlined"

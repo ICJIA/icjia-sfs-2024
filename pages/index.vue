@@ -2,7 +2,7 @@
   <div>
     <HomeSplash></HomeSplash>
 
-    <v-container style="margin-top: 65px; margin-bottom: 75px"
+    <!-- <v-container style="margin-top: 65px; margin-bottom: 75px"
       ><v-row
         ><v-col cols="12" class="text-center"
           ><h1>Regia sanguine et credere</h1>
@@ -106,8 +106,8 @@
             </div>
           </v-col>
         </v-row></v-container
-      >
-    </div>
+      > 
+    </div>-->
     <div>
       <HomeSplashSecondary class="mt-16"></HomeSplashSecondary>
       <div
