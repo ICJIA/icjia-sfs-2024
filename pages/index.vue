@@ -1,6 +1,7 @@
 <template>
   <div>
-    <!-- <HomeSplash></HomeSplash> -->
+    test
+    <!-- <HomeSplash></HomeSplash>
 
     <v-container style="margin-top: 65px; margin-bottom: 75px"
       ><v-row
@@ -109,7 +110,7 @@
       >
     </div>
     <div>
-      <!-- <HomeSplashSecondary class="mt-16"></HomeSplashSecondary> -->
+      <HomeSplashSecondary class="mt-16"></HomeSplashSecondary>
       <div
         style="height: 500px; background: #fafafa; font-weight: 900"
         class="text-center pt-10"
@@ -122,7 +123,7 @@
       >
         Footer here
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
