@@ -108,7 +108,7 @@
         </v-row></v-container
       > 
     </div>-->
-    <div>
+    <!-- <div>
       <HomeSplashSecondary class="mt-16"></HomeSplashSecondary>
       <div
         style="height: 500px; background: #fafafa; font-weight: 900"
@@ -122,7 +122,7 @@
       >
         Footer here
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
