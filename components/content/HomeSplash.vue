@@ -94,25 +94,4 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped>
-/* #header {
-  position: relative;
-  min-height: 650px;
-  font-size: 45px;
-  max-width: 70%;
-  font-weight: 700;
-  color: #fff;
-}
-
-#header-content {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  color: #fff;
-  padding-left: 120px;
-  padding-right: 20px;
-  line-height: 60px;
-
-  font-weight: 400;
-} */
-</style>
+<style scoped></style>

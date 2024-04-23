@@ -60,9 +60,9 @@
               :src="
                 getThumborUrl({
                   url: 'https://icjia-sfs.netlify.app/splash-04.jpg',
-                  width: 600,
-                  height: 400,
-                  quality: 30,
+                  width: 1200,
+                  height: 800,
+                  quality: 50,
                 })
               "
               :lazy-src="
@@ -102,9 +102,9 @@
               :src="
                 getThumborUrl({
                   url: 'https://icjia-sfs.netlify.app/splash-05.jpg',
-                  width: 600,
-                  height: 400,
-                  quality: 30,
+                  width: 1200,
+                  height: 800,
+                  quality: 50,
                 })
               "
               :lazy-src="
@@ -174,9 +174,9 @@
               :src="
                 getThumborUrl({
                   url: 'https://icjia-sfs.netlify.app/splash-06.jpg',
-                  width: 600,
-                  height: 400,
-                  quality: 30,
+                  width: 1200,
+                  height: 800,
+                  quality: 50,
                 })
               "
               :lazy-src="
