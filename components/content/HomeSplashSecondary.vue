@@ -5,7 +5,7 @@
         class="bg-grey-lighten-2"
         :src="
           getThumborUrl({
-            url: 'https://icjia-sfs.netlify.app/splash-02.jpg',
+            url: 'https://icjia-sfs.netlify.app/splash-01.jpg',
             width: 2000,
             height: 1200,
             quality: 30,
@@ -13,17 +13,22 @@
         "
         :lazy-src="
           getThumborUrl({
-            url: 'https://icjia-sfs.netlify.app/splash-02-thumbnail.jpg',
+            url: 'https://icjia-sfs.netlify.app/splash-01.jpg',
             width: 250,
             height: 150,
             quality: 10,
           })
         "
         width="100%"
-        height="700"
+        height="500"
         cover
-        style="margin-top: -65px; filter: grayscale(10%); position: relative"
-        gradient="to bottom, rgba(0,0,0,.6), rgba(0,0,0,.1)"
+        style="
+          margin-top: -65px;
+          filter: grayscale(10%);
+          position: relative;
+          border-top: 1px solid #bbb;
+          border-bottom: 1px solid #444;
+        "
         ><template v-slot:placeholder>
           <div class="d-flex align-center justify-center fill-height">
             <v-progress-circular
@@ -32,35 +37,6 @@
             ></v-progress-circular>
           </div>
         </template>
-        <!-- <div id="header" class="hidden-sm-and-down">
-          <div id="header-content">
-            Developmentally and culturally appropriate direct services to children, ages 0
-            – 5
-          </div>
-        </div> -->
-        <div
-          class="text-center"
-          style="
-            position: absolute;
-            bottom: 25%;
-            width: 100%;
-            font-size: 35px;
-            font-weight: 700;
-            color: #fff;
-            padding-left: 30px;
-            padding-right: 30px;
-          "
-        >
-          Developmentally and culturally appropriate direct services to children, ages 0 –
-          5
-          <div class="mt-6">
-            <v-btn color="blue-darken-3">Learn More</v-btn>&nbsp;&nbsp;<v-btn
-              varient="outlined"
-              style="color: black"
-              >Contact</v-btn
-            >
-          </div>
-        </div>
       </v-img>
     </div>
   </div>
