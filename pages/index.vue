@@ -39,14 +39,14 @@
             </div>
           </v-col>
 
-          <v-col cols="12" md="6" class="px-16"
+          <v-col cols="12" md="6" class="px-16 hidden-sm-and-down"
             ><v-img src="https://placehold.co/600x400"></v-img
           ></v-col> </v-row
       ></v-container>
 
       <v-container style="margin-top: 100px"
         ><v-row>
-          <v-col cols="12" md="6" class="px-16"
+          <v-col cols="12" md="6" class="px-16 hidden-sm-and-down"
             ><v-img src="https://placehold.co/600x400"></v-img></v-col
           ><v-col cols="12" md="6"
             ><h2>Inspirat per vestigia tremendos</h2>
@@ -81,14 +81,14 @@
             </div>
           </v-col>
 
-          <v-col cols="12" md="6" class="px-16"
+          <v-col cols="12" md="6" class="px-16 hidden-sm-and-down"
             ><v-img src="https://placehold.co/600x400"></v-img
           ></v-col> </v-row
       ></v-container>
 
       <v-container style="margin-top: 100px; margin-bottom: 100px"
         ><v-row>
-          <v-col cols="12" md="6" class="px-16"
+          <v-col cols="12" md="6" class="px-16 hidden-sm-and-down"
             ><v-img src="https://placehold.co/600x400"></v-img></v-col
           ><v-col cols="12" md="6"
             ><h2>Inspirat per vestigia tremendos</h2>
