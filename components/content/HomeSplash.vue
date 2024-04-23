@@ -42,7 +42,7 @@
           class="text-center"
           style="
             position: absolute;
-            bottom: 35%;
+            bottom: 25%;
             width: 100%;
             font-size: 35px;
             font-weight: 700;
