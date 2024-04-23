@@ -85,14 +85,41 @@
             ><v-img src="https://placehold.co/600x400"></v-img
           ></v-col> </v-row
       ></v-container>
+
+      <v-container style="margin-top: 100px"
+        ><v-row>
+          <v-col cols="12" md="6" class="px-16"
+            ><v-img src="https://placehold.co/600x400"></v-img></v-col
+          ><v-col cols="12" md="6"
+            ><h2>Inspirat per vestigia tremendos</h2>
+            <p>
+              Iam nati, ab servat barbarica dapes mihi circuiere poterit ulvae, hinc
+              cornua, antri omen lacrimas qui laborum. Talis qui procul protegat Maenalon
+              pictas caelestia mora; donis Tectaphon de est sed cognataque pacali negata
+              rebelles. Inmane est nataque, nec navigiis o expulsa violenta merui
+              spectentque periuria pennis illis Aeacidis vulnus. Et profuga tacitos
+              antiquas hiatu: undis aevo dies hinc, ictus prohibetque quoque fati. Ut
+              inspirat per vestigia tremendos clauserat.
+            </p>
+            <div class="text-center mt-10">
+              <v-btn color="blue-darken-3">Contact Us</v-btn>
+            </div>
+          </v-col>
+        </v-row></v-container
+      >
     </div>
     <div>
       <HomeSplashSecondary class="mt-16"></HomeSplashSecondary>
       <div
-        style="height: 300px; background: #ccc; font-weight: 900"
+        style="height: 500px; background: #fafafa; font-weight: 900"
         class="text-center pt-10"
       >
-        <div></div>
+        Contact form here
+      </div>
+      <div
+        style="height: 200px; background: #ccc; font-weight: 900"
+        class="text-center pt-10"
+      >
         Footer here
       </div>
     </div>
