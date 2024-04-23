@@ -1,7 +1,6 @@
 <template>
   <div>
-    test
-    <!-- <HomeSplash></HomeSplash>
+    <HomeSplash></HomeSplash>
 
     <v-container style="margin-top: 65px; margin-bottom: 75px"
       ><v-row
@@ -123,7 +122,7 @@
       >
         Footer here
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
