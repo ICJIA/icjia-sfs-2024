@@ -13,7 +13,9 @@
           </div>
 
           <div class="text-center mt-6">
-            <v-btn color="blue-darken-4">Find SFS Locations in Illinois </v-btn>
+            <v-btn variant="outlined" style="font-weight: 900"
+              >Find SFS Locations in Illinois
+            </v-btn>
           </div></v-col
         ></v-row
       ></v-container
