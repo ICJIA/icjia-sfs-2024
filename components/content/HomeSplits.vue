@@ -2,27 +2,52 @@
   <div>
     <v-container style="margin-top: 65px; margin-bottom: 75px"
       ><v-row
-        ><v-col cols="12" class="text-center"
-          ><h1 style="font-size: 36px">About Safe From the Start</h1>
-          <div style="font-size: 22px" class="mt-6">
-            The Safe From the Start (SFS) program provides developmentally and
-            culturally appropriate direct services to children, ages 0 – 5, who
-            have witnessed or been exposed to violence and their families. SFS
-            focuses on serving young children who are victims of abuse, neglect,
-            or maltreatment, and/or witnesses to domestic violence, sexual
-            assault, or other violent crimes.
-          </div>
+        ><v-col cols="12" md="12" class="">
+          <v-sheet>
+            <h1 style="font-size: 36px" class="text-center">
+              About Safe From the Start
+            </h1>
+            <div style="font-size: 22px" class="mt-6 text-left">
+              <p class="mb-5">
+                <nuxt-link to="/about">
+                  The Safe From the Start (SFS) program</nuxt-link
+                >
+                provides developmentally and culturally appropriate direct
+                services to children, ages 0 – 5, who have witnessed or been
+                exposed to violence and their families. SFS focuses on serving
+                young children who are victims of abuse, neglect, or
+                maltreatment, and/or witnesses to domestic violence, sexual
+                assault, or other violent crimes.
+              </p>
+              <p>
+                Since the program’s launch, twelve sites have been funded to
+                implement services and provide additional support for children
+                and families in Illinois. Since then, three sites have closed
+                due to challenges including the budget impasse. Currently, nine
+                sites are still in functioning. In January 2024, three planning
+                sites, located in Central and Southern Illinois, were awarded
+                funding to begin strategic planning with the goal of program
+                implementation in their areas in 2025.
+              </p>
+            </div>
 
-          <div class="text-center mt-6">
-            <v-btn color="blue-darken-4" style="font-weight: 900"
-              >Program Summary&nbsp;&raquo;</v-btn
-            >&nbsp;
-            <v-btn variant="outlined" style="font-weight: 900"
-              >Find SFS Locations in Illinois&nbsp;&raquo;
-            </v-btn>
-          </div></v-col
-        ></v-row
-      ></v-container
+            <div class="text-center mt-16">
+              <!-- <v-btn color="blue-darken-4" to="/about" style="font-weight: 900"
+              >Learn More&nbsp;&raquo;</v-btn
+            >&nbsp; -->
+              <v-btn variant="outlined" to="/sites" style="font-weight: 900"
+                >Find SFS sites in Illinois&nbsp;&raquo;
+              </v-btn>
+            </div></v-sheet
+          ></v-col
+        >
+
+        <!-- <v-col cols="12" md="6">
+          <v-sheet class="text-center">
+            <h2 style="font-size: 36px">News and Information</h2>
+          </v-sheet>
+        </v-col> -->
+      </v-row></v-container
     >
 
     <div
@@ -211,7 +236,7 @@
         ><v-row
           ><v-col cols="12"
             ><div class="text-center mt-10">
-              <v-btn color="blue-darken-3"
+              <v-btn color="blue-darken-3" to="/core-components"
                 >Read More about Core Components&nbsp;&raquo;</v-btn
               >
             </div>

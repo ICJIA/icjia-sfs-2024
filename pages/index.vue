@@ -8,7 +8,7 @@
       <div style="background: #fafafa" class="pt-10">
         <v-container
           ><v-row
-            ><v-col class="py-16 text-center">
+            ><v-col class="py-16 text-left">
               <h2 style="font-size: 36px" class="text-center">
                 Childhood Exposure to Violence and Trauma
               </h2>
@@ -37,7 +37,8 @@
               </p>
 
               <div class="text-center mt-8">
-                <v-btn color="blue-darken-4">Learn More&nbsp;&raquo;</v-btn
+                <v-btn to="/childhood-exposure" color="blue-darken-4"
+                  >Learn More&nbsp;&raquo;</v-btn
                 >&nbsp;&nbsp;
 
                 <!-- <v-btn variant="outlined">Find SFS Locations in Illinois </v-btn> -->
