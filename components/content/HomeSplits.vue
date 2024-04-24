@@ -15,10 +15,10 @@
 
           <div class="text-center mt-6">
             <v-btn color="blue-darken-4" style="font-weight: 900"
-              >Program Summary </v-btn
+              >Program Summary&nbsp;&raquo;</v-btn
             >&nbsp;
             <v-btn variant="outlined" style="font-weight: 900"
-              >Find SFS Locations in Illinois
+              >Find SFS Locations in Illinois&nbsp;&raquo;
             </v-btn>
           </div></v-col
         ></v-row
@@ -49,9 +49,9 @@
               into the program as well as link program participants with
               referrals in the community.
             </p>
-            <div class="text-center mt-10">
+            <!-- <div class="text-center mt-10">
               <v-btn color="blue-darken-3">Learn More</v-btn>
-            </div>
+            </div> -->
           </v-col>
 
           <v-col cols="12" md="6" class="px-16 hidden-sm-and-down">
@@ -144,9 +144,9 @@
               violence, or other violent crime. Children older than five years
               maybe served if the primary client is ages 0-5.
             </p>
-            <div class="text-center mt-10">
+            <!-- <div class="text-center mt-10">
               <v-btn color="blue-darken-3">Find Out More</v-btn>
-            </div>
+            </div> -->
           </v-col>
         </v-row></v-container
       >
@@ -163,9 +163,9 @@
               trainings, media campaigns, and other methods for increasing
               awareness of childhood exposure to violence.
             </p>
-            <div class="text-center mt-10">
+            <!-- <div class="text-center mt-10">
               <v-btn color="blue-darken-3">Learn More</v-btn>
-            </div>
+            </div> -->
           </v-col>
 
           <v-col cols="12" md="6" class="px-16 hidden-sm-and-down">
@@ -207,6 +207,17 @@
             </v-img>
           </v-col> </v-row
       ></v-container>
+      <v-container class="text-center mb-12" style="margin-top: -50px"
+        ><v-row
+          ><v-col cols="12"
+            ><div class="text-center mt-10">
+              <v-btn color="blue-darken-3"
+                >Read More about Core Components&nbsp;&raquo;</v-btn
+              >
+            </div>
+          </v-col></v-row
+        ></v-container
+      >
     </div>
   </div>
 </template>

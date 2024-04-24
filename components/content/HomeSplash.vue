@@ -53,7 +53,7 @@
         >
           Developmentally and culturally appropriate direct services to children
           <div class="mt-6">
-            <v-btn color="blue-darken-4">Learn More</v-btn>&nbsp;
+            <v-btn color="blue-darken-4">Learn More&nbsp;&raquo;</v-btn>&nbsp;
 
             <!-- &nbsp;&nbsp;<v-btn varient="outlined" style="color: black">Contact</v-btn> -->
           </div>
