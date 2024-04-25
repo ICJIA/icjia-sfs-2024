@@ -5,7 +5,7 @@
         class="bg-grey-lighten-2"
         :src="
           getThumborUrl({
-            url: 'https://icjia-sfs.netlify.app/splash-02-large.jpg',
+            url: 'https://icjia-sfs.netlify.app/splash-24-large-cropped.jpg',
             width: 2000,
             height: 1200,
             quality: 80,
@@ -13,7 +13,7 @@
         "
         :lazy-src="
           getThumborUrl({
-            url: 'https://icjia-sfs.netlify.app/splash-02-large.jpg',
+            url: 'https://icjia-sfs.netlify.app/splash-24-large-cropped.jpg',
             width: 250,
             height: 150,
             quality: 10,

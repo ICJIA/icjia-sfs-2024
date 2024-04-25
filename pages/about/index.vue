@@ -5,13 +5,13 @@
         class="bg-grey-lighten-2"
         :src="
           getThumborUrl({
-            url: 'https://icjia-sfs.netlify.app/splash-28-large.jpg',
-            quality: 80,
+            url: 'https://icjia-sfs.netlify.app/splash-30-large.jpg',
+            quality: 90,
           })
         "
         :lazy-src="
           getThumborUrl({
-            url: 'https://icjia-sfs.netlify.app/splash-28-large.jpg',
+            url: 'https://icjia-sfs.netlify.app/splash-30-large.jpg',
             width: 250,
             height: 150,
             quality: 10,
@@ -21,7 +21,7 @@
         height="650"
         cover
         style="
-          filter: grayscale(20%);
+          filter: grayscale(50%);
           position: relative;
           border-top: 1px solid #bbb;
           border-bottom: 1px solid #444;
