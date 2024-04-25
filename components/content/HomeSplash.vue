@@ -5,7 +5,7 @@
         class="bg-grey-lighten-2"
         :src="
           getThumborUrl({
-            url: 'https://r3.icjia-api.cloud/uploads/large_getty_images_Q_Ygr_G6nkm4g_unsplash_c29c2710e6.jpg',
+            url: 'https://icjia-sfs.netlify.app/splash-02-large.jpg',
             width: 2000,
             height: 1200,
             quality: 80,
@@ -13,7 +13,7 @@
         "
         :lazy-src="
           getThumborUrl({
-            url: 'https://r3.icjia-api.cloud/uploads/thumbnail_getty_images_Q_Ygr_G6nkm4g_unsplash_c29c2710e6.jpg',
+            url: 'https://icjia-sfs.netlify.app/splash-02-large.jpg',
             width: 250,
             height: 150,
             quality: 10,

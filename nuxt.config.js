@@ -1,6 +1,7 @@
 import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 import vue from "@vitejs/plugin-vue";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
+import siteRoutes from "./src/appRoutes.json";
 export default defineNuxtConfig({
   devtools: { enabled: true },
   build: {
@@ -87,6 +88,9 @@ export default defineNuxtConfig({
     timeline: {
       enabled: true,
     },
+  },
+  generate: {
+    routes: siteRoutes,
   },
   // runtimeConfig: {
   //   apiSecret: process.env.NUXT_THUMBOR_KEY,
