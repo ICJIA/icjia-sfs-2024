@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout>
     <v-app>
-      <NavHome></NavHome>
+      <NavHome v-if="route.path === '/'"></NavHome>
       <NuxtPage />
     </v-app>
   </NuxtLayout>
@@ -16,13 +16,13 @@ watchEffect(() => {
   routePath.value = route.path;
   console.log("route.path from app.vue: ", routePath.value);
 
-  if (route.path === "/") {
-    hideBreadcrumbBar.value = true;
-    isHome = true;
-  } else {
-    hideBreadcrumbBar.value = false;
-    isHome = false;
-  }
+  // if (route.path === "/") {
+  //   hideBreadcrumbBar.value = true;
+  //   isHome = true;
+  // } else {
+  //   hideBreadcrumbBar.value = false;
+  //   isHome = false;
+  // }
 });
 
 const scrollToTop = () => {
