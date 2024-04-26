@@ -7,18 +7,20 @@
 
 <script setup>
 import { getThumborUrl } from "@/src/utils/thumbor.js";
-console.log(
-  "getThumborUrl: ",
-  getThumborUrl({
-    url: "https://icjia-sfs.netlify.app/splash-24-large-cropped.jpg",
-  })
-);
+
 let isMounted = ref(false);
 
 const { data } = await useAsyncData(`content-about`, async () => {
   const post = await queryContent().where({ _path: "/about" }).findOne();
   return post;
 });
+
+console.log(
+  "thumborURL: ",
+  getThumborUrl({
+    url: data.value.splash[0].url,
+  })
+);
 
 onMounted(async () => {
   isMounted.value = true;
