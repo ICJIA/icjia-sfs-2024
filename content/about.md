@@ -16,6 +16,6 @@ splash:
   ]
 ---
 
-## Sub heading
-
 About text here
+
+## Sub heading here

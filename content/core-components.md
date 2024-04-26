@@ -8,6 +8,6 @@ searchMeta: null
 splash: null
 ---
 
-## Sub heading
-
 Core components text here
+
+## Sub heading
