@@ -5,7 +5,7 @@
       :src="splashFull"
       :lazy-src="splashThumbnail"
       width="100%"
-      height="700"
+      height="500"
       cover
       style="filter: grayscale(60%); position: relative"
     ></v-img>
