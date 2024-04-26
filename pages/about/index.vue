@@ -1,41 +1,7 @@
 <template>
   <div>
-    <div>
-      <v-img
-        class="bg-grey-lighten-2"
-        :src="
-          getThumborUrl({
-            url: 'https://icjia-sfs.netlify.app/splash-30-large.jpg',
-            quality: 90,
-          })
-        "
-        :lazy-src="
-          getThumborUrl({
-            url: 'https://icjia-sfs.netlify.app/splash-30-large.jpg',
-            width: 250,
-            height: 150,
-            quality: 10,
-          })
-        "
-        width="100%"
-        height="650"
-        cover
-        style="
-          filter: grayscale(50%);
-          position: relative;
-          border-top: 1px solid #bbb;
-          border-bottom: 1px solid #444;
-        "
-        ><template v-slot:placeholder>
-          <div class="d-flex align-center justify-center fill-height">
-            <v-progress-circular
-              color="grey-lighten-4"
-              indeterminate
-            ></v-progress-circular>
-          </div>
-        </template>
-      </v-img>
-    </div>
+    <h1>About Us</h1>
+    {{ data }}
   </div>
 </template>
 
@@ -64,6 +30,11 @@ const getThumborUrl = ({ url, width, height, quality, format }) => {
     .smartCrop(true)
     .buildUrl();
 };
+
+const { data } = await useAsyncData(`content-about`, async () => {
+  const post = await queryContent().where({ _path: "/about" }).findOne();
+  return post;
+});
 
 onMounted(async () => {
   isMounted.value = true;

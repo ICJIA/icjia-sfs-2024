@@ -42,7 +42,7 @@
           class="text-center"
           style="
             position: absolute;
-            bottom: 25%;
+            bottom: 28%;
             width: 100%;
             font-size: 35px;
             font-weight: 700;
@@ -51,7 +51,9 @@
             padding-right: 30px;
           "
         >
-          Developmentally and culturally appropriate direct services to children
+          Direct services to children and their families who have been exposed
+          to violence
+
           <div class="mt-6">
             <v-btn color="blue-darken-4" to="/about"
               >Learn More&nbsp;&raquo;</v-btn
