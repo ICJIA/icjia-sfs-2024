@@ -1,7 +1,7 @@
 import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 import vue from "@vitejs/plugin-vue";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
-import appRoutes from "./src/appRoutes.json";
+import appRoutes from "./src/json/appRoutes.json";
 export default defineNuxtConfig({
   devtools: { enabled: true },
   build: {
