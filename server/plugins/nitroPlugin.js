@@ -1,3 +1,5 @@
+const base = "https://icjia-sfs.netlify.app";
+
 function removeMetadata(markdownContent) {
   // Removes YAML from raw markdown content
   const match = markdownContent.match(/^---([\s\S]*?)---([\s\S]*)/);
@@ -19,9 +21,17 @@ export default defineNitroPlugin((nitroApp) => {
   });
 
   nitroApp.hooks.hook("content:file:afterParse", (file) => {
+    let URL;
+    if (file.section && file.section.length > 0) {
+      URL = `/${file.section}/${file.slug}`;
+    } else {
+      URL = `/${file.slug}`;
+    }
+
     if (file._id.endsWith(".md")) {
       file.rawMarkdown = removeMetadata(files[file._id]);
-      // console.log(file);
+      file.externalURL = `${base}${URL}`;
+      file.internalURL = `${URL}`;
     }
   });
 });

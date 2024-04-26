@@ -38,6 +38,6 @@ const scrollToTop = () => {
 
 onMounted(() => {
   isMounted.value = true;
-  console.log("isMounted: ", isMounted);
+  console.log("isMounted: ", isMounted.value);
 });
 </script>
