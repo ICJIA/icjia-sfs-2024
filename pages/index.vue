@@ -1,10 +1,10 @@
 <template>
   <div>
-    <HomeSplash></HomeSplash>
+    <SplashHome></SplashHome>
 
     <div>
       <HomeSplits></HomeSplits>
-      <HomeSplashSecondary class="mt-16"></HomeSplashSecondary>
+      <SplashHomeSecondary class="mt-16"></SplashHomeSecondary>
       <div style="background: #fafafa" class="pt-10">
         <v-container
           ><v-row

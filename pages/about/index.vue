@@ -1,5 +1,14 @@
 <template>
   <div>
+    <v-img
+      v-if="splashFull && splashThumbnail"
+      :src="splashFull"
+      :lazy-src="splashThumbnail"
+      width="100%"
+      height="700"
+      cover
+      style="filter: grayscale(60%); position: relative"
+    ></v-img>
     <h1>About Us</h1>
     {{ data }}
     <br />
@@ -8,14 +17,6 @@
     <br /><br />
     {{ splashThumbnail }}
     <br /><br />
-    <v-img
-      v-if="splashFull && splashThumbnail"
-      :src="splashFull"
-      :lazy-src="splashThumbnail"
-      width="100%"
-      height="700"
-      cover
-    ></v-img>
   </div>
 </template>
 

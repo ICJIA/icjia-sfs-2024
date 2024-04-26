@@ -51,8 +51,9 @@
             padding-right: 30px;
           "
         >
-          Direct services to children and their families who have been exposed
-          to violence
+          Direct services to children who have been exposed to violence, ages
+          0-5
+          <br />
 
           <div class="mt-6">
             <v-btn color="blue-darken-4" to="/about"
