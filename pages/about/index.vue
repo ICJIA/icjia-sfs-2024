@@ -2,6 +2,19 @@
   <div>
     <h1>About Us</h1>
     {{ data }}
+    <br />
+    <br />
+    {{ splashFull }}
+    <br /><br />
+    {{ splashThumbnail }}
+    <br /><br />
+    <v-img
+      :src="splashFull"
+      :lazy-src="splashThumbnail"
+      width="100%"
+      height="700"
+      cover
+    ></v-img>
   </div>
 </template>
 
@@ -15,10 +28,13 @@ const { data } = await useAsyncData(`content-about`, async () => {
   return post;
 });
 
-console.log(
-  "thumborURL: ",
+let splashFull = ref(getThumborUrl(data.value.splash[0]));
+let splashThumbnail = ref(
   getThumborUrl({
     url: data.value.splash[0].url,
+    width: 150,
+    height: 150,
+    quality: 10,
   })
 );
 
