@@ -8,7 +8,7 @@ searchMeta: null
 splash:
   [
     {
-      "url": "https://icjia-sfs.netlify.app/splash-38-large.jpg",
+      "url": "https://icjia-sfs.netlify.app/splash-20-large.jpg",
       quality: 50,
       width: 2000,
       height: 750,
