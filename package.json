@@ -35,7 +35,7 @@
     "@vueuse/integrations": "10.9.0",
     "@vueuse/router": "10.9.0",
     "axios": "^1.6.8",
-    "dompurify": "^3.1.1",
+    "dompurify": "^3.1.2",
     "dotenv": "^16.4.5",
     "eslint": "^9.1.1",
     "fuse.js": "^7.0.0",

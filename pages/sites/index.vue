@@ -1,5 +1,5 @@
 <template>
-  <div>SFS site info here</div>
+  <div><h2>SFS Site info here</h2></div>
 </template>
 
 <script setup></script>

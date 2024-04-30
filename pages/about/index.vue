@@ -9,7 +9,7 @@
       cover
       style="filter: grayscale(60%); position: relative"
     ></v-img>
-    <h1>About Us</h1>
+    <h1>About Safe from the Start</h1>
     {{ data }}
     <br />
     <br />

@@ -1,5 +1,5 @@
 <template>
-  <div>Childhood exposure info here</div>
+  <div><h1>Childhood exposure info here</h1></div>
 </template>
 
 <script setup></script>

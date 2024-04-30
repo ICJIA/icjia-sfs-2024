@@ -1,42 +1,51 @@
 <template>
   <div>
+    <v-img
+      v-if="splashFull && splashThumbnail"
+      :src="splashFull"
+      :lazy-src="splashThumbnail"
+      width="100%"
+      height="700"
+      cover
+      style="filter: grayscale(60%); position: relative"
+    ></v-img>
     <h1>Core Components</h1>
     {{ data }}
+    <br />
+    <br />
+    {{ splashFull }}
+    <br /><br />
+    {{ splashThumbnail }}
+    <br /><br />
   </div>
 </template>
 
 <script setup>
-import { ThumborUrlBuilder } from "thumbor-url-builder-ts";
+import { getThumborUrl } from "@/src/utils/thumbor.js";
 
 let isMounted = ref(false);
+let splashFull = ref(null);
+let splashThumbnail = ref(null);
 
-const getThumborUrl = ({ url, width, height, quality, format }) => {
-  let options = {
-    url: url || "https://icjia-sfs.netlify.app/error.jpg",
-    width: width || 1024,
-    height: height || 768,
-    quality: quality || 80,
-    format: format || "webp",
-  };
-  const thumbor = new ThumborUrlBuilder(
-    import.meta.env.VITE_THUMBOR_KEY,
-    "https://image.icjia.cloud"
-  );
-
-  return thumbor
-    .setImagePath(options.url)
-    .resize(options.width, options.height)
-    .filter(`quality(${options.quality}):format('${options.format}')`)
-    .smartCrop(true)
-    .buildUrl();
-};
-
-const { data } = await useAsyncData(`content-core-components`, async () => {
+const { data } = await useAsyncData(`content-core`, async () => {
   const post = await queryContent()
     .where({ _path: "/core-components" })
     .findOne();
   return post;
 });
+
+if (data && data.value.splash && data.value.splash[0]) {
+  splashFull.value = getThumborUrl(data.value.splash[0]);
+  splashThumbnail.value = getThumborUrl({
+    url: data.value.splash[0].url,
+    width: 150,
+    height: 150,
+    quality: 10,
+  });
+} else {
+  splashFull.value = null;
+  splashThumbnail.value = null;
+}
 
 onMounted(async () => {
   isMounted.value = true;
