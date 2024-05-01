@@ -11,12 +11,6 @@
     ></v-img>
     <h1>About Safe from the Start</h1>
     {{ data }}
-    <br />
-    <br />
-    {{ splashFull }}
-    <br /><br />
-    {{ splashThumbnail }}
-    <br /><br />
   </div>
 </template>
 
