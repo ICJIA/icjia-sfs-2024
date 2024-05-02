@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pb-16">
     <v-container
       ><v-row
         ><v-col class="text-center mb-6">

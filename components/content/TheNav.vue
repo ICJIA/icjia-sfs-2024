@@ -44,6 +44,7 @@
             font-family: 'Roboto', sans-serif !important;
           "
           class="agency app-title"
+          @click="$router.push('/')"
           ><span>SFS</span>&nbsp;&nbsp;SAFE FROM THE START
         </span>
       </div>
@@ -57,6 +58,7 @@
             font-family: 'Roboto', sans-serif !important;
           "
           class="agency app-title"
+          @click="$router.push('/')"
           ><span>SFS</span>&nbsp;&nbsp;SAFE FROM THE START
         </span>
       </div>
@@ -70,7 +72,7 @@
             font-family: 'Roboto', sans-serif !important;
           "
           class="agency app-title"
-          ><span>R3</span>
+          ><span>SFS</span>
         </span>
       </div>
 

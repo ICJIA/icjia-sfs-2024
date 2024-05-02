@@ -4,7 +4,7 @@
       <!-- <NavHome v-if="route.path === '/'"></NavHome>
       <TheNav v-else></TheNav> -->
       <TheNav></TheNav>
-      <NuxtPage />
+      <NuxtPage style="min-height: 90vh" />
       <TheFooter></TheFooter>
     </v-app>
   </NuxtLayout>

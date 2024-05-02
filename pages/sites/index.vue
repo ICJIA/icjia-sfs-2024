@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pb-16">
     <v-img
       v-if="splashFull && splashThumbnail"
       :src="splashFull"
