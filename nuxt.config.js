@@ -129,22 +129,23 @@ export default defineNuxtConfig({
   // logIgnoredEvents: true,
   // },
   vite: {
+    optimizeDeps: {
+      include: [
+        "axios",
+        "moment",
+        "dompurify",
+        "fuse.js",
+        "lodash",
+        "markdown-it",
+        "markdown-it-attrs",
+        "thumbor-url-builder-ts",
+        "uuid",
+        "mitt",
+      ],
+    },
     vue: {
       plugins: [vue(), vuetify(), nodePolyfills()],
-      optimizeDeps: {
-        include: [
-          "axios",
-          "moment",
-          "dompurify",
-          "fuse.js",
-          "lodash",
-          "markdown-it",
-          "markdown-it-attrs",
-          "thumbor-url-builder-ts",
-          "uuid",
-          "mitt",
-        ],
-      },
+
       template: {
         transformAssetUrls,
       },
