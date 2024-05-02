@@ -1,7 +1,9 @@
 <template>
   <NuxtLayout>
     <v-app>
-      <NavHome v-if="route.path === '/'"></NavHome>
+      <!-- <NavHome v-if="route.path === '/'"></NavHome>
+      <TheNav v-else></TheNav> -->
+      <TheNav></TheNav>
       <NuxtPage />
     </v-app>
   </NuxtLayout>
