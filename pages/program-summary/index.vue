@@ -9,7 +9,7 @@
       cover
       style="filter: grayscale(60%); position: relative"
     ></v-img>
-    <h1>Core Components</h1>
+    <h1>Program Summary</h1>
     {{ data }}
     <br />
     <br />
@@ -27,9 +27,9 @@ let isMounted = ref(false);
 let splashFull = ref(null);
 let splashThumbnail = ref(null);
 
-const { data } = await useAsyncData(`content-core`, async () => {
+const { data } = await useAsyncData(`content-program`, async () => {
   const post = await queryContent()
-    .where({ _path: "/core-components" })
+    .where({ _path: "/program-summary" })
     .findOne();
   return post;
 });

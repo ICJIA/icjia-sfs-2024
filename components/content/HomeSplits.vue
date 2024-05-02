@@ -236,8 +236,8 @@
         ><v-row
           ><v-col cols="12"
             ><div class="text-center mt-10">
-              <v-btn color="blue-darken-3" to="/core-components"
-                >Read More about Core Components&nbsp;&raquo;</v-btn
+              <v-btn color="blue-darken-3" to="/program-summary"
+                >Read the Program Summary&nbsp;&raquo;</v-btn
               >
             </div>
           </v-col></v-row
