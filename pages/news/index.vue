@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 style="margin-top: 70px">Contact Us</h1>
+    <h1 style="margin-top: 70px">News and Updates</h1>
   </div>
 </template>
 

@@ -16,7 +16,7 @@ splash:
   ]
 ---
 
-### History
+## History
 
 In June 1999, the U.S. Department of Justice and the U.S. Department of Health and Human Services held Safe from the Start: The National Summit on Children Exposed to Violence in Washington D.C. The Summit brought together diverse disciplines, established a strong collaborative foundation, and identified key issues that must be addressed to reduce the negative impact of children’s early exposure to violence. Policymakers and practitioners from various systems including early childhood education, justice systems, child protective services, victim services, and health care joined together to work on a blueprint for federal, state, and local action.
 
@@ -28,7 +28,7 @@ The SFS grant program was initiated in State Fiscal Year 2001 (July 2001 – Jun
 
 Since the program’s launch, twelve sites have been funded to implement services and provide additional support for children and families in Illinois. Since then, three sites have closed due to challenges including the budget impasse. Currently, nine sites are still in functioning. In January 2024, three planning sites, located in Central and Southern Illinois, were awarded funding to begin strategic planning with the goal of program implementation in their areas in 2025.
 
-### Guiding Principles
+## Guiding Principles
 
 An Advisory Committee was established in February 2001 to advise SFS on policies and practices related to the design, implementation, and evaluation of the SFS program. The Advisory Committee was comprised of representatives from state agencies and statewide not-for-profit organizations concerned with issues related to young children (ages 0-5) and violence. The Committee’s guiding principles included:
 
@@ -51,9 +51,9 @@ An Advisory Committee was established in February 2001 to advise SFS on policies
 - Efforts should be tailored to build from the existing and unique strengths and resources in the community and among families, while also addressing gaps and barriers.
 - Be an advocate for children and families by supporting the relationship between the child and non-offending parent/caregiver.
 
-### Priorities
+## Priorities
 
-While this this program responds to several priorities established by the 2022 [ICJIA Victim Services Planning Committee](https://icjia.illinois.gov/researchhub/articles/2022-victim-service-planning-research-report/),<sup>[\[8\]](#footnote-9)</sup> SFS most directly addresses priority areas of public awareness, trauma services, evidence-informed practices, and data collection and evaluation.
+While this this program responds to several priorities established by the 2022 [ICJIA Victim Services Planning Committee](https://icjia.illinois.gov/researchhub/articles/2022-victim-service-planning-research-report/), SFS most directly addresses priority areas of public awareness, trauma services, evidence-informed practices, and data collection and evaluation.
 
 **Priority Area: Public Awareness**
 
@@ -63,10 +63,9 @@ The SFS Program Model shares the priority of public awareness. SFS increases pub
 
 A foundational component of SFS is the provision of direct services to young children who have been exposed to violence and their families. Assessments are conducted to ensure that children are connected to the appropriate therapeutic services to mitigate the impact of trauma and provide paths to healing. SFS’s required community-based coalition enhance referral networks, reducing barriers and increasing accessibility to services.
 
-Priority Area: Evidence-based Practices**
-
+**Priority Area: Evidence-based Practices**
 SFS providers are trained in evidence-based practices that demonstrate efficacy in assessing and treating childhood trauma and strengthening families. A variety of evidence-based tools and interventions are used, such as Ages and Stages Questionnaire/Ages and Stages Questionnaire Social Emotional (ASQ/ASQSE), Childhood Behavior Checklist (CBCL), Parent Stress Index (PSI), and the Attachment, Regulation, and Competency (ARC) Framework.
 
-****Priority Area: Data Collection and Evaluation**
+**Priority Area: Data Collection and Evaluation**
 
 Throughout the SFS, programs assess and document the needs of children and families. Not only is this information critical to helping individuals’ needs, the collected data provides insight into the overall efficacy of SFS, including trends in needs, services provided, and outcomes for children and caregivers who receive services.

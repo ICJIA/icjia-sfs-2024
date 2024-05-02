@@ -4,6 +4,13 @@ import { nodePolyfills } from "vite-plugin-node-polyfills";
 import appRoutes from "./src/json/appRoutes.json";
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  css: [
+    "vuetify/lib/styles/main.sass",
+    "@mdi/font/css/materialdesignicons.min.css",
+    "~/assets/css/variables.scss",
+    "~/assets/css/app.css",
+    "~/assets/css/github-markdown.css",
+  ],
   build: {
     transpile: ["vuetify"],
   },
@@ -23,6 +30,17 @@ export default defineNuxtConfig({
     },
     //...
   ],
+  content: {
+    documentDriven: false,
+    markdown: {
+      mdc: true,
+      anchorLinks: false,
+      anchorLinks: {
+        depth: 0,
+        exclude: [0, 1, 2, 3, 4, 5, 6],
+      },
+    },
+  },
   googleFonts: {
     inject: true,
     download: true,
@@ -40,16 +58,7 @@ export default defineNuxtConfig({
       },
     },
   },
-  content: {
-    documentDriven: false,
-    markdown: {
-      mdc: true,
-      anchorLinks: {
-        depth: 0,
-        exclude: [1, 2, 3, 4, 5, 6],
-      },
-    },
-  },
+
   image: {
     // The screen sizes predefined by `@nuxt/image`:
     screens: {

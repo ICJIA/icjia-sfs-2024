@@ -16,12 +16,16 @@ export default defineAppConfig({
       nudgeLeft: "57px",
       children: [
         {
-          title: "About Safe From the Start",
+          title: "About",
           link: "/about",
         },
         {
-          title: "SFS Program  Summary",
+          title: "Program  Summary",
           link: "/program-summary",
+        },
+        {
+          title: "News & Updates",
+          link: "/news",
         },
       ],
     },

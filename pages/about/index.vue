@@ -1,16 +1,38 @@
 <template>
   <div>
-    <v-img
-      v-if="splashFull && splashThumbnail"
-      :src="splashFull"
-      :lazy-src="splashThumbnail"
-      width="100%"
-      height="700"
-      cover
-      style="filter: grayscale(60%); position: relative"
-    ></v-img>
-    <h1>About Safe from the Start</h1>
-    {{ data }}
+    <v-container
+      ><v-row
+        ><v-col class="text-center mb-6">
+          <h1 style="font-size: 40px; margin-top: 70px">
+            About Safe from the Start
+          </h1></v-col
+        >
+        <v-img
+          v-if="splashFull && splashThumbnail"
+          :src="splashFull"
+          :lazy-src="splashThumbnail"
+          width="100%"
+          height="700"
+          cover
+          style="filter: grayscale(60%); position: relative"
+          class="hidden-sm-and-down"
+        ></v-img></v-row
+    ></v-container>
+
+    <v-container
+      ><v-row
+        ><v-col cols="12" class="mt-10">
+          <ContentDoc :key="data?.title" :value="data" class="markdown-body">
+            <template #empty>Document not found</template>
+            <template #not-found>Document not found</template>
+          </ContentDoc>
+          <!-- <div
+            v-html="renderer.render(data.rawMarkdown)"
+            class="markdown-body"
+          ></div> -->
+        </v-col></v-row
+      ></v-container
+    >
   </div>
 </template>
 
@@ -20,6 +42,17 @@ import { getThumborUrl } from "@/src/utils/thumbor.js";
 let isMounted = ref(false);
 let splashFull = ref(null);
 let splashThumbnail = ref(null);
+import md from "markdown-it";
+import attrs from "markdown-it-attrs";
+const renderer = new md({
+  html: true,
+  xhtmlOut: false,
+  breaks: false,
+  langPrefix: "language-",
+  linkify: true,
+  typographer: true,
+  quotes: "“”‘’",
+}).use(attrs);
 
 const { data } = await useAsyncData(`content-about`, async () => {
   const post = await queryContent().where({ _path: "/about" }).findOne();
@@ -41,7 +74,17 @@ if (data && data.value.splash && data.value.splash[0]) {
 
 onMounted(async () => {
   isMounted.value = true;
+  const heading = document.querySelector("h2");
+  const anchorTags = heading.querySelectorAll("a");
+  for (const anchorTag of anchorTags) {
+    anchorTag.remove();
+    console.log(anchorTag);
+  }
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+h2 a {
+  color: #000 !important;
+}
+</style>

@@ -5,6 +5,7 @@
       <TheNav v-else></TheNav> -->
       <TheNav></TheNav>
       <NuxtPage />
+      <TheFooter></TheFooter>
     </v-app>
   </NuxtLayout>
 </template>
@@ -43,3 +44,16 @@ onMounted(() => {
   console.log("isMounted: ", isMounted.value);
 });
 </script>
+
+<style>
+h2,
+h3,
+h4,
+h5,
+h6 {
+  a {
+    color: black;
+    text-decoration: none;
+  }
+}
+</style>

@@ -1,22 +1,34 @@
 <template>
   <div>
-    <v-img
-      v-if="splashFull && splashThumbnail"
-      :src="splashFull"
-      :lazy-src="splashThumbnail"
-      width="100%"
-      height="700"
-      cover
-      style="filter: grayscale(60%); position: relative"
-    ></v-img>
-    <h1>Program Summary</h1>
-    {{ data }}
-    <br />
-    <br />
-    {{ splashFull }}
-    <br /><br />
-    {{ splashThumbnail }}
-    <br /><br />
+    <v-container
+      ><v-row
+        ><v-col class="text-center mb-6">
+          <h1 style="font-size: 40px; margin-top: 70px">
+            {{ data?.title }}
+          </h1></v-col
+        >
+        <v-img
+          v-if="splashFull && splashThumbnail"
+          :src="splashFull"
+          :lazy-src="splashThumbnail"
+          width="100%"
+          height="700"
+          cover
+          style="filter: grayscale(60%); position: relative"
+          class="hidden-sm-and-down"
+        ></v-img></v-row
+    ></v-container>
+
+    <v-container
+      ><v-row
+        ><v-col cols="12" class="mt-10">
+          <ContentDoc :key="data?.title" :value="data" class="markdown-body">
+            <template #empty>Document not found</template>
+            <template #not-found>Document not found</template>
+          </ContentDoc>
+        </v-col></v-row
+      ></v-container
+    >
   </div>
 </template>
 
