@@ -16,7 +16,8 @@ export default defineNuxtConfig({
         {
           hid: "description",
           name: "description",
-          content: "SFS Description here",
+          content:
+            "The Safe From the Start (SFS) program provides developmentally and culturally appropriate direct services to children, ages 0 through 5, who have witnessed or been exposed to violence and their families",
         },
       ],
       link: [
@@ -118,9 +119,7 @@ export default defineNuxtConfig({
       "2xl": 1536,
     },
   },
-  content: {
-    // ... options
-  },
+
   // plausible: {
   //   apiHost: "https://plausible.icjia.cloud",
   //   // Prevent tracking on localhost
