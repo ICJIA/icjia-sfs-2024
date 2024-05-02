@@ -50,7 +50,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  devtools: { enabled: true },
+  devtools: { enabled: true, timeline: { enabled: true } },
   css: [
     "vuetify/lib/styles/main.sass",
     "@mdi/font/css/materialdesignicons.min.css",
@@ -132,7 +132,18 @@ export default defineNuxtConfig({
     vue: {
       plugins: [vue(), vuetify(), nodePolyfills()],
       optimizeDeps: {
-        include: ["axios", "moment", "dompurify", "fuse.js", "lodash"],
+        include: [
+          "axios",
+          "moment",
+          "dompurify",
+          "fuse.js",
+          "lodash",
+          "markdown-it",
+          "markdown-it-attrs",
+          "thumbor-url-builder-ts",
+          "uuid",
+          "mitt",
+        ],
       },
       template: {
         transformAssetUrls,
