@@ -20,38 +20,16 @@ export default defineNuxtConfig({
             "The Safe From the Start (SFS) program provides developmentally and culturally appropriate direct services to children, ages 0 through 5, who have witnessed or been exposed to violence and their families",
         },
       ],
-      link: [
-        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-        // {
-        //   rel: "stylesheet",
-        //   href: "https://cdn.datatables.net/v/dt/dt-1.13.1/b-2.3.3/b-print-2.3.3/fh-3.3.1/r-2.4.0/sb-1.4.0/sp-2.1.0/datatables.min.css",
-        // },
-      ],
+      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
       script: [
         {
           src: "https://code.jquery.com/jquery-3.7.1.slim.min.js",
           type: "text/javascript",
         },
-        // {
-        //   src: "https://cdn.datatables.net/v/dt/dt-1.13.1/b-2.3.3/b-print-2.3.3/fh-3.3.1/r-2.4.0/sb-1.4.0/sp-2.1.0/datatables.min.js",
-        //   type: "text/javascript",
-        // },
-        // {
-        //   src: "https://cdn.jsdelivr.net/mark.js/8.6.0/mark.min.js",
-        //   type: "text/javascript",
-        // },
-        // {
-        //   src: "https://plausible.icjia.cloud/js/script.tagged-events.outbound-links.js",
-        //   "data-domain": "r3.illinois.gov",
-        //   defer: true,
-        // },
-        // {
-        //   src: "plausibleEvents.js",
-        // },
       ],
     },
   },
-  devtools: { enabled: true, timeline: { enabled: true } },
+
   css: [
     "vuetify/lib/styles/main.sass",
     "@mdi/font/css/materialdesignicons.min.css",
@@ -159,10 +137,4 @@ export default defineNuxtConfig({
   generate: {
     routes: appRoutes,
   },
-  // runtimeConfig: {
-  //   apiSecret: process.env.NUXT_THUMBOR_KEY,
-  //   public: {
-  //
-  //   },
-  // },
 });
