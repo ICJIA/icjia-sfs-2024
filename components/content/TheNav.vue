@@ -59,7 +59,7 @@
           "
           class="agency app-title"
           @click="$router.push('/')"
-          ><span>SFS</span>&nbsp;&nbsp;SAFE FROM THE START
+          ><span>SFS</span>&nbsp;|&nbsp;SAFE FROM THE START
         </span>
       </div>
 
