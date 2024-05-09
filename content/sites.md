@@ -18,13 +18,14 @@ splash:
 
 <p>Currently, there are nine SFS Programs operating in Illinois. Three additional sites are currently engaging in coalition-building and strategic planning with anticipated implementation in 2025.</p><p> To learn more about each site, click on the links.</p>
 <div style="margin-bottom: 50px"></div>
-<table>
-    <thead>
+<h2 style="border-bottom: none">Current SFS Programs</h2>
+<table >
+    <!-- <thead>
         <tr>
-            <th>Current SFS Programs</th>
+            <th style="font-size: 30px">Current SFS Programs</th>
             <th></th>
         </tr>
-    </thead>
+    </thead> -->
     <tbody>
         <tr>
             <td><strong>Agency</strong></td>
@@ -69,13 +70,14 @@ splash:
     </tbody>
 </table>
 <div style="margin-bottom: 50px"></div>
+<h2 style="border-bottom: none">Planning Sites</h2>
 <table>
-    <thead>
+    <!-- <thead>
         <tr>
             <th><strong>Planning Sites</strong></th>
             <th></th>
         </tr>
-    </thead>
+    </thead> -->
     <tbody>
         <tr>
             <td><strong>Agency</strong></td>
