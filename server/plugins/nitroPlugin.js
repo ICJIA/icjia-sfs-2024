@@ -27,7 +27,7 @@ export default defineNitroPlugin((nitroApp) => {
     } else {
       URL = `/${file.slug}`;
     }
-
+    console.log(file);
     if (file._id.endsWith(".md")) {
       file.rawMarkdown = removeMetadata(files[file._id]);
       file.externalURL = `${base}${URL}`;
