@@ -3,7 +3,9 @@
     <v-container
       ><v-row
         ><v-col class="text-center mb-6">
-          <h1 style="font-size: 40px; margin-top: 70px">
+          <h1
+            style="font-size: 40px; margin-top: 80px; text-transform: uppercase"
+          >
             About Safe from the Start
           </h1></v-col
         >
@@ -21,7 +23,7 @@
 
     <v-container
       ><v-row
-        ><v-col cols="12" class="mt-10">
+        ><v-col cols="12" class="mt-0">
           <ContentDoc :key="data?.title" :value="data" class="markdown-body">
             <template #empty>Document not found</template>
             <template #not-found>Document not found</template>

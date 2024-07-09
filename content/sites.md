@@ -5,15 +5,6 @@ summary: "This is the sites page summary"
 publishedAt: "2024-05-01"
 section: ""
 searchMeta: null
-splash:
-  [
-    {
-      "url": "https://icjia-sfs.netlify.app/splash-03.jpg",
-      quality: 50,
-      width: 2000,
-      height: 750,
-    },
-  ]
 ---
 
 <p>Currently, there are nine SFS Programs operating in Illinois. Three additional sites are currently engaging in coalition-building and strategic planning with anticipated implementation in 2025.</p><p> To learn more about each site, click on the links.</p>

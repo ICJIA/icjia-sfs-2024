@@ -5,15 +5,6 @@ summary: "This is the childhood-exposure summary."
 publishedAt: "2024-05-02"
 section: ""
 searchMeta: null
-splash:
-  [
-    {
-      "url": "https://icjia-sfs.netlify.app/splash-03.jpg",
-      quality: 50,
-      width: 2000,
-      height: 750,
-    },
-  ]
 ---
 
 ## Childhood Exposure to Violence and Trauma
