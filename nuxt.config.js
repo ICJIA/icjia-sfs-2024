@@ -3,6 +3,7 @@ import vue from "@vitejs/plugin-vue";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
 import appRoutes from "./src/json/appRoutes.json";
 export default defineNuxtConfig({
+  compabilityDate: "2024-07-03",
   app: {
     // pageTransition: { name: "page", mode: "out-in" },
     head: {
