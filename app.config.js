@@ -24,6 +24,10 @@ export default defineAppConfig({
           link: "/program-summary",
         },
         {
+          title: "Research",
+          link: "/research",
+        },
+        {
           title: "Childhood Exposure to Violence and Trauma",
           link: "/childhood-exposure",
         },
