@@ -2,7 +2,7 @@
 title: About Us
 slug: about
 summary: This is the about page summary
-publishedAt: "2024-04-26"
+publishedAt: "2024-07-16"
 section: ""
 searchMeta: null
 ---

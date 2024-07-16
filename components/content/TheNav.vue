@@ -45,7 +45,9 @@
           "
           class="agency app-title"
           @click="$router.push('/')"
-          ><span>SFS</span>&nbsp;&nbsp;SAFE FROM THE START
+          ><span style="background: #164797; padding: 5px 8px; color: #fff"
+            >SFS</span
+          >&nbsp;|&nbsp;SAFE FROM THE START
         </span>
       </div>
 

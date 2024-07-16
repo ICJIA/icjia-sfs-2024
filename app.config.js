@@ -24,9 +24,13 @@ export default defineAppConfig({
           link: "/program-summary",
         },
         {
-          title: "News & Updates",
-          link: "/news",
+          title: "Childhood Exposure to Violence and Trauma",
+          link: "/childhood-exposure",
         },
+        // {
+        //   title: "News & Updates",
+        //   link: "/news",
+        // },
       ],
     },
     {

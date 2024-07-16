@@ -42,17 +42,16 @@
           class="text-center"
           style="
             position: absolute;
-            bottom: 28%;
+            bottom: 25%;
             width: 100%;
-            font-size: 35px;
+            font-size: 46px;
             font-weight: 700;
             color: #fff;
             padding-left: 30px;
             padding-right: 30px;
           "
         >
-          Direct services to children who have been exposed to violence, ages
-          0-5
+          Direct services to children who have been exposed to violence
           <br />
 
           <div class="mt-6">
