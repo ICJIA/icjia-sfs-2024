@@ -7,7 +7,10 @@
             <h1 style="font-size: 36px" class="text-center">
               About Safe From the Start
             </h1>
-            <div style="font-size: 22px" class="mt-6 text-left">
+            <div
+              style="font-size: 20px; font-family: 'Lato', sans-serif"
+              class="mt-6 text-left"
+            >
               <p class="mb-5">
                 <nuxt-link to="/about">
                   The Safe From the Start (SFS) program</nuxt-link
@@ -20,14 +23,12 @@
                 assault, or other violent crimes.
               </p>
               <p>
-                Since the program’s launch, twelve sites have been funded to
-                implement services and provide additional support for children
-                and families in Illinois. Since then, three sites have closed
-                due to challenges including the budget impasse. Currently, nine
-                sites are still in functioning. In January 2024, three planning
-                sites, located in Central and Southern Illinois, were awarded
-                funding to begin strategic planning with the goal of program
-                implementation in their areas in 2025.
+                Safe From the Start began as a national initiative to reduce the
+                impact of early childhood exposure to violence. The program was
+                implemented in 2001 to develop, implement, and evaluate
+                comprehensive, coordinated, community-based models to identify,
+                assess, and serve children, ages 0 to 5, who have been exposed
+                to violence in their homes and/or communities.
               </p>
             </div>
 
@@ -51,7 +52,12 @@
     >
 
     <div
-      style="background: #f5f5f5; min-height: 200px; border-top: 1px #ddd solid"
+      style="
+        background: #f5f5f5;
+        min-height: 200px;
+        border-top: 1px #ddd solid;
+        font-family: 'Lato', sans-serif;
+      "
       class="py-8"
     >
       <v-container class="text-center"
@@ -67,12 +73,13 @@
             ><h2>Coalition-Building and Collaboration</h2>
             <p style="font-size: 20px">
               Coalition building, collaboration, and coordination are central
-              components of the SFS program model. State and local agency,
-              including community-based organizations, collaboration and
-              coordination is required. SFS Coalitions develop strategies to
-              build relationships with community partners to establish referrals
-              into the program as well as link program participants with
-              referrals in the community.
+              components of the SFS program model. SFS coalitions build
+              relationships with community partners that can both make referrals
+              into the program and link program participants with other
+              resources. Additionally, SFS coalitions focus on broader program
+              implementation, organizational change, information sharing
+              enhancements, protocol creation, and other tasks related to
+              service collaboration and coordination.
             </p>
             <!-- <div class="text-center mt-10">
               <v-btn color="blue-darken-3">Learn More</v-btn>
@@ -161,13 +168,13 @@
           ><v-col cols="12" md="6"
             ><h2>Direct Services</h2>
             <p style="font-size: 20px">
-              Safe From the Start primarily serves young children (birth to 5
-              years of age) who have been exposed to violence in the home or
-              community and their families or caregivers. “Exposure to violence”
-              is defined as being a victim or witness of abuse, neglect, or
-              maltreatment or a witness to domestic, physical, or sexual
-              violence, or other violent crime. Children older than five years
-              maybe served if the primary client is ages 0-5.
+              SFS primarily serves young children from birth to 5 years of age
+              who have been exposed to violence in the home or community and
+              their families or caregivers. Children older than five years may
+              be served if the primary client is aged 0 to 5. _Exposure to
+              violence_ occurs with being victimized or witnessing abuse,
+              neglect, or maltreatment or a witness to domestic, physical, or
+              sexual violence, or other violent crime.
             </p>
             <!-- <div class="text-center mt-10">
               <v-btn color="blue-darken-3">Find Out More</v-btn>
@@ -181,12 +188,12 @@
             ><h2>Public Awareness</h2>
             <p style="font-size: 20px">
               The SFS program model’s third component is public awareness.
-              Efforts to involve community members, increase public awareness,
-              incorporate community input during planning, and educate residents
-              about the scope of the problem are essential. These efforts range
-              from community presentations, community events, professional
-              trainings, media campaigns, and other methods for increasing
-              awareness of childhood exposure to violence.
+              Essential efforts include community member involvement, increased
+              public awareness, community-informed planning, education about the
+              scope and impact of childhood exposure to violence, and promoting
+              healing services. Public awareness activities range from community
+              presentations and events to professional trainings and media
+              campaigns.
             </p>
             <!-- <div class="text-center mt-10">
               <v-btn color="blue-darken-3">Learn More</v-btn>
