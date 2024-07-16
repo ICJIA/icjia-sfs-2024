@@ -46,7 +46,7 @@ let isMounted = ref(false);
 let splashFull = ref(null);
 let splashThumbnail = ref(null);
 
-const { data } = await useAsyncData(`content-program`, async () => {
+const { data } = await useAsyncData(`content-research`, async () => {
   const post = await queryContent().where({ _path: "/research" }).findOne();
   return post;
 });
