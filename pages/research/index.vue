@@ -24,7 +24,12 @@
     <v-container
       ><v-row
         ><v-col cols="12" class="mt-0">
-          <ContentDoc :key="data?.title" :value="data" class="markdown-body">
+          <ContentDoc
+            :key="data?.title"
+            :value="data"
+            class="markdown-body"
+            style="font-family: 'Lato', sans-serif"
+          >
             <template #empty>Document not found</template>
             <template #not-found>Document not found</template>
           </ContentDoc>

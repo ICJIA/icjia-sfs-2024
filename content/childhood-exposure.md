@@ -13,7 +13,7 @@ Experiencing or witnessing one or more types of violence can have profound effec
 
 However, many children can live healthy lives despite exposure to violence. These resilient children often have at least one positive adult role model in their lives.<sup>[\[6\]](#footnote-7)</sup> Furthermore, research shows early interventions for children and families exposed to violence can reduce symptoms related to violence exposure, enhance protective factors, and increase child safety.<sup>[\[7\]](#footnote-8)</sup>
 
-<div style="font-size: 16px" class="px-10 mt-10">
+<div style="font-size: 13px" class="px-10 mt-10">
 
 1. Finkelhor, D., Turner, H. A., Shattuck, A., & Hamby, S. L. (2015). Prevalence of childhood exposure to violence, crime, and abuse: Results from the national survey of children’s exposure to violence. _JAMA Pediatrics,169_(8), 746-754. <https://doi.org/10.1001/jamapediatrics.2015.0676> [↑](#footnote-ref-2)
 

@@ -28,7 +28,7 @@
             :key="data?.title"
             :value="data"
             class="markdown-body"
-            style="font-family: 'Lato', sans-serif; font-size: 20px"
+            style="font-family: 'Lato', sans-serif; font-size: 16px"
           >
             <template #empty>Document not found</template>
             <template #not-found>Document not found</template>
