@@ -7,7 +7,7 @@ section: ""
 searchMeta: null
 ---
 
-<p>Nine SFS Programs operate in Illinois. Three additional sites are engaging in coalition-building and strategic planning with anticipated implementation in 2025.</p><p> To learn more about each site, click on the links.</p>
+<p>Nine SFS Programs operate in Illinois. Three additional sites are engaging in coalition-building and strategic planning with anticipated implementation in 2025. To learn more about each site, click on the links below.</p>
 <div style="margin-bottom: 50px"></div>
 <h2 style="border-bottom: none">Current SFS Programs</h2>
 <table >
