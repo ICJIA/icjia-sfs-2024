@@ -1,5 +1,5 @@
 ---
-title: "SFS Program Summary"
+title: "Program Summary"
 slug: "program-summary"
 summary: "This is the program summary summary."
 publishedAt: "2024-04-26"
@@ -7,8 +7,6 @@ section: ""
 searchMeta: null
 splash:
 ---
-
-## Program Summary
 
 The Safe From the Start (SFS) program provides developmentally and culturally appropriate services to children ages 0 to 5 who have witnessed or been exposed to violence. These services are also provided to their families or caregivers. SFS serves young victims of abuse, neglect, or maltreatment, and/or who witnessed domestic violence, sexual assault, or other violent crimes.
 

@@ -1,6 +1,6 @@
 <template>
-  <div class="pb-16">
-    <h1>Resources</h1>
+  <div class="mt-16">
+    <h1>Resources here</h1>
   </div>
 </template>
 

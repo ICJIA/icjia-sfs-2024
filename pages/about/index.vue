@@ -81,12 +81,6 @@ if (data && data.value.splash && data.value.splash[0]) {
 
 onMounted(async () => {
   isMounted.value = true;
-  // const heading = document.querySelector("h2");
-  // const anchorTags = heading.querySelectorAll("a");
-  // for (const anchorTag of anchorTags) {
-  //   anchorTag.remove();
-  //   console.log(anchorTag);
-  // }
 });
 </script>
 

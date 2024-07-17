@@ -28,13 +28,9 @@ export default defineAppConfig({
           link: "/research",
         },
         {
-          title: "Childhood Exposure to Violence and Trauma",
-          link: "/childhood-exposure",
+          title: "Resources",
+          link: "/resources",
         },
-        // {
-        //   title: "News & Updates",
-        //   link: "/news",
-        // },
       ],
     },
     {
