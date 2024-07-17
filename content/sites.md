@@ -1,5 +1,5 @@
 ---
-title: "Safe From the Start Sites"
+title: "SFS Sites"
 slug: "sites"
 summary: "This is the sites page summary"
 publishedAt: "2024-05-01"

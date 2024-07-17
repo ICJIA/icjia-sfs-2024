@@ -1,5 +1,5 @@
 ---
-title: "Program Summary"
+title: "SFS Program Summary"
 slug: "program-summary"
 summary: "This is the program summary summary."
 publishedAt: "2024-04-26"

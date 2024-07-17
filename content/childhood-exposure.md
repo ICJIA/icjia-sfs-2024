@@ -16,6 +16,8 @@ Experiencing or witnessing one or more types of violence can have profound effec
 
 However, many children are resilient and can continue to have healthy lives despite exposure. These resilient children often have at least one positive adult role model in their lives.<sup>[\[6\]](#footnote-7)</sup> Furthermore, research shows early interventions for children and families exposed to violence can reduce symptoms related to violence exposure, enhance protective factors, and increase child safety.<sup>[\[7\]](#footnote-8)</sup>
 
+<div class="references">
+
 1. Finkelhor, D., Turner, H. A., Shattuck, A., & Hamby, S. L. (2015). Prevalence of childhood exposure to violence, crime, and abuse: Results from the national survey of children’s exposure to violence. _JAMA Pediatrics,169_(8), 746-754. <https://doi.org/10.1001/jamapediatrics.2015.0676> [↑](#footnote-ref-2)
 
 2. U.S. Department of Health & Human Services (2022). _Child maltreatment 2020._ Children’s Bureau. <https://www.acf.hhs.gov/cb/data-research/child-maltreatment> [↑](#footnote-ref-3)
@@ -29,3 +31,5 @@ However, many children are resilient and can continue to have healthy lives desp
 6. Jain, S., Buka, S. L., Subramanian, S. V., & Molnar, B. E. (2012). Emotional resilience among youth exposed to violence: The role of protective factors. _Journal of Child & Adolescent Trauma, 10_(4), 353-362. <http://www.datainaction.org/uploads/2/7/8/2/27825255/emotional_resilience_among_youth_exp_to_violence_jain.pdf> [↑](#footnote-ref-7)
 
 7. Cohen, E., McAlister Groves, B., & Kracke, K. (2009). _Moving from evidence to action: Understanding children’s exposure to violence._ U.S. Department of Justice. [Ihttps://ojjdp.ojp.gov/sites/g/files/xyckuh176/files/programs/safestart/IB1_UnderstandingChildrensExposuretoViolence.pdf](https://ojjdp.ojp.gov/sites/g/files/xyckuh176/files/programs/safestart/IB1_UnderstandingChildrensExposuretoViolence.pdf) [↑](#footnote-ref-8)
+
+</div>
