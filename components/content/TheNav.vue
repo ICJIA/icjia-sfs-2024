@@ -49,6 +49,16 @@
             >SFS</span
           >&nbsp;|&nbsp;SAFE FROM THE START
         </span>
+        <!-- <v-img src="/icjia-logo.png" width="55" height="55" class="mr-3" />
+       <span
+          @click="$router.push('/')"
+          style="
+            font-weight: 900 !important;
+            font-size: 22px;
+            letter-spacing: 0.004em;
+          "
+          >&nbsp;|&nbsp;SAFE FROM THE START</span
+        > -->
       </div>
 
       <div class="hover hidden-md-and-up hidden-xs">

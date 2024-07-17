@@ -4,8 +4,8 @@
 
     <div>
       <HomeSplits></HomeSplits>
-      <!-- <SplashHomeSecondary class="mt-16"></SplashHomeSecondary> -->
-      <!-- <div style="background: #fafafa" class="pt-10">
+      <SplashHomeSecondary class="mt-16"></SplashHomeSecondary>
+      <div style="background: #fafafa" class="pt-10">
         <v-container
           ><v-row
             ><v-col class="py-16 text-left">
@@ -38,14 +38,14 @@
               </p>
 
               <div class="text-center mt-12">
-                <v-btn to="/about" color="blue-darken-4"
+                <v-btn to="/childhood-exposure" color="blue-darken-4"
                   >Read more&nbsp;&raquo;</v-btn
                 >&nbsp;&nbsp;
               </div>
             </v-col></v-row
           ></v-container
         >
-      </div> -->
+      </div>
     </div>
   </div>
 </template>

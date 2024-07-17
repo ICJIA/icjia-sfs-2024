@@ -27,15 +27,16 @@ export default defineAppConfig({
           title: "Research",
           link: "/research",
         },
-        {
-          title: "Resources",
-          link: "/resources",
-        },
       ],
     },
     {
       main: "SFS Sites",
       link: "/sites",
+      nudgeLeft: "78px",
+    },
+    {
+      main: "Resources",
+      link: "/resources",
       nudgeLeft: "78px",
     },
 
