@@ -10,7 +10,7 @@ export default defineNuxtConfig({
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
 
-      titleTemplate: "Safe From the Start | %s ",
+      titleTemplate: "Safe From the Start %s ",
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
