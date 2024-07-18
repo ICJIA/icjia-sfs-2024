@@ -3,7 +3,11 @@
     <v-app>
       <!-- <NavHome v-if="route.path === '/'"></NavHome>
       <TheNav v-else></TheNav> -->
-      <TheNav></TheNav>
+      <TheNavV2></TheNavV2>
+
+      <TheSidebar></TheSidebar>
+
+      <NuxtLoadingIndicator color="blue" />
       <NuxtPage style="min-height: 90vh" />
       <TheFooter></TheFooter>
     </v-app>
