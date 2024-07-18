@@ -162,26 +162,6 @@
             </v-btn>
           </span>
         </span>
-        <!-- <v-btn
-          variant="text"
-          size="default"
-          class="hidden-md-and-down navItem"
-          style="font-weight: 900 !important; font-size: 16px"
-          @click="goToSearch"
-        >
-          <v-tooltip activator="parent" location="bottom"> Search </v-tooltip>
-          <v-icon icon="mdi-magnify" size="large"></v-icon>
-        </v-btn> -->
-
-        <!-- <v-btn
-          size="default"
-          class="hidden-md-and-down navItem"
-          style="font-weight: 900 !important; font-size: 16px"
-          to="/translate"
-        >
-          <v-tooltip activator="parent" location="bottom"> Translate </v-tooltip
-          ><v-icon icon="mdi-web" size="large"></v-icon
-        ></v-btn> -->
 
         <span
           class="hover hamburger text-center hidden-md-and-up"
