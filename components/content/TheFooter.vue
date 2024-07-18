@@ -21,14 +21,14 @@
                 <img
                   src="/icjia-logo.png"
                   alt="Footer logo"
-                  width="250"
+                  width="150"
                   style="border: 0px solid #ddd; display: inline"
                   class="hover"
                   @click="routeToSite()"
                 />
               </div>
 
-              <div class="pb-6" style="margin-top: -20px">
+              <div class="pb-6" style="margin-top: -10px">
                 <v-btn
                   variant="text"
                   style="
@@ -76,7 +76,7 @@
 
               <div style="font-size: 12px; font-weight: 400">
                 <strong
-                  >&#169; 2023
+                  >&#169; 2024
                   <a
                     href="https://icjia.illinois.gov"
                     target="_blank"

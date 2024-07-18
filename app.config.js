@@ -20,7 +20,7 @@ export default defineAppConfig({
           link: "/about",
         },
         {
-          title: "Program  Summary",
+          title: "Program Summary",
           link: "/program-summary",
         },
         {
@@ -56,7 +56,7 @@ export default defineAppConfig({
           link: "/about",
         },
         {
-          title: "Program  Summary",
+          title: "Program Summary",
           link: "/program-summary",
         },
         {
@@ -81,10 +81,18 @@ export default defineAppConfig({
       main: "Home",
       link: "/",
     },
+    {
+      main: "About",
+      link: "/about",
+    },
 
     {
       main: "Contact",
       link: "/contact",
+    },
+    {
+      main: "Program Summary",
+      link: "/program-summary",
     },
 
     {
@@ -94,6 +102,10 @@ export default defineAppConfig({
     {
       main: "Resources",
       link: "/resources",
+    },
+    {
+      main: "Sites",
+      link: "/sites",
     },
   ],
 });
