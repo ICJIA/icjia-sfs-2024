@@ -1,5 +1,5 @@
 ---
-title: "SFS Resources"
+title: "Resources"
 slug: "resources"
 summary: "SFS resources."
 publishedAt: "2024-04-26"

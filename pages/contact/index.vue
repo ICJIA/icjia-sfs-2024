@@ -97,6 +97,7 @@
 <script>
 import DOMPurify from "dompurify";
 import axios from "axios";
+
 const api = axios.create({
   timeout: 15000,
 });
@@ -131,6 +132,7 @@ const dbInsert = async function ({ type, email, ...form }) {
 
 export default {
   name: "RegisterForm",
+
   data: () => ({
     valid: false,
     successfullySubmitted: false,
@@ -161,6 +163,11 @@ export default {
     ],
   }),
   methods: {
+    head() {
+      return {
+        title: "Dashboard",
+      };
+    },
     async submitForm() {
       this.$refs.form.validate();
       this.subject = sanitizeString(this.subject);

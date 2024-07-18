@@ -1,5 +1,5 @@
 ---
-title: "Childhood Exposure to Violence"
+title: "Childhood Exposure to Violence and Trauma"
 slug: "childhood-exposure"
 summary: "This is the childhood-exposure summary."
 publishedAt: "2024-05-02"
@@ -7,8 +7,6 @@ section: ""
 searchMeta: null
 splash:
 ---
-
-## Childhood Exposure to Violence and Trauma
 
 Childhood exposure to violence is pervasive and negatively impacts communities. This includes physical abuse, sexual assault, maltreatment/neglect, domestic violence, and other violent crimes. In their third National Survey of Children’s Exposure to Violence , the U.S. Department of Justice and the Centers for Disease Control and Prevention found that almost 58% of children and youth between 0 and 17 years old had been exposed to at least one type of violence and 48% had experienced more than one type of victimization within the previous year.<sup>[\[1\]](#footnote-2)</sup> In the 2020 edition of the annual Child Maltreatment report series, child protective services agencies found that 618,000 children in the United States were victims of child abuse and neglect; 29% of them were under the age of two.<sup>[\[2\]](#footnote-3)</sup> The U.S. Advisory Board on Child Abuse suggests that domestic violence may be the single major precursor to child abuse and neglect fatalities in the county.<sup>[\[3\]](#footnote-4)</sup>
 

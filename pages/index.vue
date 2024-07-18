@@ -53,6 +53,11 @@
 <script setup>
 let isMounted = ref(false);
 
+useHead({
+  title: "Home",
+  meta: [{ name: "description", content: "Illinois Safe From the Start" }],
+});
+
 onMounted(async () => {
   isMounted.value = true;
 });

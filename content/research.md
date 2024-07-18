@@ -1,5 +1,5 @@
 ---
-title: "SFS Research"
+title: "Research"
 slug: "research"
 summary: "SFS research information."
 publishedAt: "2024-04-26"
