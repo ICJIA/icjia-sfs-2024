@@ -4,8 +4,7 @@ const yaml = require("js-yaml");
 
 const directoryPath = "./content/news/"; // Replace with your directory path
 const outputFilePath = "./src/json/news.json";
-const section = "news"; // Path to save the JSON file
-
+const section = "news"; // Section name
 // Function to read all markdown files in the directory
 const readMarkdownFiles = (dir) => {
   return fs.readdirSync(dir).filter((file) => path.extname(file) === ".md");

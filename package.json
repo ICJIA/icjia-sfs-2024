@@ -3,13 +3,17 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "yarn clear:cache && rm -rf .nuxt && nuxt dev --port=8000 -o",
-    "generate": "nuxt generate",
-    "generate:serve": "yarn clear:cache && nuxt generate && npx serve .output/public",
+    "dev": "yarn clear:cache && yarn scripts && rm -rf .nuxt && nuxt dev --port=8000 -o",
+    "generate": "yarn clear:cache && rm -rf .nuxt && yarn scripts && nuxt generate",
+    "generate:serve": "yarn clear:cache && rm -rf .nuxt && yarn scripts && nuxt generate && npx serve .output/public",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "build:serve": "yarn clear:cache && nuxt build && node .output/server/index.mjs ",
-    "clear:cache": "rm -rf .nuxt .output"
+    "clear:cache": "rm -rf .nuxt .output",
+    "create:pages": "node ./creators/pages.js",
+    "create:news": "node ./creators/news.js",
+    "create:routes": "node ./creators/generateRoutes.mjs",
+    "scripts": "yarn clear:cache && yarn create:pages && yarn create:routes"
   },
   "devDependencies": {
     "@nuxt/content": "2.13.1",

@@ -30,8 +30,13 @@ export default defineAppConfig({
       ],
     },
     {
-      main: "SFS Sites",
+      main: "Sites",
       link: "/sites",
+      nudgeLeft: "78px",
+    },
+    {
+      main: "News",
+      link: "/news",
       nudgeLeft: "78px",
     },
     {
@@ -71,6 +76,11 @@ export default defineAppConfig({
       nudgeLeft: "78px",
     },
     {
+      main: "News",
+      link: "/news",
+      nudgeLeft: "78px",
+    },
+    {
       main: "Resources",
       link: "/resources",
       nudgeLeft: "78px",
@@ -89,6 +99,11 @@ export default defineAppConfig({
     {
       main: "Contact",
       link: "/contact",
+    },
+    {
+      main: "News",
+      link: "/news",
+      nudgeLeft: "78px",
     },
     {
       main: "Program Summary",
