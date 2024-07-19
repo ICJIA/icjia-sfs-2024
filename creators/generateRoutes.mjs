@@ -9,6 +9,7 @@ const pageRoutes = require("../src/json/pages.json");
 dotenv.config();
 
 const appRoutes = Array.from(new Set([...pageRoutes]));
+appRoutes.push("/");
 
 jsonfile.writeFileSync(`./src/json/appRoutes.json`, appRoutes, function (err) {
   if (err) {
