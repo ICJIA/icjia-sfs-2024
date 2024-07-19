@@ -38,7 +38,7 @@
         <span
           style="
             font-weight: 900 !important;
-            font-size: 24px;
+            font-size: 22px;
 
             letter-spacing: 0.004em;
           "
@@ -51,7 +51,7 @@
         <span
           style="
             font-weight: 900 !important;
-            font-size: 28px;
+            font-size: 24px;
 
             letter-spacing: 0.004em;
           "
