@@ -4,6 +4,7 @@ import { nodePolyfills } from "vite-plugin-node-polyfills";
 import appRoutes from "./src/json/appRoutes.json";
 export default defineNuxtConfig({
   compabilityDate: "2024-07-03",
+
   app: {
     // pageTransition: { name: "page", mode: "out-in" },
     head: {
@@ -38,9 +39,11 @@ export default defineNuxtConfig({
     "~/assets/css/app.css",
     "~/assets/css/github-markdown.css",
   ],
+
   build: {
     transpile: ["vuetify"],
   },
+
   modules: [
     "@nuxt/content",
     "@nuxt/image",
@@ -57,6 +60,7 @@ export default defineNuxtConfig({
     },
     //...
   ],
+
   content: {
     documentDriven: false,
     markdown: {
@@ -68,6 +72,7 @@ export default defineNuxtConfig({
       },
     },
   },
+
   googleFonts: {
     inject: true,
     download: true,
@@ -129,13 +134,17 @@ export default defineNuxtConfig({
       },
     },
   },
+
   devtools: {
     enabled: true,
     timeline: {
       enabled: true,
     },
   },
+
   generate: {
     routes: appRoutes,
   },
+
+  compatibilityDate: "2024-07-22",
 });

@@ -83,6 +83,15 @@ if (data && data.value.splash && data.value.splash[0]) {
 
 onMounted(async () => {
   isMounted.value = true;
+  var footnoteLabel = document.getElementById("footnote-label");
+
+  // Check if the element exists
+  if (footnoteLabel) {
+    // Change the inner text of the element
+    footnoteLabel.innerText = "References";
+  } else {
+    console.log("Element with ID 'footnote-label' not found.");
+  }
 });
 </script>
 
