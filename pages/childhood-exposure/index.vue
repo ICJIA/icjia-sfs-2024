@@ -83,7 +83,7 @@ if (data && data.value.splash && data.value.splash[0]) {
 
 onMounted(async () => {
   isMounted.value = true;
-  var footnoteLabel = document.getElementById("footnote-label");
+  let footnoteLabel = document.getElementById("footnote-label");
 
   // Check if the element exists
   if (footnoteLabel) {
