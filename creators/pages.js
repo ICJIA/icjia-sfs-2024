@@ -36,8 +36,8 @@ const main = () => {
     })
     .filter((slug) => slug !== null);
 
-  slugs.push("/news");
-  slugs.push("/contact");
+  // slugs.push("/news");
+  // slugs.push("/contact");
 
   fs.writeFileSync(outputFilePath, JSON.stringify(slugs, null, 2));
   console.log(`Slugs saved to ${outputFilePath}`);

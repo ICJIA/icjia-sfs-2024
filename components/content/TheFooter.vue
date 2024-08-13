@@ -91,10 +91,12 @@
                     >Privacy
                   </nuxt-link>
                 </strong>
-                &nbsp;|&nbsp;
-                <nuxt-link to="/contact" style="color: #fff; background: none"
+                <!-- &nbsp;|&nbsp; -->
+                <!-- <nuxt-link to="/contact" style="color: #fff; background: none"
                   >Contact</nuxt-link
-                >&nbsp;
+                > -->
+
+                &nbsp;
               </div>
             </v-col>
           </v-row>

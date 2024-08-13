@@ -34,22 +34,22 @@ export default defineAppConfig({
       link: "/sites",
       nudgeLeft: "78px",
     },
-    {
-      main: "News",
-      link: "/news",
-      nudgeLeft: "78px",
-    },
+    // {
+    //   main: "News",
+    //   link: "/news",
+    //   nudgeLeft: "78px",
+    // },
     {
       main: "Resources",
       link: "/resources",
       nudgeLeft: "78px",
     },
 
-    {
-      main: "Contact",
-      link: "/contact",
-      nudgeLeft: "78px",
-    },
+    // {
+    //   main: "Contact",
+    //   link: "/contact",
+    //   nudgeLeft: "78px",
+    // },
   ],
   sidebarMenu: [
     {
@@ -75,11 +75,11 @@ export default defineAppConfig({
       link: "/sites",
       nudgeLeft: "78px",
     },
-    {
-      main: "News",
-      link: "/news",
-      nudgeLeft: "78px",
-    },
+    // {
+    //   main: "News",
+    //   link: "/news",
+    //   nudgeLeft: "78px",
+    // },
     {
       main: "Resources",
       link: "/resources",
@@ -96,15 +96,15 @@ export default defineAppConfig({
       link: "/about",
     },
 
-    {
-      main: "Contact",
-      link: "/contact",
-    },
-    {
-      main: "News",
-      link: "/news",
-      nudgeLeft: "78px",
-    },
+    // {
+    //   main: "Contact",
+    //   link: "/contact",
+    // },
+    // {
+    //   main: "News",
+    //   link: "/news",
+    //   nudgeLeft: "78px",
+    // },
     {
       main: "Program Summary",
       link: "/program-summary",
