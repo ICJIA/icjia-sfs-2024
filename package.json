@@ -39,7 +39,7 @@
     "@vueuse/core": "10.11.1",
     "@vueuse/integrations": "10.11.1",
     "@vueuse/router": "10.11.1",
-    "axios": "^1.7.3",
+    "axios": "^1.7.4",
     "dompurify": "^3.1.6",
     "dotenv": "^16.4.5",
     "eslint": "^9.9.0",
