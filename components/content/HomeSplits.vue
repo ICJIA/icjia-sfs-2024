@@ -91,7 +91,7 @@
               class="bg-grey-lighten-2"
               :src="
                 getThumborUrl({
-                  url: 'https://icjia-sfs.netlify.app/splash-29-large.jpg',
+                  url: 'https://sfs.icjia.illinois.gov/splash-29-large.jpg',
                   width: 1200,
                   height: 800,
                   quality: 50,
@@ -99,7 +99,7 @@
               "
               :lazy-src="
                 getThumborUrl({
-                  url: 'https://icjia-sfs.netlify.app/splash-29-large.jpg',
+                  url: 'https://sfs.icjia.illinois.gov/splash-29-large.jpg',
                   width: 250,
                   height: 150,
                   quality: 10,
@@ -133,7 +133,7 @@
               class="bg-grey-lighten-2"
               :src="
                 getThumborUrl({
-                  url: 'https://icjia-sfs.netlify.app/splash-05.jpg',
+                  url: 'https://sfs.icjia.illinois.gov/splash-05.jpg',
                   width: 1200,
                   height: 800,
                   quality: 50,
@@ -141,7 +141,7 @@
               "
               :lazy-src="
                 getThumborUrl({
-                  url: 'https://icjia-sfs.netlify.app/splash-05.jpg',
+                  url: 'https://sfs.icjia.illinois.gov/splash-05.jpg',
                   width: 250,
                   height: 150,
                   quality: 10,
@@ -205,7 +205,7 @@
               class="bg-grey-lighten-2"
               :src="
                 getThumborUrl({
-                  url: 'https://icjia-sfs.netlify.app/splash-06.jpg',
+                  url: 'https://sfs.icjia.illinois.gov/splash-06.jpg',
                   width: 1200,
                   height: 800,
                   quality: 50,
@@ -213,7 +213,7 @@
               "
               :lazy-src="
                 getThumborUrl({
-                  url: 'https://icjia-sfs.netlify.app/splash-06.jpg',
+                  url: 'https://sfs.icjia.illinois.gov/splash-06.jpg',
                   width: 250,
                   height: 150,
                   quality: 10,
@@ -261,7 +261,7 @@ let isMounted = ref(false);
 
 const getThumborUrl = ({ url, width, height, quality, format }) => {
   let options = {
-    url: url || "https://icjia-sfs.netlify.app/error.jpg",
+    url: url || "https://sfs.icjia.illinois.gov/error.jpg",
     width: width || 1024,
     height: height || 768,
     quality: quality || 50,

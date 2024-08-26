@@ -7,7 +7,7 @@ dotenv.config();
 
 const require = createRequire(import.meta.url);
 const routes = require("../src/json/appRoutes.json");
-const host = "https://icjia-sfs.netlify.app";
+const host = "https://sfs.icjia.illinois.gov";
 
 const sitemap = new SitemapStream({
   hostname: host,

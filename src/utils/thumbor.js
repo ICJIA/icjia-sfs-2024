@@ -2,7 +2,7 @@ import { ThumborUrlBuilder } from "thumbor-url-builder-ts";
 
 const getThumborUrl = ({ url, width, height, quality, format }) => {
   let options = {
-    url: url || "https://icjia-sfs.netlify.app/error.jpg",
+    url: url || "https://sfs.icjia.illinois.gov/error.jpg",
     width: width || 1024,
     height: height || 768,
     quality: quality || 80,

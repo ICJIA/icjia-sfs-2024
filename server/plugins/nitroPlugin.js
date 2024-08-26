@@ -1,4 +1,4 @@
-const base = "https://icjia-sfs.netlify.app";
+const base = "https://sfs.icjia.illinois.gov";
 
 function removeMetadata(markdownContent) {
   // Removes YAML from raw markdown content
