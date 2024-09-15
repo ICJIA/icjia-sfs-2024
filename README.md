@@ -4,6 +4,8 @@ The Safe From the Start (SFS) program provides developmentally and culturally ap
 
 https://sfs.icjia.illinois.gov/
 
+## Installation
+
 Make sure to install the dependencies:
 
 ```bash
@@ -20,9 +22,9 @@ yarn install
 bun install
 ```
 
-## Development Server
+## Development
 
-Start the development server on `http://localhost:3000`:
+### Dev server:
 
 ```bash
 # npm
@@ -38,36 +40,36 @@ yarn dev
 bun run dev
 ```
 
+### Local production preview:
+
+```bash
+# npm
+npm run generate:serve
+
+# pnpm
+pnpm run generate:serve
+
+# yarn
+yarn generate:serve
+
+# bun
+bun run generate:serve
+```
+
 ## Production
 
 Build the application for production:
 
 ```bash
 # npm
-npm run build
+npm run generate
 
 # pnpm
-pnpm run build
+pnpm run generate
 
 # yarn
-yarn build
+yarn generate
 
 # bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+bun run generate
 ```
