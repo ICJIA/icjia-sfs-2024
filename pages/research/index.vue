@@ -78,4 +78,12 @@ onMounted(async () => {
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+:deep(.footnotes) {
+  font-size: 12px !important;
+}
+
+.footnote-label {
+  color: #666 !important;
+}
+</style>
