@@ -38,14 +38,16 @@ export default defineNuxtConfig({
   css: [
     "vuetify/lib/styles/main.sass",
     "@mdi/font/css/materialdesignicons.min.css",
-    "~/assets/css/variables.scss",
-    "~/assets/css/app.css",
-    "~/assets/css/github-markdown.css",
+    "../assets/css/variables.scss",
+    "../assets/css/app.css",
+    "../assets/css/github-markdown.css",
   ],
 
   build: {
     transpile: ["vuetify"],
   },
+
+  experimental: { appManifest: false },
 
   modules: [
     "@nuxt/content",
