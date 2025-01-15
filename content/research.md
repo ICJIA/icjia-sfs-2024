@@ -60,7 +60,7 @@ _Forms_
 
 _Evaluation Protocol_
 
-- Evaluation Protocol
+- [Evaluation Protocol](https://agency.icjia-api.cloud/uploads/SFS_Evaluation_Protocol_FINAL_10012024_b9ba78161c.docx)
 
 - Frequently Asked Questions - Forthcoming
 
