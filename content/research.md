@@ -8,30 +8,74 @@ searchMeta: null
 splash:
 ---
 
-## Overview
+# Overview
 
-SFS’s goals include the development, implementation, and evaluation of comprehensive, coordinated responses to CEV and trauma. Data gathered from young children and caregivers during SFS’s assessment process is analyzed to learn more about program efficacy, strengths, and areas for improvement. Various instruments are used to assess children’s and caregivers’ experiences and service provision. Tools include:
+A key component of the Safe from the Start (SFS) program is an ongoing outcome evaluation that uses standardized assessment and intake/exit data gathered by SFS providers to assess client outcomes and program efficacy. The SFS outcome evaluation began in State Fiscal Year 2005 when the Illinois Violence Prevention Authority (IPVA), SFS service providers, and University of Illinois at Chicago (UIC) researchers collaborated to: a) create intake and exit forms; b) select validated assessments for use with clients; and c) develop a database for program sites to enter client and assessment data. As the program evaluator, UIC researchers provided research support, including support for the database, and technical assistance to sites. In 2020, program evaluation and database management were transitioned to ICJIA’s research team at the Center for Victim Studies.
 
-- Background Information Form (BIF)
-- Ages and Stages Questionnaire (ASQ)
-- Ages and Stages Social-Emotional Questionnaire (ASQ-SE)
-- Safe From the Start Questionnaire (SFSQ)
-- Child Behavior Checklist 1.5-5 (CBCL)
-- Parenting Stress Index – Short Form (PSI)
-- Child Completion of Services Form
-- Caregiver Completion of Services Form[^1]
+_SFS Research Goals and Activities_
 
-## Impact
+The purpose of the SFS evaluation is to:
 
-Research on the SFS program, documented in the [State Fiscal Year 2020 Safe From the Start Annual Report: 2001-2020](https://icjia.illinois.gov/researchhub/articles/state-fiscal-year-2020-safe-from-the-start-annual-report-2001-2020/), revealed beneficial client outcomes. Intake data collected from nine SFS sites showed that 81% of children who received SFS services had witnessed domestic violence, 41% were experiencing behavioral and emotional challenges, and 39% were at risk of social-emotional delays. Additionally, intake data showed elevated stress levels in caregivers. Statistics showed that post-program involvement, caregivers’ knowledge about the impact of trauma increased, the children’s ability to identify feelings improved, caregiver stress was reduced, and a significant reduction in children’s overall emotional and behavioral symptoms was recorded.[^2]
+- Identify program strengths and opportunities for improvement.
 
-## ICJIA Publications
+- Assess program efficacy.
 
-- [Addressing Child Exposure to Violence](https://icjia.illinois.gov/researchhub/articles/addressing-child-exposure-to-violence/){target=\_blank}
+- Provide SFS sites with data and research findings to inform service delivery.
 
-<div class="references">
+- Disseminate research findings to increase awareness of childhood exposure to violence and to inform policy and practice.
 
-[^1]: Schewe, P.A. & Chang, C., (2018). _Safe From the Start year 17 report: 2001-2018_. Chicago, IL: Interdisciplinary Center for Research on Violence at the University of Illinois at Chicago.
-[^2]: Gonzalez, L.F., Nguyen, S., & Kirkner, A. (2022). State fiscal year 2020 Safe From the Start annual report: 2001-2020. Illinois Criminal Justice Information Authority. <https://icjia.illinois.gov/researchhub/articles/state-fiscal-year-2020-safe-from-the-start-annual-report-2001-2020/>
+Research activities include:
 
-</div>
+- Maintaining SFS database and extract data for quality control and programmatic reporting.
+
+- Providing training and technical assistance to SFS providers on data collection and database entry.
+
+- Analyzing deidentified client intake/exit and assessment data.
+
+- Drafting research reports to demonstrate program efficacy.
+
+- Preparing site specific reports to inform treatment and improve programming.
+
+Validated assessments used in client treatment are:
+
+- The [Parenting Stress Index (PSI)](https://www.apa.org/pi/about/publications/caregivers/practice-settings/assessment/tools/parenting-stress)
+
+- The [Child Behavior Checklist BCL](https://www.apa.org/depression-guideline/child-behavior-checklist.pdf)
+
+- The [Ages and Stages Questionnaire (ASQ)](https://agesandstages.com/products-pricing/asq3/)
+
+- The [Ages and Stages Questionnaire for Social Emotional Development (ASQ:SE)](https://agesandstages.com/products-pricing/asqse-2/)
+
+# Program Outcomes
+
+Analysis of pre- and post-intervention data has shown :
+
+## SFS Evaluation Resources
+
+_Forms_
+
+- Intake Form - Forthcoming
+
+- Exit Form - Forthcoming
+
+_Evaluation Protocol_
+
+- Evaluation Protocol
+
+- Frequently Asked Questions - Forthcoming
+
+_Training Materials_
+
+- Safe From the Start Database 1.0 User’s Quick Start Guide: Basic Site Navigation, Intake and Background Information Form - Forthcoming
+
+SFS and Related Research Publications
+
+- [Addressing Child Exposure to Violence](https://icjia.illinois.gov/researchhub/articles/addressing-child-exposure-to-violence)
+
+- [State Fiscal Year 2020 Safe From the Start Annual Report: 2001-2020](https://icjia.illinois.gov/researchhub/articles/state-fiscal-year-2020-safe-from-the-start-annual-report-2001-2020/)
+
+- [Safe From the Start Year 13: 2001-2014](https://icjia.illinois.gov/about/publications/safe-from-the-start-year-13-2001-2014/)
+
+- [Safe From the Start Year 12 Report 2001-2013](https://icjia.illinois.gov/about/publications/safe-from-the-start-year-12-report-2001-2013/)
+
+- [2022 Victim Service Planning Research Report](https://icjia.illinois.gov/about/publications/2022-victim-service-planning-research-report/)

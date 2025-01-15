@@ -1,29 +1,36 @@
 <template>
   <div class="pb-16">
     <v-container
-      ><v-row
-        ><v-col class="text-center mb-6">
+      ><v-row>
+        <v-col class="text-center mb-6">
           <h1
             style="font-size: 40px; margin-top: 80px; text-transform: uppercase"
           >
             {{ data?.title }}
-          </h1></v-col
-        >
+          </h1>
+        </v-col>
         <v-img
-          v-if="splashFull && splashThumbnail"
-          :src="splashFull"
-          :lazy-src="splashThumbnail"
+          src="https://agency.icjia-api.cloud/uploads/large_pexels_freestockpro_oleksander_p_80cff2f2da.jpg"
+          lazy-src="https://agency.icjia-api.cloud/uploads/thumbnail_pexels_freestockpro_oleksander_p_80cff2f2da.jpg"
           width="100%"
           height="700"
           cover
           style="filter: grayscale(60%); position: relative"
           class="hidden-sm-and-down"
-        ></v-img></v-row
+          ><template v-slot:placeholder>
+            <v-row class="fill-height ma-0" align="center" justify="center">
+              <v-progress-circular
+                indeterminate
+                color="blue darken-3"
+                aria-label="Progress bar: Loading"
+              ></v-progress-circular>
+            </v-row> </template
+        ></v-img> </v-row
     ></v-container>
 
     <v-container
       ><v-row
-        ><v-col cols="12" class="mt-0">
+        ><v-col cols="12" class="mt-10">
           <ContentDoc
             :key="data?.title"
             :value="data"
