@@ -12,9 +12,9 @@ splash:
 
 A key component of the Safe from the Start (SFS) program is an ongoing outcome evaluation that uses standardized assessment and intake/exit data gathered by SFS providers to assess client outcomes and program efficacy. The SFS outcome evaluation began in State Fiscal Year 2005 when the Illinois Violence Prevention Authority (IPVA), SFS service providers, and University of Illinois at Chicago (UIC) researchers collaborated to: a) create intake and exit forms; b) select validated assessments for use with clients; and c) develop a database for program sites to enter client and assessment data. As the program evaluator, UIC researchers provided research support, including support for the database, and technical assistance to sites. In 2020, program evaluation and database management were transitioned to ICJIA’s research team at the Center for Victim Studies.
 
-_SFS Research Goals and Activities_
+## SFS Research Goals and Activities
 
-### The purpose of the SFS evaluation is to:
+The purpose of the SFS evaluation is to:
 
 - Identify program strengths and opportunities for improvement.
 
@@ -24,7 +24,7 @@ _SFS Research Goals and Activities_
 
 - Disseminate research findings to increase awareness of childhood exposure to violence and to inform policy and practice.
 
-### Research activities include:
+Research activities include:
 
 - Maintaining SFS database and extract data for quality control and programmatic reporting.
 
@@ -36,7 +36,7 @@ _SFS Research Goals and Activities_
 
 - Preparing site specific reports to inform treatment and improve programming.
 
-### Validated assessments used in client treatment are:
+Validated assessments used in client treatment are:
 
 - [Parenting Stress Index (PSI)](https://www.apa.org/pi/about/publications/caregivers/practice-settings/assessment/tools/parenting-stress)
 
