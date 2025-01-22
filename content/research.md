@@ -79,3 +79,5 @@ _Training Materials_
 - [Safe From the Start Year 12 Report: 2001-2013](https://icjia.illinois.gov/about/publications/safe-from-the-start-year-12-report-2001-2013/)
 
 - [2022 Victim Service Planning Research Report](https://icjia.illinois.gov/about/publications/2022-victim-service-planning-research-report/)
+
+- [2022 Safe From the Start Process Evaluation](https://icjia.illinois.gov/researchhub/articles/2022-safe-from-the-start-process-evaluation/)
