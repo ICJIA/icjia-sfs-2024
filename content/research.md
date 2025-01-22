@@ -36,7 +36,7 @@ _SFS Research Goals and Activities_
 
 - Preparing site specific reports to inform treatment and improve programming.
 
-## Validated assessments used in client treatment are:
+### Validated assessments used in client treatment are:
 
 - [Parenting Stress Index (PSI)](https://www.apa.org/pi/about/publications/caregivers/practice-settings/assessment/tools/parenting-stress)
 
