@@ -50,7 +50,7 @@
               <div class="flex-item">
                 <div>
                   <v-icon style="font-size: 120px; color: green" class="mb-6"
-                    >mdi-human-greeting-variant</v-icon
+                    >mdi-human-male-child</v-icon
                   >
                   <br />
                   A significant reduction in the number of children that scored
