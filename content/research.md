@@ -8,6 +8,29 @@ searchMeta: null
 splash:
 ---
 
+<style>
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.flex-item {
+  flex: 1 1 calc(33.333% - 20px);
+  box-sizing: border-box;
+  padding: 40px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+</style>
+
 ## Overview
 
 A key component of the Safe from the Start (SFS) program is an ongoing outcome evaluation that uses standardized assessment and intake/exit data gathered by SFS providers to assess client outcomes and program efficacy. The SFS outcome evaluation began in State Fiscal Year 2005 when the Illinois Violence Prevention Authority (IPVA), SFS service providers, and University of Illinois at Chicago (UIC) researchers collaborated to: a) create intake and exit forms; b) select validated assessments for use with clients; and c) develop a database for program sites to enter client and assessment data. As the program evaluator, UIC researchers provided research support, including support for the database, and technical assistance to sites. In 2020, program evaluation and database management were transitioned to ICJIA’s research team at the Center for Victim Studies.
@@ -47,37 +70,3 @@ Validated assessments used in client treatment are:
 - [Ages and Stages Questionnaire for Social Emotional Development (ASQ:SE)](https://agesandstages.com/products-pricing/asqse-2/)
 
 ## Program Outcomes
-
-Analysis of pre- and post-intervention data has shown :
-
-## SFS Evaluation Resources
-
-_Forms_
-
-- Intake Form - Forthcoming
-
-- Exit Form - Forthcoming
-
-_Evaluation Protocol_
-
-- [Evaluation Protocol](https://agency.icjia-api.cloud/uploads/SFS_Evaluation_Protocol_FINAL_10012024_b9ba78161c.docx)
-
-- Frequently Asked Questions - Forthcoming
-
-_Training Materials_
-
-- SFS Database 1.0 User's Quick Start Guide PT 1. - Forthcoming
-
-## SFS and Related Research Publications
-
-- [Addressing Child Exposure to Violence](https://icjia.illinois.gov/researchhub/articles/addressing-child-exposure-to-violence)
-
-- [State Fiscal Year 2020 Safe From the Start Annual Report: 2001-2020](https://icjia.illinois.gov/researchhub/articles/state-fiscal-year-2020-safe-from-the-start-annual-report-2001-2020/)
-
-- [Safe From the Start Year 13: 2001-2014](https://icjia.illinois.gov/about/publications/safe-from-the-start-year-13-2001-2014/)
-
-- [Safe From the Start Year 12 Report: 2001-2013](https://icjia.illinois.gov/about/publications/safe-from-the-start-year-12-report-2001-2013/)
-
-- [2022 Victim Service Planning Research Report](https://icjia.illinois.gov/about/publications/2022-victim-service-planning-research-report/)
-
-- [2022 Safe From the Start Process Evaluation](https://icjia.illinois.gov/researchhub/articles/2022-safe-from-the-start-process-evaluation/)
