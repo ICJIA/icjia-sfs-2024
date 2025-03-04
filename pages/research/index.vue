@@ -106,7 +106,9 @@
             <p><em>Training Materials</em></p>
             <ul>
               <li>
-                SFS Database 1.0 User's Quick Start Guide PT 1. - Forthcoming
+                <a href="/QuickStart_PartOne_NavIntakeBIF.pdf" target="_blank"
+                  >SFS Database 1.0 User's Quick Start Guide PT 1</a
+                >
               </li>
             </ul>
             <h2 id="sfs-and-related-research-publications">
