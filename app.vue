@@ -8,7 +8,9 @@
       <TheSidebar></TheSidebar>
 
       <NuxtLoadingIndicator color="blue" />
-      <NuxtPage style="min-height: 90vh" />
+      <main>
+        <NuxtPage style="min-height: 90vh" />
+      </main>
       <TheFooter></TheFooter>
     </v-app>
   </NuxtLayout>

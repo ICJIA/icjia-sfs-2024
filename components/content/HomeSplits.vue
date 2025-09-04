@@ -89,6 +89,7 @@
           <v-col cols="12" md="6" class="px-16 hidden-sm-and-down">
             <v-img
               class="bg-grey-lighten-2"
+              alt="Community members collaborating in a meeting - representing coalition building and collaboration"
               :src="
                 getThumborUrl({
                   url: 'https://sfs.icjia.illinois.gov/splash-29-large.jpg',
@@ -131,6 +132,7 @@
           <v-col cols="12" md="6" class="px-16 hidden-sm-and-down">
             <v-img
               class="bg-grey-lighten-2"
+              alt="Healthcare provider working with a young child - representing direct services to children exposed to violence"
               :src="
                 getThumborUrl({
                   url: 'https://sfs.icjia.illinois.gov/splash-05.jpg',
@@ -203,6 +205,7 @@
           <v-col cols="12" md="6" class="px-16 hidden-sm-and-down">
             <v-img
               class="bg-grey-lighten-2"
+              alt="Community presentation or training session - representing public awareness and education efforts"
               :src="
                 getThumborUrl({
                   url: 'https://sfs.icjia.illinois.gov/splash-06.jpg',

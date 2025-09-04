@@ -92,15 +92,14 @@ const click = () => {
 
 onMounted(async () => {
   isMounted.value = true;
-  //TODO: a11y
   console.log("sidebar mounted");
   await nextTick();
-  const el = document.getElementById("myVlist");
-  console.log('sidebar a11y: remove role="list"');
-  // console.log("Sidebar el: ", el);
-  if (el) {
-    el.removeAttribute("role");
-  }
+  // Removed problematic role removal code for accessibility compliance
+  // const el = document.getElementById("myVlist");
+  // console.log('sidebar a11y: remove role="list"');
+  // if (el) {
+  //   el.removeAttribute("role");
+  // }
 });
 
 const router = useRouter();

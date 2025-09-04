@@ -3,6 +3,7 @@
     <div>
       <v-img
         class="bg-grey-lighten-2"
+        alt="Children playing together in a safe environment - representing the Safe From the Start program's mission to protect young children"
         :src="
           getThumborUrl({
             url: 'https://sfs.icjia.illinois.gov/splash-24-large-cropped.jpg',
@@ -23,7 +24,7 @@
         height="700"
         cover
         style="margin-top: 60px; filter: grayscale(10%); position: relative"
-        gradient="to bottom, rgba(0,0,0,.6), rgba(0,0,0,.1)"
+        gradient="to bottom, rgba(0,0,0,.8), rgba(0,0,0,.4)"
         ><template v-slot:placeholder>
           <div class="d-flex align-center justify-center fill-height">
             <v-progress-circular
@@ -47,6 +48,7 @@
             font-size: 46px;
             font-weight: 700;
             color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
             padding-left: 30px;
             padding-right: 30px;
           "
