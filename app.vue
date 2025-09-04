@@ -1,6 +1,16 @@
 <template>
   <NuxtLayout>
     <v-app>
+      <!-- Skip to main content link for accessibility -->
+      <a
+        href="#main-content"
+        class="skip-link"
+        @click="skipToMain"
+        @keydown.enter="skipToMain"
+      >
+        Skip to main content
+      </a>
+
       <!-- <NavHome v-if="route.path === '/'"></NavHome>
       <TheNav v-else></TheNav> -->
       <TheNavV2></TheNavV2>
@@ -8,7 +18,7 @@
       <TheSidebar></TheSidebar>
 
       <NuxtLoadingIndicator color="blue" />
-      <main>
+      <main id="main-content" tabindex="-1">
         <NuxtPage style="min-height: 90vh" />
       </main>
       <TheFooter></TheFooter>
@@ -45,6 +55,15 @@ const scrollToTop = () => {
   });
 };
 
+const skipToMain = (event) => {
+  event.preventDefault();
+  const mainContent = document.getElementById("main-content");
+  if (mainContent) {
+    mainContent.focus();
+    mainContent.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
 onMounted(() => {
   isMounted.value = true;
   console.log("isMounted: ", isMounted.value);
@@ -61,5 +80,24 @@ h6 {
     color: black;
     text-decoration: none;
   }
+}
+
+/* Skip link styles for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 6px;
 }
 </style>

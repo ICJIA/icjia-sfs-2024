@@ -106,8 +106,15 @@
             <p><em>Training Materials</em></p>
             <ul>
               <li>
-                <a href="/QuickStart_PartOne_NavIntakeBIF.pdf" target="_blank"
-                  >SFS Database 1.0 User's Quick Start Guide PT 1</a
+                <a
+                  href="/QuickStart_PartOne_NavIntakeBIF.pdf"
+                  target="_blank"
+                  aria-label="SFS Database 1.0 User's Quick Start Guide PT 1 (opens in new window)"
+                  >SFS Database 1.0 User's Quick Start Guide PT 1<span
+                    class="sr-only"
+                  >
+                    (PDF, opens in new window)</span
+                  ></a
                 >
               </li>
             </ul>
@@ -249,5 +256,18 @@ onMounted(async () => {
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Screen reader only text for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 </style>

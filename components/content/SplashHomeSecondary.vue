@@ -3,6 +3,7 @@
     <div>
       <v-img
         class="bg-grey-lighten-2"
+        alt=""
         :src="
           getThumborUrl({
             url: 'https://sfs.icjia.illinois.gov/splash-28-large.jpg',

@@ -37,20 +37,22 @@
                     margin-right: -10px;
                   "
                   target="_blank"
-                  aria-label="Link to ICJIA on Facebook"
+                  aria-label="Link to ICJIA on Facebook (opens in new window)"
                   href="https://www.facebook.com/ICJIA/"
                   class="footer-link"
-                  ><v-icon>mdi-facebook</v-icon></v-btn
+                  ><v-icon>mdi-facebook</v-icon
+                  ><span class="sr-only"> (external link)</span></v-btn
                 >
 
                 <v-btn
                   variant="text"
                   style="color: #fff !important; font-size: 20px"
                   target="_blank"
-                  aria-label="Link to ICJIA on YouTube"
+                  aria-label="Link to ICJIA on YouTube (opens in new window)"
                   class="footer-link"
                   href="https://www.youtube.com/c/illinoiscriminaljusticeinformationauthority"
-                  ><v-icon> mdi-youtube</v-icon></v-btn
+                  ><v-icon> mdi-youtube</v-icon
+                  ><span class="sr-only"> (external link)</span></v-btn
                 >
 
                 <v-btn
@@ -59,8 +61,9 @@
                   target="_blank"
                   href="https://www.instagram.com/icjia_illinois/"
                   class="footer-link"
-                  aria-label="ICJIA on Instagram"
-                  ><v-icon>mdi-instagram</v-icon></v-btn
+                  aria-label="ICJIA on Instagram (opens in new window)"
+                  ><v-icon>mdi-instagram</v-icon
+                  ><span class="sr-only"> (external link)</span></v-btn
                 >
 
                 <v-btn
@@ -68,9 +71,10 @@
                   style="color: #fff !important; font-size: 20px"
                   target="_blank"
                   href="https://www.linkedin.com/company/icjia/"
-                  aria-label="ICJIA on LinkedIn "
+                  aria-label="ICJIA on LinkedIn (opens in new window)"
                   class="footer-link"
-                  ><v-icon>mdi-linkedin</v-icon></v-btn
+                  ><v-icon>mdi-linkedin</v-icon
+                  ><span class="sr-only"> (external link)</span></v-btn
                 >
               </div>
 
@@ -81,7 +85,12 @@
                     href="https://icjia.illinois.gov"
                     target="_blank"
                     style="color: #fff"
-                    >Illinois Criminal Justice Information Authority</a
+                    aria-label="Illinois Criminal Justice Information Authority (opens in new window)"
+                    >Illinois Criminal Justice Information Authority<span
+                      class="sr-only"
+                    >
+                      (external link)</span
+                    ></a
                   >
                 </strong>
 
@@ -149,5 +158,18 @@ export default {
 
 .footer-link:hover {
   text-decoration: underline;
+}
+
+/* Screen reader only text for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 </style>

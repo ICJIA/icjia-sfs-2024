@@ -10,56 +10,86 @@
       elevation="3"
       class="pl-5 pr-5"
     >
-      <div
+      <v-btn
         v-if="!nav"
-        class="hover hamburger text-center hidden-md-and-up"
         @click="toggleNav"
+        @keydown.enter="toggleNav"
+        @keydown.space="toggleNav"
+        aria-label="Open navigation menu"
+        variant="text"
+        class="hover hamburger text-center hidden-md-and-up"
+        style="min-width: auto; padding: 8px"
       >
-        <v-icon icon="mdi-menu" size="large"></v-icon>
-        <div style="font-size: 10px; font-weight: 900">MENU</div>
-      </div>
-      <div
+        <div class="d-flex flex-column align-center">
+          <v-icon icon="mdi-menu" size="large"></v-icon>
+          <div style="font-size: 10px; font-weight: 900">MENU</div>
+        </div>
+      </v-btn>
+      <v-btn
         v-else
-        class="hover hamburger text-center hidden-md-and-up"
         @click="toggleNav"
+        @keydown.enter="toggleNav"
+        @keydown.space="toggleNav"
+        aria-label="Close navigation menu"
+        variant="text"
+        class="hover hamburger text-center hidden-md-and-up"
+        style="min-width: auto; padding: 8px"
       >
-        <v-icon icon="mdi-window-close" size="large"></v-icon>
-        <div style="font-size: 10px; font-weight: 900">CLOSE</div>
-      </div>
+        <div class="d-flex flex-column align-center">
+          <v-icon icon="mdi-window-close" size="large"></v-icon>
+          <div style="font-size: 10px; font-weight: 900">CLOSE</div>
+        </div>
+      </v-btn>
       <v-spacer class="hidden-md-and-up"></v-spacer>
-      <img
-        alt="ICJIA Logo"
-        class="hover ml-4 mr-4"
-        src="/icjia-logo.png"
-        width="55"
+      <v-btn
         @click="$router.push('/')"
-      />
-      <div class="hover hidden-sm-and-down">
+        @keydown.enter="$router.push('/')"
+        @keydown.space="$router.push('/')"
+        aria-label="Go to homepage"
+        variant="text"
+        class="hover ml-4 mr-4"
+        style="min-width: auto; padding: 4px"
+      >
+        <img alt="ICJIA Logo" src="/icjia-logo.png" width="55" />
+      </v-btn>
+      <v-btn
+        @click="$router.push('/')"
+        @keydown.enter="$router.push('/')"
+        @keydown.space="$router.push('/')"
+        aria-label="Go to homepage - Safe From the Start"
+        variant="text"
+        class="hover hidden-sm-and-down"
+        style="min-width: auto; padding: 8px"
+      >
         <span
           style="
             font-weight: 900 !important;
             font-size: 22px;
-
             letter-spacing: 0.004em;
           "
           class="agency app-title"
-          @click="$router.push('/')"
           >SAFE FROM THE START <span class="hidden-md-and-down"> </span
         ></span>
-      </div>
-      <div class="hover hidden-md-and-up">
+      </v-btn>
+      <v-btn
+        @click="$router.push('/')"
+        @keydown.enter="$router.push('/')"
+        @keydown.space="$router.push('/')"
+        aria-label="Go to homepage - SFS"
+        variant="text"
+        class="hover hidden-md-and-up"
+        style="min-width: auto; padding: 8px"
+      >
         <span
           style="
             font-weight: 900 !important;
             font-size: 24px;
-
             letter-spacing: 0.004em;
           "
           class="agency app-title"
-          @click="$router.push('/')"
           >SFS <span class="hidden-md-and-down"> </span
         ></span>
-      </div>
+      </v-btn>
 
       <v-spacer></v-spacer>
       <span v-if="isMounted">
@@ -69,18 +99,26 @@
           style="display: inline-block"
         >
           <span v-if="menu && menu?.children">
-            <v-menu>
+            <v-menu
+              :close-on-content-click="true"
+              :close-on-click="true"
+              offset-y
+            >
               <template #activator="{ props }">
                 <v-btn
                   variant="text"
                   size="default"
                   class="hidden-md-and-down navItem"
                   v-bind="props"
-                  :aria-label="menu.main"
+                  :aria-label="`${menu.main} menu`"
+                  :aria-expanded="props['aria-expanded']"
+                  :aria-haspopup="true"
+                  @keydown.down.prevent="$event.target.click()"
+                  @keydown.enter.prevent="$event.target.click()"
+                  @keydown.space.prevent="$event.target.click()"
                   style="
                     font-weight: 900 !important;
                     font-size: 18px;
-
                     margin-bottom: 5px;
                   "
                 >
@@ -88,7 +126,13 @@
                   <v-icon right small>mdi-menu-down</v-icon></v-btn
                 >
               </template>
-              <v-list nav density="compact" elevation="2">
+              <v-list
+                nav
+                density="compact"
+                elevation="2"
+                role="menu"
+                @keydown.esc="$event.target.closest('.v-menu').click()"
+              >
                 <span
                   v-for="(child, index) in menu.children"
                   :key="`child-${index}`"
@@ -98,6 +142,7 @@
                     v-if="child.section"
                     style="margin-top: 10px; font-weight: 900; color: #555"
                     class="pr-5"
+                    role="presentation"
                     >{{ child.section }}</v-list-item-title
                   >
                   <v-list-item
@@ -106,11 +151,15 @@
                     :to="child?.external ? null : child?.link"
                     :href="child?.external ? child?.link : null"
                     :target="child?.external ? '_blank' : null"
+                    role="menuitem"
+                    tabindex="0"
+                    @keydown.enter="navigateToChild(child)"
+                    @keydown.space.prevent="navigateToChild(child)"
                   >
                     <v-list-item-title
                       style="font-size: 14px !important; font-weight: 700"
                       >{{ child.title }}
-                      <span v-if="child?.external">External</span>
+                      <span v-if="child?.external"> (external link)</span>
                       <v-icon v-if="child.icon" small right color="black">{{
                         child.icon
                       }}</v-icon></v-list-item-title
@@ -167,6 +216,14 @@ const router = useRouter();
 
 const goToSearch = () => {
   router.push({ path: "/search" });
+};
+
+const navigateToChild = (child) => {
+  if (child?.external) {
+    window.open(child.link, "_blank");
+  } else if (child?.link) {
+    router.push(child.link);
+  }
 };
 
 const items = ref([

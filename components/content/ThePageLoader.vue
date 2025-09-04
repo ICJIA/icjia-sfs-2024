@@ -4,7 +4,7 @@
       <div style="font-weight: 700; font-size: 25px" class="mb-3">
         LOADING...
       </div>
-      <img src="/loading.gif" />
+      <img src="/loading.gif" alt="Loading animation" />
     </div>
   </div>
 </template>

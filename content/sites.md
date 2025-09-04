@@ -10,8 +10,6 @@ searchMeta: null
 <div style="margin-bottom: 50px"></div>
 <h2 style="border-bottom: none">Current SFS Programs</h2>
 
-<p><strong>Safe From the Start Sites SFY26</strong></p>
-
 <style>
 .table-responsive {
     overflow-x: auto;
@@ -57,12 +55,13 @@ font-size: 12px;
 </style>
 
 <div class="table-responsive">
-<table class="table table-striped">
+<table class="table table-striped" role="table">
+    <caption><strong>Safe From the Start Sites for State Fiscal Year 2026</strong> - Contact information and service areas for SFS program locations across Illinois</caption>
     <thead>
         <tr>
-            <th><strong>SFS Site</strong></th>
-            <th><strong>Areas Serviced</strong></th>
-            <th><strong>Contact Information (address, email, phone)</strong></th>
+            <th scope="col"><strong>SFS Site</strong></th>
+            <th scope="col"><strong>Areas Serviced</strong></th>
+            <th scope="col"><strong>Contact Information (address, email, phone)</strong></th>
         </tr>
     </thead>
     <tbody>

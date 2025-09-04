@@ -24,7 +24,7 @@
         height="700"
         cover
         style="margin-top: 60px; filter: grayscale(10%); position: relative"
-        gradient="to bottom, rgba(0,0,0,.8), rgba(0,0,0,.4)"
+        gradient="to bottom, rgba(0,0,0,.3), rgba(0,0,0,.1)"
         ><template v-slot:placeholder>
           <div class="d-flex align-center justify-center fill-height">
             <v-progress-circular
@@ -48,9 +48,15 @@
             font-size: 46px;
             font-weight: 700;
             color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            padding-left: 30px;
-            padding-right: 30px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 1),
+              1px 1px 4px rgba(0, 0, 0, 0.9);
+            background: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.3),
+              rgba(0, 0, 0, 0.6)
+            );
+            padding: 20px 30px;
+            border-radius: 8px;
           "
         >
           Direct services to children who have been exposed to violence

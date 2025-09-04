@@ -6,67 +6,89 @@
       temporary
       style="background: #fff"
     >
-      <v-list v-model:opened="open" density="compact" id="myVlist">
-        <v-list-item exact to="/" style="font-weight: 900; color: #000"
-          >Home</v-list-item
+      <nav aria-label="Main navigation">
+        <v-list
+          v-model:opened="open"
+          density="compact"
+          id="myVlist"
+          role="navigation"
+          aria-label="Site navigation menu"
         >
-        <div
-          v-for="(menu, index) in navMenu"
-          :key="`sidebar-accordion-${index}`"
-        >
-          <div v-if="menu && menu.children">
-            <v-list-group :value="menu.children.title">
+          <v-list-item exact to="/" style="font-weight: 900; color: #000"
+            >Home</v-list-item
+          >
+
+          <template
+            v-for="(menu, index) in navMenu"
+            :key="`sidebar-accordion-${index}`"
+          >
+            <v-list-group
+              v-if="menu && menu.children"
+              :value="menu.children.title"
+            >
               <template #activator="{ props }">
                 <v-list-item
                   v-bind="props"
                   style="font-weight: 900 !important"
+                  :aria-label="`${menu.main} submenu`"
                   >{{ menu.main }}</v-list-item
                 >
               </template>
 
-              <div v-for="(child, i) in menu.children" :key="`main-${i}`">
+              <template v-for="(child, i) in menu.children" :key="`main-${i}`">
                 <v-list-item
                   v-if="child.section"
                   style="margin-top: 0px; font-weight: 900; color: #555"
+                  role="presentation"
+                  tabindex="-1"
                 >
                   {{ child.section }}
                 </v-list-item>
-                <div
+
+                <v-divider
                   v-if="child.divider"
-                  style="margin-top: 0px; font-weight: 900; color: #555"
-                >
-                  <v-divider></v-divider>
-                </div>
+                  role="separator"
+                  aria-hidden="true"
+                  class="my-1"
+                />
+
                 <v-list-item
                   v-if="child.title"
                   exact
                   style="margin-top: 0px; font-weight: 400; color: #555"
                   :to="child.link"
+                  :aria-label="child.title"
                 >
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ child.title }}</span>
                 </v-list-item>
-              </div>
+              </template>
             </v-list-group>
-          </div>
-          <div v-else>
+
             <v-list-item
+              v-else
               style="font-weight: 900 !important"
               :to="menu.link"
               class="hover"
+              :aria-label="menu.main"
               >{{ menu.main }}</v-list-item
             >
-          </div>
-        </div>
-        <!-- <v-list-item exact to="/contact" style="font-weight: 900 !important">
-          Contact</v-list-item
-        > -->
-        <v-divider class="my-3"></v-divider>
+          </template>
 
-        <!-- <v-list-item exact to="/contact">
-          <v-icon left icon="mdi-magnify" size="x-small"></v-icon
-          >&nbsp;&nbsp;&nbsp;Contact</v-list-item
-        >-->
-      </v-list>
+          <!-- <v-list-item exact to="/contact" style="font-weight: 900 !important">
+            Contact</v-list-item
+          > -->
+          <v-divider
+            class="my-3"
+            role="separator"
+            aria-hidden="true"
+          ></v-divider>
+
+          <!-- <v-list-item exact to="/contact">
+            <v-icon left icon="mdi-magnify" size="x-small"></v-icon
+            >&nbsp;&nbsp;&nbsp;Contact</v-list-item
+          >-->
+        </v-list>
+      </nav>
     </v-navigation-drawer>
   </div>
 </template>
@@ -94,12 +116,7 @@ onMounted(async () => {
   isMounted.value = true;
   console.log("sidebar mounted");
   await nextTick();
-  // Removed problematic role removal code for accessibility compliance
-  // const el = document.getElementById("myVlist");
-  // console.log('sidebar a11y: remove role="list"');
-  // if (el) {
-  //   el.removeAttribute("role");
-  // }
+  // Navigation now uses proper ARIA semantics with nav element and role="navigation"
 });
 
 const router = useRouter();
