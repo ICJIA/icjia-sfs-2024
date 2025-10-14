@@ -19,7 +19,7 @@
   "devDependencies": {
     "@nuxt/content": "^3.0.0",
     "@nuxt/devtools": "^2.1.1",
-    "@nuxt/image": "^2.0.0",
+    "@nuxt/image": "^1.11.0",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/plausible": "^1.2.0",
     "@vueuse/nuxt": "^12.7.0",
@@ -40,6 +40,7 @@
     "@vueuse/integrations": "12.7.0",
     "@vueuse/router": "12.7.0",
     "axios": "^1.8.1",
+    "better-sqlite3": "^12.4.1",
     "dompurify": "^3.2.4",
     "dotenv": "^16.4.7",
     "eslint": "^9.21.0",
