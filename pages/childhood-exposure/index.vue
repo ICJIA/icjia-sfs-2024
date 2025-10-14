@@ -1,3 +1,19 @@
+<!--
+/**
+ * Childhood Exposure to Violence Page - Detailed information about CEV.
+ *
+ * This page displays markdown content from /content/childhood-exposure.md with:
+ * - Dynamic page title from markdown frontmatter
+ * - Hero image (hidden on mobile)
+ * - Comprehensive information about childhood exposure to violence
+ * - Statistics, impacts, and intervention strategies
+ *
+ * This is a key informational page linked from the homepage.
+ *
+ * @page
+ * @route /childhood-exposure
+ */
+-->
 <template>
   <div class="pb-16">
     <v-container

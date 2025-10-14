@@ -1,6 +1,28 @@
+<!--
+/**
+ * TheFooter - Main footer component for the application.
+ *
+ * This component displays the site footer with:
+ * - TheContextFooter navigation bar
+ * - ICJIA logo (clickable to navigate to main ICJIA site)
+ * - Social media links (Facebook, YouTube, Instagram, LinkedIn)
+ * - Copyright and contact information
+ * - Additional footer navigation links
+ *
+ * The footer uses a dark blue background (#0d4474) and includes
+ * comprehensive accessibility features with ARIA labels and screen reader text.
+ *
+ * @component
+ * @example
+ * <TheFooter />
+ */
+-->
 <template>
   <div>
+    <!-- Contextual navigation footer (blue bar with links) -->
     <the-context-footer></the-context-footer>
+
+    <!-- Main footer section -->
     <v-footer dark class="" style="margin: 0; padding: 0">
       <v-card
         flat
@@ -17,6 +39,10 @@
               class="text-center mt-0"
               style="color: white"
             >
+              <!--
+                ICJIA logo - clickable to navigate to main ICJIA website.
+                Uses programmatic navigation via routeToSite() function.
+              -->
               <div>
                 <img
                   src="/icjia-logo.png"
@@ -28,7 +54,13 @@
                 />
               </div>
 
+              <!--
+                Social media links section.
+                Each link opens in a new window with proper ARIA labels
+                and screen reader text for accessibility.
+              -->
               <div class="pb-6" style="margin-top: -10px">
+                <!-- Facebook link -->
                 <v-btn
                   variant="text"
                   style="
@@ -44,6 +76,7 @@
                   ><span class="sr-only"> (external link)</span></v-btn
                 >
 
+                <!-- YouTube link -->
                 <v-btn
                   variant="text"
                   style="color: #fff !important; font-size: 20px"
@@ -55,6 +88,7 @@
                   ><span class="sr-only"> (external link)</span></v-btn
                 >
 
+                <!-- Instagram link -->
                 <v-btn
                   variant="text"
                   style="color: #fff !important; font-size: 20px"
@@ -66,6 +100,7 @@
                   ><span class="sr-only"> (external link)</span></v-btn
                 >
 
+                <!-- LinkedIn link -->
                 <v-btn
                   variant="text"
                   style="color: #fff !important; font-size: 20px"
@@ -78,6 +113,10 @@
                 >
               </div>
 
+              <!--
+                Copyright and footer links section.
+                Includes copyright notice, link to main ICJIA site, and privacy policy.
+              -->
               <div style="font-size: 12px; font-weight: 400">
                 <strong
                   >&#169; 2024
@@ -100,6 +139,8 @@
                     >Privacy
                   </nuxt-link>
                 </strong>
+
+                <!-- Contact link - currently disabled -->
                 <!-- &nbsp;|&nbsp; -->
                 <!-- <nuxt-link to="/contact" style="color: #fff; background: none"
                   >Contact</nuxt-link
@@ -118,20 +159,41 @@
 <script>
 export default {
   setup() {
+    // Get translation feature flag from app configuration
     const { isTranslationEnabled } = useAppConfig();
+
+    /**
+     * Scrolls the page to the top.
+     * Currently defined but not actively used in the template.
+     *
+     * @returns {void}
+     */
     const scrollTop = () => {
       window.scrollTo(0, 0);
     };
 
+    /**
+     * Opens the translation modal.
+     * Used when translation features are enabled.
+     *
+     * @returns {void}
+     */
     const translate = () => {
       const toggleState = useTranslateToggle();
       toggleState.value = true;
     };
 
+    /**
+     * Opens the main ICJIA website in a new tab.
+     * Triggered when the user clicks the ICJIA logo in the footer.
+     *
+     * @returns {void}
+     */
     const routeToSite = () => {
-      // open new site in new tab
+      // Open main ICJIA site in new tab
       window.open("https://icjia.illinois.gov", "_blank");
     };
+
     return { routeToSite, scrollTop, translate, isTranslationEnabled };
   },
 };

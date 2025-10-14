@@ -1,5 +1,28 @@
+<!--
+/**
+ * HomeSplits - Main content component for the homepage.
+ *
+ * This component displays the primary content sections of the homepage, including:
+ * - Program introduction and overview
+ * - Three core components (Coalition-Building, Direct Services, Public Awareness)
+ * - Responsive image/text layouts
+ * - Call-to-action buttons
+ *
+ * The layout uses a split-screen design on desktop (text + image) and stacks
+ * vertically on mobile devices. Images are hidden on small screens to improve
+ * mobile performance and readability.
+ *
+ * @component
+ * @example
+ * <HomeSplits />
+ */
+-->
 <template>
   <div>
+    <!--
+      Program introduction section.
+      Full-width container with centered text and call-to-action.
+    -->
     <v-container style="margin-top: 65px; margin-bottom: 75px"
       ><v-row
         ><v-col cols="12" md="12" class="">
@@ -11,6 +34,7 @@
               style="font-size: 20px; font-family: 'Lato', sans-serif"
               class="mt-6 text-left"
             >
+              <!-- Program overview with link to full About page -->
               <p class="mb-5">
                 <nuxt-link to="/about">
                   The Safe From the Start (SFS) program</nuxt-link
@@ -22,6 +46,8 @@
                 maltreatment, and/or witnesses to domestic violence, sexual
                 assault, or other violent crimes.
               </p>
+
+              <!-- Historical context -->
               <p>
                 Safe From the Start began as a national initiative to reduce the
                 impact of early childhood exposure to violence. The program was
@@ -32,7 +58,9 @@
               </p>
             </div>
 
+            <!-- Call-to-action button -->
             <div class="text-center mt-16">
+              <!-- Learn More button - currently disabled -->
               <!-- <v-btn color="blue-darken-4" to="/about" style="font-weight: 900"
               >Learn More&nbsp;&raquo;</v-btn
             >&nbsp; -->
@@ -43,6 +71,7 @@
           ></v-col
         >
 
+        <!-- News section - currently disabled -->
         <!-- <v-col cols="12" md="6">
           <v-sheet class="text-center">
             <h2 style="font-size: 36px">News and Information</h2>
@@ -51,6 +80,11 @@
       </v-row></v-container
     >
 
+    <!--
+      Core Components section.
+      Light gray background distinguishes this section from the introduction.
+      Contains three subsections with alternating text/image layouts.
+    -->
     <div
       style="
         background: #f5f5f5;
@@ -60,6 +94,7 @@
       "
       class="py-8"
     >
+      <!-- Section header -->
       <v-container class="text-center"
         ><v-row
           ><v-col
@@ -67,6 +102,11 @@
           ></v-row
         ></v-container
       >
+
+      <!--
+        Component 1: Coalition-Building and Collaboration
+        Layout: Text (left) + Image (right) on desktop
+      -->
       <v-container style="margin-top: 100px"
         ><v-row
           ><v-col cols="12" md="6"
@@ -81,11 +121,16 @@
               enhancements, protocol creation, and other tasks related to
               service collaboration and coordination.
             </p>
+            <!-- Learn More button - currently disabled -->
             <!-- <div class="text-center mt-10">
               <v-btn color="blue-darken-3">Learn More</v-btn>
             </div> -->
           </v-col>
 
+          <!--
+            Decorative image for Coalition-Building section.
+            Hidden on small/medium screens to improve mobile performance.
+          -->
           <v-col cols="12" md="6" class="px-16 hidden-sm-and-down">
             <v-img
               class="bg-grey-lighten-2"
@@ -127,8 +172,16 @@
           </v-col> </v-row
       ></v-container>
 
+      <!--
+        Component 2: Direct Services
+        Layout: Image (left) + Text (right) on desktop - reversed from Component 1
+      -->
       <v-container style="margin-top: 100px"
         ><v-row>
+          <!--
+            Decorative image for Direct Services section.
+            Positioned on left side for visual variety.
+          -->
           <v-col cols="12" md="6" class="px-16 hidden-sm-and-down">
             <v-img
               class="bg-grey-lighten-2"
@@ -184,6 +237,10 @@
           </v-col>
         </v-row></v-container
       >
+      <!--
+        Component 3: Public Awareness
+        Layout: Text (left) + Image (right) on desktop - same as Component 1
+      -->
       <v-container style="margin-top: 100px"
         ><v-row
           ><v-col cols="12" md="6"
@@ -197,11 +254,16 @@
               presentations and events to professional trainings and media
               campaigns.
             </p>
+            <!-- Learn More button - currently disabled -->
             <!-- <div class="text-center mt-10">
               <v-btn color="blue-darken-3">Learn More</v-btn>
             </div> -->
           </v-col>
 
+          <!--
+            Decorative image for Public Awareness section.
+            Hidden on small/medium screens.
+          -->
           <v-col cols="12" md="6" class="px-16 hidden-sm-and-down">
             <v-img
               class="bg-grey-lighten-2"
@@ -242,6 +304,11 @@
             </v-img>
           </v-col> </v-row
       ></v-container>
+
+      <!--
+        Call-to-action section.
+        Centered button linking to the full program summary.
+      -->
       <v-container class="text-center mb-12" style="margin-top: -50px"
         ><v-row
           ><v-col cols="12"
@@ -260,8 +327,24 @@
 <script setup>
 import { ThumborUrlBuilder } from "thumbor-url-builder-ts";
 
+// Track component mount state
 let isMounted = ref(false);
 
+/**
+ * Generates optimized Thumbor image URLs for the three core component images.
+ *
+ * Creates URLs for both full-quality and placeholder images using the Thumbor
+ * image optimization service. This component uses moderate quality settings (50%)
+ * for a balance between visual quality and performance.
+ *
+ * @param {Object} params - Image processing parameters
+ * @param {string} params.url - Source image URL
+ * @param {number} params.width - Target width in pixels
+ * @param {number} params.height - Target height in pixels
+ * @param {number} params.quality - Image quality (0-100)
+ * @param {string} params.format - Output format (e.g., "webp")
+ * @returns {string} Signed Thumbor URL for the processed image
+ */
 const getThumborUrl = ({ url, width, height, quality, format }) => {
   let options = {
     url: url || "https://sfs.icjia.illinois.gov/error.jpg",
@@ -270,6 +353,7 @@ const getThumborUrl = ({ url, width, height, quality, format }) => {
     quality: quality || 50,
     format: format || "webp",
   };
+
   const thumbor = new ThumborUrlBuilder(
     import.meta.env.VITE_THUMBOR_KEY,
     "https://image.icjia.cloud"
@@ -283,6 +367,9 @@ const getThumborUrl = ({ url, width, height, quality, format }) => {
     .buildUrl();
 };
 
+/**
+ * Lifecycle hook - runs when component is mounted.
+ */
 onMounted(async () => {
   isMounted.value = true;
 });

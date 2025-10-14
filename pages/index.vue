@@ -1,3 +1,20 @@
+<!--
+/**
+ * Home Page - Main landing page for the Safe From the Start application.
+ *
+ * This page combines multiple components to create the homepage experience:
+ * - SplashHome: Hero image with call-to-action
+ * - HomeSplits: Program overview and core components
+ * - SplashHomeSecondary: Decorative image break
+ * - Childhood Exposure section: Information about CEV with link to dedicated page
+ *
+ * The page uses a combination of full-width hero images and contained content
+ * sections to create visual interest and guide users through the content.
+ *
+ * @page
+ * @route /
+ */
+-->
 <template>
   <div>
     <SplashHome></SplashHome>
@@ -51,13 +68,21 @@
 </template>
 
 <script setup>
+// Track component mount state (currently unused but available for future enhancements)
 let isMounted = ref(false);
 
+/**
+ * Set page metadata for SEO and browser tab.
+ * Title and description are used by search engines and social media.
+ */
 useHead({
   title: "Home",
   meta: [{ name: "description", content: "Illinois Safe From the Start" }],
 });
 
+/**
+ * Lifecycle hook - runs when page is mounted on the client.
+ */
 onMounted(async () => {
   isMounted.value = true;
 });

@@ -1,5 +1,25 @@
+<!--
+/**
+ * TheNav - Legacy navigation component for the ICJIA Safe From the Start application.
+ *
+ * This is the original navigation bar component, now superseded by TheNavV2.vue.
+ * It's preserved in the codebase for reference but is not currently active.
+ *
+ * Key differences from TheNavV2:
+ * - Smaller app bar height (90px vs 150px)
+ * - Different branding layout
+ * - Less comprehensive accessibility features
+ *
+ * @component
+ * @deprecated Use TheNavV2 instead
+ */
+-->
 <template>
   <div>
+    <!--
+      Legacy navigation app bar.
+      Smaller than TheNavV2 with simplified layout.
+    -->
     <v-app-bar
       fixed
       app
@@ -10,6 +30,7 @@
       elevation="3"
       class="pl-5 pr-5"
     >
+      <!-- Mobile hamburger menu toggle -->
       <div
         v-if="!nav"
         class="hover hamburger text-center hidden-md-and-up"
@@ -27,6 +48,8 @@
         <div style="font-size: 10px; font-weight: 900">CLOSE</div>
       </div>
       <v-spacer class="hidden-md-and-up"></v-spacer>
+
+      <!-- Legacy logo code - preserved for reference -->
       <!-- <img
         alt="ICJIA Logo"
         class="hover ml-4 mr-4"
@@ -178,33 +201,68 @@
 </template>
 
 <script setup>
+// Track component mount state
 const isMounted = ref(false);
+
+// Access global navigation drawer state
 const nav = useNavToggle();
+
+/**
+ * Toggles the mobile navigation drawer.
+ * @returns {void}
+ */
 const toggleNav = () => {
   nav.value = !nav.value;
 };
 
+// Get application configuration
 const appConfig = useAppConfig();
+
+// Clone navigation menu to prevent reactivity issues
 const navMenu = JSON.parse(JSON.stringify(appConfig.navMenu));
 
+/**
+ * Placeholder function for external URL detection.
+ * @param {string} url - URL to check
+ * @returns {boolean} Always returns true
+ */
 const isExternalUrl = (url) => {
   return true;
 };
 
+/**
+ * Set mounted flag when component is ready.
+ */
 onMounted(() => {
   isMounted.value = true;
 });
 
+// Access router for navigation
 const router = useRouter();
+
+/**
+ * Navigate to search page.
+ * Currently unused but preserved for potential future use.
+ * @returns {void}
+ */
 const goToSearch = () => {
   router.push({ path: "/search" });
 };
 
+/**
+ * Opens the translation modal.
+ * Used when translation features are enabled.
+ * @returns {void}
+ */
 const openTranslationModal = () => {
   const toggleState = useTranslateToggle();
   toggleState.value = true;
 };
 
+/**
+ * Placeholder items for potential dropdown menus.
+ * Currently unused.
+ */
 const items = ref([
   { title: "Click Me" },
   { title: "Click Me" },
@@ -214,6 +272,7 @@ const items = ref([
 </script>
 
 <style lang="scss" scoped>
+/* Navigation item styling */
 .navItem {
   color: #333 !important;
   font-weight: 900;

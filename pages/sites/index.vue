@@ -1,3 +1,20 @@
+<!--
+/**
+ * Sites Page - Directory of Safe From the Start program sites across Illinois.
+ *
+ * This page displays markdown content from /content/sites.md with:
+ * - Dynamic page title from markdown frontmatter
+ * - Hero image (hidden on mobile)
+ * - Interactive map and list of SFS sites
+ * - Contact information for each site
+ *
+ * The page includes special handling for the interactive map component
+ * and uses Nuxt Content for flexible content management.
+ *
+ * @page
+ * @route /sites
+ */
+-->
 <template>
   <div class="pb-16">
     <v-container

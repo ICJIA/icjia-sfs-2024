@@ -1,3 +1,21 @@
+<!--
+/**
+ * Sandbox Page - Development and testing page.
+ *
+ * This page is used for testing new components and features during development.
+ * It should not be linked from the main navigation and is typically only
+ * accessible by direct URL.
+ *
+ * Features:
+ * - Component testing area
+ * - Development experiments
+ * - UI/UX prototyping
+ *
+ * @page
+ * @route /sandbox
+ * @dev-only
+ */
+-->
 <template>
   <div style="margin-top: 100px">
     <h1>Sandbox</h1>

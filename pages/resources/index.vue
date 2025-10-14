@@ -1,3 +1,18 @@
+<!--
+/**
+ * Resources Page - Collection of helpful resources and materials.
+ *
+ * This page displays markdown content from /content/resources.md with:
+ * - Dynamic page title from markdown frontmatter
+ * - Markdown content rendered via ContentDoc component
+ * - Links to external resources and downloadable materials
+ *
+ * No hero image is displayed on this page for a cleaner, more focused layout.
+ *
+ * @page
+ * @route /resources
+ */
+-->
 <template>
   <div class="pb-16">
     <v-container

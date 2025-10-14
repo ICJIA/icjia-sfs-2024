@@ -1,3 +1,19 @@
+<!--
+/**
+ * Program Summary Page - Comprehensive overview of the SFS program.
+ *
+ * This page displays markdown content from /content/program-summary.md with:
+ * - Detailed program description
+ * - Goals and objectives
+ * - Implementation strategies
+ * - Outcomes and evaluation
+ *
+ * This is a key reference page linked from the homepage.
+ *
+ * @page
+ * @route /program-summary
+ */
+-->
 <template>
   <div class="pb-16">
     <v-container

@@ -1,3 +1,19 @@
+<!--
+/**
+ * About Page - Information about the Safe From the Start program.
+ *
+ * This page displays markdown content from /content/about.md with:
+ * - Page title
+ * - Hero image (hidden on mobile)
+ * - Markdown content rendered via ContentDoc component
+ *
+ * The page uses Nuxt Content to fetch and render markdown files,
+ * allowing non-technical users to update content without code changes.
+ *
+ * @page
+ * @route /about
+ */
+-->
 <template>
   <div class="pb-16">
     <v-container
@@ -46,6 +62,7 @@
 <script setup>
 import { getThumborUrl } from "@/src/utils/thumbor.js";
 
+// Track component mount state
 let isMounted = ref(false);
 let splashFull = ref(null);
 let splashThumbnail = ref(null);

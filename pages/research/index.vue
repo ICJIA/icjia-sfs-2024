@@ -1,3 +1,19 @@
+<!--
+/**
+ * Research Page - Research findings and publications related to SFS.
+ *
+ * This page displays markdown content from /content/research.md with:
+ * - Dynamic page title from markdown frontmatter
+ * - Hero image (hidden on mobile)
+ * - Research publications and findings
+ * - Links to external research resources
+ *
+ * Uses the same template pattern as other content pages for consistency.
+ *
+ * @page
+ * @route /research
+ */
+-->
 <template>
   <div class="pb-16">
     <v-container

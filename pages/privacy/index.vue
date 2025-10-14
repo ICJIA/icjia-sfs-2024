@@ -1,3 +1,18 @@
+<!--
+/**
+ * Privacy Policy Page - Privacy policy and data handling information.
+ *
+ * This page displays markdown content from /content/privacy.md with:
+ * - Privacy policy details
+ * - Data collection and usage information
+ * - User rights and contact information
+ *
+ * This is a standard legal/compliance page required for government websites.
+ *
+ * @page
+ * @route /privacy
+ */
+-->
 <template>
   <div class="pb-16">
     <v-container
@@ -27,7 +42,6 @@
         </v-col></v-row
       ></v-container
     >
-
   </div>
 </template>
 
