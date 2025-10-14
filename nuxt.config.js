@@ -78,9 +78,9 @@ export default defineNuxtConfig({
   css: [
     "vuetify/lib/styles/main.sass", // Vuetify core styles
     "@mdi/font/css/materialdesignicons.min.css", // Material Design Icons
-    "../assets/css/variables.scss", // Custom SCSS variables
-    "../assets/css/app.css", // Application-specific styles
-    "../assets/css/github-markdown.css", // Markdown content styling
+    "@/assets/css/variables.scss", // Custom SCSS variables (now in /app/assets)
+    "@/assets/css/app.css", // Application-specific styles (now in /app/assets)
+    "@/assets/css/github-markdown.css", // Markdown content styling (now in /app/assets)
   ],
 
   /**
