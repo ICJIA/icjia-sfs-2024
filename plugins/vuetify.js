@@ -26,7 +26,7 @@ import { createVuetify } from "vuetify";
  *
  * This plugin is automatically loaded by Nuxt during application bootstrap.
  * It creates a Vuetify instance with Material Design Icons as the default icon set
- * and spreads in lab components to enable experimental features.
+ * and includes lab components to enable experimental features.
  *
  * @param {Object} app - Nuxt app context provided by defineNuxtPlugin
  * @param {Object} app.vueApp - The Vue application instance
@@ -38,9 +38,11 @@ export default defineNuxtPlugin((app) => {
     icons: {
       defaultSet: "mdi", // Use Material Design Icons as the default icon set
     },
-    // Spread lab components to enable experimental Vuetify features
+    // Include lab components to enable experimental Vuetify features
     // This allows usage of components that are in beta/preview status
-    ...labsComponents,
+    components: {
+      ...labsComponents,
+    },
   });
 
   // Register Vuetify with the Vue application instance

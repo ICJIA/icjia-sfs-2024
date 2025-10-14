@@ -22,12 +22,7 @@ import appRoutes from "./src/json/appRoutes.json";
 
 export default defineNuxtConfig({
   // Compatibility date for Nuxt behavior versioning
-  compabilityDate: "2024-07-03",
-
-  // Opt into Nuxt 4 compatibility features
-  future: {
-    compatibilityVersion: "4",
-  },
+  compatibilityDate: "2024-07-03",
 
   /**
    * Application-level configuration including head metadata and page transitions.
@@ -97,12 +92,6 @@ export default defineNuxtConfig({
   },
 
   /**
-   * Experimental features configuration.
-   * App manifest is disabled to avoid potential build issues.
-   */
-  experimental: { appManifest: false },
-
-  /**
    * Nuxt modules to extend functionality.
    * Modules are loaded in order and can modify the Nuxt configuration.
    */
@@ -140,7 +129,6 @@ export default defineNuxtConfig({
 
       // Disable automatic anchor link generation for headings
       // This prevents duplicate anchor link configurations
-      anchorLinks: false,
       anchorLinks: {
         depth: 0, // Don't generate anchor links at any heading level
         exclude: [0, 1, 2, 3, 4, 5, 6], // Exclude all heading levels
@@ -257,16 +245,12 @@ export default defineNuxtConfig({
   },
 
   /**
-   * Static site generation configuration.
+   * Nitro configuration for server and prerendering.
    * Specifies which routes to pre-render during build.
    */
-  generate: {
-    routes: appRoutes, // Use the consolidated routes from appRoutes.json
+  nitro: {
+    prerender: {
+      routes: appRoutes, // Use the consolidated routes from appRoutes.json
+    },
   },
-
-  /**
-   * Compatibility date for Nuxt behavior versioning.
-   * Ensures consistent behavior across Nuxt updates.
-   */
-  compatibilityDate: "2024-07-22",
 });
