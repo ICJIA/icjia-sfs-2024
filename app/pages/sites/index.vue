@@ -62,7 +62,7 @@
 </template>
 
 <script setup>
-import { getThumborUrl } from "@/src/utils/thumbor.js";
+import { getThumborUrl } from "@/utils/thumbor.js";
 
 let isMounted = ref(false);
 let splashFull = ref(null);
