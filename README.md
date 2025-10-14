@@ -25,6 +25,8 @@ This project has been upgraded from Nuxt 3 to Nuxt 4 with the recommended `/app`
 - Node.js version upgrade to 20.x for compatibility
 - All 30 routes successfully prerendering
 
+### Migration Documentation
+
 **📖 For detailed migration documentation, see [MIGRATION.md](./MIGRATION.md)**
 
 The migration guide includes:
@@ -34,6 +36,10 @@ The migration guide includes:
 - Rollback procedures
 - Path alias reference
 - Testing and verification procedures
+
+**🤖 For AI-assisted migrations, see [MIGRATION-PROMPT.md](./MIGRATION-PROMPT.md)**
+
+This comprehensive LLM prompt can be used with Claude, GPT-4, or other AI assistants to guide them through migrating similar ICJIA projects from Nuxt 3 to Nuxt 4. Simply copy the prompt and paste it into a conversation with your preferred LLM to automate the migration process.
 
 ## Project Structure
 
