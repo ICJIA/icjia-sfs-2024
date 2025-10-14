@@ -98,6 +98,11 @@ searchMeta: null
     outline-offset: 2px;
 }
 </style>
+<div style="margin-bottom: 50px;">
+
+<iframe src="https://illinois.maps.arcgis.com/apps/instant/sidebar/index.html?appid=877642cc77434653a76f93206694204b" width="100%" height="600" frameborder="0" style="border:0; display: block; max-width: 100%;" allowfullscreen>iFrames are not supported on this page.</iframe>
+
+</div>
 
 <div class="table-responsive">
 
