@@ -20,15 +20,22 @@
 -->
 <template>
   <div>
-    <div>
+    <!--
+      Hero section with image and overlay content.
+      Restructured to avoid nested interactive controls (WCAG 4.1.2).
+      The container uses relative positioning to allow absolute positioning of overlay content.
+    -->
+    <div style="position: relative; margin-top: 60px">
       <!--
         Hero image with responsive sizing and lazy loading.
         Uses Thumbor for on-the-fly image optimization and WebP conversion.
         Gradient overlay ensures text remains readable over the image.
+        role="presentation" indicates this is decorative/background
       -->
       <v-img
         class="bg-grey-lighten-2"
-        alt="Children playing together in a safe environment - representing the Safe From the Start program's mission to protect young children"
+        alt=""
+        role="presentation"
         :src="
           getThumborUrl({
             url: 'https://sfs.icjia.illinois.gov/splash-24-large-cropped.jpg',
@@ -48,65 +55,68 @@
         width="100%"
         height="700"
         cover
-        style="margin-top: 60px; filter: grayscale(10%); position: relative"
+        style="filter: grayscale(10%)"
         gradient="to bottom, rgba(0,0,0,.3), rgba(0,0,0,.1)"
-        ><!-- Loading placeholder with spinner -->
+      >
+        <!-- Loading placeholder with spinner -->
         <template v-slot:placeholder>
           <div class="d-flex align-center justify-center fill-height">
             <v-progress-circular
               color="grey-lighten-4"
               indeterminate
+              aria-label="Loading hero image"
             ></v-progress-circular>
           </div>
         </template>
-
-        <!-- Legacy header content - preserved for reference -->
-        <!-- <div id="header" class="hidden-sm-and-down">
-          <div id="header-content">
-            Developmentally and culturally appropriate direct services to children, ages 0
-            – 5
-          </div>
-        </div> -->
-
-        <!--
-          Hero message overlay.
-          Positioned absolutely over the image with text shadow and gradient background
-          for maximum readability. Includes call-to-action button.
-        -->
-        <div
-          class="text-center"
-          style="
-            position: absolute;
-            bottom: 25%;
-            width: 100%;
-            font-size: 46px;
-            font-weight: 700;
-            color: #fff;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 1),
-              1px 1px 4px rgba(0, 0, 0, 0.9);
-            background: linear-gradient(
-              to bottom,
-              rgba(0, 0, 0, 0.3),
-              rgba(0, 0, 0, 0.6)
-            );
-            padding: 20px 30px;
-            border-radius: 8px;
-          "
-        >
-          Direct services to children who have been exposed to violence
-          <br />
-
-          <!-- Call-to-action button -->
-          <div class="mt-6">
-            <v-btn color="blue-darken-4" to="/about"
-              >Learn More&nbsp;&raquo;</v-btn
-            >&nbsp;
-
-            <!-- Contact button - currently disabled -->
-            <!-- &nbsp;&nbsp;<v-btn varient="outlined" style="color: black">Contact</v-btn> -->
-          </div>
-        </div>
       </v-img>
+
+      <!--
+        Hero message overlay.
+        Positioned absolutely over the image with text shadow and gradient background
+        for maximum readability. Includes call-to-action button.
+        Now positioned outside v-img to avoid nested interactive controls.
+      -->
+      <div
+        class="text-center hero-overlay"
+        style="
+          position: absolute;
+          bottom: 25%;
+          left: 0;
+          right: 0;
+          width: 100%;
+          font-size: 46px;
+          font-weight: 700;
+          color: #fff;
+          text-shadow: 2px 2px 8px rgba(0, 0, 0, 1),
+            1px 1px 4px rgba(0, 0, 0, 0.9);
+          background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.6)
+          );
+          padding: 20px 30px;
+          border-radius: 8px;
+          pointer-events: none;
+        "
+      >
+        <span aria-label="Safe From the Start program mission">
+          Direct services to children who have been exposed to violence
+        </span>
+        <br />
+
+        <!-- Call-to-action button -->
+        <div class="mt-6" style="pointer-events: auto">
+          <v-btn
+            color="blue-darken-4"
+            to="/about"
+            aria-label="Learn more about Safe From the Start program"
+            >Learn More&nbsp;&raquo;</v-btn
+          >&nbsp;
+
+          <!-- Contact button - currently disabled -->
+          <!-- &nbsp;&nbsp;<v-btn varient="outlined" style="color: black">Contact</v-btn> -->
+        </div>
+      </div>
     </div>
   </div>
 </template>

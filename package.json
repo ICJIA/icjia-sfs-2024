@@ -17,14 +17,17 @@
     "scripts": "yarn clear:cache && yarn create:pages && yarn create:routes && yarn create:siteMap"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
     "@nuxt/content": "^2.13.4",
     "@nuxt/devtools": "^2.1.1",
     "@nuxt/image": "^1.11.0",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/plausible": "^1.2.0",
     "@vueuse/nuxt": "^12.7.0",
+    "axe-core": "^4.11.0",
     "nuxt": "^4.0.0",
     "nuxt-gtag": "^3.0.2",
+    "playwright": "^1.56.0",
     "vite-plugin-node-polyfills": "^0.23.0",
     "vite-plugin-vuetify": "^2.1.0",
     "vue": "^3.5.13",

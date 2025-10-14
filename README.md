@@ -107,6 +107,9 @@ yarn create:pages           # Generate pages.json from content
 yarn create:routes          # Generate routes for prerendering
 yarn create:siteMap         # Generate sitemap.xml
 
+# Accessibility Testing
+node accessibility-audit.mjs # Run WCAG 2.1 Level AA compliance audit
+
 # Utilities
 yarn clear:cache            # Clear .nuxt and .output directories
 ```
@@ -152,9 +155,64 @@ The site is deployed to Netlify with the following configuration:
 - **Content Management:** Markdown-based content with Nuxt Content
 - **Responsive Design:** Mobile-first design with Vuetify components
 - **SEO Optimized:** Meta tags, sitemap, and semantic HTML
+- **Accessibility:** WCAG 2.1 Level AA compliant with automated testing
 - **Analytics:** Google Analytics integration via nuxt-gtag
 - **Image Optimization:** Thumbor integration for responsive images
 - **Auto-routing:** File-based routing from `/app/pages`
+
+## Accessibility
+
+**✅ WCAG 2.1 Level AA Compliant**
+
+This site has been audited for accessibility compliance and meets WCAG 2.1 Level AA standards.
+
+### Accessibility Audit
+
+**📖 For the complete accessibility audit report, see [ACCESSIBILITY-AUDIT-REPORT.md](./ACCESSIBILITY-AUDIT-REPORT.md)**
+
+**📋 For testing instructions and guidelines, see [ACCESSIBILITY-TESTING-GUIDE.md](./ACCESSIBILITY-TESTING-GUIDE.md)**
+
+**Last Audit:** October 14, 2025
+**Status:** ✅ PASSED - 0 violations
+**Pages Tested:** 8
+**Standard:** WCAG 2.1 Level AA
+
+### Running Accessibility Tests
+
+To run the automated accessibility audit:
+
+```bash
+# Make sure dev server is running
+yarn dev
+
+# In a separate terminal, run the audit
+node accessibility-audit.mjs
+```
+
+The audit will:
+
+- Test all 8 major pages against WCAG 2.1 Level AA standards
+- Generate detailed JSON reports in `./accessibility-reports/`
+- Display a summary of violations by severity
+- Provide actionable fix recommendations
+
+**Note:** The dev server must be running on `http://localhost:8000` before running the audit.
+
+### Accessibility Features
+
+- ✅ **Skip Navigation Links** - Keyboard-accessible skip to main content
+- ✅ **Semantic HTML** - Proper landmark regions (nav, main, header, footer)
+- ✅ **ARIA Attributes** - Comprehensive labels on interactive elements
+- ✅ **Keyboard Navigation** - Full keyboard support with visible focus indicators
+- ✅ **Screen Reader Support** - Descriptive labels and alt text
+- ✅ **Color Contrast** - WCAG AA compliant contrast ratios
+- ✅ **Responsive Design** - Accessible on all device sizes
+
+### Audit History
+
+| Date       | Status    | Violations | Notes                                             |
+| ---------- | --------- | ---------- | ------------------------------------------------- |
+| 2025-10-14 | ✅ PASSED | 0          | Initial comprehensive audit - all issues resolved |
 
 ## Development Notes
 

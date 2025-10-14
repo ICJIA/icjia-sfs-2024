@@ -28,6 +28,7 @@
         <v-img
           src="https://agency.icjia-api.cloud/uploads/large_pexels_freestockpro_oleksander_p_80cff2f2da.jpg"
           lazy-src="https://agency.icjia-api.cloud/uploads/thumbnail_pexels_freestockpro_oleksander_p_80cff2f2da.jpg"
+          alt="Research and data analysis - representing evidence-based practices in the Safe From the Start program"
           width="100%"
           height="700"
           cover

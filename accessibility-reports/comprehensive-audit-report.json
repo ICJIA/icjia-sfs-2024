@@ -1,0 +1,139 @@
+{
+  "auditDate": "2025-10-14",
+  "auditTimestamp": "October 14, 2025 at 11:18 AM CDT",
+  "timestamp": "2025-10-14T16:19:04.036Z",
+  "summary": {
+    "totalPages": 8,
+    "totalViolations": 0,
+    "bySeverity": {
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0
+    },
+    "byWCAG": {},
+    "commonIssues": {}
+  },
+  "results": [
+    {
+      "page": "Home",
+      "path": "/",
+      "url": "http://localhost:8000/",
+      "timestamp": "2025-10-14T16:18:41.801Z",
+      "violations": [],
+      "passes": 24,
+      "incomplete": 3,
+      "categorized": {
+        "critical": [],
+        "serious": [],
+        "moderate": [],
+        "minor": []
+      }
+    },
+    {
+      "page": "About",
+      "path": "/about",
+      "url": "http://localhost:8000/about",
+      "timestamp": "2025-10-14T16:18:45.036Z",
+      "violations": [],
+      "passes": 25,
+      "incomplete": 3,
+      "categorized": {
+        "critical": [],
+        "serious": [],
+        "moderate": [],
+        "minor": []
+      }
+    },
+    {
+      "page": "Program Summary",
+      "path": "/program-summary",
+      "url": "http://localhost:8000/program-summary",
+      "timestamp": "2025-10-14T16:18:48.180Z",
+      "violations": [],
+      "passes": 24,
+      "incomplete": 3,
+      "categorized": {
+        "critical": [],
+        "serious": [],
+        "moderate": [],
+        "minor": []
+      }
+    },
+    {
+      "page": "Research",
+      "path": "/research",
+      "url": "http://localhost:8000/research",
+      "timestamp": "2025-10-14T16:18:51.460Z",
+      "violations": [],
+      "passes": 25,
+      "incomplete": 3,
+      "categorized": {
+        "critical": [],
+        "serious": [],
+        "moderate": [],
+        "minor": []
+      }
+    },
+    {
+      "page": "Sites",
+      "path": "/sites",
+      "url": "http://localhost:8000/sites",
+      "timestamp": "2025-10-14T16:18:54.607Z",
+      "violations": [],
+      "passes": 25,
+      "incomplete": 3,
+      "categorized": {
+        "critical": [],
+        "serious": [],
+        "moderate": [],
+        "minor": []
+      }
+    },
+    {
+      "page": "Resources",
+      "path": "/resources",
+      "url": "http://localhost:8000/resources",
+      "timestamp": "2025-10-14T16:18:57.710Z",
+      "violations": [],
+      "passes": 24,
+      "incomplete": 3,
+      "categorized": {
+        "critical": [],
+        "serious": [],
+        "moderate": [],
+        "minor": []
+      }
+    },
+    {
+      "page": "Childhood Exposure",
+      "path": "/childhood-exposure",
+      "url": "http://localhost:8000/childhood-exposure",
+      "timestamp": "2025-10-14T16:19:00.885Z",
+      "violations": [],
+      "passes": 26,
+      "incomplete": 3,
+      "categorized": {
+        "critical": [],
+        "serious": [],
+        "moderate": [],
+        "minor": []
+      }
+    },
+    {
+      "page": "Privacy",
+      "path": "/privacy",
+      "url": "http://localhost:8000/privacy",
+      "timestamp": "2025-10-14T16:19:04.013Z",
+      "violations": [],
+      "passes": 23,
+      "incomplete": 3,
+      "categorized": {
+        "critical": [],
+        "serious": [],
+        "moderate": [],
+        "minor": []
+      }
+    }
+  ]
+}

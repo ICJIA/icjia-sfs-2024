@@ -30,118 +30,114 @@
       temporary
       style="background: #fff"
     >
-      <!-- Semantic nav element for accessibility -->
-      <nav aria-label="Main navigation">
-        <!--
-          Navigation list with accordion functionality.
-          v-model:opened tracks which accordion groups are expanded.
-        -->
-        <v-list
-          v-model:opened="open"
-          density="compact"
-          id="myVlist"
-          role="navigation"
-          aria-label="Site navigation menu"
+      <!--
+        Navigation list with accordion functionality.
+        v-model:opened tracks which accordion groups are expanded.
+        role="navigation" overrides Vuetify's default role="list" to avoid ARIA validation
+        issues with child elements that have role="link" instead of role="listitem".
+        This is more semantically appropriate for a navigation menu.
+      -->
+      <v-list
+        v-model:opened="open"
+        density="compact"
+        id="myVlist"
+        role="navigation"
+        aria-label="Main navigation menu"
+      >
+        <!-- Home link - always visible at top of menu -->
+        <v-list-item exact to="/" style="font-weight: 900; color: #000"
+          >Home</v-list-item
         >
-          <!-- Home link - always visible at top of menu -->
-          <v-list-item exact to="/" style="font-weight: 900; color: #000"
-            >Home</v-list-item
-          >
 
-          <!--
+        <!--
             Loop through sidebar menu items from app.config.js.
             Each item can be either a direct link or an expandable group.
           -->
-          <template
-            v-for="(menu, index) in navMenu"
-            :key="`sidebar-accordion-${index}`"
-          >
-            <!--
+        <template
+          v-for="(menu, index) in navMenu"
+          :key="`sidebar-accordion-${index}`"
+        >
+          <!--
               Expandable accordion group for menu items with children.
               Clicking the activator expands/collapses the child items.
             -->
-            <v-list-group
-              v-if="menu && menu.children"
-              :value="menu.children.title"
-            >
-              <template #activator="{ props }">
-                <v-list-item
-                  v-bind="props"
-                  style="font-weight: 900 !important"
-                  :aria-label="`${menu.main} submenu`"
-                  >{{ menu.main }}</v-list-item
-                >
-              </template>
+          <v-list-group
+            v-if="menu && menu.children"
+            :value="menu.children.title"
+          >
+            <template #activator="{ props }">
+              <v-list-item
+                v-bind="props"
+                style="font-weight: 900 !important"
+                :aria-label="`${menu.main} submenu`"
+                >{{ menu.main }}</v-list-item
+              >
+            </template>
 
-              <!-- Child menu items within the accordion -->
-              <template v-for="(child, i) in menu.children" :key="`main-${i}`">
-                <!-- Optional section header for grouping child items -->
-                <v-list-item
-                  v-if="child.section"
-                  style="margin-top: 0px; font-weight: 900; color: #555"
-                  role="presentation"
-                  tabindex="-1"
-                >
-                  {{ child.section }}
-                </v-list-item>
+            <!-- Child menu items within the accordion -->
+            <template v-for="(child, i) in menu.children" :key="`main-${i}`">
+              <!-- Optional section header for grouping child items -->
+              <v-list-item
+                v-if="child.section"
+                style="margin-top: 0px; font-weight: 900; color: #555"
+                role="presentation"
+                tabindex="-1"
+              >
+                {{ child.section }}
+              </v-list-item>
 
-                <!-- Optional divider between child items -->
-                <v-divider
-                  v-if="child.divider"
-                  role="separator"
-                  aria-hidden="true"
-                  class="my-1"
-                />
+              <!-- Optional divider between child items -->
+              <v-divider
+                v-if="child.divider"
+                role="separator"
+                aria-hidden="true"
+                class="my-1"
+              />
 
-                <!--
+              <!--
                   Individual child navigation link.
                   Indented with spaces for visual hierarchy.
                 -->
-                <v-list-item
-                  v-if="child.title"
-                  exact
-                  style="margin-top: 0px; font-weight: 400; color: #555"
-                  :to="child.link"
-                  :aria-label="child.title"
-                >
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ child.title }}</span>
-                </v-list-item>
-              </template>
-            </v-list-group>
+              <v-list-item
+                v-if="child.title"
+                exact
+                style="margin-top: 0px; font-weight: 400; color: #555"
+                :to="child.link"
+                :aria-label="child.title"
+              >
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ child.title }}</span>
+              </v-list-item>
+            </template>
+          </v-list-group>
 
-            <!--
+          <!--
               Direct link menu item (no children).
               Displayed with bold font weight for top-level items.
             -->
-            <v-list-item
-              v-else
-              style="font-weight: 900 !important"
-              :to="menu.link"
-              class="hover"
-              :aria-label="menu.main"
-              >{{ menu.main }}</v-list-item
-            >
-          </template>
+          <v-list-item
+            v-else
+            style="font-weight: 900 !important"
+            :to="menu.link"
+            class="hover"
+            :aria-label="menu.main"
+            >{{ menu.main }}</v-list-item
+          >
+        </template>
 
-          <!-- Contact link - currently disabled -->
-          <!-- <v-list-item exact to="/contact" style="font-weight: 900 !important">
+        <!-- Contact link - currently disabled -->
+        <!-- <v-list-item exact to="/contact" style="font-weight: 900 !important">
             Contact</v-list-item
           > -->
 
-          <!-- Divider before bottom section -->
-          <v-divider
-            class="my-3"
-            role="separator"
-            aria-hidden="true"
-          ></v-divider>
+        <!-- Divider before bottom section -->
+        <v-divider class="my-3" role="separator" aria-hidden="true"></v-divider>
 
-          <!-- Search/Contact link - currently disabled -->
-          <!-- <v-list-item exact to="/contact">
+        <!-- Search/Contact link - currently disabled -->
+        <!-- <v-list-item exact to="/contact">
             <v-icon left icon="mdi-magnify" size="x-small"></v-icon
             >&nbsp;&nbsp;&nbsp;Contact</v-list-item
           >-->
-        </v-list>
-      </nav>
+      </v-list>
     </v-navigation-drawer>
   </div>
 </template>
@@ -172,9 +168,21 @@ const altState = useNavToggle();
  * Watch local drawer state and sync to global state.
  * When the drawer opens/closes locally, update the global nav state
  * so the hamburger menu icon in TheNavV2 stays in sync.
+ * Also fixes ARIA roles when drawer opens.
  */
-watch(drawer, (val) => {
+watch(drawer, async (val) => {
   altState.value = drawer.value;
+
+  // When drawer opens, fix Vuetify ARIA role issues
+  if (val) {
+    await nextTick();
+    const listGroupHeaders = document.querySelectorAll(
+      '.v-list-group__header[role="listitem"]'
+    );
+    listGroupHeaders.forEach((header) => {
+      header.removeAttribute("role");
+    });
+  }
 });
 
 /**
@@ -200,12 +208,23 @@ const click = () => {
 /**
  * Lifecycle hook - runs when component is mounted on the client.
  * Sets up the component and logs mount status for debugging.
+ * Also fixes Vuetify ARIA role issues for accessibility compliance.
  */
 onMounted(async () => {
   isMounted.value = true;
   console.log("sidebar mounted");
   await nextTick();
-  // Navigation now uses proper ARIA semantics with nav element and role="navigation"
+
+  // Fix Vuetify v-list-group ARIA role issue
+  // Vuetify adds role="listitem" to v-list-group headers, but when the parent
+  // has role="navigation", this creates an ARIA validation error.
+  // We remove the role attribute to fix WCAG 1.3.1 compliance.
+  const listGroupHeaders = document.querySelectorAll(
+    '.v-list-group__header[role="listitem"]'
+  );
+  listGroupHeaders.forEach((header) => {
+    header.removeAttribute("role");
+  });
 });
 
 // Access Vue Router for programmatic navigation
