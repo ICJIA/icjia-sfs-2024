@@ -13,7 +13,7 @@
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2025-10-15T23:46:52.581Z",
+  "timestamp": "2025-10-15T23:54:23.476Z",
   "url": "http://localhost:8000/privacy",
   "toolOptions": {
     "runOnly": {
@@ -6564,7 +6564,7 @@
           "all": [],
           "none": [],
           "impact": "serious",
-          "html": "<div class=\"nuxt-devtools-label-main\">21</div>",
+          "html": "<div class=\"nuxt-devtools-label-main\">22</div>",
           "target": [
             [
               "nuxt-devtools-frame",
