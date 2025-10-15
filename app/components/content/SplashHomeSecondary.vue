@@ -29,6 +29,8 @@
       <v-img
         class="bg-grey-lighten-2"
         alt=""
+        role="presentation"
+        aria-hidden="true"
         :src="
           getThumborUrl({
             url: 'https://sfs.icjia.illinois.gov/splash-28-large.jpg',

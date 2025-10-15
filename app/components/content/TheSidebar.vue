@@ -69,7 +69,7 @@
               <v-list-item
                 v-bind="props"
                 style="font-weight: 900 !important"
-                :aria-label="`${menu.main} submenu`"
+                role="button"
                 >{{ menu.main }}</v-list-item
               >
             </template>
@@ -103,7 +103,6 @@
                 exact
                 style="margin-top: 0px; font-weight: 400; color: #555"
                 :to="child.link"
-                :aria-label="child.title"
               >
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ child.title }}</span>
               </v-list-item>
@@ -119,7 +118,6 @@
             style="font-weight: 900 !important"
             :to="menu.link"
             class="hover"
-            :aria-label="menu.main"
             >{{ menu.main }}</v-list-item
           >
         </template>
@@ -180,7 +178,7 @@ watch(drawer, async (val) => {
       '.v-list-group__header[role="listitem"]'
     );
     listGroupHeaders.forEach((header) => {
-      header.removeAttribute("role");
+      header.setAttribute("role", "button");
     });
   }
 });
@@ -218,12 +216,12 @@ onMounted(async () => {
   // Fix Vuetify v-list-group ARIA role issue
   // Vuetify adds role="listitem" to v-list-group headers, but when the parent
   // has role="navigation", this creates an ARIA validation error.
-  // We remove the role attribute to fix WCAG 1.3.1 compliance.
+  // We set the role to "button" to make aria-label valid and fix WCAG 4.1.2 compliance.
   const listGroupHeaders = document.querySelectorAll(
     '.v-list-group__header[role="listitem"]'
   );
   listGroupHeaders.forEach((header) => {
-    header.removeAttribute("role");
+    header.setAttribute("role", "button");
   });
 });
 

@@ -36,6 +36,7 @@
         class="bg-grey-lighten-2"
         alt=""
         role="presentation"
+        aria-hidden="true"
         :src="
           getThumborUrl({
             url: 'https://sfs.icjia.illinois.gov/splash-24-large-cropped.jpg',
@@ -99,7 +100,7 @@
           pointer-events: none;
         "
       >
-        <span aria-label="Safe From the Start program mission">
+        <span>
           Direct services to children who have been exposed to violence
         </span>
         <br />

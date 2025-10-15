@@ -1,0 +1,80 @@
+Starting Comprehensive Accessibility Audit...
+
+Audit Date: October 15, 2025 at 06:21 PM CDT
+Testing 8 pages for WCAG 2.1 Level AA compliance
+
+
+Testing: Home (http://localhost:8000/)
+  ✗ Error testing Home: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/
+Call log:
+[2m  - navigating to "http://localhost:8000/", waiting until "networkidle"[22m
+
+
+Testing: About (http://localhost:8000/about)
+  ✗ Error testing About: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/about
+Call log:
+[2m  - navigating to "http://localhost:8000/about", waiting until "networkidle"[22m
+
+
+Testing: Program Summary (http://localhost:8000/program-summary)
+  ✗ Error testing Program Summary: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/program-summary
+Call log:
+[2m  - navigating to "http://localhost:8000/program-summary", waiting until "networkidle"[22m
+
+
+Testing: Research (http://localhost:8000/research)
+  ✗ Error testing Research: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/research
+Call log:
+[2m  - navigating to "http://localhost:8000/research", waiting until "networkidle"[22m
+
+
+Testing: Sites (http://localhost:8000/sites)
+  ✗ Error testing Sites: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/sites
+Call log:
+[2m  - navigating to "http://localhost:8000/sites", waiting until "networkidle"[22m
+
+
+Testing: Resources (http://localhost:8000/resources)
+  ✗ Error testing Resources: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/resources
+Call log:
+[2m  - navigating to "http://localhost:8000/resources", waiting until "networkidle"[22m
+
+
+Testing: Childhood Exposure (http://localhost:8000/childhood-exposure)
+  ✗ Error testing Childhood Exposure: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/childhood-exposure
+Call log:
+[2m  - navigating to "http://localhost:8000/childhood-exposure", waiting until "networkidle"[22m
+
+
+Testing: Privacy (http://localhost:8000/privacy)
+  ✗ Error testing Privacy: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/privacy
+Call log:
+[2m  - navigating to "http://localhost:8000/privacy", waiting until "networkidle"[22m
+
+
+================================================================================
+ACCESSIBILITY AUDIT SUMMARY
+================================================================================
+
+Audit Date: October 15, 2025 at 06:21 PM CDT
+Total Pages Tested: 0
+Total Violations Found: 0
+
+--- Violations by Severity ---
+
+--- Top 10 Most Common Issues ---
+
+================================================================================
+
+
+================================================================================
+DETAILED CRITICAL AND SERIOUS ISSUES
+================================================================================
+
+
+================================================================================
+Full reports saved to: ./accessibility-reports/
+================================================================================
+
+
+Accessibility audit completed successfully!

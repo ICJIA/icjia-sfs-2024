@@ -13,7 +13,7 @@
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2025-10-14T16:18:48.005Z",
+  "timestamp": "2025-10-15T23:46:32.798Z",
   "url": "http://localhost:8000/program-summary",
   "toolOptions": {
     "runOnly": {
@@ -63,24 +63,6 @@
       "description": "Ensure aria-braillelabel and aria-brailleroledescription have a non-braille equivalent",
       "help": "aria-braille attributes must have a non-braille equivalent",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-braille-equivalent?application=playwright",
-      "nodes": []
-    },
-    {
-      "id": "aria-command-name",
-      "impact": null,
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "TTv5",
-        "TT6.a",
-        "EN-301-549",
-        "EN-9.4.1.2",
-        "ACT"
-      ],
-      "description": "Ensure every ARIA button, link and menuitem has an accessible name",
-      "help": "ARIA commands must have an accessible name",
-      "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-command-name?application=playwright",
       "nodes": []
     },
     {
@@ -718,139 +700,9 @@
             }
           ],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;\" aria-label=\"Go to homepage\" data-v-ea3187dc=\"\">",
-          "target": [
-            ".ml-4"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-allowed-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attributes are used correctly for the defined role"
-            }
-          ],
-          "none": [
-            {
-              "id": "aria-unsupported-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute is supported"
-            }
-          ],
-          "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;\" aria-label=\"Go to homepage - Safe From the Start\" data-v-ea3187dc=\"\">",
-          "target": [
-            ".hidden-sm-and-down.hover[type=\"button\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-allowed-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attributes are used correctly for the defined role"
-            }
-          ],
-          "none": [
-            {
-              "id": "aria-unsupported-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute is supported"
-            }
-          ],
-          "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Home\" style=\"font-weight: 900 !important; font-size: 18px;\">",
-          "target": [
-            "a[aria-label=\"Home\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-allowed-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attributes are used correctly for the defined role"
-            }
-          ],
-          "none": [
-            {
-              "id": "aria-unsupported-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute is supported"
-            }
-          ],
-          "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" aria-label=\"About menu\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-allowed-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attributes are used correctly for the defined role"
-            }
-          ],
-          "none": [
-            {
-              "id": "aria-unsupported-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute is supported"
-            }
-          ],
-          "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Sites\" style=\"font-weight: 900 !important; font-size: 18px;\">",
-          "target": [
-            "a[aria-label=\"Sites\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-allowed-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attributes are used correctly for the defined role"
-            }
-          ],
-          "none": [
-            {
-              "id": "aria-unsupported-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute is supported"
-            }
-          ],
-          "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Resources\" style=\"font-weight: 900 !important; font-size: 18px;\">",
-          "target": [
-            ".hidden-sm-and-down[aria-label=\"Resources\"][href$=\"resources\"]"
           ]
         },
         {
@@ -900,32 +752,6 @@
             }
           ],
           "impact": null,
-          "html": "<div data-v-c8aa5ae8=\"\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header\" id=\"v-list-group--id-Symbol(nested item)\" aria-label=\"About submenu\" style=\"font-weight: 900 !important;\">",
-          "target": [
-            "#v-list-group--id-Symbol\\(nested\\ item\\)"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-allowed-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attributes are used correctly for the defined role"
-            }
-          ],
-          "none": [
-            {
-              "id": "aria-unsupported-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute is supported"
-            }
-          ],
-          "impact": null,
           "html": "<div class=\"v-list-group__items\" role=\"group\" aria-labelledby=\"v-list-group--id-Symbol(nested item)\" style=\"\">",
           "target": [
             ".v-list-group__items"
@@ -952,113 +778,9 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"About\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
-          "target": [
-            "a[aria-label=\"About\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-allowed-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attributes are used correctly for the defined role"
-            }
-          ],
-          "none": [
-            {
-              "id": "aria-unsupported-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute is supported"
-            }
-          ],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"Program Summary\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item--active"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-allowed-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attributes are used correctly for the defined role"
-            }
-          ],
-          "none": [
-            {
-              "id": "aria-unsupported-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute is supported"
-            }
-          ],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"Research\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
-          "target": [
-            "a[aria-label=\"Research\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-allowed-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attributes are used correctly for the defined role"
-            }
-          ],
-          "none": [
-            {
-              "id": "aria-unsupported-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute is supported"
-            }
-          ],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" aria-label=\"SFS Sites\" style=\"font-weight: 900 !important;\">",
-          "target": [
-            "a[aria-label=\"SFS Sites\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-allowed-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attributes are used correctly for the defined role"
-            }
-          ],
-          "none": [
-            {
-              "id": "aria-unsupported-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute is supported"
-            }
-          ],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" aria-label=\"Resources\" style=\"font-weight: 900 !important;\">",
-          "target": [
-            "a[aria-label=\"Resources\"][href$=\"resources\"][role=\"link\"]"
           ]
         },
         {
@@ -1220,6 +942,43 @@
       ]
     },
     {
+      "id": "aria-command-name",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag412",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT"
+      ],
+      "description": "Ensure every ARIA button, link and menuitem has an accessible name",
+      "help": "ARIA commands must have an accessible name",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-command-name?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<div data-v-c8aa5ae8=\"\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header\" role=\"button\" id=\"v-list-group--id-Symbol(nested item)\" style=\"font-weight: 900 !important;\">",
+          "target": [
+            "#v-list-group--id-Symbol\\(nested\\ item\\)"
+          ]
+        }
+      ]
+    },
+    {
       "id": "aria-conditional-attr",
       "impact": null,
       "tags": [
@@ -1246,99 +1005,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;\" aria-label=\"Go to homepage\" data-v-ea3187dc=\"\">",
-          "target": [
-            ".ml-4"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-conditional-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;\" aria-label=\"Go to homepage - Safe From the Start\" data-v-ea3187dc=\"\">",
-          "target": [
-            ".hidden-sm-and-down.hover[type=\"button\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-conditional-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Home\" style=\"font-weight: 900 !important; font-size: 18px;\">",
-          "target": [
-            "a[aria-label=\"Home\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-conditional-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" aria-label=\"About menu\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-conditional-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Sites\" style=\"font-weight: 900 !important; font-size: 18px;\">",
-          "target": [
-            "a[aria-label=\"Sites\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-conditional-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Resources\" style=\"font-weight: 900 !important; font-size: 18px;\">",
-          "target": [
-            ".hidden-sm-and-down[aria-label=\"Resources\"][href$=\"resources\"]"
           ]
         },
         {
@@ -1372,24 +1041,6 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<div data-v-c8aa5ae8=\"\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header\" id=\"v-list-group--id-Symbol(nested item)\" aria-label=\"About submenu\" style=\"font-weight: 900 !important;\">",
-          "target": [
-            "#v-list-group--id-Symbol\\(nested\\ item\\)"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-conditional-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "none": [],
-          "impact": null,
           "html": "<div class=\"v-list-group__items\" role=\"group\" aria-labelledby=\"v-list-group--id-Symbol(nested item)\" style=\"\">",
           "target": [
             ".v-list-group__items"
@@ -1408,81 +1059,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"About\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
-          "target": [
-            "a[aria-label=\"About\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-conditional-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"Program Summary\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item--active"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-conditional-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"Research\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
-          "target": [
-            "a[aria-label=\"Research\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-conditional-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" aria-label=\"SFS Sites\" style=\"font-weight: 900 !important;\">",
-          "target": [
-            "a[aria-label=\"SFS Sites\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-conditional-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" aria-label=\"Resources\" style=\"font-weight: 900 !important;\">",
-          "target": [
-            "a[aria-label=\"Resources\"][href$=\"resources\"][role=\"link\"]"
           ]
         },
         {
@@ -1658,6 +1237,24 @@
             }
           ],
           "impact": null,
+          "html": "<div data-v-c8aa5ae8=\"\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header\" role=\"button\" id=\"v-list-group--id-Symbol(nested item)\" style=\"font-weight: 900 !important;\">",
+          "target": [
+            "#v-list-group--id-Symbol\\(nested\\ item\\)"
+          ]
+        },
+        {
+          "any": [],
+          "all": [],
+          "none": [
+            {
+              "id": "deprecatedrole",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "minor",
+              "message": "ARIA role is not deprecated"
+            }
+          ],
+          "impact": null,
           "html": "<div class=\"v-list-group__items\" role=\"group\" aria-labelledby=\"v-list-group--id-Symbol(nested item)\" style=\"\">",
           "target": [
             ".v-list-group__items"
@@ -1676,9 +1273,9 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"About\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
-            "a[aria-label=\"About\"]"
+            ".v-list-item[href$=\"about\"][role=\"link\"]"
           ]
         },
         {
@@ -1694,7 +1291,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"Program Summary\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item--active"
           ]
@@ -1712,9 +1309,9 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"Research\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
-            "a[aria-label=\"Research\"]"
+            ".v-list-item[href$=\"research\"][role=\"link\"]"
           ]
         },
         {
@@ -1730,9 +1327,9 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" aria-label=\"SFS Sites\" style=\"font-weight: 900 !important;\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
           "target": [
-            "a[aria-label=\"SFS Sites\"]"
+            ".v-list-item[href$=\"sites\"][role=\"link\"]"
           ]
         },
         {
@@ -1748,9 +1345,9 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" aria-label=\"Resources\" style=\"font-weight: 900 !important;\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
           "target": [
-            "a[aria-label=\"Resources\"][href$=\"resources\"][role=\"link\"]"
+            ".v-list-item[href$=\"resources\"][role=\"link\"]"
           ]
         }
       ]
@@ -2099,7 +1696,7 @@
     },
     {
       "id": "aria-prohibited-attr",
-      "impact": "serious",
+      "impact": null,
       "tags": [
         "cat.aria",
         "wcag2a",
@@ -2124,99 +1721,9 @@
             }
           ],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;\" aria-label=\"Go to homepage\" data-v-ea3187dc=\"\">",
-          "target": [
-            ".ml-4"
-          ]
-        },
-        {
-          "any": [],
-          "all": [],
-          "none": [
-            {
-              "id": "aria-prohibited-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;\" aria-label=\"Go to homepage - Safe From the Start\" data-v-ea3187dc=\"\">",
-          "target": [
-            ".hidden-sm-and-down.hover[type=\"button\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [],
-          "none": [
-            {
-              "id": "aria-prohibited-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Home\" style=\"font-weight: 900 !important; font-size: 18px;\">",
-          "target": [
-            "a[aria-label=\"Home\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [],
-          "none": [
-            {
-              "id": "aria-prohibited-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" aria-label=\"About menu\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [],
-          "none": [
-            {
-              "id": "aria-prohibited-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Sites\" style=\"font-weight: 900 !important; font-size: 18px;\">",
-          "target": [
-            "a[aria-label=\"Sites\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [],
-          "none": [
-            {
-              "id": "aria-prohibited-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Resources\" style=\"font-weight: 900 !important; font-size: 18px;\">",
-          "target": [
-            ".hidden-sm-and-down[aria-label=\"Resources\"][href$=\"resources\"]"
           ]
         },
         {
@@ -2268,81 +1775,9 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"About\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
-          "target": [
-            "a[aria-label=\"About\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [],
-          "none": [
-            {
-              "id": "aria-prohibited-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"Program Summary\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item--active"
-          ]
-        },
-        {
-          "any": [],
-          "all": [],
-          "none": [
-            {
-              "id": "aria-prohibited-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"Research\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
-          "target": [
-            "a[aria-label=\"Research\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [],
-          "none": [
-            {
-              "id": "aria-prohibited-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" aria-label=\"SFS Sites\" style=\"font-weight: 900 !important;\">",
-          "target": [
-            "a[aria-label=\"SFS Sites\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [],
-          "none": [
-            {
-              "id": "aria-prohibited-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" aria-label=\"Resources\" style=\"font-weight: 900 !important;\">",
-          "target": [
-            "a[aria-label=\"Resources\"][href$=\"resources\"][role=\"link\"]"
           ]
         },
         {
@@ -2518,6 +1953,24 @@
           "all": [],
           "none": [],
           "impact": null,
+          "html": "<div data-v-c8aa5ae8=\"\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header\" role=\"button\" id=\"v-list-group--id-Symbol(nested item)\" style=\"font-weight: 900 !important;\">",
+          "target": [
+            "#v-list-group--id-Symbol\\(nested\\ item\\)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "aria-required-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "All required ARIA attributes are present"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
           "html": "<div class=\"v-list-group__items\" role=\"group\" aria-labelledby=\"v-list-group--id-Symbol(nested item)\" style=\"\">",
           "target": [
             ".v-list-group__items"
@@ -2536,9 +1989,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"About\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
-            "a[aria-label=\"About\"]"
+            ".v-list-item[href$=\"about\"][role=\"link\"]"
           ]
         },
         {
@@ -2554,7 +2007,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"Program Summary\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item--active"
           ]
@@ -2572,9 +2025,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"Research\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
-            "a[aria-label=\"Research\"]"
+            ".v-list-item[href$=\"research\"][role=\"link\"]"
           ]
         },
         {
@@ -2590,9 +2043,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" aria-label=\"SFS Sites\" style=\"font-weight: 900 !important;\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
           "target": [
-            "a[aria-label=\"SFS Sites\"]"
+            ".v-list-item[href$=\"sites\"][role=\"link\"]"
           ]
         },
         {
@@ -2608,9 +2061,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" aria-label=\"Resources\" style=\"font-weight: 900 !important;\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
           "target": [
-            "a[aria-label=\"Resources\"][href$=\"resources\"][role=\"link\"]"
+            ".v-list-item[href$=\"resources\"][role=\"link\"]"
           ]
         }
       ]
@@ -2720,6 +2173,38 @@
             }
           ],
           "impact": null,
+          "html": "<div data-v-c8aa5ae8=\"\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header\" role=\"button\" id=\"v-list-group--id-Symbol(nested item)\" style=\"font-weight: 900 !important;\">",
+          "target": [
+            "#v-list-group--id-Symbol\\(nested\\ item\\)"
+          ]
+        },
+        {
+          "any": [],
+          "all": [],
+          "none": [
+            {
+              "id": "invalidrole",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "ARIA role is valid"
+            },
+            {
+              "id": "abstractrole",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Abstract roles are not used"
+            },
+            {
+              "id": "unsupportedrole",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "ARIA role is supported"
+            }
+          ],
+          "impact": null,
           "html": "<div class=\"v-list-group__items\" role=\"group\" aria-labelledby=\"v-list-group--id-Symbol(nested item)\" style=\"\">",
           "target": [
             ".v-list-group__items"
@@ -2752,9 +2237,9 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"About\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
-            "a[aria-label=\"About\"]"
+            ".v-list-item[href$=\"about\"][role=\"link\"]"
           ]
         },
         {
@@ -2784,7 +2269,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"Program Summary\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item--active"
           ]
@@ -2816,9 +2301,9 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"Research\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
-            "a[aria-label=\"Research\"]"
+            ".v-list-item[href$=\"research\"][role=\"link\"]"
           ]
         },
         {
@@ -2848,9 +2333,9 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" aria-label=\"SFS Sites\" style=\"font-weight: 900 !important;\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
           "target": [
-            "a[aria-label=\"SFS Sites\"]"
+            ".v-list-item[href$=\"sites\"][role=\"link\"]"
           ]
         },
         {
@@ -2880,9 +2365,9 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" aria-label=\"Resources\" style=\"font-weight: 900 !important;\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
           "target": [
-            "a[aria-label=\"Resources\"][href$=\"resources\"][role=\"link\"]"
+            ".v-list-item[href$=\"resources\"][role=\"link\"]"
           ]
         }
       ]
@@ -2901,166 +2386,6 @@
       "help": "ARIA attributes must conform to valid values",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-valid-attr-value?application=playwright",
       "nodes": [
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-valid-attr-value",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute values are valid"
-            },
-            {
-              "id": "aria-errormessage",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-errormessage exists and references elements visible to screen readers that use a supported aria-errormessage technique"
-            },
-            {
-              "id": "aria-level",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-level values are valid"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;\" aria-label=\"Go to homepage\" data-v-ea3187dc=\"\">",
-          "target": [
-            ".ml-4"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-valid-attr-value",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute values are valid"
-            },
-            {
-              "id": "aria-errormessage",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-errormessage exists and references elements visible to screen readers that use a supported aria-errormessage technique"
-            },
-            {
-              "id": "aria-level",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-level values are valid"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;\" aria-label=\"Go to homepage - Safe From the Start\" data-v-ea3187dc=\"\">",
-          "target": [
-            ".hidden-sm-and-down.hover[type=\"button\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-valid-attr-value",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute values are valid"
-            },
-            {
-              "id": "aria-errormessage",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-errormessage exists and references elements visible to screen readers that use a supported aria-errormessage technique"
-            },
-            {
-              "id": "aria-level",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-level values are valid"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Home\" style=\"font-weight: 900 !important; font-size: 18px;\">",
-          "target": [
-            "a[aria-label=\"Home\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-valid-attr-value",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute values are valid"
-            },
-            {
-              "id": "aria-errormessage",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-errormessage exists and references elements visible to screen readers that use a supported aria-errormessage technique"
-            },
-            {
-              "id": "aria-level",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-level values are valid"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Sites\" style=\"font-weight: 900 !important; font-size: 18px;\">",
-          "target": [
-            "a[aria-label=\"Sites\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-valid-attr-value",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute values are valid"
-            },
-            {
-              "id": "aria-errormessage",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-errormessage exists and references elements visible to screen readers that use a supported aria-errormessage technique"
-            },
-            {
-              "id": "aria-level",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-level values are valid"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Resources\" style=\"font-weight: 900 !important; font-size: 18px;\">",
-          "target": [
-            ".hidden-sm-and-down[aria-label=\"Resources\"][href$=\"resources\"]"
-          ]
-        },
         {
           "any": [],
           "all": [
@@ -3120,169 +2445,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<div data-v-c8aa5ae8=\"\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header\" id=\"v-list-group--id-Symbol(nested item)\" aria-label=\"About submenu\" style=\"font-weight: 900 !important;\">",
-          "target": [
-            "#v-list-group--id-Symbol\\(nested\\ item\\)"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-valid-attr-value",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute values are valid"
-            },
-            {
-              "id": "aria-errormessage",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-errormessage exists and references elements visible to screen readers that use a supported aria-errormessage technique"
-            },
-            {
-              "id": "aria-level",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-level values are valid"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"About\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
-          "target": [
-            "a[aria-label=\"About\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-valid-attr-value",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute values are valid"
-            },
-            {
-              "id": "aria-errormessage",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-errormessage exists and references elements visible to screen readers that use a supported aria-errormessage technique"
-            },
-            {
-              "id": "aria-level",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-level values are valid"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"Program Summary\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item--active"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-valid-attr-value",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute values are valid"
-            },
-            {
-              "id": "aria-errormessage",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-errormessage exists and references elements visible to screen readers that use a supported aria-errormessage technique"
-            },
-            {
-              "id": "aria-level",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-level values are valid"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"Research\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
-          "target": [
-            "a[aria-label=\"Research\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-valid-attr-value",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute values are valid"
-            },
-            {
-              "id": "aria-errormessage",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-errormessage exists and references elements visible to screen readers that use a supported aria-errormessage technique"
-            },
-            {
-              "id": "aria-level",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-level values are valid"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" aria-label=\"SFS Sites\" style=\"font-weight: 900 !important;\">",
-          "target": [
-            "a[aria-label=\"SFS Sites\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-valid-attr-value",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute values are valid"
-            },
-            {
-              "id": "aria-errormessage",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-errormessage exists and references elements visible to screen readers that use a supported aria-errormessage technique"
-            },
-            {
-              "id": "aria-level",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-level values are valid"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" aria-label=\"Resources\" style=\"font-weight: 900 !important;\">",
-          "target": [
-            "a[aria-label=\"Resources\"][href$=\"resources\"][role=\"link\"]"
           ]
         },
         {
@@ -3506,99 +2671,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;\" aria-label=\"Go to homepage\" data-v-ea3187dc=\"\">",
-          "target": [
-            ".ml-4"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "aria-valid-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute name is valid"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;\" aria-label=\"Go to homepage - Safe From the Start\" data-v-ea3187dc=\"\">",
-          "target": [
-            ".hidden-sm-and-down.hover[type=\"button\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "aria-valid-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute name is valid"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Home\" style=\"font-weight: 900 !important; font-size: 18px;\">",
-          "target": [
-            "a[aria-label=\"Home\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "aria-valid-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute name is valid"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" aria-label=\"About menu\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "aria-valid-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute name is valid"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Sites\" style=\"font-weight: 900 !important; font-size: 18px;\">",
-          "target": [
-            "a[aria-label=\"Sites\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "aria-valid-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute name is valid"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Resources\" style=\"font-weight: 900 !important; font-size: 18px;\">",
-          "target": [
-            ".hidden-sm-and-down[aria-label=\"Resources\"][href$=\"resources\"]"
           ]
         },
         {
@@ -3632,24 +2707,6 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<div data-v-c8aa5ae8=\"\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header\" id=\"v-list-group--id-Symbol(nested item)\" aria-label=\"About submenu\" style=\"font-weight: 900 !important;\">",
-          "target": [
-            "#v-list-group--id-Symbol\\(nested\\ item\\)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "aria-valid-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute name is valid"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
           "html": "<div class=\"v-list-group__items\" role=\"group\" aria-labelledby=\"v-list-group--id-Symbol(nested item)\" style=\"\">",
           "target": [
             ".v-list-group__items"
@@ -3668,81 +2725,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"About\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
-          "target": [
-            "a[aria-label=\"About\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "aria-valid-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute name is valid"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"Program Summary\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item--active"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "aria-valid-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute name is valid"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"Research\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
-          "target": [
-            "a[aria-label=\"Research\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "aria-valid-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute name is valid"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" aria-label=\"SFS Sites\" style=\"font-weight: 900 !important;\">",
-          "target": [
-            "a[aria-label=\"SFS Sites\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "aria-valid-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute name is valid"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" aria-label=\"Resources\" style=\"font-weight: 900 !important;\">",
-          "target": [
-            "a[aria-label=\"Resources\"][href$=\"resources\"][role=\"link\"]"
           ]
         },
         {
@@ -4025,7 +3010,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;\" aria-label=\"Go to homepage\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;\" data-v-ea3187dc=\"\">",
           "target": [
             ".ml-4"
           ]
@@ -4057,7 +3042,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;\" aria-label=\"Go to homepage - Safe From the Start\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;\" data-v-ea3187dc=\"\">",
           "target": [
             ".hidden-sm-and-down.hover[type=\"button\"]"
           ]
@@ -4185,9 +3170,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Home\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
           "target": [
-            "a[aria-label=\"Home\"]"
+            ".hidden-sm-and-down.navItem[href=\"/\"]"
           ]
         },
         {
@@ -4249,7 +3234,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" aria-label=\"About menu\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -4313,9 +3298,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Sites\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
           "target": [
-            "a[aria-label=\"Sites\"]"
+            ".hidden-sm-and-down.navItem[href$=\"sites\"]"
           ]
         },
         {
@@ -4377,9 +3362,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Resources\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
           "target": [
-            ".hidden-sm-and-down[aria-label=\"Resources\"][href$=\"resources\"]"
+            ".hidden-sm-and-down.navItem[href$=\"resources\"]"
           ]
         },
         {
@@ -5683,19 +4668,12 @@
               "relatedNodes": [],
               "impact": "critical",
               "message": "Element has inner text that is visible to screen readers"
-            },
-            {
-              "id": "aria-label",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-label attribute exists and is not empty"
             }
           ],
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;\" aria-label=\"Go to homepage\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;\" data-v-ea3187dc=\"\">",
           "target": [
             ".ml-4"
           ]
@@ -5708,19 +4686,12 @@
               "relatedNodes": [],
               "impact": "critical",
               "message": "Element has inner text that is visible to screen readers"
-            },
-            {
-              "id": "aria-label",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-label attribute exists and is not empty"
             }
           ],
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;\" aria-label=\"Go to homepage - Safe From the Start\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;\" data-v-ea3187dc=\"\">",
           "target": [
             ".hidden-sm-and-down.hover[type=\"button\"]"
           ]
@@ -5733,19 +4704,12 @@
               "relatedNodes": [],
               "impact": "critical",
               "message": "Element has inner text that is visible to screen readers"
-            },
-            {
-              "id": "aria-label",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-label attribute exists and is not empty"
             }
           ],
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" aria-label=\"About menu\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -7513,13 +6477,6 @@
               "relatedNodes": [],
               "impact": "serious",
               "message": "Element has text that is visible to screen readers"
-            },
-            {
-              "id": "aria-label",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "aria-label attribute exists and is not empty"
             }
           ],
           "all": [],
@@ -7533,9 +6490,9 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Home\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
           "target": [
-            "a[aria-label=\"Home\"]"
+            ".hidden-sm-and-down.navItem[href=\"/\"]"
           ]
         },
         {
@@ -7546,13 +6503,6 @@
               "relatedNodes": [],
               "impact": "serious",
               "message": "Element has text that is visible to screen readers"
-            },
-            {
-              "id": "aria-label",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "aria-label attribute exists and is not empty"
             }
           ],
           "all": [],
@@ -7566,9 +6516,9 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Sites\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
           "target": [
-            "a[aria-label=\"Sites\"]"
+            ".hidden-sm-and-down.navItem[href$=\"sites\"]"
           ]
         },
         {
@@ -7579,13 +6529,6 @@
               "relatedNodes": [],
               "impact": "serious",
               "message": "Element has text that is visible to screen readers"
-            },
-            {
-              "id": "aria-label",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "aria-label attribute exists and is not empty"
             }
           ],
           "all": [],
@@ -7599,9 +6542,9 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" aria-label=\"Resources\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
           "target": [
-            ".hidden-sm-and-down[aria-label=\"Resources\"][href$=\"resources\"]"
+            ".hidden-sm-and-down.navItem[href$=\"resources\"]"
           ]
         },
         {
@@ -7638,13 +6581,6 @@
               "relatedNodes": [],
               "impact": "serious",
               "message": "Element has text that is visible to screen readers"
-            },
-            {
-              "id": "aria-label",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "aria-label attribute exists and is not empty"
             }
           ],
           "all": [],
@@ -7658,9 +6594,9 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"About\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
-            "a[aria-label=\"About\"]"
+            ".v-list-item[href$=\"about\"][role=\"link\"]"
           ]
         },
         {
@@ -7671,13 +6607,6 @@
               "relatedNodes": [],
               "impact": "serious",
               "message": "Element has text that is visible to screen readers"
-            },
-            {
-              "id": "aria-label",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "aria-label attribute exists and is not empty"
             }
           ],
           "all": [],
@@ -7691,7 +6620,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"Program Summary\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item--active"
           ]
@@ -7704,13 +6633,6 @@
               "relatedNodes": [],
               "impact": "serious",
               "message": "Element has text that is visible to screen readers"
-            },
-            {
-              "id": "aria-label",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "aria-label attribute exists and is not empty"
             }
           ],
           "all": [],
@@ -7724,9 +6646,9 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" aria-label=\"Research\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
-            "a[aria-label=\"Research\"]"
+            ".v-list-item[href$=\"research\"][role=\"link\"]"
           ]
         },
         {
@@ -7737,13 +6659,6 @@
               "relatedNodes": [],
               "impact": "serious",
               "message": "Element has text that is visible to screen readers"
-            },
-            {
-              "id": "aria-label",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "aria-label attribute exists and is not empty"
             }
           ],
           "all": [],
@@ -7757,9 +6672,9 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" aria-label=\"SFS Sites\" style=\"font-weight: 900 !important;\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
           "target": [
-            "a[aria-label=\"SFS Sites\"]"
+            ".v-list-item[href$=\"sites\"][role=\"link\"]"
           ]
         },
         {
@@ -7770,13 +6685,6 @@
               "relatedNodes": [],
               "impact": "serious",
               "message": "Element has text that is visible to screen readers"
-            },
-            {
-              "id": "aria-label",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "aria-label attribute exists and is not empty"
             }
           ],
           "all": [],
@@ -7790,9 +6698,9 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" aria-label=\"Resources\" style=\"font-weight: 900 !important;\">",
+          "html": "<a data-v-c8aa5ae8=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
           "target": [
-            "a[aria-label=\"Resources\"][href$=\"resources\"][role=\"link\"]"
+            ".v-list-item[href$=\"resources\"][role=\"link\"]"
           ]
         },
         {
@@ -8726,7 +7634,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;\" aria-label=\"Go to homepage\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;\" data-v-ea3187dc=\"\">",
           "target": [
             ".ml-4"
           ]
@@ -8762,7 +7670,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;\" aria-label=\"Go to homepage - Safe From the Start\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;\" data-v-ea3187dc=\"\">",
           "target": [
             ".hidden-sm-and-down.hover[type=\"button\"]"
           ]
@@ -8780,9 +7688,27 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" aria-label=\"About menu\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "no-focusable-content",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element does not have focusable descendants"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<div data-v-c8aa5ae8=\"\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header\" role=\"button\" id=\"v-list-group--id-Symbol(nested item)\" style=\"font-weight: 900 !important;\">",
+          "target": [
+            "#v-list-group--id-Symbol\\(nested\\ item\\)"
           ]
         },
         {
@@ -8951,48 +7877,6 @@
   ],
   "incomplete": [
     {
-      "id": "aria-prohibited-attr",
-      "impact": "serious",
-      "tags": [
-        "cat.aria",
-        "wcag2a",
-        "wcag412",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
-      "description": "Ensure ARIA attributes are not prohibited for an element's role",
-      "help": "Elements must only use permitted ARIA attributes",
-      "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/aria-prohibited-attr?application=playwright",
-      "nodes": [
-        {
-          "any": [],
-          "all": [],
-          "none": [
-            {
-              "id": "aria-prohibited-attr",
-              "data": {
-                "role": null,
-                "nodeName": "div",
-                "messageKey": "noRoleSingular",
-                "prohibited": [
-                  "aria-label"
-                ]
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "aria-label attribute is not well supported on a div with no valid role attribute."
-            }
-          ],
-          "impact": "serious",
-          "html": "<div data-v-c8aa5ae8=\"\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header\" id=\"v-list-group--id-Symbol(nested item)\" aria-label=\"About submenu\" style=\"font-weight: 900 !important;\">",
-          "target": [
-            "#v-list-group--id-Symbol\\(nested\\ item\\)"
-          ],
-          "failureSummary": "Fix all of the following:\n  aria-label attribute is not well supported on a div with no valid role attribute."
-        }
-      ]
-    },
-    {
       "id": "aria-valid-attr-value",
       "impact": "critical",
       "tags": [
@@ -9022,7 +7906,7 @@
           ],
           "none": [],
           "impact": "critical",
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" aria-label=\"About menu\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ],
@@ -9115,7 +7999,7 @@
           "impact": "serious",
           "html": "<span class=\"v-btn__content\" data-no-activator=\"\">Home&nbsp; <!--v-if--></span>",
           "target": [
-            "a[aria-label=\"Home\"] > .v-btn__content[data-no-activator=\"\"]"
+            ".hidden-sm-and-down.navItem[href=\"/\"] > .v-btn__content[data-no-activator=\"\"]"
           ],
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
         },
@@ -9165,7 +8049,7 @@
           "impact": "serious",
           "html": "<span class=\"v-btn__content\" data-no-activator=\"\">Sites&nbsp; <!--v-if--></span>",
           "target": [
-            "a[aria-label=\"Sites\"] > .v-btn__content[data-no-activator=\"\"]"
+            ".hidden-sm-and-down.navItem[href$=\"sites\"] > .v-btn__content[data-no-activator=\"\"]"
           ],
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
         },
@@ -9190,7 +8074,7 @@
           "impact": "serious",
           "html": "<span class=\"v-btn__content\" data-no-activator=\"\">Resources&nbsp; <!--v-if--></span>",
           "target": [
-            ".hidden-sm-and-down[aria-label=\"Resources\"][href$=\"resources\"] > .v-btn__content[data-no-activator=\"\"]"
+            ".hidden-sm-and-down.navItem[href$=\"resources\"] > .v-btn__content[data-no-activator=\"\"]"
           ],
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
         },
@@ -9213,7 +8097,7 @@
           "all": [],
           "none": [],
           "impact": "serious",
-          "html": "<div class=\"nuxt-devtools-label-main\">25</div>",
+          "html": "<div class=\"nuxt-devtools-label-main\">30</div>",
           "target": [
             [
               "nuxt-devtools-frame",
