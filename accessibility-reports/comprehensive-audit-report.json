@@ -1,9 +1,9 @@
 {
   "auditDate": "2025-10-16",
-  "auditTimestamp": "October 15, 2025 at 07:03 PM CDT",
-  "timestamp": "2025-10-16T00:04:45.492Z",
+  "auditTimestamp": "October 16, 2025 at 09:16 AM CDT",
+  "timestamp": "2025-10-16T14:16:58.086Z",
   "summary": {
-    "totalPages": 7,
+    "totalPages": 8,
     "totalViolations": 0,
     "bySeverity": {
       "critical": 0,
@@ -18,8 +18,8 @@
     {
       "page": "Home",
       "path": "/",
-      "url": "http://localhost:8000/",
-      "timestamp": "2025-10-16T00:03:57.393Z",
+      "url": "http://localhost:3000/",
+      "timestamp": "2025-10-16T14:16:38.460Z",
       "violations": [],
       "passes": 25,
       "incomplete": 2,
@@ -33,10 +33,10 @@
     {
       "page": "About",
       "path": "/about",
-      "url": "http://localhost:8000/about",
-      "timestamp": "2025-10-16T00:04:00.412Z",
+      "url": "http://localhost:3000/about",
+      "timestamp": "2025-10-16T14:16:41.234Z",
       "violations": [],
-      "passes": 26,
+      "passes": 23,
       "incomplete": 2,
       "categorized": {
         "critical": [],
@@ -48,10 +48,10 @@
     {
       "page": "Program Summary",
       "path": "/program-summary",
-      "url": "http://localhost:8000/program-summary",
-      "timestamp": "2025-10-16T00:04:03.366Z",
+      "url": "http://localhost:3000/program-summary",
+      "timestamp": "2025-10-16T14:16:44.019Z",
       "violations": [],
-      "passes": 25,
+      "passes": 23,
       "incomplete": 2,
       "categorized": {
         "critical": [],
@@ -63,8 +63,8 @@
     {
       "page": "Research",
       "path": "/research",
-      "url": "http://localhost:8000/research",
-      "timestamp": "2025-10-16T00:04:06.453Z",
+      "url": "http://localhost:3000/research",
+      "timestamp": "2025-10-16T14:16:46.985Z",
       "violations": [],
       "passes": 26,
       "incomplete": 2,
@@ -76,12 +76,27 @@
       }
     },
     {
+      "page": "Sites",
+      "path": "/sites",
+      "url": "http://localhost:3000/sites",
+      "timestamp": "2025-10-16T14:16:49.761Z",
+      "violations": [],
+      "passes": 23,
+      "incomplete": 2,
+      "categorized": {
+        "critical": [],
+        "serious": [],
+        "moderate": [],
+        "minor": []
+      }
+    },
+    {
       "page": "Resources",
       "path": "/resources",
-      "url": "http://localhost:8000/resources",
-      "timestamp": "2025-10-16T00:04:39.492Z",
+      "url": "http://localhost:3000/resources",
+      "timestamp": "2025-10-16T14:16:52.534Z",
       "violations": [],
-      "passes": 25,
+      "passes": 23,
       "incomplete": 2,
       "categorized": {
         "critical": [],
@@ -93,10 +108,10 @@
     {
       "page": "Childhood Exposure",
       "path": "/childhood-exposure",
-      "url": "http://localhost:8000/childhood-exposure",
-      "timestamp": "2025-10-16T00:04:42.500Z",
+      "url": "http://localhost:3000/childhood-exposure",
+      "timestamp": "2025-10-16T14:16:55.290Z",
       "violations": [],
-      "passes": 27,
+      "passes": 23,
       "incomplete": 2,
       "categorized": {
         "critical": [],
@@ -108,10 +123,10 @@
     {
       "page": "Privacy",
       "path": "/privacy",
-      "url": "http://localhost:8000/privacy",
-      "timestamp": "2025-10-16T00:04:45.467Z",
+      "url": "http://localhost:3000/privacy",
+      "timestamp": "2025-10-16T14:16:58.071Z",
       "violations": [],
-      "passes": 24,
+      "passes": 23,
       "incomplete": 2,
       "categorized": {
         "critical": [],

@@ -13,8 +13,8 @@
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2025-10-16T00:04:03.217Z",
-  "url": "http://localhost:8000/program-summary",
+  "timestamp": "2025-10-16T14:16:43.879Z",
+  "url": "http://localhost:3000/program-summary",
   "toolOptions": {
     "runOnly": {
       "type": "tag",
@@ -422,6 +422,36 @@
       "nodes": []
     },
     {
+      "id": "list",
+      "impact": null,
+      "tags": [
+        "cat.structure",
+        "wcag2a",
+        "wcag131",
+        "EN-301-549",
+        "EN-9.1.3.1"
+      ],
+      "description": "Ensure that lists are structured correctly",
+      "help": "<ul> and <ol> must only directly contain <li>, <script> or <template> elements",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/list?application=playwright",
+      "nodes": []
+    },
+    {
+      "id": "listitem",
+      "impact": null,
+      "tags": [
+        "cat.structure",
+        "wcag2a",
+        "wcag131",
+        "EN-301-549",
+        "EN-9.1.3.1"
+      ],
+      "description": "Ensure <li> elements are used semantically",
+      "help": "<li> elements must be contained in a <ul> or <ol>",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/listitem?application=playwright",
+      "nodes": []
+    },
+    {
       "id": "marquee",
       "impact": null,
       "tags": [
@@ -700,7 +730,7 @@
             }
           ],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
+          "html": "<button data-v-1d4de8ab=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -726,7 +756,7 @@
             }
           ],
           "impact": null,
-          "html": "<div data-v-c8aa5ae8=\"\" class=\"v-list v-theme--light bg-transparent v-list--density-compact v-list--one-line\" tabindex=\"0\" role=\"navigation\" id=\"myVlist\" aria-label=\"Main navigation menu\">",
+          "html": "<div data-v-82963878=\"\" class=\"v-list v-theme--light bg-transparent v-list--density-compact v-list--one-line\" tabindex=\"0\" role=\"navigation\" id=\"myVlist\" aria-label=\"Main navigation menu\">",
           "target": [
             "#myVlist"
           ]
@@ -778,7 +808,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item--active"
           ]
@@ -804,7 +834,7 @@
             }
           ],
           "impact": null,
-          "html": "<a aria-current=\"page\" href=\"/program-summary\" class=\"router-link-active router-link-exact-active context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">Program Summary</a>",
+          "html": "<a aria-current=\"page\" href=\"/program-summary\" class=\"router-link-active router-link-exact-active context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">Program Summary</a>",
           "target": [
             ".router-link-active"
           ]
@@ -830,7 +860,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"https://www.facebook.com/ICJIA/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;margin-right:-10px;\" target=\"_blank\" aria-label=\"Link to ICJIA on Facebook (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.facebook.com/ICJIA/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;margin-right:-10px;\" target=\"_blank\" aria-label=\"Link to ICJIA on Facebook (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(1)"
           ]
@@ -856,7 +886,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"https://www.youtube.com/c/illinoiscriminaljusticeinformationauthority\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"Link to ICJIA on YouTube (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.youtube.com/c/illinoiscriminaljusticeinformationauthority\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"Link to ICJIA on YouTube (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(2)"
           ]
@@ -882,7 +912,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"https://www.instagram.com/icjia_illinois/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on Instagram (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.instagram.com/icjia_illinois/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on Instagram (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(3)"
           ]
@@ -908,7 +938,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"https://www.linkedin.com/company/icjia/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on LinkedIn (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.linkedin.com/company/icjia/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on LinkedIn (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(4)"
           ]
@@ -934,7 +964,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"https://icjia.illinois.gov\" target=\"_blank\" style=\"color:#fff;\" aria-label=\"Illinois Criminal Justice Information Authority (opens in new window)\" data-v-8ab7e4d4=\"\">Illinois Criminal Justice Information Authority<span class=\"sr-only\" data-v-8ab7e4d4=\"\"> (external link)</span></a>",
+          "html": "<a href=\"https://icjia.illinois.gov\" target=\"_blank\" style=\"color:#fff;\" aria-label=\"Illinois Criminal Justice Information Authority (opens in new window)\" data-v-9bcde2a1=\"\">Illinois Criminal Justice Information Authority<span class=\"sr-only\" data-v-9bcde2a1=\"\"> (external link)</span></a>",
           "target": [
             "a[href$=\"icjia.illinois.gov\"]"
           ]
@@ -971,7 +1001,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<div data-v-c8aa5ae8=\"\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header\" role=\"button\" id=\"v-list-group--id-Symbol(nested item)\" style=\"font-weight: 900 !important;\">",
+          "html": "<div data-v-82963878=\"\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header\" role=\"button\" id=\"v-list-group--id-Symbol(nested item)\" style=\"font-weight: 900 !important;\">",
           "target": [
             "#v-list-group--id-Symbol\\(nested\\ item\\)"
           ]
@@ -1005,7 +1035,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
+          "html": "<button data-v-1d4de8ab=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -1023,7 +1053,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<div data-v-c8aa5ae8=\"\" class=\"v-list v-theme--light bg-transparent v-list--density-compact v-list--one-line\" tabindex=\"0\" role=\"navigation\" id=\"myVlist\" aria-label=\"Main navigation menu\">",
+          "html": "<div data-v-82963878=\"\" class=\"v-list v-theme--light bg-transparent v-list--density-compact v-list--one-line\" tabindex=\"0\" role=\"navigation\" id=\"myVlist\" aria-label=\"Main navigation menu\">",
           "target": [
             "#myVlist"
           ]
@@ -1059,7 +1089,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item--active"
           ]
@@ -1077,7 +1107,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a aria-current=\"page\" href=\"/program-summary\" class=\"router-link-active router-link-exact-active context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">Program Summary</a>",
+          "html": "<a aria-current=\"page\" href=\"/program-summary\" class=\"router-link-active router-link-exact-active context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">Program Summary</a>",
           "target": [
             ".router-link-active"
           ]
@@ -1095,7 +1125,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://www.facebook.com/ICJIA/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;margin-right:-10px;\" target=\"_blank\" aria-label=\"Link to ICJIA on Facebook (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.facebook.com/ICJIA/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;margin-right:-10px;\" target=\"_blank\" aria-label=\"Link to ICJIA on Facebook (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(1)"
           ]
@@ -1113,7 +1143,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://www.youtube.com/c/illinoiscriminaljusticeinformationauthority\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"Link to ICJIA on YouTube (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.youtube.com/c/illinoiscriminaljusticeinformationauthority\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"Link to ICJIA on YouTube (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(2)"
           ]
@@ -1131,7 +1161,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://www.instagram.com/icjia_illinois/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on Instagram (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.instagram.com/icjia_illinois/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on Instagram (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(3)"
           ]
@@ -1149,7 +1179,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://www.linkedin.com/company/icjia/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on LinkedIn (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.linkedin.com/company/icjia/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on LinkedIn (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(4)"
           ]
@@ -1167,7 +1197,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://icjia.illinois.gov\" target=\"_blank\" style=\"color:#fff;\" aria-label=\"Illinois Criminal Justice Information Authority (opens in new window)\" data-v-8ab7e4d4=\"\">Illinois Criminal Justice Information Authority<span class=\"sr-only\" data-v-8ab7e4d4=\"\"> (external link)</span></a>",
+          "html": "<a href=\"https://icjia.illinois.gov\" target=\"_blank\" style=\"color:#fff;\" aria-label=\"Illinois Criminal Justice Information Authority (opens in new window)\" data-v-9bcde2a1=\"\">Illinois Criminal Justice Information Authority<span class=\"sr-only\" data-v-9bcde2a1=\"\"> (external link)</span></a>",
           "target": [
             "a[href$=\"icjia.illinois.gov\"]"
           ]
@@ -1201,7 +1231,7 @@
             }
           ],
           "impact": null,
-          "html": "<div data-v-c8aa5ae8=\"\" class=\"v-list v-theme--light bg-transparent v-list--density-compact v-list--one-line\" tabindex=\"0\" role=\"navigation\" id=\"myVlist\" aria-label=\"Main navigation menu\">",
+          "html": "<div data-v-82963878=\"\" class=\"v-list v-theme--light bg-transparent v-list--density-compact v-list--one-line\" tabindex=\"0\" role=\"navigation\" id=\"myVlist\" aria-label=\"Main navigation menu\">",
           "target": [
             "#myVlist"
           ]
@@ -1219,7 +1249,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"font-weight: 900; color: rgb(0, 0, 0);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"font-weight: 900; color: rgb(0, 0, 0);\">",
           "target": [
             ".v-list-item[href=\"/\"][role=\"link\"]"
           ]
@@ -1237,7 +1267,7 @@
             }
           ],
           "impact": null,
-          "html": "<div data-v-c8aa5ae8=\"\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header\" role=\"button\" id=\"v-list-group--id-Symbol(nested item)\" style=\"font-weight: 900 !important;\">",
+          "html": "<div data-v-82963878=\"\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header\" role=\"button\" id=\"v-list-group--id-Symbol(nested item)\" style=\"font-weight: 900 !important;\">",
           "target": [
             "#v-list-group--id-Symbol\\(nested\\ item\\)"
           ]
@@ -1273,7 +1303,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item[href$=\"about\"][role=\"link\"]"
           ]
@@ -1291,7 +1321,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item--active"
           ]
@@ -1309,7 +1339,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item[href$=\"research\"][role=\"link\"]"
           ]
@@ -1327,7 +1357,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
+          "html": "<a data-v-82963878=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
           "target": [
             ".v-list-item[href$=\"sites\"][role=\"link\"]"
           ]
@@ -1345,7 +1375,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
+          "html": "<a data-v-82963878=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
           "target": [
             ".v-list-item[href$=\"resources\"][role=\"link\"]"
           ]
@@ -1431,7 +1461,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<i class=\"mdi-menu mdi v-icon notranslate v-theme--light v-icon--size-large\" style=\"\" aria-hidden=\"true\" data-v-ea3187dc=\"\"></i>",
+          "html": "<i class=\"mdi-menu mdi v-icon notranslate v-theme--light v-icon--size-large\" style=\"\" aria-hidden=\"true\" data-v-1d4de8ab=\"\"></i>",
           "target": [
             ".mdi-menu"
           ]
@@ -1463,7 +1493,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<i data-v-ea3187dc=\"\" class=\"mdi-menu-down mdi v-icon notranslate v-theme--light v-icon--size-default\" aria-hidden=\"true\" right=\"\" small=\"\"></i>",
+          "html": "<i data-v-1d4de8ab=\"\" class=\"mdi-menu-down mdi v-icon notranslate v-theme--light v-icon--size-default\" aria-hidden=\"true\" right=\"\" small=\"\"></i>",
           "target": [
             ".mdi-menu-down"
           ]
@@ -1527,7 +1557,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<hr data-v-c8aa5ae8=\"\" class=\"v-divider v-theme--light my-3\" aria-orientation=\"horizontal\" role=\"separator\" aria-hidden=\"true\">",
+          "html": "<hr data-v-82963878=\"\" class=\"v-divider v-theme--light my-3\" aria-orientation=\"horizontal\" role=\"separator\" aria-hidden=\"true\">",
           "target": [
             "hr"
           ]
@@ -1591,7 +1621,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<i class=\"mdi-facebook mdi v-icon notranslate v-theme--light v-icon--size-default\" style=\"\" aria-hidden=\"true\" data-v-8ab7e4d4=\"\"></i>",
+          "html": "<i class=\"mdi-facebook mdi v-icon notranslate v-theme--light v-icon--size-default\" style=\"\" aria-hidden=\"true\" data-v-9bcde2a1=\"\"></i>",
           "target": [
             ".mdi-facebook"
           ]
@@ -1623,7 +1653,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<i class=\"mdi-youtube mdi v-icon notranslate v-theme--light v-icon--size-default\" style=\"\" aria-hidden=\"true\" data-v-8ab7e4d4=\"\"></i>",
+          "html": "<i class=\"mdi-youtube mdi v-icon notranslate v-theme--light v-icon--size-default\" style=\"\" aria-hidden=\"true\" data-v-9bcde2a1=\"\"></i>",
           "target": [
             ".mdi-youtube"
           ]
@@ -1655,7 +1685,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<i class=\"mdi-instagram mdi v-icon notranslate v-theme--light v-icon--size-default\" style=\"\" aria-hidden=\"true\" data-v-8ab7e4d4=\"\"></i>",
+          "html": "<i class=\"mdi-instagram mdi v-icon notranslate v-theme--light v-icon--size-default\" style=\"\" aria-hidden=\"true\" data-v-9bcde2a1=\"\"></i>",
           "target": [
             ".mdi-instagram"
           ]
@@ -1687,7 +1717,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<i class=\"mdi-linkedin mdi v-icon notranslate v-theme--light v-icon--size-default\" style=\"\" aria-hidden=\"true\" data-v-8ab7e4d4=\"\"></i>",
+          "html": "<i class=\"mdi-linkedin mdi v-icon notranslate v-theme--light v-icon--size-default\" style=\"\" aria-hidden=\"true\" data-v-9bcde2a1=\"\"></i>",
           "target": [
             ".mdi-linkedin"
           ]
@@ -1721,7 +1751,7 @@
             }
           ],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
+          "html": "<button data-v-1d4de8ab=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -1739,7 +1769,7 @@
             }
           ],
           "impact": null,
-          "html": "<div data-v-c8aa5ae8=\"\" class=\"v-list v-theme--light bg-transparent v-list--density-compact v-list--one-line\" tabindex=\"0\" role=\"navigation\" id=\"myVlist\" aria-label=\"Main navigation menu\">",
+          "html": "<div data-v-82963878=\"\" class=\"v-list v-theme--light bg-transparent v-list--density-compact v-list--one-line\" tabindex=\"0\" role=\"navigation\" id=\"myVlist\" aria-label=\"Main navigation menu\">",
           "target": [
             "#myVlist"
           ]
@@ -1775,7 +1805,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item--active"
           ]
@@ -1793,7 +1823,7 @@
             }
           ],
           "impact": null,
-          "html": "<a aria-current=\"page\" href=\"/program-summary\" class=\"router-link-active router-link-exact-active context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">Program Summary</a>",
+          "html": "<a aria-current=\"page\" href=\"/program-summary\" class=\"router-link-active router-link-exact-active context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">Program Summary</a>",
           "target": [
             ".router-link-active"
           ]
@@ -1811,7 +1841,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"https://www.facebook.com/ICJIA/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;margin-right:-10px;\" target=\"_blank\" aria-label=\"Link to ICJIA on Facebook (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.facebook.com/ICJIA/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;margin-right:-10px;\" target=\"_blank\" aria-label=\"Link to ICJIA on Facebook (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(1)"
           ]
@@ -1829,7 +1859,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"https://www.youtube.com/c/illinoiscriminaljusticeinformationauthority\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"Link to ICJIA on YouTube (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.youtube.com/c/illinoiscriminaljusticeinformationauthority\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"Link to ICJIA on YouTube (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(2)"
           ]
@@ -1847,7 +1877,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"https://www.instagram.com/icjia_illinois/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on Instagram (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.instagram.com/icjia_illinois/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on Instagram (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(3)"
           ]
@@ -1865,7 +1895,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"https://www.linkedin.com/company/icjia/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on LinkedIn (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.linkedin.com/company/icjia/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on LinkedIn (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(4)"
           ]
@@ -1883,7 +1913,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"https://icjia.illinois.gov\" target=\"_blank\" style=\"color:#fff;\" aria-label=\"Illinois Criminal Justice Information Authority (opens in new window)\" data-v-8ab7e4d4=\"\">Illinois Criminal Justice Information Authority<span class=\"sr-only\" data-v-8ab7e4d4=\"\"> (external link)</span></a>",
+          "html": "<a href=\"https://icjia.illinois.gov\" target=\"_blank\" style=\"color:#fff;\" aria-label=\"Illinois Criminal Justice Information Authority (opens in new window)\" data-v-9bcde2a1=\"\">Illinois Criminal Justice Information Authority<span class=\"sr-only\" data-v-9bcde2a1=\"\"> (external link)</span></a>",
           "target": [
             "a[href$=\"icjia.illinois.gov\"]"
           ]
@@ -1917,7 +1947,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<div data-v-c8aa5ae8=\"\" class=\"v-list v-theme--light bg-transparent v-list--density-compact v-list--one-line\" tabindex=\"0\" role=\"navigation\" id=\"myVlist\" aria-label=\"Main navigation menu\">",
+          "html": "<div data-v-82963878=\"\" class=\"v-list v-theme--light bg-transparent v-list--density-compact v-list--one-line\" tabindex=\"0\" role=\"navigation\" id=\"myVlist\" aria-label=\"Main navigation menu\">",
           "target": [
             "#myVlist"
           ]
@@ -1935,7 +1965,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"font-weight: 900; color: rgb(0, 0, 0);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"font-weight: 900; color: rgb(0, 0, 0);\">",
           "target": [
             ".v-list-item[href=\"/\"][role=\"link\"]"
           ]
@@ -1953,7 +1983,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<div data-v-c8aa5ae8=\"\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header\" role=\"button\" id=\"v-list-group--id-Symbol(nested item)\" style=\"font-weight: 900 !important;\">",
+          "html": "<div data-v-82963878=\"\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header\" role=\"button\" id=\"v-list-group--id-Symbol(nested item)\" style=\"font-weight: 900 !important;\">",
           "target": [
             "#v-list-group--id-Symbol\\(nested\\ item\\)"
           ]
@@ -1989,7 +2019,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item[href$=\"about\"][role=\"link\"]"
           ]
@@ -2007,7 +2037,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item--active"
           ]
@@ -2025,7 +2055,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item[href$=\"research\"][role=\"link\"]"
           ]
@@ -2043,7 +2073,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
+          "html": "<a data-v-82963878=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
           "target": [
             ".v-list-item[href$=\"sites\"][role=\"link\"]"
           ]
@@ -2061,7 +2091,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
+          "html": "<a data-v-82963878=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
           "target": [
             ".v-list-item[href$=\"resources\"][role=\"link\"]"
           ]
@@ -2109,7 +2139,7 @@
             }
           ],
           "impact": null,
-          "html": "<div data-v-c8aa5ae8=\"\" class=\"v-list v-theme--light bg-transparent v-list--density-compact v-list--one-line\" tabindex=\"0\" role=\"navigation\" id=\"myVlist\" aria-label=\"Main navigation menu\">",
+          "html": "<div data-v-82963878=\"\" class=\"v-list v-theme--light bg-transparent v-list--density-compact v-list--one-line\" tabindex=\"0\" role=\"navigation\" id=\"myVlist\" aria-label=\"Main navigation menu\">",
           "target": [
             "#myVlist"
           ]
@@ -2141,7 +2171,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"font-weight: 900; color: rgb(0, 0, 0);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"font-weight: 900; color: rgb(0, 0, 0);\">",
           "target": [
             ".v-list-item[href=\"/\"][role=\"link\"]"
           ]
@@ -2173,7 +2203,7 @@
             }
           ],
           "impact": null,
-          "html": "<div data-v-c8aa5ae8=\"\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header\" role=\"button\" id=\"v-list-group--id-Symbol(nested item)\" style=\"font-weight: 900 !important;\">",
+          "html": "<div data-v-82963878=\"\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header\" role=\"button\" id=\"v-list-group--id-Symbol(nested item)\" style=\"font-weight: 900 !important;\">",
           "target": [
             "#v-list-group--id-Symbol\\(nested\\ item\\)"
           ]
@@ -2237,7 +2267,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item[href$=\"about\"][role=\"link\"]"
           ]
@@ -2269,7 +2299,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item--active"
           ]
@@ -2301,7 +2331,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item[href$=\"research\"][role=\"link\"]"
           ]
@@ -2333,7 +2363,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
+          "html": "<a data-v-82963878=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
           "target": [
             ".v-list-item[href$=\"sites\"][role=\"link\"]"
           ]
@@ -2365,7 +2395,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
+          "html": "<a data-v-82963878=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
           "target": [
             ".v-list-item[href$=\"resources\"][role=\"link\"]"
           ]
@@ -2413,7 +2443,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<div data-v-c8aa5ae8=\"\" class=\"v-list v-theme--light bg-transparent v-list--density-compact v-list--one-line\" tabindex=\"0\" role=\"navigation\" id=\"myVlist\" aria-label=\"Main navigation menu\">",
+          "html": "<div data-v-82963878=\"\" class=\"v-list v-theme--light bg-transparent v-list--density-compact v-list--one-line\" tabindex=\"0\" role=\"navigation\" id=\"myVlist\" aria-label=\"Main navigation menu\">",
           "target": [
             "#myVlist"
           ]
@@ -2445,7 +2475,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item--active"
           ]
@@ -2477,7 +2507,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a aria-current=\"page\" href=\"/program-summary\" class=\"router-link-active router-link-exact-active context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">Program Summary</a>",
+          "html": "<a aria-current=\"page\" href=\"/program-summary\" class=\"router-link-active router-link-exact-active context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">Program Summary</a>",
           "target": [
             ".router-link-active"
           ]
@@ -2509,7 +2539,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://www.facebook.com/ICJIA/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;margin-right:-10px;\" target=\"_blank\" aria-label=\"Link to ICJIA on Facebook (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.facebook.com/ICJIA/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;margin-right:-10px;\" target=\"_blank\" aria-label=\"Link to ICJIA on Facebook (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(1)"
           ]
@@ -2541,7 +2571,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://www.youtube.com/c/illinoiscriminaljusticeinformationauthority\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"Link to ICJIA on YouTube (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.youtube.com/c/illinoiscriminaljusticeinformationauthority\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"Link to ICJIA on YouTube (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(2)"
           ]
@@ -2573,7 +2603,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://www.instagram.com/icjia_illinois/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on Instagram (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.instagram.com/icjia_illinois/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on Instagram (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(3)"
           ]
@@ -2605,7 +2635,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://www.linkedin.com/company/icjia/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on LinkedIn (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.linkedin.com/company/icjia/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on LinkedIn (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(4)"
           ]
@@ -2637,7 +2667,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://icjia.illinois.gov\" target=\"_blank\" style=\"color:#fff;\" aria-label=\"Illinois Criminal Justice Information Authority (opens in new window)\" data-v-8ab7e4d4=\"\">Illinois Criminal Justice Information Authority<span class=\"sr-only\" data-v-8ab7e4d4=\"\"> (external link)</span></a>",
+          "html": "<a href=\"https://icjia.illinois.gov\" target=\"_blank\" style=\"color:#fff;\" aria-label=\"Illinois Criminal Justice Information Authority (opens in new window)\" data-v-9bcde2a1=\"\">Illinois Criminal Justice Information Authority<span class=\"sr-only\" data-v-9bcde2a1=\"\"> (external link)</span></a>",
           "target": [
             "a[href$=\"icjia.illinois.gov\"]"
           ]
@@ -2671,7 +2701,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
+          "html": "<button data-v-1d4de8ab=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -2689,7 +2719,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<div data-v-c8aa5ae8=\"\" class=\"v-list v-theme--light bg-transparent v-list--density-compact v-list--one-line\" tabindex=\"0\" role=\"navigation\" id=\"myVlist\" aria-label=\"Main navigation menu\">",
+          "html": "<div data-v-82963878=\"\" class=\"v-list v-theme--light bg-transparent v-list--density-compact v-list--one-line\" tabindex=\"0\" role=\"navigation\" id=\"myVlist\" aria-label=\"Main navigation menu\">",
           "target": [
             "#myVlist"
           ]
@@ -2725,7 +2755,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item--active"
           ]
@@ -2743,7 +2773,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a aria-current=\"page\" href=\"/program-summary\" class=\"router-link-active router-link-exact-active context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">Program Summary</a>",
+          "html": "<a aria-current=\"page\" href=\"/program-summary\" class=\"router-link-active router-link-exact-active context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">Program Summary</a>",
           "target": [
             ".router-link-active"
           ]
@@ -2761,7 +2791,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://www.facebook.com/ICJIA/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;margin-right:-10px;\" target=\"_blank\" aria-label=\"Link to ICJIA on Facebook (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.facebook.com/ICJIA/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;margin-right:-10px;\" target=\"_blank\" aria-label=\"Link to ICJIA on Facebook (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(1)"
           ]
@@ -2779,7 +2809,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://www.youtube.com/c/illinoiscriminaljusticeinformationauthority\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"Link to ICJIA on YouTube (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.youtube.com/c/illinoiscriminaljusticeinformationauthority\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"Link to ICJIA on YouTube (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(2)"
           ]
@@ -2797,7 +2827,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://www.instagram.com/icjia_illinois/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on Instagram (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.instagram.com/icjia_illinois/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on Instagram (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(3)"
           ]
@@ -2815,7 +2845,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://www.linkedin.com/company/icjia/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on LinkedIn (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.linkedin.com/company/icjia/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on LinkedIn (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(4)"
           ]
@@ -2833,7 +2863,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://icjia.illinois.gov\" target=\"_blank\" style=\"color:#fff;\" aria-label=\"Illinois Criminal Justice Information Authority (opens in new window)\" data-v-8ab7e4d4=\"\">Illinois Criminal Justice Information Authority<span class=\"sr-only\" data-v-8ab7e4d4=\"\"> (external link)</span></a>",
+          "html": "<a href=\"https://icjia.illinois.gov\" target=\"_blank\" style=\"color:#fff;\" aria-label=\"Illinois Criminal Justice Information Authority (opens in new window)\" data-v-9bcde2a1=\"\">Illinois Criminal Justice Information Authority<span class=\"sr-only\" data-v-9bcde2a1=\"\"> (external link)</span></a>",
           "target": [
             "a[href$=\"icjia.illinois.gov\"]"
           ]
@@ -2855,38 +2885,6 @@
       "help": "Inline text spacing must be adjustable with custom stylesheets",
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/avoid-inline-spacing?application=playwright",
       "nodes": [
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "important-letter-spacing",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Letter-spacing in the style attribute is not set to !important, or meets the minimum"
-            },
-            {
-              "id": "important-word-spacing",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "word-spacing in the style attribute is not set to !important, or meets the minimum"
-            },
-            {
-              "id": "important-line-height",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "line-height in the style attribute is not set to !important, or meets the minimum"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<html lang=\"en\" style=\"--vueuse-safe-area-top: env(safe-area-inset-top, 0px); --vueuse-safe-area-right: env(safe-area-inset-right, 0px); --vueuse-safe-area-bottom: env(safe-area-inset-bottom, 0px); --vueuse-safe-area-left: env(safe-area-inset-left, 0px);\">",
-          "target": [
-            "html"
-          ]
-        },
         {
           "any": [],
           "all": [
@@ -2946,7 +2944,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<header class=\"v-toolbar v-toolbar--density-default bg-white elevation-3 v-theme--light v-locale--is-ltr v-app-bar pl-5 pr-5\" style=\"top: 0px; transform: translateY(0px); position: fixed; z-index: 50; width: 100%; overflow: unset !important; left: 0px;\" fixed=\"\" app=\"\" size=\"150px\" data-v-ea3187dc=\"\">",
+          "html": "<header class=\"v-toolbar v-toolbar--density-default bg-white elevation-3 v-theme--light v-locale--is-ltr v-app-bar pl-5 pr-5\" style=\"top: 0px; transform: translateY(0px); position: fixed; z-index: 50; width: 100%; overflow: unset !important; left: 0px;\" fixed=\"\" app=\"\" size=\"150px\" data-v-1d4de8ab=\"\">",
           "target": [
             "header"
           ]
@@ -3010,7 +3008,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;background-color:white !important;\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;background-color:white !important;\" data-v-1d4de8ab=\"\">",
           "target": [
             ".ml-4"
           ]
@@ -3042,9 +3040,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;background-color:white !important;color:#333 !important;\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;background-color:white !important;color:#333 !important;\" data-v-1d4de8ab=\"\">",
           "target": [
-            ".hidden-sm-and-down.hover[type=\"button\"]"
+            ".v-toolbar__content > .hidden-sm-and-down"
           ]
         },
         {
@@ -3074,9 +3072,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<span style=\"font-weight:900 !important;font-size:22px;letter-spacing:0.004em;\" class=\"agency app-title\" data-v-ea3187dc=\"\">SAFE FROM THE START <span class=\"hidden-md-and-down\" data-v-ea3187dc=\"\"></span></span>",
+          "html": "<span style=\"font-weight:900 !important;font-size:22px;letter-spacing:0.004em;\" class=\"agency app-title\" data-v-1d4de8ab=\"\">SAFE FROM THE START <span class=\"hidden-md-and-down\" data-v-1d4de8ab=\"\"></span></span>",
           "target": [
-            ".hidden-sm-and-down.hover[type=\"button\"] > .v-btn__content[data-no-activator=\"\"] > .agency.app-title[data-v-ea3187dc=\"\"]"
+            ".hidden-sm-and-down > .v-btn__content[data-no-activator=\"\"] > .agency.app-title[data-v-1d4de8ab=\"\"]"
           ]
         },
         {
@@ -3106,9 +3104,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<div class=\"v-spacer\" style=\"\" data-v-ea3187dc=\"\"></div>",
+          "html": "<div class=\"v-spacer\" style=\"\" data-v-1d4de8ab=\"\"></div>",
           "target": [
-            ".v-spacer[data-v-ea3187dc=\"\"]:nth-child(6)"
+            ".v-spacer[data-v-1d4de8ab=\"\"]:nth-child(6)"
           ]
         },
         {
@@ -3138,9 +3136,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<span data-v-ea3187dc=\"\" style=\"display: inline-block;\">",
+          "html": "<span data-v-1d4de8ab=\"\" style=\"display: inline-block;\">",
           "target": [
-            ".v-toolbar__content > span[data-v-ea3187dc=\"\"] > span[data-v-ea3187dc=\"\"]:nth-child(1)"
+            ".v-toolbar__content > span[data-v-1d4de8ab=\"\"] > span[data-v-1d4de8ab=\"\"]:nth-child(1)"
           ]
         },
         {
@@ -3170,7 +3168,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
+          "html": "<a data-v-1d4de8ab=\"\" href=\"/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".hidden-sm-and-down.navItem[href=\"/\"]"
           ]
@@ -3202,9 +3200,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<span data-v-ea3187dc=\"\" style=\"display: inline-block;\">",
+          "html": "<span data-v-1d4de8ab=\"\" style=\"display: inline-block;\">",
           "target": [
-            "span[data-v-ea3187dc=\"\"]:nth-child(2)"
+            "span[data-v-1d4de8ab=\"\"]:nth-child(2)"
           ]
         },
         {
@@ -3234,7 +3232,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
+          "html": "<button data-v-1d4de8ab=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -3266,9 +3264,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<span data-v-ea3187dc=\"\" style=\"display: inline-block;\">",
+          "html": "<span data-v-1d4de8ab=\"\" style=\"display: inline-block;\">",
           "target": [
-            "span[data-v-ea3187dc=\"\"]:nth-child(3)"
+            "span[data-v-1d4de8ab=\"\"]:nth-child(3)"
           ]
         },
         {
@@ -3298,7 +3296,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
+          "html": "<a data-v-1d4de8ab=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".hidden-sm-and-down.navItem[href$=\"sites\"]"
           ]
@@ -3330,9 +3328,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<span data-v-ea3187dc=\"\" style=\"display: inline-block;\">",
+          "html": "<span data-v-1d4de8ab=\"\" style=\"display: inline-block;\">",
           "target": [
-            "span[data-v-ea3187dc=\"\"]:nth-child(4)"
+            "span[data-v-1d4de8ab=\"\"]:nth-child(4)"
           ]
         },
         {
@@ -3362,7 +3360,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
+          "html": "<a data-v-1d4de8ab=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".hidden-sm-and-down.navItem[href$=\"resources\"]"
           ]
@@ -3426,7 +3424,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<div class=\"v-container v-locale--is-ltr\" style=\"\"><div class=\"v-row\" style=\"\"><div class=\"v-col text-center mb-6\" style=\"\"><h1 style=\"font-size:40px;margin-top:80px;text-transform:uppercase;\">Program Summary</h1></div><!--v-if--></div></div>",
+          "html": "<div class=\"v-container v-locale--is-ltr\" style=\"\"><div class=\"v-row\" style=\"\"><div class=\"v-col text-center mb-6\" style=\"\"><h1 style=\"font-size:40px;margin-top:80px;text-transform:uppercase;\">Program Summary</h1></div><!----></div></div>",
           "target": [
             ".v-container.v-locale--is-ltr:nth-child(1)"
           ]
@@ -3458,7 +3456,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<div class=\"v-row\" style=\"\"><div class=\"v-col text-center mb-6\" style=\"\"><h1 style=\"font-size:40px;margin-top:80px;text-transform:uppercase;\">Program Summary</h1></div><!--v-if--></div>",
+          "html": "<div class=\"v-row\" style=\"\"><div class=\"v-col text-center mb-6\" style=\"\"><h1 style=\"font-size:40px;margin-top:80px;text-transform:uppercase;\">Program Summary</h1></div><!----></div>",
           "target": [
             ".v-container.v-locale--is-ltr:nth-child(1) > .v-row"
           ]
@@ -3554,7 +3552,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<div class=\"v-container v-locale--is-ltr\" style=\"\">",
+          "html": "<div class=\"v-container v-locale--is-ltr\" style=\"\"><div class=\"v-row\" style=\"\"><div class=\"v-col v-col-12 mt-0\" style=\"\"><contentdoc class=\"markdown-body\" style=\"font-family:&quot;Lato&quot;, sans-serif;\"></contentdoc></div></div></div>",
           "target": [
             ".pb-16 > .v-container.v-locale--is-ltr:nth-child(2)"
           ]
@@ -3586,7 +3584,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<div class=\"v-row\" style=\"\">",
+          "html": "<div class=\"v-row\" style=\"\"><div class=\"v-col v-col-12 mt-0\" style=\"\"><contentdoc class=\"markdown-body\" style=\"font-family:&quot;Lato&quot;, sans-serif;\"></contentdoc></div></div>",
           "target": [
             ".pb-16 > .v-container.v-locale--is-ltr:nth-child(2) > .v-row"
           ]
@@ -3618,7 +3616,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<div class=\"v-col v-col-12 mt-0\" style=\"\">",
+          "html": "<div class=\"v-col v-col-12 mt-0\" style=\"\"><contentdoc class=\"markdown-body\" style=\"font-family:&quot;Lato&quot;, sans-serif;\"></contentdoc></div>",
           "target": [
             ".v-col.v-col-12.mt-0"
           ]
@@ -3650,9 +3648,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<div class=\"markdown-body\" data-content-id=\"content:program-summary.md\" style=\"font-family:'Lato', sans-serif;\">",
+          "html": "<contentdoc class=\"markdown-body\" style=\"font-family:&quot;Lato&quot;, sans-serif;\"></contentdoc>",
           "target": [
-            "div[data-content-id=\"content:program-summary.md\"]"
+            "contentdoc"
           ]
         },
         {
@@ -3682,7 +3680,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<div variant=\"text\" class=\"text-center pt-3 pb-3 footer-bg\" style=\"justify-content:space-around;background:#1263a5;\" data-v-30119c05=\"\">",
+          "html": "<div variant=\"text\" class=\"text-center pt-3 pb-3 footer-bg\" style=\"justify-content:space-around;background:#1263a5;\" data-v-6f8bbe14=\"\">",
           "target": [
             ".pt-3"
           ]
@@ -3714,7 +3712,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">Home</a>",
+          "html": "<a href=\"/\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">Home</a>",
           "target": [
             ".context-link.px-2[href=\"/\"]"
           ]
@@ -3746,7 +3744,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/about\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">About</a>",
+          "html": "<a href=\"/about\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">About</a>",
           "target": [
             ".context-link.px-2[href$=\"about\"]"
           ]
@@ -3778,7 +3776,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a aria-current=\"page\" href=\"/program-summary\" class=\"router-link-active router-link-exact-active context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">Program Summary</a>",
+          "html": "<a aria-current=\"page\" href=\"/program-summary\" class=\"router-link-active router-link-exact-active context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">Program Summary</a>",
           "target": [
             ".router-link-active"
           ]
@@ -3810,7 +3808,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/research\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">Research</a>",
+          "html": "<a href=\"/research\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">Research</a>",
           "target": [
             ".context-link.px-2[href$=\"research\"]"
           ]
@@ -3842,7 +3840,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/resources\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">Resources</a>",
+          "html": "<a href=\"/resources\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">Resources</a>",
           "target": [
             ".context-link.px-2[href$=\"resources\"]"
           ]
@@ -3874,7 +3872,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/sites\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">Sites</a>",
+          "html": "<a href=\"/sites\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">Sites</a>",
           "target": [
             ".context-link.px-2[href$=\"sites\"]"
           ]
@@ -3906,7 +3904,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<footer class=\"v-footer v-theme--light\" style=\"height:auto;margin:0;padding:0;\" dark=\"\" data-v-8ab7e4d4=\"\">",
+          "html": "<footer class=\"v-footer v-theme--light\" style=\"height:auto;margin:0;padding:0;\" dark=\"\" data-v-9bcde2a1=\"\">",
           "target": [
             "footer"
           ]
@@ -3938,7 +3936,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<div class=\"v-card v-card--flat v-theme--light v-card--density-default rounded-0 v-card--variant-elevated text-center markdown-body pb-4\" style=\"width:100%;background:#0d4474;\" data-v-8ab7e4d4=\"\">",
+          "html": "<div class=\"v-card v-card--flat v-theme--light v-card--density-default rounded-0 v-card--variant-elevated text-center markdown-body pb-4\" style=\"width:100%;background:#0d4474;\" data-v-9bcde2a1=\"\">",
           "target": [
             ".v-card"
           ]
@@ -3970,7 +3968,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<div class=\"v-container v-locale--is-ltr\" style=\"\" fill-height=\"\" data-v-8ab7e4d4=\"\">",
+          "html": "<div class=\"v-container v-locale--is-ltr\" style=\"\" fill-height=\"\" data-v-9bcde2a1=\"\">",
           "target": [
             "div[fill-height=\"\"]"
           ]
@@ -4002,7 +4000,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<div class=\"v-row align-center justify-center\" style=\"\" data-v-8ab7e4d4=\"\">",
+          "html": "<div class=\"v-row align-center justify-center\" style=\"\" data-v-9bcde2a1=\"\">",
           "target": [
             ".justify-center"
           ]
@@ -4034,7 +4032,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<div class=\"v-col-md-12 v-col-12 text-center mt-0\" style=\"color:white;\" data-v-8ab7e4d4=\"\">",
+          "html": "<div class=\"v-col-md-12 v-col-12 text-center mt-0\" style=\"color:white;\" data-v-9bcde2a1=\"\">",
           "target": [
             ".v-col-md-12"
           ]
@@ -4066,7 +4064,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<img src=\"/icjia-logo.png\" alt=\"Footer logo\" width=\"150\" style=\"border:0px solid #ddd;display:inline;\" class=\"hover\" data-v-8ab7e4d4=\"\">",
+          "html": "<img src=\"/icjia-logo.png\" alt=\"Footer logo\" width=\"150\" style=\"border:0px solid #ddd;display:inline;\" class=\"hover\" data-v-9bcde2a1=\"\">",
           "target": [
             "img[alt=\"Footer logo\"]"
           ]
@@ -4098,7 +4096,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<div class=\"pb-6\" style=\"margin-top:-10px;\" data-v-8ab7e4d4=\"\">",
+          "html": "<div class=\"pb-6\" style=\"margin-top:-10px;\" data-v-9bcde2a1=\"\">",
           "target": [
             ".pb-6"
           ]
@@ -4130,7 +4128,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://www.facebook.com/ICJIA/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;margin-right:-10px;\" target=\"_blank\" aria-label=\"Link to ICJIA on Facebook (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.facebook.com/ICJIA/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;margin-right:-10px;\" target=\"_blank\" aria-label=\"Link to ICJIA on Facebook (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(1)"
           ]
@@ -4162,7 +4160,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://www.youtube.com/c/illinoiscriminaljusticeinformationauthority\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"Link to ICJIA on YouTube (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.youtube.com/c/illinoiscriminaljusticeinformationauthority\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"Link to ICJIA on YouTube (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(2)"
           ]
@@ -4194,7 +4192,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://www.instagram.com/icjia_illinois/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on Instagram (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.instagram.com/icjia_illinois/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on Instagram (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(3)"
           ]
@@ -4226,7 +4224,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://www.linkedin.com/company/icjia/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on LinkedIn (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.linkedin.com/company/icjia/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on LinkedIn (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(4)"
           ]
@@ -4258,9 +4256,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<div style=\"font-size:12px;font-weight:400;\" data-v-8ab7e4d4=\"\">",
+          "html": "<div style=\"font-size:12px;font-weight:400;\" data-v-9bcde2a1=\"\">",
           "target": [
-            "div[data-v-8ab7e4d4=\"\"]:nth-child(3)"
+            "div[data-v-9bcde2a1=\"\"]:nth-child(3)"
           ]
         },
         {
@@ -4290,7 +4288,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://icjia.illinois.gov\" target=\"_blank\" style=\"color:#fff;\" aria-label=\"Illinois Criminal Justice Information Authority (opens in new window)\" data-v-8ab7e4d4=\"\">Illinois Criminal Justice Information Authority<span class=\"sr-only\" data-v-8ab7e4d4=\"\"> (external link)</span></a>",
+          "html": "<a href=\"https://icjia.illinois.gov\" target=\"_blank\" style=\"color:#fff;\" aria-label=\"Illinois Criminal Justice Information Authority (opens in new window)\" data-v-9bcde2a1=\"\">Illinois Criminal Justice Information Authority<span class=\"sr-only\" data-v-9bcde2a1=\"\"> (external link)</span></a>",
           "target": [
             "a[href$=\"icjia.illinois.gov\"]"
           ]
@@ -4322,321 +4320,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/privacy\" class=\"\" style=\"color:#fff;\" data-v-8ab7e4d4=\"\">Privacy </a>",
+          "html": "<a href=\"/privacy\" class=\"\" style=\"color:#fff;\" data-v-9bcde2a1=\"\">Privacy </a>",
           "target": [
             "a[href$=\"privacy\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "important-letter-spacing",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Letter-spacing in the style attribute is not set to !important, or meets the minimum"
-            },
-            {
-              "id": "important-word-spacing",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "word-spacing in the style attribute is not set to !important, or meets the minimum"
-            },
-            {
-              "id": "important-line-height",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "line-height in the style attribute is not set to !important, or meets the minimum"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<nuxt-devtools-inspect-panel style=\"z-index: 999999; position: fixed;\"></nuxt-devtools-inspect-panel>",
-          "target": [
-            "nuxt-devtools-inspect-panel"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "important-letter-spacing",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Letter-spacing in the style attribute is not set to !important, or meets the minimum"
-            },
-            {
-              "id": "important-word-spacing",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "word-spacing in the style attribute is not set to !important, or meets the minimum"
-            },
-            {
-              "id": "important-line-height",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "line-height in the style attribute is not set to !important, or meets the minimum"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<div id=\"nuxt-devtools-anchor\" class=\"\" style=\"left: 640px; top: 696px; pointer-events: auto; --nuxt-devtools-widget-bg: #ffffff; --nuxt-devtools-widget-fg: #111; --nuxt-devtools-widget-border: #efefef; --nuxt-devtools-widget-shadow: rgba(128,128,128,0.1);\">",
-          "target": [
-            [
-              "nuxt-devtools-frame",
-              "#nuxt-devtools-anchor"
-            ]
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "important-letter-spacing",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Letter-spacing in the style attribute is not set to !important, or meets the minimum"
-            },
-            {
-              "id": "important-word-spacing",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "word-spacing in the style attribute is not set to !important, or meets the minimum"
-            },
-            {
-              "id": "important-line-height",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "line-height in the style attribute is not set to !important, or meets the minimum"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"nuxt-devtools-panel\" style=\"transform: translate(-50%, -50%);\">",
-          "target": [
-            [
-              "nuxt-devtools-frame",
-              ".nuxt-devtools-panel"
-            ]
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "important-letter-spacing",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Letter-spacing in the style attribute is not set to !important, or meets the minimum"
-            },
-            {
-              "id": "important-word-spacing",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "word-spacing in the style attribute is not set to !important, or meets the minimum"
-            },
-            {
-              "id": "important-line-height",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "line-height in the style attribute is not set to !important, or meets the minimum"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<button class=\"nuxt-devtools-icon-button nuxt-devtools-nuxt-button\" title=\"Toggle Nuxt DevTools\" style=\"filter: saturate(0);\">",
-          "target": [
-            [
-              "nuxt-devtools-frame",
-              ".nuxt-devtools-nuxt-button"
-            ]
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "important-letter-spacing",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Letter-spacing in the style attribute is not set to !important, or meets the minimum"
-            },
-            {
-              "id": "important-word-spacing",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "word-spacing in the style attribute is not set to !important, or meets the minimum"
-            },
-            {
-              "id": "important-line-height",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "line-height in the style attribute is not set to !important, or meets the minimum"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<svg viewBox=\"0 0 324 324\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" style=\"margin-top: -1px; height: 1.2em; width: 1.2em;\">",
-          "target": [
-            [
-              "nuxt-devtools-frame",
-              "svg[viewBox=\"0 0 324 324\"]"
-            ]
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "important-letter-spacing",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Letter-spacing in the style attribute is not set to !important, or meets the minimum"
-            },
-            {
-              "id": "important-word-spacing",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "word-spacing in the style attribute is not set to !important, or meets the minimum"
-            },
-            {
-              "id": "important-line-height",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "line-height in the style attribute is not set to !important, or meets the minimum"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"nuxt-devtools-panel-content\" style=\"border-left: 1px solid rgba(136, 136, 136, 0.2); width: 1px; height: 10px;\"></div>",
-          "target": [
-            [
-              "nuxt-devtools-frame",
-              ".nuxt-devtools-panel-content:nth-child(2)"
-            ]
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "important-letter-spacing",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Letter-spacing in the style attribute is not set to !important, or meets the minimum"
-            },
-            {
-              "id": "important-word-spacing",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "word-spacing in the style attribute is not set to !important, or meets the minimum"
-            },
-            {
-              "id": "important-line-height",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "line-height in the style attribute is not set to !important, or meets the minimum"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"nuxt-devtools-panel-content\" style=\"border-left: 1px solid rgba(136, 136, 136, 0.2); width: 1px; height: 10px;\"></div>",
-          "target": [
-            [
-              "nuxt-devtools-frame",
-              ".nuxt-devtools-panel-content:nth-child(4)"
-            ]
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "important-letter-spacing",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Letter-spacing in the style attribute is not set to !important, or meets the minimum"
-            },
-            {
-              "id": "important-word-spacing",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "word-spacing in the style attribute is not set to !important, or meets the minimum"
-            },
-            {
-              "id": "important-line-height",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "line-height in the style attribute is not set to !important, or meets the minimum"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" style=\"height: 1.2em; width: 1.2em; opacity: 0.5;\">",
-          "target": [
-            [
-              "nuxt-devtools-frame",
-              "svg[viewBox=\"0 0 24 24\"]"
-            ]
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "important-letter-spacing",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Letter-spacing in the style attribute is not set to !important, or meets the minimum"
-            },
-            {
-              "id": "important-word-spacing",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "word-spacing in the style attribute is not set to !important, or meets the minimum"
-            },
-            {
-              "id": "important-line-height",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "line-height in the style attribute is not set to !important, or meets the minimum"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<div style=\"position: fixed; z-index: -1; pointer-events: none; width: min(80vw, -48px + 100vw); height: min(60vh, -48px + 100vh); left: -512px; transform: translate(0px, 0px); bottom: 0px;\">",
-          "target": [
-            [
-              "nuxt-devtools-frame",
-              "#nuxt-devtools-anchor > div:nth-child(3)"
-            ]
           ]
         }
       ]
@@ -4673,7 +4359,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;background-color:white !important;\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;background-color:white !important;\" data-v-1d4de8ab=\"\">",
           "target": [
             ".ml-4"
           ]
@@ -4691,9 +4377,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;background-color:white !important;color:#333 !important;\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;background-color:white !important;color:#333 !important;\" data-v-1d4de8ab=\"\">",
           "target": [
-            ".hidden-sm-and-down.hover[type=\"button\"]"
+            ".v-toolbar__content > .hidden-sm-and-down"
           ]
         },
         {
@@ -4709,114 +4395,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
+          "html": "<button data-v-1d4de8ab=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "non-empty-title",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "Element has a title attribute"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<button title=\"Go to parent\" class=\"flex items-center text-sm font-mono op50 disabled:pointer-events-none hover:text-green6 hover:op100 disabled:op10!\" disabled=\"\"><div class=\"i-ph-arrow-bend-left-up-duotone text-lg\"></div></button>",
-          "target": [
-            [
-              "nuxt-devtools-inspect-panel",
-              ".disabled\\:pointer-events-none"
-            ]
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "non-empty-title",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "Element has a title attribute"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<button title=\"Open in editor\" class=\"flex items-center text-sm font-mono op50 hover:text-green6 hover:op100\"><!--v-if--><div class=\"i-ph-arrow-up-right-light mt--2 text-lg\"></div></button>",
-          "target": [
-            [
-              "nuxt-devtools-inspect-panel",
-              "button[title=\"Open in editor\"]"
-            ]
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "non-empty-title",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "Element has a title attribute"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<button title=\"Close\" class=\"flex-none op50 hover:op100\"><div class=\"i-ph-x text-lg\"></div></button>",
-          "target": [
-            [
-              "nuxt-devtools-inspect-panel",
-              ".flex-none"
-            ]
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "non-empty-title",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "Element has a title attribute"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<button class=\"nuxt-devtools-icon-button nuxt-devtools-nuxt-button\" title=\"Toggle Nuxt DevTools\" style=\"filter: saturate(0);\">",
-          "target": [
-            [
-              "nuxt-devtools-frame",
-              ".nuxt-devtools-nuxt-button"
-            ]
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "non-empty-title",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "Element has a title attribute"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<button class=\"nuxt-devtools-icon-button nuxt-devtools-panel-content\" title=\"Toggle Component Inspector\">",
-          "target": [
-            [
-              "nuxt-devtools-frame",
-              "button[title=\"Toggle Component Inspector\"]"
-            ]
           ]
         }
       ]
@@ -4857,12 +4438,6 @@
                   "target": [
                     "h1"
                   ]
-                },
-                {
-                  "html": "<h3 id=\"sfs-core-components\"><!--[-->SFS Core Components<!--]--></h3>",
-                  "target": [
-                    "#sfs-core-components"
-                  ]
                 }
               ],
               "impact": "serious",
@@ -4886,7 +4461,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<html lang=\"en\" style=\"--vueuse-safe-area-top: env(safe-area-inset-top, 0px); --vueuse-safe-area-right: env(safe-area-inset-right, 0px); --vueuse-safe-area-bottom: env(safe-area-inset-bottom, 0px); --vueuse-safe-area-left: env(safe-area-inset-left, 0px);\">",
+          "html": "<html lang=\"en\">",
           "target": [
             "html"
           ]
@@ -4965,1056 +4540,6 @@
             {
               "id": "color-contrast",
               "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<p>",
-          "target": [
-            "p:nth-child(1)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "15.0pt (20px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<h3 id=\"sfs-core-components\"><!--[-->SFS Core Components<!--]--></h3>",
-          "target": [
-            "#sfs-core-components"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<p><!--[-->• Coalition-Building: Partnerships with community-based agencies and other local and state organizations serving children exposed to violence and their families.<!--]--></p>",
-          "target": [
-            "p:nth-child(3)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<p><!--[-->• Direct Services: Assessment, service plan development, individual/group therapy and case management, re-assessment, psychoeducation.<!--]--></p>",
-          "target": [
-            "p:nth-child(4)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<p><!--[-->• Public Awareness: Community outreach and education.<!--]--></p>",
-          "target": [
-            "p:nth-child(5)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<strong><!--[-->Coalition-Building and Collaboration<!--]--></strong>",
-          "target": [
-            "p:nth-child(6) > strong"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<p>",
-          "target": [
-            "p:nth-child(7)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<p>",
-          "target": [
-            "p:nth-child(8)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<p><!--[-->Required partners:<!--]--></p>",
-          "target": [
-            "p:nth-child(9)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Child advocacy centers<!--]--></li>",
-          "target": [
-            "ul:nth-child(10) > li:nth-child(1)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Child welfare agencies<!--]--></li>",
-          "target": [
-            "ul:nth-child(10) > li:nth-child(2)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Victim service agencies, including but not limited to domestic violence and sexual assault services<!--]--></li>",
-          "target": [
-            "ul:nth-child(10) > li:nth-child(3)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Head Start; pre-school and early childhood programs; and childcare providers<!--]--></li>",
-          "target": [
-            "ul:nth-child(10) > li:nth-child(4)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Illinois Department of Children and Family Services/child welfare agencies<!--]--></li>",
-          "target": [
-            "ul:nth-child(10) > li:nth-child(5)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Law enforcement agencies<!--]--></li>",
-          "target": [
-            "ul:nth-child(10) > li:nth-child(6)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Sexual assault agencies<!--]--></li>",
-          "target": [
-            "ul:nth-child(10) > li:nth-child(7)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Healthcare providers including medical and mental/behavioral health professionals<!--]--></li>",
-          "target": [
-            "ul:nth-child(10) > li:nth-child(8)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<p><!--[-->Recommended partners:<!--]--></p>",
-          "target": [
-            "p:nth-child(11)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->People with lived experience<!--]--></li>",
-          "target": [
-            "ul:nth-child(12) > li:nth-child(1)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Partner Abuse Intervention Programs<!--]--></li>",
-          "target": [
-            "ul:nth-child(12) > li:nth-child(2)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Community leaders/stakeholders, including members with community influence<!--]--></li>",
-          "target": [
-            "ul:nth-child(12) > li:nth-child(3)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Court personnel: Judges, attorneys, guardians ad litem, court-appointed special advocates, victim-witness advocates, administrative staff of dependency/juvenile, family, domestic violence, and drug courts<!--]--></li>",
-          "target": [
-            "ul:nth-child(12) > li:nth-child(4)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Crisis nurseries<!--]--></li>",
-          "target": [
-            "ul:nth-child(12) > li:nth-child(5)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Early intervention programs, such as your local Child and Family Connections for ages 0 to 3<!--]--></li>",
-          "target": [
-            "ul:nth-child(12) > li:nth-child(6)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Faith-based leaders<!--]--></li>",
-          "target": [
-            "ul:nth-child(12) > li:nth-child(7)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Family case management: WIC, child protective services, family support services, child welfare agencies, foster care programs<!--]--></li>",
-          "target": [
-            "ul:nth-child(12) > li:nth-child(8)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Hospitals, emergency medical services, primary health care providers<!--]--></li>",
-          "target": [
-            "li:nth-child(9)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Housing authorities<!--]--></li>",
-          "target": [
-            "li:nth-child(10)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Local parent groups, such as parent-teacher associations<!--]--></li>",
-          "target": [
-            "li:nth-child(11)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Schools, including special education programs<!--]--></li>",
-          "target": [
-            "li:nth-child(12)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Social service agencies<!--]--></li>",
-          "target": [
-            "li:nth-child(13)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Substance use disorder prevention and treatment services<!--]--></li>",
-          "target": [
-            "li:nth-child(14)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Illinois Family Violence Coordinating Councils<!--]--></li>",
-          "target": [
-            "li:nth-child(15)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Culturally specific organizations<!--]--></li>",
-          "target": [
-            "li:nth-child(16)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Public health departments<!--]--></li>",
-          "target": [
-            "li:nth-child(17)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<strong><!--[-->Direct Services<!--]--></strong>",
-          "target": [
-            "p:nth-child(13) > strong"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<p>",
-          "target": [
-            "p:nth-child(14)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<em><!--[-->Exposure to violence<!--]--></em>",
-          "target": [
-            "em"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<p>",
-          "target": [
-            "p:nth-child(15)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<p>",
-          "target": [
-            "p:nth-child(16)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<strong><!--[-->Public Awareness<!--]--></strong>",
-          "target": [
-            "p:nth-child(17) > strong"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#24292e",
-                "bgColor": "#ffffff",
-                "contrastRatio": 14.66,
-                "fontSize": "12.0pt (16px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 14.66"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<p>",
-          "target": [
-            "p:nth-child(18)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
                 "fgColor": "#ffffff",
                 "bgColor": "#1263a5",
                 "contrastRatio": 6.26,
@@ -6030,7 +4555,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">Home</a>",
+          "html": "<a href=\"/\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">Home</a>",
           "target": [
             ".context-link.px-2[href=\"/\"]"
           ]
@@ -6055,7 +4580,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/about\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">About</a>",
+          "html": "<a href=\"/about\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">About</a>",
           "target": [
             ".context-link.px-2[href$=\"about\"]"
           ]
@@ -6080,7 +4605,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a aria-current=\"page\" href=\"/program-summary\" class=\"router-link-active router-link-exact-active context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">Program Summary</a>",
+          "html": "<a aria-current=\"page\" href=\"/program-summary\" class=\"router-link-active router-link-exact-active context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">Program Summary</a>",
           "target": [
             ".router-link-active"
           ]
@@ -6105,7 +4630,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/research\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">Research</a>",
+          "html": "<a href=\"/research\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">Research</a>",
           "target": [
             ".context-link.px-2[href$=\"research\"]"
           ]
@@ -6130,7 +4655,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/resources\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">Resources</a>",
+          "html": "<a href=\"/resources\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">Resources</a>",
           "target": [
             ".context-link.px-2[href$=\"resources\"]"
           ]
@@ -6155,7 +4680,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/sites\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">Sites</a>",
+          "html": "<a href=\"/sites\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">Sites</a>",
           "target": [
             ".context-link.px-2[href$=\"sites\"]"
           ]
@@ -6180,9 +4705,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<strong data-v-8ab7e4d4=\"\">",
+          "html": "<strong data-v-9bcde2a1=\"\">",
           "target": [
-            "div[data-v-8ab7e4d4=\"\"]:nth-child(3) > strong:nth-child(1)"
+            "strong:nth-child(1)"
           ]
         },
         {
@@ -6205,7 +4730,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"https://icjia.illinois.gov\" target=\"_blank\" style=\"color:#fff;\" aria-label=\"Illinois Criminal Justice Information Authority (opens in new window)\" data-v-8ab7e4d4=\"\">Illinois Criminal Justice Information Authority<span class=\"sr-only\" data-v-8ab7e4d4=\"\"> (external link)</span></a>",
+          "html": "<a href=\"https://icjia.illinois.gov\" target=\"_blank\" style=\"color:#fff;\" aria-label=\"Illinois Criminal Justice Information Authority (opens in new window)\" data-v-9bcde2a1=\"\">Illinois Criminal Justice Information Authority<span class=\"sr-only\" data-v-9bcde2a1=\"\"> (external link)</span></a>",
           "target": [
             "a[href$=\"icjia.illinois.gov\"]"
           ]
@@ -6230,7 +4755,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/privacy\" class=\"\" style=\"color:#fff;\" data-v-8ab7e4d4=\"\">Privacy </a>",
+          "html": "<a href=\"/privacy\" class=\"\" style=\"color:#fff;\" data-v-9bcde2a1=\"\">Privacy </a>",
           "target": [
             "a[href$=\"privacy\"]"
           ]
@@ -6267,7 +4792,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<html lang=\"en\" style=\"--vueuse-safe-area-top: env(safe-area-inset-top, 0px); --vueuse-safe-area-right: env(safe-area-inset-right, 0px); --vueuse-safe-area-bottom: env(safe-area-inset-bottom, 0px); --vueuse-safe-area-left: env(safe-area-inset-left, 0px);\">",
+          "html": "<html lang=\"en\">",
           "target": [
             "html"
           ]
@@ -6304,7 +4829,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<html lang=\"en\" style=\"--vueuse-safe-area-top: env(safe-area-inset-top, 0px); --vueuse-safe-area-right: env(safe-area-inset-right, 0px); --vueuse-safe-area-bottom: env(safe-area-inset-bottom, 0px); --vueuse-safe-area-left: env(safe-area-inset-left, 0px);\">",
+          "html": "<html lang=\"en\">",
           "target": [
             "html"
           ]
@@ -6341,7 +4866,7 @@
             }
           ],
           "impact": null,
-          "html": "<html lang=\"en\" style=\"--vueuse-safe-area-top: env(safe-area-inset-top, 0px); --vueuse-safe-area-right: env(safe-area-inset-right, 0px); --vueuse-safe-area-bottom: env(safe-area-inset-bottom, 0px); --vueuse-safe-area-left: env(safe-area-inset-left, 0px);\">",
+          "html": "<html lang=\"en\">",
           "target": [
             "html"
           ]
@@ -6389,7 +4914,7 @@
             }
           ],
           "impact": null,
-          "html": "<img alt=\"ICJIA Logo\" src=\"/icjia-logo.png\" width=\"55\" data-v-ea3187dc=\"\">",
+          "html": "<img alt=\"ICJIA Logo\" src=\"/icjia-logo.png\" width=\"55\" data-v-1d4de8ab=\"\">",
           "target": [
             "img[alt=\"ICJIA Logo\"]"
           ]
@@ -6415,7 +4940,7 @@
             }
           ],
           "impact": null,
-          "html": "<img src=\"/icjia-logo.png\" alt=\"Footer logo\" width=\"150\" style=\"border:0px solid #ddd;display:inline;\" class=\"hover\" data-v-8ab7e4d4=\"\">",
+          "html": "<img src=\"/icjia-logo.png\" alt=\"Footer logo\" width=\"150\" style=\"border:0px solid #ddd;display:inline;\" class=\"hover\" data-v-9bcde2a1=\"\">",
           "target": [
             "img[alt=\"Footer logo\"]"
           ]
@@ -6490,7 +5015,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
+          "html": "<a data-v-1d4de8ab=\"\" href=\"/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".hidden-sm-and-down.navItem[href=\"/\"]"
           ]
@@ -6516,7 +5041,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
+          "html": "<a data-v-1d4de8ab=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".hidden-sm-and-down.navItem[href$=\"sites\"]"
           ]
@@ -6542,7 +5067,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
+          "html": "<a data-v-1d4de8ab=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".hidden-sm-and-down.navItem[href$=\"resources\"]"
           ]
@@ -6568,7 +5093,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"font-weight: 900; color: rgb(0, 0, 0);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"font-weight: 900; color: rgb(0, 0, 0);\">",
           "target": [
             ".v-list-item[href=\"/\"][role=\"link\"]"
           ]
@@ -6594,7 +5119,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/about\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item[href$=\"about\"][role=\"link\"]"
           ]
@@ -6620,7 +5145,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/program-summary\" aria-current=\"page\" tabindex=\"-2\" class=\"v-list-item v-list-item--active v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item--active"
           ]
@@ -6646,7 +5171,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
+          "html": "<a data-v-82963878=\"\" href=\"/research\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text\" role=\"link\" style=\"margin-top: 0px; font-weight: 400; color: rgb(85, 85, 85);\">",
           "target": [
             ".v-list-item[href$=\"research\"][role=\"link\"]"
           ]
@@ -6672,7 +5197,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
+          "html": "<a data-v-82963878=\"\" href=\"/sites\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
           "target": [
             ".v-list-item[href$=\"sites\"][role=\"link\"]"
           ]
@@ -6698,7 +5223,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-c8aa5ae8=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
+          "html": "<a data-v-82963878=\"\" href=\"/resources\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text hover\" role=\"link\" style=\"font-weight: 900 !important;\">",
           "target": [
             ".v-list-item[href$=\"resources\"][role=\"link\"]"
           ]
@@ -6724,7 +5249,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"/\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">Home</a>",
+          "html": "<a href=\"/\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">Home</a>",
           "target": [
             ".context-link.px-2[href=\"/\"]"
           ]
@@ -6750,7 +5275,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"/about\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">About</a>",
+          "html": "<a href=\"/about\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">About</a>",
           "target": [
             ".context-link.px-2[href$=\"about\"]"
           ]
@@ -6776,7 +5301,7 @@
             }
           ],
           "impact": null,
-          "html": "<a aria-current=\"page\" href=\"/program-summary\" class=\"router-link-active router-link-exact-active context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">Program Summary</a>",
+          "html": "<a aria-current=\"page\" href=\"/program-summary\" class=\"router-link-active router-link-exact-active context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">Program Summary</a>",
           "target": [
             ".router-link-active"
           ]
@@ -6802,7 +5327,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"/research\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">Research</a>",
+          "html": "<a href=\"/research\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">Research</a>",
           "target": [
             ".context-link.px-2[href$=\"research\"]"
           ]
@@ -6828,7 +5353,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"/resources\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">Resources</a>",
+          "html": "<a href=\"/resources\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">Resources</a>",
           "target": [
             ".context-link.px-2[href$=\"resources\"]"
           ]
@@ -6854,7 +5379,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"/sites\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-30119c05=\"\">Sites</a>",
+          "html": "<a href=\"/sites\" class=\"context-link px-2\" style=\"font-size:14px;font-family:'Oswald', sans-serif !important;\" data-v-6f8bbe14=\"\">Sites</a>",
           "target": [
             ".context-link.px-2[href$=\"sites\"]"
           ]
@@ -6887,7 +5412,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"https://www.facebook.com/ICJIA/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;margin-right:-10px;\" target=\"_blank\" aria-label=\"Link to ICJIA on Facebook (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.facebook.com/ICJIA/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;margin-right:-10px;\" target=\"_blank\" aria-label=\"Link to ICJIA on Facebook (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(1)"
           ]
@@ -6920,7 +5445,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"https://www.youtube.com/c/illinoiscriminaljusticeinformationauthority\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"Link to ICJIA on YouTube (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.youtube.com/c/illinoiscriminaljusticeinformationauthority\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"Link to ICJIA on YouTube (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(2)"
           ]
@@ -6953,7 +5478,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"https://www.instagram.com/icjia_illinois/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on Instagram (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.instagram.com/icjia_illinois/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on Instagram (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(3)"
           ]
@@ -6986,7 +5511,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"https://www.linkedin.com/company/icjia/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on LinkedIn (opens in new window)\" data-v-8ab7e4d4=\"\">",
+          "html": "<a href=\"https://www.linkedin.com/company/icjia/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text footer-link\" style=\"color:#fff !important;font-size:20px;\" target=\"_blank\" aria-label=\"ICJIA on LinkedIn (opens in new window)\" data-v-9bcde2a1=\"\">",
           "target": [
             ".footer-link.v-btn[target=\"_blank\"]:nth-child(4)"
           ]
@@ -7019,7 +5544,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"https://icjia.illinois.gov\" target=\"_blank\" style=\"color:#fff;\" aria-label=\"Illinois Criminal Justice Information Authority (opens in new window)\" data-v-8ab7e4d4=\"\">Illinois Criminal Justice Information Authority<span class=\"sr-only\" data-v-8ab7e4d4=\"\"> (external link)</span></a>",
+          "html": "<a href=\"https://icjia.illinois.gov\" target=\"_blank\" style=\"color:#fff;\" aria-label=\"Illinois Criminal Justice Information Authority (opens in new window)\" data-v-9bcde2a1=\"\">Illinois Criminal Justice Information Authority<span class=\"sr-only\" data-v-9bcde2a1=\"\"> (external link)</span></a>",
           "target": [
             "a[href$=\"icjia.illinois.gov\"]"
           ]
@@ -7045,527 +5570,9 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"/privacy\" class=\"\" style=\"color:#fff;\" data-v-8ab7e4d4=\"\">Privacy </a>",
+          "html": "<a href=\"/privacy\" class=\"\" style=\"color:#fff;\" data-v-9bcde2a1=\"\">Privacy </a>",
           "target": [
             "a[href$=\"privacy\"]"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "list",
-      "impact": null,
-      "tags": [
-        "cat.structure",
-        "wcag2a",
-        "wcag131",
-        "EN-301-549",
-        "EN-9.1.3.1"
-      ],
-      "description": "Ensure that lists are structured correctly",
-      "help": "<ul> and <ol> must only directly contain <li>, <script> or <template> elements",
-      "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/list?application=playwright",
-      "nodes": [
-        {
-          "any": [],
-          "all": [],
-          "none": [
-            {
-              "id": "only-listitems",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List element only has direct children that are allowed inside <li> elements"
-            }
-          ],
-          "impact": null,
-          "html": "<ul>",
-          "target": [
-            "ul:nth-child(10)"
-          ]
-        },
-        {
-          "any": [],
-          "all": [],
-          "none": [
-            {
-              "id": "only-listitems",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List element only has direct children that are allowed inside <li> elements"
-            }
-          ],
-          "impact": null,
-          "html": "<ul>",
-          "target": [
-            "ul:nth-child(12)"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "listitem",
-      "impact": null,
-      "tags": [
-        "cat.structure",
-        "wcag2a",
-        "wcag131",
-        "EN-301-549",
-        "EN-9.1.3.1"
-      ],
-      "description": "Ensure <li> elements are used semantically",
-      "help": "<li> elements must be contained in a <ul> or <ol>",
-      "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/listitem?application=playwright",
-      "nodes": [
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Child advocacy centers<!--]--></li>",
-          "target": [
-            "ul:nth-child(10) > li:nth-child(1)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Child welfare agencies<!--]--></li>",
-          "target": [
-            "ul:nth-child(10) > li:nth-child(2)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Victim service agencies, including but not limited to domestic violence and sexual assault services<!--]--></li>",
-          "target": [
-            "ul:nth-child(10) > li:nth-child(3)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Head Start; pre-school and early childhood programs; and childcare providers<!--]--></li>",
-          "target": [
-            "ul:nth-child(10) > li:nth-child(4)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Illinois Department of Children and Family Services/child welfare agencies<!--]--></li>",
-          "target": [
-            "ul:nth-child(10) > li:nth-child(5)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Law enforcement agencies<!--]--></li>",
-          "target": [
-            "ul:nth-child(10) > li:nth-child(6)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Sexual assault agencies<!--]--></li>",
-          "target": [
-            "ul:nth-child(10) > li:nth-child(7)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Healthcare providers including medical and mental/behavioral health professionals<!--]--></li>",
-          "target": [
-            "ul:nth-child(10) > li:nth-child(8)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->People with lived experience<!--]--></li>",
-          "target": [
-            "ul:nth-child(12) > li:nth-child(1)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Partner Abuse Intervention Programs<!--]--></li>",
-          "target": [
-            "ul:nth-child(12) > li:nth-child(2)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Community leaders/stakeholders, including members with community influence<!--]--></li>",
-          "target": [
-            "ul:nth-child(12) > li:nth-child(3)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Court personnel: Judges, attorneys, guardians ad litem, court-appointed special advocates, victim-witness advocates, administrative staff of dependency/juvenile, family, domestic violence, and drug courts<!--]--></li>",
-          "target": [
-            "ul:nth-child(12) > li:nth-child(4)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Crisis nurseries<!--]--></li>",
-          "target": [
-            "ul:nth-child(12) > li:nth-child(5)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Early intervention programs, such as your local Child and Family Connections for ages 0 to 3<!--]--></li>",
-          "target": [
-            "ul:nth-child(12) > li:nth-child(6)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Faith-based leaders<!--]--></li>",
-          "target": [
-            "ul:nth-child(12) > li:nth-child(7)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Family case management: WIC, child protective services, family support services, child welfare agencies, foster care programs<!--]--></li>",
-          "target": [
-            "ul:nth-child(12) > li:nth-child(8)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Hospitals, emergency medical services, primary health care providers<!--]--></li>",
-          "target": [
-            "li:nth-child(9)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Housing authorities<!--]--></li>",
-          "target": [
-            "li:nth-child(10)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Local parent groups, such as parent-teacher associations<!--]--></li>",
-          "target": [
-            "li:nth-child(11)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Schools, including special education programs<!--]--></li>",
-          "target": [
-            "li:nth-child(12)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Social service agencies<!--]--></li>",
-          "target": [
-            "li:nth-child(13)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Substance use disorder prevention and treatment services<!--]--></li>",
-          "target": [
-            "li:nth-child(14)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Illinois Family Violence Coordinating Councils<!--]--></li>",
-          "target": [
-            "li:nth-child(15)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Culturally specific organizations<!--]--></li>",
-          "target": [
-            "li:nth-child(16)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><!--[-->Public health departments<!--]--></li>",
-          "target": [
-            "li:nth-child(17)"
           ]
         }
       ]
@@ -7634,7 +5641,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;background-color:white !important;\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;background-color:white !important;\" data-v-1d4de8ab=\"\">",
           "target": [
             ".ml-4"
           ]
@@ -7652,7 +5659,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<img alt=\"ICJIA Logo\" src=\"/icjia-logo.png\" width=\"55\" data-v-ea3187dc=\"\">",
+          "html": "<img alt=\"ICJIA Logo\" src=\"/icjia-logo.png\" width=\"55\" data-v-1d4de8ab=\"\">",
           "target": [
             "img[alt=\"ICJIA Logo\"]"
           ]
@@ -7670,9 +5677,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;background-color:white !important;color:#333 !important;\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;background-color:white !important;color:#333 !important;\" data-v-1d4de8ab=\"\">",
           "target": [
-            ".hidden-sm-and-down.hover[type=\"button\"]"
+            ".v-toolbar__content > .hidden-sm-and-down"
           ]
         },
         {
@@ -7688,7 +5695,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
+          "html": "<button data-v-1d4de8ab=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -7706,7 +5713,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<div data-v-c8aa5ae8=\"\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header\" role=\"button\" id=\"v-list-group--id-Symbol(nested item)\" style=\"font-weight: 900 !important;\">",
+          "html": "<div data-v-82963878=\"\" tabindex=\"-2\" class=\"v-list-item v-list-item--link v-theme--light v-list-item--density-compact v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header\" role=\"button\" id=\"v-list-group--id-Symbol(nested item)\" style=\"font-weight: 900 !important;\">",
           "target": [
             "#v-list-group--id-Symbol\\(nested\\ item\\)"
           ]
@@ -7724,114 +5731,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<img src=\"/icjia-logo.png\" alt=\"Footer logo\" width=\"150\" style=\"border:0px solid #ddd;display:inline;\" class=\"hover\" data-v-8ab7e4d4=\"\">",
+          "html": "<img src=\"/icjia-logo.png\" alt=\"Footer logo\" width=\"150\" style=\"border:0px solid #ddd;display:inline;\" class=\"hover\" data-v-9bcde2a1=\"\">",
           "target": [
             "img[alt=\"Footer logo\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "no-focusable-content",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element does not have focusable descendants"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<button title=\"Go to parent\" class=\"flex items-center text-sm font-mono op50 disabled:pointer-events-none hover:text-green6 hover:op100 disabled:op10!\" disabled=\"\"><div class=\"i-ph-arrow-bend-left-up-duotone text-lg\"></div></button>",
-          "target": [
-            [
-              "nuxt-devtools-inspect-panel",
-              ".disabled\\:pointer-events-none"
-            ]
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "no-focusable-content",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element does not have focusable descendants"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<button title=\"Open in editor\" class=\"flex items-center text-sm font-mono op50 hover:text-green6 hover:op100\"><!--v-if--><div class=\"i-ph-arrow-up-right-light mt--2 text-lg\"></div></button>",
-          "target": [
-            [
-              "nuxt-devtools-inspect-panel",
-              "button[title=\"Open in editor\"]"
-            ]
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "no-focusable-content",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element does not have focusable descendants"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<button title=\"Close\" class=\"flex-none op50 hover:op100\"><div class=\"i-ph-x text-lg\"></div></button>",
-          "target": [
-            [
-              "nuxt-devtools-inspect-panel",
-              ".flex-none"
-            ]
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "no-focusable-content",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element does not have focusable descendants"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<button class=\"nuxt-devtools-icon-button nuxt-devtools-nuxt-button\" title=\"Toggle Nuxt DevTools\" style=\"filter: saturate(0);\">",
-          "target": [
-            [
-              "nuxt-devtools-frame",
-              ".nuxt-devtools-nuxt-button"
-            ]
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "no-focusable-content",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element does not have focusable descendants"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<button class=\"nuxt-devtools-icon-button nuxt-devtools-panel-content\" title=\"Toggle Component Inspector\">",
-          "target": [
-            [
-              "nuxt-devtools-frame",
-              "button[title=\"Toggle Component Inspector\"]"
-            ]
           ]
         }
       ]
@@ -7867,7 +5769,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<html lang=\"en\" style=\"--vueuse-safe-area-top: env(safe-area-inset-top, 0px); --vueuse-safe-area-right: env(safe-area-inset-right, 0px); --vueuse-safe-area-bottom: env(safe-area-inset-bottom, 0px); --vueuse-safe-area-left: env(safe-area-inset-left, 0px);\">",
+          "html": "<html lang=\"en\">",
           "target": [
             "html"
           ]
@@ -7906,7 +5808,7 @@
           ],
           "none": [],
           "impact": "critical",
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
+          "html": "<button data-v-1d4de8ab=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ],
@@ -7918,12 +5820,12 @@
             {
               "id": "aria-valid-attr-value",
               "data": {
-                "messageKey": "noIdShadow",
+                "messageKey": "noId",
                 "needsReview": "aria-labelledby=\"v-list-group--id-Symbol(nested item)\""
               },
               "relatedNodes": [],
               "impact": "critical",
-              "message": "ARIA attribute element ID does not exist on the page or is a descendant of a different shadow DOM tree: aria-labelledby=\"v-list-group--id-Symbol(nested item)\""
+              "message": "ARIA attribute element ID does not exist on the page: aria-labelledby=\"v-list-group--id-Symbol(nested item)\""
             }
           ],
           "none": [],
@@ -7932,7 +5834,7 @@
           "target": [
             ".v-list-group__items"
           ],
-          "failureSummary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page or is a descendant of a different shadow DOM tree: aria-labelledby=\"v-list-group--id-Symbol(nested item)\""
+          "failureSummary": "Fix all of the following:\n  ARIA attribute element ID does not exist on the page: aria-labelledby=\"v-list-group--id-Symbol(nested item)\""
         }
       ]
     },
@@ -7972,9 +5874,9 @@
           "all": [],
           "none": [],
           "impact": "serious",
-          "html": "<span style=\"font-weight:900 !important;font-size:22px;letter-spacing:0.004em;\" class=\"agency app-title\" data-v-ea3187dc=\"\">SAFE FROM THE START <span class=\"hidden-md-and-down\" data-v-ea3187dc=\"\"></span></span>",
+          "html": "<span style=\"font-weight:900 !important;font-size:22px;letter-spacing:0.004em;\" class=\"agency app-title\" data-v-1d4de8ab=\"\">SAFE FROM THE START <span class=\"hidden-md-and-down\" data-v-1d4de8ab=\"\"></span></span>",
           "target": [
-            ".hidden-sm-and-down.hover[type=\"button\"] > .v-btn__content[data-no-activator=\"\"] > .agency.app-title[data-v-ea3187dc=\"\"]"
+            ".hidden-sm-and-down > .v-btn__content[data-no-activator=\"\"] > .agency.app-title[data-v-1d4de8ab=\"\"]"
           ],
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
         },
@@ -7997,7 +5899,7 @@
           "all": [],
           "none": [],
           "impact": "serious",
-          "html": "<span class=\"v-btn__content\" data-no-activator=\"\">Home&nbsp; <!--v-if--></span>",
+          "html": "<span class=\"v-btn__content\" data-no-activator=\"\">Home&nbsp; <!----></span>",
           "target": [
             ".hidden-sm-and-down.navItem[href=\"/\"] > .v-btn__content[data-no-activator=\"\"]"
           ],
@@ -8022,7 +5924,7 @@
           "all": [],
           "none": [],
           "impact": "serious",
-          "html": "<span class=\"v-btn__content\" data-no-activator=\"\">About <i data-v-ea3187dc=\"\" class=\"mdi-menu-down mdi v-icon notranslate v-theme--light v-icon--size-default\" aria-hidden=\"true\" right=\"\" small=\"\"></i></span>",
+          "html": "<span class=\"v-btn__content\" data-no-activator=\"\">About <i data-v-1d4de8ab=\"\" class=\"mdi-menu-down mdi v-icon notranslate v-theme--light v-icon--size-default\" aria-hidden=\"true\" right=\"\" small=\"\"></i></span>",
           "target": [
             "button[aria-haspopup=\"true\"] > .v-btn__content[data-no-activator=\"\"]"
           ],
@@ -8047,7 +5949,7 @@
           "all": [],
           "none": [],
           "impact": "serious",
-          "html": "<span class=\"v-btn__content\" data-no-activator=\"\">Sites&nbsp; <!--v-if--></span>",
+          "html": "<span class=\"v-btn__content\" data-no-activator=\"\">Sites&nbsp; <!----></span>",
           "target": [
             ".hidden-sm-and-down.navItem[href$=\"sites\"] > .v-btn__content[data-no-activator=\"\"]"
           ],
@@ -8072,65 +5974,9 @@
           "all": [],
           "none": [],
           "impact": "serious",
-          "html": "<span class=\"v-btn__content\" data-no-activator=\"\">Resources&nbsp; <!--v-if--></span>",
+          "html": "<span class=\"v-btn__content\" data-no-activator=\"\">Resources&nbsp; <!----></span>",
           "target": [
             ".hidden-sm-and-down.navItem[href$=\"resources\"] > .v-btn__content[data-no-activator=\"\"]"
-          ],
-          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "contrastRatio": 0,
-                "fontSize": "9.0pt (12px)",
-                "fontWeight": "normal",
-                "messageKey": "bgOverlap",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element's background color could not be determined because it is overlapped by another element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": "serious",
-          "html": "<div class=\"nuxt-devtools-label-main\">25</div>",
-          "target": [
-            [
-              "nuxt-devtools-frame",
-              ".nuxt-devtools-label-main"
-            ]
-          ],
-          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "contrastRatio": 0,
-                "fontSize": "7.2pt (9.6px)",
-                "fontWeight": "normal",
-                "messageKey": "bgOverlap",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element's background color could not be determined because it is overlapped by another element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": "serious",
-          "html": "<span class=\"nuxt-devtools-label-secondary\">ms</span>",
-          "target": [
-            [
-              "nuxt-devtools-frame",
-              ".nuxt-devtools-label-secondary"
-            ]
           ],
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
         }

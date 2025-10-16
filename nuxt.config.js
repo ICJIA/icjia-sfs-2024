@@ -232,9 +232,9 @@ export default defineNuxtConfig({
    * Provides debugging and development utilities.
    */
   devtools: {
-    enabled: true, // Enable DevTools in development
+    enabled: false, // DevTools disabled for this project
     timeline: {
-      enabled: true, // Enable timeline feature for performance tracking
+      enabled: false, // Timeline feature disabled
     },
   },
 

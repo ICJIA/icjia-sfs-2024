@@ -40,15 +40,12 @@
     <v-container
       ><v-row
         ><v-col cols="12" class="mt-0">
-          <ContentDoc
+          <ContentRenderer
             :key="data?.title"
             :value="data"
             class="markdown-body"
             style="font-family: &quot;Lato&quot;, sans-serif"
-          >
-            <template #empty>Document not found</template>
-            <template #not-found>Document not found</template>
-          </ContentDoc>
+          />
           <!-- <div
             v-html="renderer.render(data.rawMarkdown)"
             class="markdown-body"

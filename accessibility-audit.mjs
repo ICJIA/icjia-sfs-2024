@@ -13,7 +13,7 @@ import fs from "fs";
 import path from "path";
 
 // Configuration
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = "http://localhost:3000";
 const OUTPUT_DIR = "./accessibility-reports";
 
 // All pages to test
