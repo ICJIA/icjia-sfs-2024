@@ -13,7 +13,7 @@
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2025-10-15T23:53:37.505Z",
+  "timestamp": "2025-10-16T00:04:00.246Z",
   "url": "http://localhost:8000/about",
   "toolOptions": {
     "runOnly": {
@@ -683,7 +683,7 @@
             }
           ],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -988,7 +988,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -1704,7 +1704,7 @@
             }
           ],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -2654,7 +2654,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -2993,7 +2993,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;background-color:white !important;\" data-v-ea3187dc=\"\">",
           "target": [
             ".ml-4"
           ]
@@ -3025,7 +3025,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;background-color:white !important;color:#333 !important;\" data-v-ea3187dc=\"\">",
           "target": [
             ".hidden-sm-and-down.hover[type=\"button\"]"
           ]
@@ -3153,7 +3153,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".hidden-sm-and-down.navItem[href=\"/\"]"
           ]
@@ -3217,7 +3217,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -3281,7 +3281,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".hidden-sm-and-down.navItem[href$=\"sites\"]"
           ]
@@ -3345,7 +3345,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".hidden-sm-and-down.navItem[href$=\"resources\"]"
           ]
@@ -4656,7 +4656,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;background-color:white !important;\" data-v-ea3187dc=\"\">",
           "target": [
             ".ml-4"
           ]
@@ -4674,7 +4674,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;background-color:white !important;color:#333 !important;\" data-v-ea3187dc=\"\">",
           "target": [
             ".hidden-sm-and-down.hover[type=\"button\"]"
           ]
@@ -4692,7 +4692,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -6378,7 +6378,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".hidden-sm-and-down.navItem[href=\"/\"]"
           ]
@@ -6404,7 +6404,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".hidden-sm-and-down.navItem[href$=\"sites\"]"
           ]
@@ -6430,7 +6430,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".hidden-sm-and-down.navItem[href$=\"resources\"]"
           ]
@@ -7404,7 +7404,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;background-color:white !important;\" data-v-ea3187dc=\"\">",
           "target": [
             ".ml-4"
           ]
@@ -7440,7 +7440,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;background-color:white !important;color:#333 !important;\" data-v-ea3187dc=\"\">",
           "target": [
             ".hidden-sm-and-down.hover[type=\"button\"]"
           ]
@@ -7458,7 +7458,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -7676,7 +7676,7 @@
           ],
           "none": [],
           "impact": "critical",
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-10\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ],
@@ -7892,7 +7892,7 @@
           "all": [],
           "none": [],
           "impact": "serious",
-          "html": "<div class=\"nuxt-devtools-label-main\">30</div>",
+          "html": "<div class=\"nuxt-devtools-label-main\">29</div>",
           "target": [
             [
               "nuxt-devtools-frame",

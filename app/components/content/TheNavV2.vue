@@ -81,7 +81,11 @@
         @keydown.space="$router.push('/')"
         variant="text"
         class="hover ml-4 mr-4"
-        style="min-width: auto; padding: 4px"
+        style="
+          min-width: auto;
+          padding: 4px;
+          background-color: white !important;
+        "
       >
         <img alt="ICJIA Logo" src="/icjia-logo.png" width="55" />
       </v-btn>
@@ -96,7 +100,12 @@
         @keydown.space="$router.push('/')"
         variant="text"
         class="hover hidden-sm-and-down"
-        style="min-width: auto; padding: 8px"
+        style="
+          min-width: auto;
+          padding: 8px;
+          background-color: white !important;
+          color: #333 !important;
+        "
       >
         <span
           style="
@@ -119,7 +128,12 @@
         @keydown.space="$router.push('/')"
         variant="text"
         class="hover hidden-md-and-up"
-        style="min-width: auto; padding: 8px"
+        style="
+          min-width: auto;
+          padding: 8px;
+          background-color: white !important;
+          color: #333 !important;
+        "
       >
         <span
           style="
@@ -177,6 +191,8 @@
                     font-weight: 900 !important;
                     font-size: 18px;
                     margin-bottom: 5px;
+                    background-color: white !important;
+                    color: #333 !important;
                   "
                 >
                   {{ menu.main }}
@@ -253,7 +269,12 @@
               variant="text"
               size="default"
               class="hidden-sm-and-down navItem"
-              style="font-weight: 900 !important; font-size: 18px"
+              style="
+                font-weight: 900 !important;
+                font-size: 18px;
+                background-color: white !important;
+                color: #333 !important;
+              "
               >{{ menu.main }}&nbsp;
               <v-icon v-if="menu.icon" right small color="black">{{
                 menu.icon
@@ -383,5 +404,23 @@ const items = ref([
 .navItem {
   color: #333 !important;
   font-weight: 900;
+  background-color: white !important;
+
+  /* Ensure button content has proper contrast */
+  :deep(.v-btn__content) {
+    background-color: white !important;
+    color: #333 !important;
+  }
+}
+
+/* Ensure all navigation buttons have white background for contrast */
+:deep(.v-btn.navItem) {
+  background-color: white !important;
+  color: #333 !important;
+}
+
+:deep(.v-btn.navItem .v-btn__content) {
+  background-color: white !important;
+  color: #333 !important;
 }
 </style>

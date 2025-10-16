@@ -13,7 +13,7 @@
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2025-10-15T23:53:34.265Z",
+  "timestamp": "2025-10-16T00:03:57.211Z",
   "url": "http://localhost:8000/",
   "toolOptions": {
     "runOnly": {
@@ -693,7 +693,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/\" aria-current=\"page\" class=\"v-btn v-btn--active v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/\" aria-current=\"page\" class=\"v-btn v-btn--active v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".v-btn--active"
           ]
@@ -719,7 +719,7 @@
             }
           ],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-14\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-14\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -797,7 +797,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"/about\" class=\"v-btn v-btn--elevated v-theme--light bg-blue-darken-4 v-btn--density-default v-btn--size-default v-btn--variant-elevated\" style=\"\" aria-label=\"Learn more about Safe From the Start program\">",
+          "html": "<a href=\"/about\" class=\"v-btn v-btn--elevated v-theme--light bg-blue-darken-4 v-btn--density-default v-btn--size-default v-btn--variant-elevated\" style=\"background-color:#1a3a52 !important;color:#ffffff !important;\" aria-label=\"Learn more about Safe From the Start program\">",
           "target": [
             ".mt-6 > .bg-blue-darken-4.v-btn--elevated.v-btn--variant-elevated"
           ]
@@ -1102,7 +1102,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/\" aria-current=\"page\" class=\"v-btn v-btn--active v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/\" aria-current=\"page\" class=\"v-btn v-btn--active v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".v-btn--active"
           ]
@@ -1120,7 +1120,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-14\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-14\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -1174,7 +1174,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/about\" class=\"v-btn v-btn--elevated v-theme--light bg-blue-darken-4 v-btn--density-default v-btn--size-default v-btn--variant-elevated\" style=\"\" aria-label=\"Learn more about Safe From the Start program\">",
+          "html": "<a href=\"/about\" class=\"v-btn v-btn--elevated v-theme--light bg-blue-darken-4 v-btn--density-default v-btn--size-default v-btn--variant-elevated\" style=\"background-color:#1a3a52 !important;color:#ffffff !important;\" aria-label=\"Learn more about Safe From the Start program\">",
           "target": [
             ".mt-6 > .bg-blue-darken-4.v-btn--elevated.v-btn--variant-elevated"
           ]
@@ -1936,7 +1936,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/\" aria-current=\"page\" class=\"v-btn v-btn--active v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/\" aria-current=\"page\" class=\"v-btn v-btn--active v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".v-btn--active"
           ]
@@ -1954,7 +1954,7 @@
             }
           ],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-14\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-14\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -2008,7 +2008,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"/about\" class=\"v-btn v-btn--elevated v-theme--light bg-blue-darken-4 v-btn--density-default v-btn--size-default v-btn--variant-elevated\" style=\"\" aria-label=\"Learn more about Safe From the Start program\">",
+          "html": "<a href=\"/about\" class=\"v-btn v-btn--elevated v-theme--light bg-blue-darken-4 v-btn--density-default v-btn--size-default v-btn--variant-elevated\" style=\"background-color:#1a3a52 !important;color:#ffffff !important;\" aria-label=\"Learn more about Safe From the Start program\">",
           "target": [
             ".mt-6 > .bg-blue-darken-4.v-btn--elevated.v-btn--variant-elevated"
           ]
@@ -2650,7 +2650,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/\" aria-current=\"page\" class=\"v-btn v-btn--active v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/\" aria-current=\"page\" class=\"v-btn v-btn--active v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".v-btn--active"
           ]
@@ -2746,7 +2746,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/about\" class=\"v-btn v-btn--elevated v-theme--light bg-blue-darken-4 v-btn--density-default v-btn--size-default v-btn--variant-elevated\" style=\"\" aria-label=\"Learn more about Safe From the Start program\">",
+          "html": "<a href=\"/about\" class=\"v-btn v-btn--elevated v-theme--light bg-blue-darken-4 v-btn--density-default v-btn--size-default v-btn--variant-elevated\" style=\"background-color:#1a3a52 !important;color:#ffffff !important;\" aria-label=\"Learn more about Safe From the Start program\">",
           "target": [
             ".mt-6 > .bg-blue-darken-4.v-btn--elevated.v-btn--variant-elevated"
           ]
@@ -3068,7 +3068,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/\" aria-current=\"page\" class=\"v-btn v-btn--active v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/\" aria-current=\"page\" class=\"v-btn v-btn--active v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".v-btn--active"
           ]
@@ -3086,7 +3086,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-14\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-14\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -3140,7 +3140,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/about\" class=\"v-btn v-btn--elevated v-theme--light bg-blue-darken-4 v-btn--density-default v-btn--size-default v-btn--variant-elevated\" style=\"\" aria-label=\"Learn more about Safe From the Start program\">",
+          "html": "<a href=\"/about\" class=\"v-btn v-btn--elevated v-theme--light bg-blue-darken-4 v-btn--density-default v-btn--size-default v-btn--variant-elevated\" style=\"background-color:#1a3a52 !important;color:#ffffff !important;\" aria-label=\"Learn more about Safe From the Start program\">",
           "target": [
             ".mt-6 > .bg-blue-darken-4.v-btn--elevated.v-btn--variant-elevated"
           ]
@@ -3479,7 +3479,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;background-color:white !important;\" data-v-ea3187dc=\"\">",
           "target": [
             ".ml-4"
           ]
@@ -3511,7 +3511,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;background-color:white !important;color:#333 !important;\" data-v-ea3187dc=\"\">",
           "target": [
             ".hover.hidden-sm-and-down[type=\"button\"]"
           ]
@@ -3639,7 +3639,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/\" aria-current=\"page\" class=\"v-btn v-btn--active v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/\" aria-current=\"page\" class=\"v-btn v-btn--active v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".v-btn--active"
           ]
@@ -3703,7 +3703,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-14\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-14\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -3767,7 +3767,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".navItem.hidden-sm-and-down[href$=\"sites\"]"
           ]
@@ -3831,7 +3831,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".navItem.hidden-sm-and-down[href$=\"resources\"]"
           ]
@@ -3959,6 +3959,38 @@
           ],
           "none": [],
           "impact": null,
+          "html": "<span style=\"background-color:rgba(0, 0, 0, 0.6);padding:10px;border-radius:4px;display:inline-block;color:#ffffff;\"> Direct services to children who have been exposed to violence </span>",
+          "target": [
+            ".hero-overlay > span"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "important-letter-spacing",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Letter-spacing in the style attribute is not set to !important, or meets the minimum"
+            },
+            {
+              "id": "important-word-spacing",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "word-spacing in the style attribute is not set to !important, or meets the minimum"
+            },
+            {
+              "id": "important-line-height",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "line-height in the style attribute is not set to !important, or meets the minimum"
+            }
+          ],
+          "none": [],
+          "impact": null,
           "html": "<div class=\"mt-6\" style=\"pointer-events:auto;\">",
           "target": [
             ".hero-overlay > .mt-6"
@@ -3991,7 +4023,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/about\" class=\"v-btn v-btn--elevated v-theme--light bg-blue-darken-4 v-btn--density-default v-btn--size-default v-btn--variant-elevated\" style=\"\" aria-label=\"Learn more about Safe From the Start program\">",
+          "html": "<a href=\"/about\" class=\"v-btn v-btn--elevated v-theme--light bg-blue-darken-4 v-btn--density-default v-btn--size-default v-btn--variant-elevated\" style=\"background-color:#1a3a52 !important;color:#ffffff !important;\" aria-label=\"Learn more about Safe From the Start program\">",
           "target": [
             ".mt-6 > .bg-blue-darken-4.v-btn--elevated.v-btn--variant-elevated"
           ]
@@ -6646,7 +6678,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;background-color:white !important;\" data-v-ea3187dc=\"\">",
           "target": [
             ".ml-4"
           ]
@@ -6664,7 +6696,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;background-color:white !important;color:#333 !important;\" data-v-ea3187dc=\"\">",
           "target": [
             ".hover.hidden-sm-and-down[type=\"button\"]"
           ]
@@ -6682,7 +6714,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-14\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-14\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -7883,7 +7915,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/\" aria-current=\"page\" class=\"v-btn v-btn--active v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/\" aria-current=\"page\" class=\"v-btn v-btn--active v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".v-btn--active"
           ]
@@ -7909,7 +7941,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/sites\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".navItem.hidden-sm-and-down[href$=\"sites\"]"
           ]
@@ -7935,7 +7967,7 @@
             }
           ],
           "impact": null,
-          "html": "<a data-v-ea3187dc=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px;\">",
+          "html": "<a data-v-ea3187dc=\"\" href=\"/resources\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-sm-and-down navItem\" style=\"font-weight: 900 !important; font-size: 18px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             ".navItem.hidden-sm-and-down[href$=\"resources\"]"
           ]
@@ -8046,7 +8078,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"/about\" class=\"v-btn v-btn--elevated v-theme--light bg-blue-darken-4 v-btn--density-default v-btn--size-default v-btn--variant-elevated\" style=\"\" aria-label=\"Learn more about Safe From the Start program\">",
+          "html": "<a href=\"/about\" class=\"v-btn v-btn--elevated v-theme--light bg-blue-darken-4 v-btn--density-default v-btn--size-default v-btn--variant-elevated\" style=\"background-color:#1a3a52 !important;color:#ffffff !important;\" aria-label=\"Learn more about Safe From the Start program\">",
           "target": [
             ".mt-6 > .bg-blue-darken-4.v-btn--elevated.v-btn--variant-elevated"
           ]
@@ -8568,7 +8600,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover ml-4 mr-4\" style=\"min-width:auto;padding:4px;background-color:white !important;\" data-v-ea3187dc=\"\">",
           "target": [
             ".ml-4"
           ]
@@ -8604,7 +8636,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;\" data-v-ea3187dc=\"\">",
+          "html": "<button type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hover hidden-sm-and-down\" style=\"min-width:auto;padding:8px;background-color:white !important;color:#333 !important;\" data-v-ea3187dc=\"\">",
           "target": [
             ".hover.hidden-sm-and-down[type=\"button\"]"
           ]
@@ -8622,7 +8654,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-14\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-14\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ]
@@ -9023,7 +9055,7 @@
           ],
           "none": [],
           "impact": "critical",
-          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-14\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px;\">",
+          "html": "<button data-v-ea3187dc=\"\" type=\"button\" class=\"v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text hidden-md-and-down navItem\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-controls=\"v-menu-v-14\" style=\"font-weight: 900 !important; font-size: 18px; margin-bottom: 5px; background-color: white !important; color: rgb(51, 51, 51) !important;\">",
           "target": [
             "button[aria-haspopup=\"true\"]"
           ],
@@ -9192,7 +9224,7 @@
           "all": [],
           "none": [],
           "impact": "serious",
-          "html": "<span> Direct services to children who have been exposed to violence </span>",
+          "html": "<span style=\"background-color:rgba(0, 0, 0, 0.6);padding:10px;border-radius:4px;display:inline-block;color:#ffffff;\"> Direct services to children who have been exposed to violence </span>",
           "target": [
             ".hero-overlay > span"
           ],

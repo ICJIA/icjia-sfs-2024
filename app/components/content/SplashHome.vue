@@ -100,7 +100,15 @@
           pointer-events: none;
         "
       >
-        <span>
+        <span
+          style="
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            border-radius: 4px;
+            display: inline-block;
+            color: #ffffff;
+          "
+        >
           Direct services to children who have been exposed to violence
         </span>
         <br />
@@ -111,6 +119,10 @@
             color="blue-darken-4"
             to="/about"
             aria-label="Learn more about Safe From the Start program"
+            style="
+              background-color: #1a3a52 !important;
+              color: #ffffff !important;
+            "
             >Learn More&nbsp;&raquo;</v-btn
           >&nbsp;
 
