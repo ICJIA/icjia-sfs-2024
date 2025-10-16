@@ -41,6 +41,154 @@ The migration guide includes:
 
 This comprehensive LLM prompt can be used with Claude, GPT-4, or other AI assistants to guide them through migrating similar ICJIA projects from Nuxt 3 to Nuxt 4. Simply copy the prompt and paste it into a conversation with your preferred LLM to automate the migration process.
 
+---
+
+## 🚀 Nuxt 3 to Nuxt 4 Migration Guide
+
+**This repository contains a comprehensive, universal migration guide that can be used for migrating ANY Nuxt 3 project to Nuxt 4** — not just this specific project.
+
+The migration resources in this repository have been generalized and tested to work with any Nuxt 3 project, regardless of specific features or configuration. Whether you're migrating a small project or a large enterprise application, these guides provide step-by-step instructions, common issue solutions, and LLM-ready prompts.
+
+### 📌 Primary Resource: MIGRATION-PROMPT.md
+
+**[MIGRATION-PROMPT.md](./MIGRATION-PROMPT.md)** is the main migration guide designed specifically to be used with Large Language Models (LLMs) like Claude, GPT-4, or other AI assistants.
+
+**How to use it:**
+
+1. **Copy the file** into your Nuxt 3 project
+2. **Provide it to an LLM** along with your project context (package.json, nuxt.config.js, project structure)
+3. **Ask the LLM to help** with a specific phase or the entire migration
+4. **Follow the 55-item checklist** to track progress
+
+**What it covers:**
+
+- ✅ **6 Phases** - Systematic migration from Nuxt 3 to Nuxt 4
+- ✅ **55-Item Checklist** - Trackable progress across all phases
+- ✅ **Nuxt Content Migration Caveat** - Two-phase strategy for Content v2 → v3
+- ✅ **Key Learnings** - Configuration changes, directory structure, common issues
+- ✅ **Common Issues & Solutions** - 6 documented issues with fixes
+- ✅ **Rollback Procedures** - Safe rollback at any phase
+- ✅ **LLM-Friendly Structure** - Clear instructions for AI assistants
+
+**Example LLM prompts:**
+
+```
+"I'm migrating a Nuxt 3 project to Nuxt 4. Here's my package.json and project structure.
+Can you help me with Phase 2 according to the migration guide?"
+
+"I'm getting an SCSS import error. According to the migration guide, what should I do?"
+
+"Help me update my nuxt.config.js for Nuxt 4 migration. Here's my current config."
+```
+
+### 📚 Quick Reference & Supporting Documentation
+
+**[NUXT3-TO-NUXT4-QUICK-REFERENCE.md](./NUXT3-TO-NUXT4-QUICK-REFERENCE.md)** - Printable quick reference card
+
+- At-a-glance information
+- Common issues & fixes
+- Rollback commands
+- Success checklist
+- **Perfect for printing and keeping at your desk during migration**
+
+**[MIGRATION-DOCUMENTATION-OVERVIEW.md](./MIGRATION-DOCUMENTATION-OVERVIEW.md)** - Documentation index
+
+- Quick navigation guide
+- File descriptions
+- Usage scenarios
+- Recommended reading order
+
+### 📖 All Migration Documentation Files
+
+| File                                                                                                     | Purpose                                 | When to Use                                                 |
+| -------------------------------------------------------------------------------------------------------- | --------------------------------------- | ----------------------------------------------------------- |
+| **[MIGRATION-PROMPT.md](./MIGRATION-PROMPT.md)**                                                         | Universal migration guide (1,122 lines) | Primary resource - copy into your project and use with LLMs |
+| **[NUXT3-TO-NUXT4-QUICK-REFERENCE.md](./NUXT3-TO-NUXT4-QUICK-REFERENCE.md)**                             | Printable quick reference card          | Quick lookup during migration, print for desk reference     |
+| **[MIGRATION-DOCUMENTATION-OVERVIEW.md](./MIGRATION-DOCUMENTATION-OVERVIEW.md)**                         | Documentation index and navigation      | Find the right file for your needs                          |
+| **[MIGRATION-GUIDE-UPDATE-SUMMARY.md](./MIGRATION-GUIDE-UPDATE-SUMMARY.md)**                             | Detailed explanation of changes         | Understand what was generalized in the guide                |
+| **[MIGRATION-GUIDE-TRANSFORMATION-COMPLETE.md](./MIGRATION-GUIDE-TRANSFORMATION-COMPLETE.md)**           | Executive summary of transformation     | Overview of guide improvements                              |
+| **[MIGRATION-DOCUMENTATION-COMPLETE.md](./MIGRATION-DOCUMENTATION-COMPLETE.md)**                         | Completion summary                      | Project completion status                                   |
+| **[FINAL-SUMMARY-MIGRATION-GUIDE-TRANSFORMATION.md](./FINAL-SUMMARY-MIGRATION-GUIDE-TRANSFORMATION.md)** | Final summary and verification          | Verification checklist and next steps                       |
+| **[MIGRATION-GUIDE-COMPLETE-SUMMARY.md](./MIGRATION-GUIDE-COMPLETE-SUMMARY.md)**                         | Comprehensive overview                  | Complete summary of all resources                           |
+| **[MIGRATION.md](./MIGRATION.md)**                                                                       | Project-specific migration notes        | Historical record of this project's migration               |
+
+### 🎯 Getting Started with Your Own Migration
+
+**Step 1: Choose Your Approach**
+
+- **Option A (Recommended):** Use `MIGRATION-PROMPT.md` with an LLM
+
+  - Copy the file into your project
+  - Provide it to Claude, GPT-4, or your preferred LLM
+  - Let the LLM guide you through each phase
+
+- **Option B:** Manual Migration
+
+  - Read `MIGRATION-PROMPT.md` completely
+  - Follow the 6 phases step-by-step
+  - Use the 55-item checklist to track progress
+
+- **Option C:** Quick Start
+  - Print `NUXT3-TO-NUXT4-QUICK-REFERENCE.md`
+  - Follow the quick reference
+  - Refer to full guide for details
+
+**Step 2: Track Progress**
+
+Use the 55-item migration checklist:
+
+- Phase 1: Preparation (5 items)
+- Phase 2: Nuxt 4 Upgrade (11 items)
+- Phase 3: /app Directory Migration (13 items)
+- Phase 4: Fix Common Issues (7 items)
+- Phase 5: Final Testing (15 items)
+- Phase 6: Final Commit and Documentation (4 items)
+
+**Step 3: Troubleshoot**
+
+If you encounter issues:
+
+1. Check "Common Issues" in `NUXT3-TO-NUXT4-QUICK-REFERENCE.md`
+2. Search "Key Learnings" section in `MIGRATION-PROMPT.md`
+3. Refer to "Common Pitfalls to Avoid"
+4. Use rollback procedures if needed
+
+### ✨ Key Features of the Migration Guide
+
+- **Universal** - Works with any Nuxt 3 project
+- **LLM-Friendly** - Designed to be used with AI assistants
+- **Comprehensive** - 1,122 lines of detailed guidance
+- **Systematic** - 6 phases with clear success criteria
+- **Reversible** - Rollback procedures at every phase
+- **Well-Documented** - Key learnings from real migrations
+- **Practical** - 6 common issues with documented solutions
+- **Flexible** - Supports multiple package managers (yarn, npm, pnpm)
+
+### 📊 Migration Guide Statistics
+
+- **Total Documentation:** 2,382+ lines
+- **Primary Guide:** 1,122 lines
+- **Checklist Items:** 55
+- **Phases:** 6
+- **Common Issues Documented:** 6
+- **Pitfalls Listed:** 7
+- **Rollback Options:** 3
+- **Supporting Documentation Files:** 8
+
+### 🎓 What You'll Learn
+
+By following this migration guide, you'll understand:
+
+- How to upgrade from Nuxt 3 to Nuxt 4
+- How to adopt the `/app` directory structure
+- How to update path aliases and imports
+- How to handle Nuxt Content v2 vs v3 (two-phase strategy)
+- How to troubleshoot common migration issues
+- How to verify your migration is successful
+- How to use LLMs to assist with migrations
+
+---
+
 ## Project Structure
 
 ```
