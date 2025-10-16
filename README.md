@@ -864,34 +864,31 @@ This site has been audited for accessibility compliance and meets WCAG 2.1 Level
 
 ### Accessibility Audit Reports
 
-**📖 For the complete accessibility audit report, see [ACCESSIBILITY-AUDIT-FINAL-COMPREHENSIVE-REPORT.md](./ACCESSIBILITY-AUDIT-FINAL-COMPREHENSIVE-REPORT.md)**
+**📖 For the complete accessibility audit history and latest results, see [content/documentation/accessibility-audit.md](./content/documentation/accessibility-audit.md)**
 
-**📋 For ARIA label fixes, see [ARIA-LABEL-EMPTY-FIX-SUMMARY.md](./ARIA-LABEL-EMPTY-FIX-SUMMARY.md)**
+**Most Recent Audit:** October 16, 2025 at 09:16 AM CDT
 
-**📊 For contrast analysis, see [ACCESSIBILITY-CONTRAST-ANALYSIS.md](./ACCESSIBILITY-CONTRAST-ANALYSIS.md)**
-
-**🔧 For contrast fixes applied, see [CONTRAST-FIXES-APPLIED.md](./CONTRAST-FIXES-APPLIED.md)**
-
-**📋 For testing instructions and guidelines, see [ACCESSIBILITY-TESTING-GUIDE.md](./ACCESSIBILITY-TESTING-GUIDE.md)**
-
-**✅ For the latest contrast ratio verification report, see [CONTRAST-RATIO-VERIFICATION-REPORT.md](./CONTRAST_RATIO_VERIFICATION_REPORT.md)** (October 16, 2025)
-
-**Most Recent Audit:** October 16, 2025 (Contrast Ratio Verification - Homepage Hero Update)
-**Status:** ✅ PASSED - 0 violations
-**Pages Tested:** 8
-**Standard:** WCAG 2.1 Level AA
-**Lighthouse Accessibility Score:** 100/100 (Perfect)
-**Contrast Ratio Test:** ✅ PASSED - 0 failing elements
+- **Status:** ✅ PASSED - 0 violations
+- **Pages Tested:** 8
+- **Standard:** WCAG 2.1 Level AA
+- **Tools Used:**
+  - axe-core v4.11.0 (automated accessibility testing)
+  - Lighthouse v13.0.0 (performance & accessibility auditing)
+  - @axe-core/playwright v4.10.2 (browser automation)
+  - Playwright v1.56.0 (headless browser testing)
+- **Compliance:** All pages WCAG 2.1 Level AA compliant
 
 ### Running Accessibility Tests
 
 To run the automated accessibility audit:
 
 ```bash
-# Make sure dev server is running
+# Make sure dev server is running (in one terminal)
 yarn dev
 
 # In a separate terminal, run the audit
+yarn audit:a11y
+# or
 node accessibility-audit.mjs
 ```
 
@@ -904,6 +901,13 @@ The audit will:
 
 **Note:** The dev server must be running on `http://localhost:8000` before running the audit.
 
+### Accessibility Audit Documentation
+
+For detailed information about accessibility audits, testing procedures, and audit history, see:
+
+- **[Accessibility Audit History](./content/documentation/accessibility-audit.md)** - Complete audit history with dates and findings
+- **[Accessibility Testing Guide](./content/documentation/ACCESSIBILITY-TESTING-GUIDE.md)** - Detailed testing procedures and best practices
+
 ### Accessibility Features
 
 - ✅ **Skip Navigation Links** - Keyboard-accessible skip to main content
@@ -915,86 +919,18 @@ The audit will:
 - ✅ **Responsive Design** - Accessible on all device sizes
 - ✅ **Decorative Images** - Properly hidden from screen readers with `aria-hidden="true"`
 
-### Recent Accessibility Fixes (October 15, 2025)
+### Accessibility Compliance Summary
 
-**Fixed ARIA Attribute Issues:**
+**All critical ARIA attribute violations have been resolved.** The site meets WCAG 2.1 Level AA standards for:
 
-1. **Empty aria-label on Hero Images** - Removed empty `aria-label=""` and added `aria-hidden="true"` to decorative images
-   - Files: `app/components/content/SplashHome.vue`, `app/components/content/SplashHomeSecondary.vue`
-   - Impact: Resolves Siteimprove "ARIA attribute unsupported or prohibited" errors
+- ✅ ARIA attribute usage (WCAG 4.1.2)
+- ✅ Semantic HTML structure
+- ✅ Keyboard navigation
+- ✅ Screen reader compatibility
+- ✅ Focus management
+- ✅ Color contrast ratios
 
-2. **Redundant aria-label on Sidebar Accordion Headers** - Removed redundant aria-label attributes
-   - File: `app/components/content/TheSidebar.vue`
-   - Impact: Prevents aria-label from overriding visible text for screen readers
-
-3. **ARIA Role Fixes** - Ensured proper role attributes on interactive elements
-   - Vuetify v-list-group headers now properly configured with role="button"
-   - Prevents ARIA validation errors across all pages
-
-**Result:** All 8 pages now pass WCAG 2.1 Level AA compliance with 0 violations
-
-### Color Contrast Analysis (October 15, 2025)
-
-**Final Audit Results:**
-
-- **Total Contrast Flags:** 64 (incomplete issues, not violations)
-- **Manual Review Status:** ✅ All reviewed and approved
-- **Compliance Status:** ✅ WCAG 2.1 Level AA compliant
-
-**Contrast Flags by Page:**
-
-| Page               | Flags | Status      |
-| ------------------ | ----- | ----------- |
-| Home               | 12    | ✅ Approved |
-| About              | 8     | ✅ Approved |
-| Program Summary    | 7     | ✅ Approved |
-| Research           | 7     | ✅ Approved |
-| Sites              | 8     | ✅ Approved |
-| Resources          | 7     | ✅ Approved |
-| Childhood Exposure | 7     | ✅ Approved |
-| Privacy            | 8     | ✅ Approved |
-
-**Key Findings by Category:**
-
-1. **Navigation Buttons** - ✅ Adequate contrast with dark text (#333) on light backgrounds
-2. **Hero Overlay Text** - ✅ White text on dark gradient with text shadow for high readability
-3. **Call-to-Action Buttons** - ✅ Standard button styling (bg-blue-darken-4, bg-blue-darken-3) with white text
-4. **Body Text** - ✅ All readable and distinguishable from background
-5. **Focus Indicators** - ✅ Visible and clear for keyboard navigation
-6. **DevTools Overlay** - ℹ️ Development tools (not page content)
-
-**WCAG 2.1 Level AA Contrast Requirements Met:**
-
-- Normal text: 4.5:1 ratio ✅
-- Large text (18pt+ or 14pt+ bold): 3:1 ratio ✅
-- UI components: 3:1 ratio ✅
-
-**Fixes Applied (October 15, 2025):**
-
-1. **Navigation Buttons** - Added explicit `background-color: white` and `color: #333` to all navigation buttons
-   - Provides 7.5:1 contrast ratio (exceeds 4.5:1 requirement)
-   - Applied to logo, title, and menu buttons
-
-2. **Hero Overlay Text** - Added explicit dark background `rgba(0, 0, 0, 0.6)` to hero message
-   - Provides 12.6:1 contrast ratio (exceeds 3:1 requirement for large text)
-   - Improved visual readability with padding and border-radius
-
-3. **Call-to-Action Button** - Added explicit `background-color: #1a3a52` and `color: #ffffff`
-   - Provides 8.5:1 contrast ratio (exceeds 4.5:1 requirement)
-
-**Remaining Flags:** 64 flags remain due to Vuetify component structure limitations (bgOverlap issue). These are tool limitations, not accessibility problems. All visual contrast meets WCAG 2.1 Level AA requirements.
-
-**Conclusion:** All practical contrast issues have been addressed. The site meets WCAG 2.1 Level AA contrast requirements. See [CONTRAST-FIXES-APPLIED.md](./CONTRAST-FIXES-APPLIED.md) for detailed technical explanation and [ACCESSIBILITY-CONTRAST-ANALYSIS.md](./ACCESSIBILITY-CONTRAST-ANALYSIS.md) for analysis.
-
-### Audit History
-
-| Date       | Status    | Violations | Incomplete | Notes                                                                                   |
-| ---------- | --------- | ---------- | ---------- | --------------------------------------------------------------------------------------- |
-| 2025-10-15 | ✅ PASSED | 0          | 64\*       | Final comprehensive audit - 0 violations; 64 color contrast flags reviewed and approved |
-| 2025-10-15 | ✅ PASSED | 0          | 17         | Fixed empty aria-label on hero images and sidebar accordion headers                     |
-| 2025-10-14 | ✅ PASSED | 0          | N/A        | Initial comprehensive audit - all ARIA attribute issues resolved                        |
-
-\*Incomplete issues are non-violations flagged for manual review. All 64 color contrast flags have been manually verified and confirmed acceptable.
+For detailed audit history, findings, and testing procedures, see the [Accessibility Audit History](./content/documentation/accessibility-audit.md) documentation.
 
 ## Development Notes
 
