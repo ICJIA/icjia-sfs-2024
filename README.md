@@ -7,11 +7,39 @@ The Safe From the Start (SFS) program provides developmentally and culturally ap
 ## Technology Stack
 
 - **Framework:** Nuxt 4.1.3 (migrated from Nuxt 3 on October 14, 2024)
-- **Content Management:** Nuxt Content v2.13.4
+- **Content Management:** Nuxt Content v3.7.1 (migrated from v2 on October 16, 2024)
 - **UI Framework:** Vuetify 3.7.14
 - **Deployment:** Netlify (Static Site Generation)
-- **Node.js:** 20.x
+- **Node.js:** 23.x (updated for Nuxt Content v3 compatibility)
 - **Package Manager:** Yarn 1.22.22
+
+## Nuxt Content v3 Migration
+
+**✅ Successfully migrated to Nuxt Content v3 on October 16, 2024**
+
+This project has been upgraded from Nuxt Content v2 to v3 with a complete rewrite of the query API. The migration included:
+
+- Upgrade to Nuxt Content v3.7.1 with SQL-based query engine
+- Creation of `content.config.ts` for collection definitions
+- Migration of all page components to use `queryCollection()` API
+- Updated field references (removed underscore prefixes)
+- Node.js version upgrade to 23.x for native module compatibility
+- All 8 content routes successfully prerendering
+
+### Nuxt Content v3 Migration Documentation
+
+**📖 For detailed migration documentation, see [NUXT-CONTENT-MIGRATION.md](./NUXT-CONTENT-MIGRATION.md)**
+
+This comprehensive guide includes:
+
+- Step-by-step upgrade instructions for any Nuxt Content v2 project
+- Before/after code examples for all breaking API changes
+- Common issues and solutions
+- Complete migration checklist
+- Rollback procedures
+- Tips for Netlify deployment
+
+---
 
 ## Nuxt 4 Migration
 
@@ -22,10 +50,10 @@ This project has been upgraded from Nuxt 3 to Nuxt 4 with the recommended `/app`
 - Upgrade to Nuxt 4.1.3 with Nitro 2.12.7 and Vite 7.1.10
 - Adoption of `/app` directory structure for better code organization
 - Updated path aliases (`@/` → `/app`, `@@/` → project root)
-- Node.js version upgrade to 20.x for compatibility
+- Node.js version upgrade to 20.x for compatibility (later updated to 23.x for Content v3)
 - All 30 routes successfully prerendering
 
-### Migration Documentation
+### Nuxt 4 Migration Documentation
 
 **📖 For detailed migration documentation, see [MIGRATION.md](./MIGRATION.md)**
 
@@ -117,13 +145,11 @@ Can you help me with Phase 2 according to the migration guide?"
 **Step 1: Choose Your Approach**
 
 - **Option A (Recommended):** Use `MIGRATION-PROMPT.md` with an LLM
-
   - Copy the file into your project
   - Provide it to Claude, GPT-4, or your preferred LLM
   - Let the LLM guide you through each phase
 
 - **Option B:** Manual Migration
-
   - Read `MIGRATION-PROMPT.md` completely
   - Follow the 6 phases step-by-step
   - Use the 55-item checklist to track progress
@@ -215,7 +241,7 @@ By following this migration guide, you'll understand:
 
 ### Prerequisites
 
-- Node.js 20.x or higher (specified in `.nvmrc`)
+- Node.js 23.x or higher (specified in `.nvmrc`) - Required for Nuxt Content v3 native module compatibility
 - Yarn 1.22.22 (recommended) or npm
 
 ### Install Dependencies
@@ -301,14 +327,15 @@ The site is deployed to Netlify with the following configuration:
 
 ### Node.js Version Requirements
 
-**Nuxt 4 requires Node.js 20.x or higher.** This is a critical requirement for successful builds and deployments.
+**This project requires Node.js 23.x or higher.** This is a critical requirement for successful builds and deployments.
 
-#### Why Node.js 20.x?
+#### Why Node.js 23.x?
 
+- **Nuxt Content v3 compatibility:** Nuxt Content v3 uses native modules (better-sqlite3) that require Node.js 23+
 - **Nuxt 4 compatibility:** Nuxt 4 uses modern JavaScript features that require Node.js 20+
-- **Dependency support:** Many npm packages have dropped support for Node.js 18.x
-- **Performance:** Node.js 20.x includes performance improvements and security updates
-- **Netlify compatibility:** Netlify's build environment supports Node.js 20.x
+- **Native module support:** The SQL-based query engine in Content v3 requires proper native module compilation
+- **Performance:** Node.js 23.x includes performance improvements and security updates
+- **Netlify compatibility:** Netlify's build environment supports Node.js 23.x
 
 #### Verifying Your Node.js Version
 
@@ -323,8 +350,8 @@ node --version
 
 ```bash
 # Using nvm (Node Version Manager) - recommended
-nvm install 20
-nvm use 20
+nvm install 23
+nvm use 23
 
 # Verify the update
 node --version
@@ -335,7 +362,7 @@ node --version
 The `.nvmrc` file in the project root specifies the required Node.js version:
 
 ```
-20
+23
 ```
 
 **Important:** This file is automatically detected by:
@@ -348,7 +375,7 @@ The `.nvmrc` file in the project root specifies the required Node.js version:
 
 ```bash
 # Update .nvmrc to match your new Node.js version
-echo "20" > .nvmrc
+echo "23" > .nvmrc
 ```
 
 #### Consequences of Version Mismatch
@@ -373,7 +400,7 @@ Netlify automatically detects and uses the following configuration:
 | ---------------------- | ---------------- | ----------------------------- |
 | **Build Command**      | `yarn generate`  | `package.json` scripts        |
 | **Publish Directory**  | `.output/public` | Generated by Nuxt             |
-| **Node Version**       | 20.x             | `.nvmrc` file                 |
+| **Node Version**       | 23.x             | `.nvmrc` file                 |
 | **Build Time**         | ~1-2 minutes     | Depends on route count        |
 | **Routes Prerendered** | 30 routes        | `creators/generateRoutes.mjs` |
 
@@ -393,7 +420,7 @@ The project includes a `netlify.toml` file with the following configuration:
   publish = ".output/public"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "23"
 ```
 
 **Key settings:**
@@ -424,27 +451,29 @@ The project includes a `netlify.toml` file with the following configuration:
 
 **1. Node.js Version Mismatch**
 
-**Problem:** Build fails with "Cannot find module" or dependency errors
+**Problem:** Build fails with "Cannot find module" or "MODULE_VERSION" errors (especially with better-sqlite3)
 
-**Cause:** Local Node.js version doesn't match `.nvmrc` or Netlify's version
+**Cause:** Local Node.js version doesn't match `.nvmrc` or Netlify's version. This is critical for Nuxt Content v3 which uses native modules.
 
 **Solution:**
 
 ```bash
 # Update local Node.js
-nvm install 20
-nvm use 20
+nvm install 23
+nvm use 23
 
 # Update .nvmrc
-echo "20" > .nvmrc
+echo "23" > .nvmrc
 
-# Reinstall dependencies
+# Reinstall dependencies with force rebuild
 rm -rf node_modules yarn.lock
-yarn install
+yarn install --force
 
 # Test build locally
 yarn generate
 ```
+
+**Note:** If you see "MODULE_VERSION 131" vs "MODULE_VERSION 115" errors, this indicates a Node.js version mismatch. Run `yarn install --force` to rebuild native modules.
 
 **2. Path Alias Issues**
 
@@ -488,27 +517,38 @@ css: [
 @import "@/assets/css/variables.scss"  // ✅ Use @/ alias
 ```
 
-**4. Nuxt Content v2 vs v3 Compatibility**
+**4. Nuxt Content v3 Migration Issues**
 
-**Problem:** Content queries fail or return unexpected results
+**Problem:** Content queries fail, "Collection not found", or "queryContent is not defined"
 
-**Cause:** Accidentally upgraded to Nuxt Content v3 (breaking API changes)
+**Cause:** This project has been upgraded to Nuxt Content v3 which has breaking API changes from v2
 
 **Solution:**
+
+For this project, Nuxt Content v3 is the current version. If you need to understand the migration:
 
 ```bash
 # Check current version
 npm list @nuxt/content
 
-# If v3, downgrade to v2
+# Should show v3.7.1 or higher
+```
+
+**Key API changes in v3:**
+
+- `queryContent()` → `queryCollection('content')`
+- `.findOne()` → `.first()`
+- `.where({ _path: "/path" })` → `.path('/path')`
+- `._path` → `.path` (field names)
+
+**For detailed migration guide, see [NUXT-CONTENT-MIGRATION.md](./NUXT-CONTENT-MIGRATION.md)**
+
+**If you need to rollback to v2:**
+
+```bash
 yarn add @nuxt/content@^2.13.4
-
-# Update queries if needed
-// v2 API
-const posts = await queryContent('blog').find()
-
-// v3 API (different)
-const posts = await queryCollection('blog').find()
+# Then revert all queryCollection() calls to queryContent()
+# And update .nvmrc back to 20
 ```
 
 **5. Vuetify Component Configuration**
@@ -533,7 +573,27 @@ vuetify: {
 }
 ```
 
-**6. Static Site Generation Route Configuration**
+**6. Native Module Compilation Errors (better-sqlite3)**
+
+**Problem:** "MODULE_VERSION 131" vs "MODULE_VERSION 115" error when starting dev server
+
+**Cause:** Native modules compiled for different Node.js version than currently running
+
+**Solution:**
+
+```bash
+# Rebuild native modules for current Node.js version
+yarn install --force
+
+# Or manually rebuild
+yarn rebuild
+
+# Verify Node.js version matches .nvmrc
+node --version
+cat .nvmrc
+```
+
+**7. Static Site Generation Route Configuration**
 
 **Problem:** Routes don't prerender or 404 errors on deployment
 
@@ -857,12 +917,10 @@ The audit will:
 **Fixed ARIA Attribute Issues:**
 
 1. **Empty aria-label on Hero Images** - Removed empty `aria-label=""` and added `aria-hidden="true"` to decorative images
-
    - Files: `app/components/content/SplashHome.vue`, `app/components/content/SplashHomeSecondary.vue`
    - Impact: Resolves Siteimprove "ARIA attribute unsupported or prohibited" errors
 
 2. **Redundant aria-label on Sidebar Accordion Headers** - Removed redundant aria-label attributes
-
    - File: `app/components/content/TheSidebar.vue`
    - Impact: Prevents aria-label from overriding visible text for screen readers
 
@@ -911,12 +969,10 @@ The audit will:
 **Fixes Applied (October 15, 2025):**
 
 1. **Navigation Buttons** - Added explicit `background-color: white` and `color: #333` to all navigation buttons
-
    - Provides 7.5:1 contrast ratio (exceeds 4.5:1 requirement)
    - Applied to logo, title, and menu buttons
 
 2. **Hero Overlay Text** - Added explicit dark background `rgba(0, 0, 0, 0.6)` to hero message
-
    - Provides 12.6:1 contrast ratio (exceeds 3:1 requirement for large text)
    - Improved visual readability with padding and border-radius
 
