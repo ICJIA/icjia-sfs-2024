@@ -44,7 +44,7 @@
             :key="data?.title"
             :value="data"
             class="markdown-body"
-            style="font-family: 'Lato', sans-serif"
+            style="font-family: &quot;Lato&quot;, sans-serif"
           >
             <template #empty>Document not found</template>
             <template #not-found>Document not found</template>
@@ -79,7 +79,7 @@ const renderer = new md({
 }).use(attrs);
 
 const { data } = await useAsyncData(`content-about`, async () => {
-  const post = await queryContent().where({ _path: "/about" }).findOne();
+  const post = await queryCollection("content").path("/about").first();
   return post;
 });
 

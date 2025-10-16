@@ -44,7 +44,7 @@
             :key="data?.title"
             :value="data"
             class="markdown-body"
-            style="font-family: 'Lato', sans-serif"
+            style="font-family: &quot;Lato&quot;, sans-serif"
           >
             <template #empty>Document not found</template>
             <template #not-found>Document not found</template>
@@ -78,9 +78,9 @@ const renderer = new md({
 }).use(attrs);
 
 const { data } = await useAsyncData(`content-childhood-exposure`, async () => {
-  const post = await queryContent()
-    .where({ _path: "/childhood-exposure" })
-    .findOne();
+  const post = await queryCollection("content")
+    .path("/childhood-exposure")
+    .first();
   return post;
 });
 

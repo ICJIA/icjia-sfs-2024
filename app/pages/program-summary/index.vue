@@ -44,7 +44,7 @@
             :key="data?.title"
             :value="data"
             class="markdown-body"
-            style="font-family: 'Lato', sans-serif"
+            style="font-family: &quot;Lato&quot;, sans-serif"
           >
             <template #empty>Document not found</template>
             <template #not-found>Document not found</template>
@@ -63,9 +63,9 @@ let splashFull = ref(null);
 let splashThumbnail = ref(null);
 
 const { data } = await useAsyncData(`content-program`, async () => {
-  const post = await queryContent()
-    .where({ _path: "/program-summary" })
-    .findOne();
+  const post = await queryCollection("content")
+    .path("/program-summary")
+    .first();
   return post;
 });
 

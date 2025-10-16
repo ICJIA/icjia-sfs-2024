@@ -34,7 +34,7 @@
             :key="data?.title"
             :value="data"
             class="markdown-body"
-            style="font-family: 'Lato', sans-serif"
+            style="font-family: &quot;Lato&quot;, sans-serif"
           >
             <template #empty>Document not found</template>
             <template #not-found>Document not found</template>
@@ -51,7 +51,7 @@ import { getThumborUrl } from "@/utils/thumbor.js";
 let isMounted = ref(false);
 
 const { data } = await useAsyncData(`content-privacy`, async () => {
-  const post = await queryContent().where({ _path: "/privacy" }).findOne();
+  const post = await queryCollection("content").path("/privacy").first();
   return post;
 });
 

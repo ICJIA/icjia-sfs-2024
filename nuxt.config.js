@@ -118,22 +118,16 @@ export default defineNuxtConfig({
   ],
 
   /**
-   * @nuxt/content module configuration.
-   * Manages markdown content files and their rendering.
+   * @nuxt/content module configuration (v3).
+   *
+   * In Nuxt Content v3, most configuration has moved to content.config.ts.
+   * This section now only contains module-level options.
+   *
+   * @see https://content.nuxt.com/docs/getting-started/configuration
    */
   content: {
-    documentDriven: false, // Disable automatic page generation from content
-
-    markdown: {
-      mdc: true, // Enable Markdown Components (MDC) syntax
-
-      // Disable automatic anchor link generation for headings
-      // This prevents duplicate anchor link configurations
-      anchorLinks: {
-        depth: 0, // Don't generate anchor links at any heading level
-        exclude: [0, 1, 2, 3, 4, 5, 6], // Exclude all heading levels
-      },
-    },
+    // Module-level options can be configured here if needed
+    // Collection-specific configuration is in content.config.ts
   },
 
   /**

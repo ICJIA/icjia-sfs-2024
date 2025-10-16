@@ -46,7 +46,7 @@
             :key="data?.title"
             :value="data"
             class="markdown-body"
-            style="font-family: 'Lato', sans-serif"
+            style="font-family: &quot;Lato&quot;, sans-serif"
           >
             <template #empty>Document not found</template>
             <template #not-found>Document not found</template>
@@ -70,7 +70,7 @@ let splashThumbnail = ref(null);
 const contentDocRef = ref(null);
 
 const { data } = await useAsyncData(`content-sites`, async () => {
-  const post = await queryContent().where({ _path: "/sites" }).findOne();
+  const post = await queryCollection("content").path("/sites").first();
   return post;
 });
 
@@ -179,7 +179,9 @@ onMounted(async () => {
   white-space: nowrap;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
   z-index: 99999;
   pointer-events: none;
   max-width: 300px;
@@ -200,7 +202,9 @@ onMounted(async () => {
   border-top-color: rgba(0, 0, 0, 0.9);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
   z-index: 99999;
 }
 

@@ -52,7 +52,7 @@
             :key="data?.title"
             :value="data"
             class="markdown-body"
-            style="font-family: 'Lato', sans-serif"
+            style="font-family: &quot;Lato&quot;, sans-serif"
           >
             <template #empty>Document not found</template>
             <template #not-found>Document not found</template>
@@ -214,7 +214,7 @@ let splashFull = ref(null);
 let splashThumbnail = ref(null);
 
 const { data } = await useAsyncData(`content-research`, async () => {
-  const post = await queryContent().where({ _path: "/research" }).findOne();
+  const post = await queryCollection("content").path("/research").first();
   return post;
 });
 
@@ -272,7 +272,9 @@ onMounted(async () => {
   border-radius: 8px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 /* Screen reader only text for accessibility */
