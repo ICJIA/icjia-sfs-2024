@@ -119,7 +119,7 @@
               -->
               <div style="font-size: 12px; font-weight: 400">
                 <strong
-                  >&#169; 2024
+                  >&#169; {{ currentYear }}
                   <a
                     href="https://icjia.illinois.gov"
                     target="_blank"
@@ -163,6 +163,14 @@ export default {
     const { isTranslationEnabled } = useAppConfig();
 
     /**
+     * Get the current year for the copyright notice.
+     * Automatically updates each year without code changes.
+     *
+     * @returns {number} The current year
+     */
+    const currentYear = computed(() => new Date().getFullYear());
+
+    /**
      * Scrolls the page to the top.
      * Currently defined but not actively used in the template.
      *
@@ -194,7 +202,13 @@ export default {
       window.open("https://icjia.illinois.gov", "_blank");
     };
 
-    return { routeToSite, scrollTop, translate, isTranslationEnabled };
+    return {
+      routeToSite,
+      scrollTop,
+      translate,
+      isTranslationEnabled,
+      currentYear,
+    };
   },
 };
 </script>
