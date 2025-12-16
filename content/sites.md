@@ -123,7 +123,7 @@ searchMeta: null
         <tr>
             <td><a href="https://5peasinapod.org/" target="_blank" rel="noopener noreferrer">5 Peas in a Pod</a></td>
             <td>Chicago’s 60639 and surrounding areas on the West and South Sides: Humboldt Park, Roseland, Pullman, Bronzeville, Logan Square, South Austin, Irving Park, Portage Park, and Cragin</td>
-            <td>Elizabeth Johnson<br>Marquita Dorsey<br>5435 W. North Ave.<br>Chicago, IL 60639<br>County: Cook</td>
+            <td>Elizabeth Johnson<br>5435 W. North Ave.<br>Chicago, IL 60639<br>County: Cook</td>
         </tr>
         <tr>
             <td><a href="https://www.primeforchange.org/safehaven" target="_blank" rel="noopener noreferrer">Prime</a></td>
