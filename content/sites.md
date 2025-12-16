@@ -123,7 +123,7 @@ searchMeta: null
         <tr>
             <td><a href="https://5peasinapod.org/" target="_blank" rel="noopener noreferrer">5 Peas in a Pod</a></td>
             <td>Chicago’s 60639 and surrounding areas on the West and South Sides: Humboldt Park, Roseland, Pullman, Bronzeville, Logan Square, South Austin, Irving Park, Portage Park, and Cragin</td>
-            <td>Elizabeth Johnson<br>5435 W. North Ave.<br>Chicago, IL 60639<br>County: Cook</td>
+            <td>Elizabeth Johnson<br>Fatima Smith<br>5435 W. North Ave.<br>Chicago, IL 60639<br>County: Cook</td>
         </tr>
         <tr>
             <td><a href="https://www.primeforchange.org/safehaven" target="_blank" rel="noopener noreferrer">Prime</a></td>
@@ -133,7 +133,7 @@ searchMeta: null
         <tr>
             <td><a href="https://anewdv.org/" target="_blank" rel="noopener noreferrer">Anew</a></td>
             <td>Cook and Will Counties</td>
-            <td>Raphaelle Cappos<br>18139 S. Harwood Ave.<br>Homewood, Illinois 60430-2118<br>County: Cook</td>
+            <td>Carol Gsell<br>18139 S. Harwood Ave.<br>Homewood, Illinois 60430-2118<br>County: Cook</td>
         </tr>
         <tr>
             <td>The Legacy Foundation</td>
