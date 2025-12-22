@@ -15,7 +15,8 @@
     "create:routes": "node ./creators/generateRoutes.mjs",
     "create:siteMap": "node ./creators/generateSiteMap.mjs",
     "scripts": "yarn clear:cache && yarn create:pages && yarn create:routes && yarn create:siteMap",
-    "audit:a11y": "node accessibility-audit.mjs"
+    "audit:a11y": "node accessibility-audit.mjs",
+    "audit:a11y:full": "node full-accessibility-audit.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.2",
