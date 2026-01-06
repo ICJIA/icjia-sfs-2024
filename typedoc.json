@@ -1,0 +1,26 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "app/composables/states.ts",
+    "app/utils/thumbor.js"
+  ],
+  "entryPointStrategy": "expand",
+  "out": "public/docs/jsdoc",
+  "name": "ICJIA Safe From the Start - API Documentation",
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeExternals": true,
+  "skipErrorChecking": true,
+  "readme": "none",
+  "sort": ["source-order"],
+  "validation": {
+    "notExported": false,
+    "invalidLink": false
+  },
+  "theme": "default",
+  "navigationLinks": {
+    "Documentation Portal": "/docs/",
+    "Main Site": "/"
+  }
+}
+

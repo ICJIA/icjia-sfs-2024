@@ -7,6 +7,7 @@
  * - ICJIA logo (clickable to navigate to main ICJIA site)
  * - Social media links (Facebook, YouTube, Instagram, LinkedIn)
  * - Copyright and contact information
+ * - Privacy and Accessibility report links
  * - Additional footer navigation links
  *
  * The footer uses a dark blue background (#0d4474) and includes
@@ -138,6 +139,16 @@
                   <nuxt-link to="/privacy" style="color: #fff"
                     >Privacy
                   </nuxt-link>
+                </strong>
+
+                &nbsp;|&nbsp;
+                <strong>
+                  <a
+                    href="/documentation/accessibility"
+                    style="color: #fff"
+                    aria-label="Accessibility Report"
+                    >Accessibility
+                  </a>
                 </strong>
 
                 <!-- Contact link - currently disabled -->

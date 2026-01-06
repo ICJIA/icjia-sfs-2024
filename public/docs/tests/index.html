@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Results - January 6, 2026 at 09:48:14 AM CST</title>
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --success: #28a745;
+      --danger: #dc3545;
+      --warning: #ffc107;
+      --info: #17a2b8;
+      --light: #f8f9fa;
+      --dark: #343a40;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: var(--primary);
+      border-bottom: 3px solid var(--info);
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-top: 30px;
+      margin-bottom: 15px;
+      border-left: 4px solid var(--info);
+      padding-left: 15px;
+    }
+
+    .metadata {
+      background: var(--light);
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 30px;
+    }
+
+    .metadata p { margin: 5px 0; }
+    .metadata strong { color: var(--primary); }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .stat-card {
+      background: var(--light);
+      padding: 20px;
+      border-radius: 5px;
+      text-align: center;
+      border-left: 4px solid var(--info);
+    }
+
+    .stat-card .number {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .stat-card.success .number { color: var(--success); }
+    .stat-card.danger .number { color: var(--danger); }
+
+    .stat-card .label {
+      color: #7f8c8d;
+      margin-top: 5px;
+    }
+
+    .file-section {
+      margin: 30px 0;
+      padding: 20px;
+      background: var(--light);
+      border-radius: 5px;
+      border-left: 4px solid var(--info);
+    }
+
+    .file-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .file-header h3 {
+      color: var(--primary);
+      font-family: 'Courier New', monospace;
+      font-size: 0.95rem;
+    }
+
+    .file-stats {
+      display: flex;
+      gap: 15px;
+      font-size: 0.9rem;
+    }
+
+    .test-case {
+      background: white;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border-left: 4px solid var(--success);
+    }
+
+    .test-case.failed {
+      border-left-color: var(--danger);
+    }
+
+    .test-case.skipped {
+      border-left-color: var(--warning);
+      opacity: 0.7;
+    }
+
+    .test-case-title {
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
+
+    .test-case-duration {
+      font-size: 0.85rem;
+      color: #7f8c8d;
+    }
+
+    .test-case-description {
+      margin-top: 10px;
+    }
+
+    .test-case-description summary {
+      font-size: 0.85rem;
+      color: var(--info);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .test-case-description summary:hover {
+      text-decoration: underline;
+    }
+
+    .test-case-description .description-content {
+      margin-top: 10px;
+      padding: 15px;
+      background: #e7f3ff;
+      border-left: 3px solid var(--info);
+      border-radius: 4px;
+      font-size: 0.9rem;
+      color: #1976D2;
+      line-height: 1.5;
+    }
+
+    .error-message {
+      margin-top: 10px;
+      padding: 10px;
+      background: #f8d7da;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      color: #721c24;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .info-box {
+      background: #e7f3ff;
+      border-left: 4px solid #2196F3;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 5px;
+    }
+
+    .info-box h3 {
+      color: #1976D2;
+      margin-top: 0;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 2px solid #ddd;
+      text-align: center;
+      color: #7f8c8d;
+      font-size: 0.9em;
+    }
+
+    footer a {
+      color: var(--info);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .file-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧪 Test Results</h1>
+    
+    <div class="metadata">
+      <p><strong>Test Date & Time:</strong> January 6, 2026 at 09:48:14 AM CST</p>
+      <p><strong>Test Framework:</strong> Vitest</p>
+      <p><strong>Total Duration:</strong> 0.01s</p>
+      <p><strong>Test Files:</strong> 2</p>
+    </div>
+    
+    <h2>Summary</h2>
+    
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="number">17</div>
+        <div class="label">Total Tests</div>
+      </div>
+      <div class="stat-card success">
+        <div class="number">17</div>
+        <div class="label">Passed</div>
+      </div>
+      <div class="stat-card success">
+        <div class="number">0</div>
+        <div class="label">Failed</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">0</div>
+        <div class="label">Skipped</div>
+      </div>
+    </div>
+    
+    
+    <div class="info-box" style="background: #d4edda; border-color: #28a745;">
+      <h3 style="color: #155724;">✅ All Tests Passed!</h3>
+      <p style="color: #155724;">All 17 tests completed successfully.</p>
+    </div>
+    
+    
+    <h2>Detailed Results</h2>
+    
+    
+    <div class="file-section">
+      <div class="file-header">
+        <h3>/test/unit/states.test.ts</h3>
+        <div class="file-stats">
+          <span>✅ 11</span>
+          <span>❌ 0</span>
+          <span>⏱️ 0.00s</span>
+        </div>
+      </div>
+      
+      
+        <div class="test-case ">
+          <div class="test-case-title">✅ should initialize counter to 0</div>
+          <div class="test-case-duration">Duration: 0.5760840000000371ms</div>
+          
+          <details class="test-case-description">
+            <summary>What does this test verify?</summary>
+            <div class="description-content">
+              <p>Verifies useCounter starts at 0 for consistent initial state across the application.</p>
+            </div>
+          </details>
+        
+          
+        </div>
+        
+        <div class="test-case ">
+          <div class="test-case-title">✅ should return the same state on multiple calls</div>
+          <div class="test-case-duration">Duration: 0.08466599999997015ms</div>
+          
+          <details class="test-case-description">
+            <summary>What does this test verify?</summary>
+            <div class="description-content">
+              <p>Confirms that calling useCounter multiple times returns the same reactive reference (singleton pattern).</p>
+            </div>
+          </details>
+        
+          
+        </div>
+        
+        <div class="test-case ">
+          <div class="test-case-title">✅ should initialize color to &quot;pink&quot;</div>
+          <div class="test-case-duration">Duration: 0.0721250000000282ms</div>
+          
+          <details class="test-case-description">
+            <summary>What does this test verify?</summary>
+            <div class="description-content">
+              <p>Tests the default theme color value used for UI customization.</p>
+            </div>
+          </details>
+        
+          
+        </div>
+        
+        <div class="test-case ">
+          <div class="test-case-title">✅ should be a string type</div>
+          <div class="test-case-duration">Duration: 0.09462499999995089ms</div>
+          
+          <details class="test-case-description">
+            <summary>What does this test verify?</summary>
+            <div class="description-content">
+              <p>Type checking to ensure color state holds string values for CSS compatibility.</p>
+            </div>
+          </details>
+        
+          
+        </div>
+        
+        <div class="test-case ">
+          <div class="test-case-title">✅ should initialize nav toggle to false (closed)</div>
+          <div class="test-case-duration">Duration: 0.06729100000001154ms</div>
+          
+          <details class="test-case-description">
+            <summary>What does this test verify?</summary>
+            <div class="description-content">
+              <p>Confirms mobile navigation starts in closed state for proper UX on page load.</p>
+            </div>
+          </details>
+        
+          
+        </div>
+        
+        <div class="test-case ">
+          <div class="test-case-title">✅ should be a boolean type</div>
+          <div class="test-case-duration">Duration: 0.06395800000001373ms</div>
+          
+          <details class="test-case-description">
+            <summary>What does this test verify?</summary>
+            <div class="description-content">
+              <p>Type checking for boolean toggle states used in conditional rendering.</p>
+            </div>
+          </details>
+        
+          
+        </div>
+        
+        <div class="test-case ">
+          <div class="test-case-title">✅ should initialize with provided value</div>
+          <div class="test-case-duration">Duration: 0.057082999999977346ms</div>
+          
+          <details class="test-case-description">
+            <summary>What does this test verify?</summary>
+            <div class="description-content">
+              <p>Tests that useSimpleCounter accepts and uses the initial value parameter.</p>
+            </div>
+          </details>
+        
+          
+        </div>
+        
+        <div class="test-case ">
+          <div class="test-case-title">✅ should accept zero as initial value</div>
+          <div class="test-case-duration">Duration: 0.09712500000000546ms</div>
+          
+          <details class="test-case-description">
+            <summary>What does this test verify?</summary>
+            <div class="description-content">
+              <p>Edge case testing: zero should be a valid initial value, not treated as falsy.</p>
+            </div>
+          </details>
+        
+          
+        </div>
+        
+        <div class="test-case ">
+          <div class="test-case-title">✅ should accept negative numbers</div>
+          <div class="test-case-duration">Duration: 0.13041700000002265ms</div>
+          
+          <details class="test-case-description">
+            <summary>What does this test verify?</summary>
+            <div class="description-content">
+              <p>Edge case testing: negative numbers should work for counting down scenarios.</p>
+            </div>
+          </details>
+        
+          
+        </div>
+        
+        <div class="test-case ">
+          <div class="test-case-title">✅ should initialize translate toggle to false (hidden)</div>
+          <div class="test-case-duration">Duration: 0.06329099999999244ms</div>
+          
+          <details class="test-case-description">
+            <summary>What does this test verify?</summary>
+            <div class="description-content">
+              <p>Confirms translation modal starts hidden for unobtrusive language selection.</p>
+            </div>
+          </details>
+        
+          
+        </div>
+        
+        <div class="test-case ">
+          <div class="test-case-title">✅ should be a boolean type</div>
+          <div class="test-case-duration">Duration: 0.04416700000001583ms</div>
+          
+          <details class="test-case-description">
+            <summary>What does this test verify?</summary>
+            <div class="description-content">
+              <p>Type checking for boolean toggle states used in conditional rendering.</p>
+            </div>
+          </details>
+        
+          
+        </div>
+        
+    </div>
+    
+    <div class="file-section">
+      <div class="file-header">
+        <h3>/test/unit/thumbor.test.ts</h3>
+        <div class="file-stats">
+          <span>✅ 6</span>
+          <span>❌ 0</span>
+          <span>⏱️ 0.01s</span>
+        </div>
+      </div>
+      
+      
+        <div class="test-case ">
+          <div class="test-case-title">✅ should be a function that can be imported</div>
+          <div class="test-case-duration">Duration: 7.904333000000008ms</div>
+          
+          <details class="test-case-description">
+            <summary>What does this test verify?</summary>
+            <div class="description-content">
+              <p>Verifies the getThumborUrl function is properly exported from the thumbor utility module and can be imported by other modules.</p>
+            </div>
+          </details>
+        
+          
+        </div>
+        
+        <div class="test-case ">
+          <div class="test-case-title">✅ should return a URL string</div>
+          <div class="test-case-duration">Duration: 0.422916999999984ms</div>
+          
+          <details class="test-case-description">
+            <summary>What does this test verify?</summary>
+            <div class="description-content">
+              <p>Confirms that getThumborUrl returns a string URL that can be used in image src attributes.</p>
+            </div>
+          </details>
+        
+          
+        </div>
+        
+        <div class="test-case ">
+          <div class="test-case-title">✅ should use default values when not provided</div>
+          <div class="test-case-duration">Duration: 0.3230000000000359ms</div>
+          
+          <details class="test-case-description">
+            <summary>What does this test verify?</summary>
+            <div class="description-content">
+              <p>Tests that the function works with an empty options object, using sensible defaults for all parameters.</p>
+            </div>
+          </details>
+        
+          
+        </div>
+        
+        <div class="test-case ">
+          <div class="test-case-title">✅ should accept custom width and height</div>
+          <div class="test-case-duration">Duration: 0.12283400000001166ms</div>
+          
+          <details class="test-case-description">
+            <summary>What does this test verify?</summary>
+            <div class="description-content">
+              <p>Verifies custom dimensions can be specified for responsive image generation.</p>
+            </div>
+          </details>
+        
+          
+        </div>
+        
+        <div class="test-case ">
+          <div class="test-case-title">✅ should accept custom quality setting</div>
+          <div class="test-case-duration">Duration: 0.11145799999997053ms</div>
+          
+          <details class="test-case-description">
+            <summary>What does this test verify?</summary>
+            <div class="description-content">
+              <p>Tests that image quality can be customized for different use cases (thumbnails vs. hero images).</p>
+            </div>
+          </details>
+        
+          
+        </div>
+        
+        <div class="test-case ">
+          <div class="test-case-title">✅ should accept custom format</div>
+          <div class="test-case-duration">Duration: 0.15050000000002228ms</div>
+          
+          <details class="test-case-description">
+            <summary>What does this test verify?</summary>
+            <div class="description-content">
+              <p>Confirms support for different image formats like WebP, JPEG, PNG.</p>
+            </div>
+          </details>
+        
+          
+        </div>
+        
+    </div>
+    
+    
+    <div class="info-box">
+      <h3>About This Report</h3>
+      <p>This report is automatically generated by running the test suite. Each test case includes:</p>
+      <ul style="margin: 10px 0 0 20px;">
+        <li><strong>Test title:</strong> The name of the test as defined in the test file</li>
+        <li><strong>Duration:</strong> How long the test took to execute</li>
+        <li><strong>Description:</strong> An expandable explanation of what the test verifies</li>
+        <li><strong>Error details:</strong> For failed tests, the full error message</li>
+      </ul>
+    </div>
+    
+    <footer>
+      <p>Generated by <strong>Vitest</strong> test framework</p>
+      <p style="margin-top: 10px;">
+        <a href="/docs/">← Back to Documentation Portal</a> | 
+        <a href="https://vitest.dev/" target="_blank" rel="noopener noreferrer">Vitest Documentation</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -241,10 +241,22 @@ export default defineNuxtConfig({
   /**
    * Nitro configuration for server and prerendering.
    * Specifies which routes to pre-render during build.
+   * 
+   * Note: Routes under /docs/* are static HTML files in public/ directory,
+   * not Nuxt routes. They must be ignored during prerendering to prevent
+   * Nitro from attempting to prerender them as routes (which would cause 404 errors).
+   * 
+   * @see https://github.com/ICJIA/icjia-accessibility-portal - Challenge 8
    */
   nitro: {
     prerender: {
       routes: appRoutes, // Use the consolidated routes from appRoutes.json
+      ignore: [
+        '/docs',
+        '/docs/**',
+        '/documentation',
+        '/documentation/**',
+      ],
     },
   },
 });

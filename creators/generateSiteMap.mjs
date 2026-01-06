@@ -47,6 +47,12 @@ const writeStream = createWriteStream("public/sitemap.xml");
 sitemap.pipe(writeStream);
 
 /**
+ * Routes to exclude from sitemap.
+ * Documentation routes are internal and should not be indexed by search engines.
+ */
+const excludedPrefixes = ['/docs', '/documentation'];
+
+/**
  * Add each route to the sitemap with SEO metadata.
  *
  * changefreq: "weekly" - Indicates content is updated approximately weekly
@@ -55,8 +61,17 @@ sitemap.pipe(writeStream);
  * Note: These are hints to search engines and don't guarantee crawl behavior.
  * The priority is set relatively low (0.3) as most pages are informational
  * and don't change frequently.
+ * 
+ * Routes starting with /docs or /documentation are excluded from the sitemap.
  */
 routes.forEach((route) => {
+  // Skip excluded routes (documentation, docs portal, etc.)
+  const shouldExclude = excludedPrefixes.some(prefix => route.startsWith(prefix));
+  if (shouldExclude) {
+    console.log(`  Excluded from sitemap: ${route}`);
+    return;
+  }
+  
   const url = host + route;
   sitemap.write({ url, changefreq: "weekly", priority: 0.3 });
 });

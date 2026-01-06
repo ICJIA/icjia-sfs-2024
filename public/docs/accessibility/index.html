@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessibility Audit Report - January 6, 2026 at 09:52:21 AM CST</title>
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --success: #28a745;
+      --danger: #dc3545;
+      --warning: #ffc107;
+      --info: #17a2b8;
+      --light: #f8f9fa;
+      --dark: #343a40;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: var(--primary);
+      border-bottom: 3px solid var(--info);
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-top: 30px;
+      margin-bottom: 15px;
+      border-left: 4px solid var(--info);
+      padding-left: 15px;
+    }
+
+    h3 {
+      color: #555;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .metadata {
+      background: var(--light);
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 30px;
+    }
+
+    .metadata p {
+      margin: 5px 0;
+    }
+
+    .metadata strong {
+      color: var(--primary);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .stat-card {
+      background: var(--light);
+      padding: 20px;
+      border-radius: 5px;
+      text-align: center;
+      border-left: 4px solid var(--info);
+    }
+
+    .stat-card .number {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .stat-card.success .number {
+      color: var(--success);
+    }
+
+    .stat-card.danger .number {
+      color: var(--danger);
+    }
+
+    .stat-card .label {
+      color: #7f8c8d;
+      margin-top: 5px;
+    }
+
+    .severity-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.85em;
+      margin-right: 8px;
+    }
+
+    .severity-critical { background: #f8d7da; color: #721c24; }
+    .severity-serious { background: #fff3cd; color: #856404; }
+    .severity-moderate { background: #d1ecf1; color: #0c5460; }
+    .severity-minor { background: #e9ecef; color: #495057; }
+
+    .viewport-badge {
+      background: #e7f3ff;
+      color: #1976D2;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 0.85em;
+      margin-left: 8px;
+      text-transform: uppercase;
+    }
+
+    .page-section {
+      margin: 30px 0;
+      padding: 20px;
+      background: var(--light);
+      border-radius: 5px;
+      border-left: 4px solid var(--info);
+    }
+
+    .page-header {
+      margin-bottom: 15px;
+    }
+
+    .page-header h3 {
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
+
+    .violation {
+      background: white;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 5px;
+      border-left: 4px solid var(--danger);
+    }
+
+    .violation-header {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .violation-title {
+      font-weight: bold;
+      color: var(--primary);
+      flex: 1;
+    }
+
+    .violation-details {
+      margin-top: 10px;
+    }
+
+    .violation-details p {
+      margin: 8px 0;
+    }
+
+    .violation-details strong {
+      color: var(--primary);
+    }
+
+    .violation-nodes {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    .violation-node {
+      background: var(--light);
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      word-break: break-all;
+    }
+
+    .no-issues {
+      color: var(--success);
+      font-weight: bold;
+      padding: 10px;
+      background: #d4edda;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .error-box {
+      background: #f8d7da;
+      border-left: 4px solid var(--danger);
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 5px;
+      color: #721c24;
+    }
+
+    .info-box {
+      background: #e7f3ff;
+      border-left: 4px solid #2196F3;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 5px;
+    }
+
+    .info-box h3 {
+      color: #1976D2;
+      margin-top: 0;
+    }
+
+    .info-box ul {
+      margin: 10px 0;
+      padding-left: 25px;
+    }
+
+    .info-box li {
+      margin: 5px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background: var(--light);
+    }
+
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 2px solid #ddd;
+      text-align: center;
+      color: #7f8c8d;
+      font-size: 0.9em;
+    }
+
+    footer a {
+      color: var(--info);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .violation-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 Accessibility Audit Report</h1>
+    
+    <div class="metadata">
+      <p><strong>Audit Date & Time:</strong> January 6, 2026 at 09:52:21 AM CST</p>
+      <p><strong>Total Pages Audited:</strong> 8 (tested in desktop, tablet, and mobile viewports)</p>
+      <p><strong>Audit Tool:</strong> axe-core (via @axe-core/playwright)</p>
+      <p><strong>WCAG Standards:</strong> WCAG 2.1 Level A & AA</p>
+      <p><strong>Viewports Tested:</strong></p>
+      <ul style="margin: 10px 0 0 25px;">
+        <li>Desktop: 1920×1080</li>
+        <li>Tablet: 768×1024</li>
+        <li>Mobile: 375×667</li>
+      </ul>
+    </div>
+    
+    <div class="info-box">
+      <h3>Why axe-core is Essential for Accessibility Testing</h3>
+      <p>This accessibility audit was generated using <strong>axe-core</strong>, one of the most comprehensive and trusted accessibility testing tools available.</p>
+      <p><strong>Key Features:</strong></p>
+      <ul>
+        <li><strong>Comprehensive Coverage:</strong> Tests against WCAG 2.1 Level A and AA guidelines</li>
+        <li><strong>Industry Standard:</strong> Used by Google, Microsoft, and thousands of organizations</li>
+        <li><strong>Open Source:</strong> Free, actively maintained tool</li>
+        <li><strong>Accurate Results:</strong> Low false-positive rate with actionable reports</li>
+      </ul>
+      <p style="margin-top: 1rem;">
+        <a href="https://www.deque.com/axe/" target="_blank" rel="noopener noreferrer">Learn more about axe-core →</a>
+      </p>
+      <p style="margin-top: 1rem; font-size: 0.9em; color: #666;">
+        <strong>Note:</strong> Automated testing catches ~30-50% of accessibility issues. Manual testing with screen readers and keyboard navigation is also recommended.
+      </p>
+    </div>
+    
+    <h2>Executive Summary</h2>
+    
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="number">8</div>
+        <div class="label">Pages Audited</div>
+      </div>
+      <div class="stat-card danger">
+        <div class="number">1</div>
+        <div class="label">Total Violations</div>
+      </div>
+      <div class="stat-card danger">
+        <div class="number">7</div>
+        <div class="label">Pages Passing</div>
+      </div>
+      <div class="stat-card success">
+        <div class="number">0</div>
+        <div class="label">Critical Issues</div>
+      </div>
+      <div class="stat-card danger">
+        <div class="number">1</div>
+        <div class="label">Serious Issues</div>
+      </div>
+    </div>
+    
+    <h2>Violations by Severity</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Severity</th>
+          <th>Count</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="severity-badge severity-critical">Critical</span></td>
+          <td>0</td>
+          <td>Issues that prevent users from accessing content or functionality</td>
+        </tr>
+        <tr>
+          <td><span class="severity-badge severity-serious">Serious</span></td>
+          <td>1</td>
+          <td>Issues that significantly impact user experience and accessibility</td>
+        </tr>
+        <tr>
+          <td><span class="severity-badge severity-moderate">Moderate</span></td>
+          <td>0</td>
+          <td>Issues that may cause confusion or difficulty for some users</td>
+        </tr>
+        <tr>
+          <td><span class="severity-badge severity-minor">Minor</span></td>
+          <td>0</td>
+          <td>Issues that are minor inconveniences but don't block access</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <h2>Detailed Page Results</h2>
+    
+    
+    <div class="page-section">
+      <div class="page-header">
+        <h3>Home</h3>
+      </div>
+      
+      
+      <div style="margin: 15px 0;">
+        <strong>Scan Results:</strong>
+        <ul style="margin: 10px 0; padding-left: 25px;">
+          <li><strong>Desktop (1920×1080):</strong> ✅ Passed</li>
+          <li><strong>Tablet (768×1024):</strong> ✅ Passed</li>
+          <li><strong>Mobile (375×667):</strong> ✅ Passed</li>
+          <li><strong>Total Violations:</strong> 0</li>
+          <li><strong>Total Passed Checks:</strong> 73</li>
+        </ul>
+      </div>
+      
+      
+      
+      <div class="no-issues">
+        ✓ This page passes all WCAG 2.1 AA accessibility checks across all viewports.
+      </div>
+      
+    </div>
+    
+    <div class="page-section">
+      <div class="page-header">
+        <h3>/about</h3>
+      </div>
+      
+      
+      <div style="margin: 15px 0;">
+        <strong>Scan Results:</strong>
+        <ul style="margin: 10px 0; padding-left: 25px;">
+          <li><strong>Desktop (1920×1080):</strong> ✅ Passed</li>
+          <li><strong>Tablet (768×1024):</strong> ✅ Passed</li>
+          <li><strong>Mobile (375×667):</strong> ✅ Passed</li>
+          <li><strong>Total Violations:</strong> 0</li>
+          <li><strong>Total Passed Checks:</strong> 78</li>
+        </ul>
+      </div>
+      
+      
+      
+      <div class="no-issues">
+        ✓ This page passes all WCAG 2.1 AA accessibility checks across all viewports.
+      </div>
+      
+    </div>
+    
+    <div class="page-section">
+      <div class="page-header">
+        <h3>/childhood-exposure</h3>
+      </div>
+      
+      
+      <div style="margin: 15px 0;">
+        <strong>Scan Results:</strong>
+        <ul style="margin: 10px 0; padding-left: 25px;">
+          <li><strong>Desktop (1920×1080):</strong> ✅ Passed</li>
+          <li><strong>Tablet (768×1024):</strong> ✅ Passed</li>
+          <li><strong>Mobile (375×667):</strong> ✅ Passed</li>
+          <li><strong>Total Violations:</strong> 0</li>
+          <li><strong>Total Passed Checks:</strong> 81</li>
+        </ul>
+      </div>
+      
+      
+      
+      <div class="no-issues">
+        ✓ This page passes all WCAG 2.1 AA accessibility checks across all viewports.
+      </div>
+      
+    </div>
+    
+    <div class="page-section">
+      <div class="page-header">
+        <h3>/privacy</h3>
+      </div>
+      
+      
+      <div style="margin: 15px 0;">
+        <strong>Scan Results:</strong>
+        <ul style="margin: 10px 0; padding-left: 25px;">
+          <li><strong>Desktop (1920×1080):</strong> ✅ Passed</li>
+          <li><strong>Tablet (768×1024):</strong> ✅ Passed</li>
+          <li><strong>Mobile (375×667):</strong> ✅ Passed</li>
+          <li><strong>Total Violations:</strong> 0</li>
+          <li><strong>Total Passed Checks:</strong> 72</li>
+        </ul>
+      </div>
+      
+      
+      
+      <div class="no-issues">
+        ✓ This page passes all WCAG 2.1 AA accessibility checks across all viewports.
+      </div>
+      
+    </div>
+    
+    <div class="page-section">
+      <div class="page-header">
+        <h3>/program-summary</h3>
+      </div>
+      
+      
+      <div style="margin: 15px 0;">
+        <strong>Scan Results:</strong>
+        <ul style="margin: 10px 0; padding-left: 25px;">
+          <li><strong>Desktop (1920×1080):</strong> ✅ Passed</li>
+          <li><strong>Tablet (768×1024):</strong> ✅ Passed</li>
+          <li><strong>Mobile (375×667):</strong> ✅ Passed</li>
+          <li><strong>Total Violations:</strong> 0</li>
+          <li><strong>Total Passed Checks:</strong> 75</li>
+        </ul>
+      </div>
+      
+      
+      
+      <div class="no-issues">
+        ✓ This page passes all WCAG 2.1 AA accessibility checks across all viewports.
+      </div>
+      
+    </div>
+    
+    <div class="page-section">
+      <div class="page-header">
+        <h3>/research</h3>
+      </div>
+      
+      
+      <div style="margin: 15px 0;">
+        <strong>Scan Results:</strong>
+        <ul style="margin: 10px 0; padding-left: 25px;">
+          <li><strong>Desktop (1920×1080):</strong> ✅ Passed</li>
+          <li><strong>Tablet (768×1024):</strong> ✅ Passed</li>
+          <li><strong>Mobile (375×667):</strong> ✅ Passed</li>
+          <li><strong>Total Violations:</strong> 0</li>
+          <li><strong>Total Passed Checks:</strong> 76</li>
+        </ul>
+      </div>
+      
+      
+      
+      <div class="no-issues">
+        ✓ This page passes all WCAG 2.1 AA accessibility checks across all viewports.
+      </div>
+      
+    </div>
+    
+    <div class="page-section">
+      <div class="page-header">
+        <h3>/resources</h3>
+      </div>
+      
+      
+      <div style="margin: 15px 0;">
+        <strong>Scan Results:</strong>
+        <ul style="margin: 10px 0; padding-left: 25px;">
+          <li><strong>Desktop (1920×1080):</strong> ✅ Passed</li>
+          <li><strong>Tablet (768×1024):</strong> ✅ Passed</li>
+          <li><strong>Mobile (375×667):</strong> ✅ Passed</li>
+          <li><strong>Total Violations:</strong> 0</li>
+          <li><strong>Total Passed Checks:</strong> 75</li>
+        </ul>
+      </div>
+      
+      
+      
+      <div class="no-issues">
+        ✓ This page passes all WCAG 2.1 AA accessibility checks across all viewports.
+      </div>
+      
+    </div>
+    
+    <div class="page-section">
+      <div class="page-header">
+        <h3>/sites</h3>
+      </div>
+      
+      
+      <div style="margin: 15px 0;">
+        <strong>Scan Results:</strong>
+        <ul style="margin: 10px 0; padding-left: 25px;">
+          <li><strong>Desktop (1920×1080):</strong> ✅ Passed</li>
+          <li><strong>Tablet (768×1024):</strong> ✅ Passed</li>
+          <li><strong>Mobile (375×667):</strong> ❌ 1 violation(s)</li>
+          <li><strong>Total Violations:</strong> 1</li>
+          <li><strong>Total Passed Checks:</strong> 111</li>
+        </ul>
+      </div>
+      
+      
+      
+      <h4>Issues Found:</h4>
+      
+        <div class="violation">
+          <div class="violation-header">
+            <span class="severity-badge severity-serious">SERIOUS</span>
+            <span class="violation-title">Scrollable region must have keyboard access</span>
+            <span class="viewport-badge">mobile</span>
+          </div>
+          <div class="violation-details">
+            <p><strong>Rule ID:</strong> scrollable-region-focusable</p>
+            <p><strong>Description:</strong> Ensure elements that have scrollable content are accessible by keyboard</p>
+            <p><strong>WCAG Standards:</strong> wcag2a, wcag211, wcag213</p>
+            <p><strong>Affected Elements:</strong> 1</p>
+            <p><strong>Help URL:</strong> <a href="https://dequeuniversity.com/rules/axe/4.10/scrollable-region-focusable?application=playwright" target="_blank" rel="noopener noreferrer">https://dequeuniversity.com/rules/axe/4.10/scrollable-region-focusable?application=playwright</a></p>
+            
+            
+            <div class="violation-nodes">
+              <strong>Affected Elements (1):</strong>
+              
+              <div class="violation-node">&lt;div id=&quot;legendPanel&quot; class=&quot;esri-legend esri-widget esri-widget--panel&quot;&gt;</div>
+              
+              
+            </div>
+            
+          </div>
+        </div>
+        
+      
+    </div>
+    
+    
+    <h2>Recommendations</h2>
+    <div class="info-box">
+      <h3>Priority Actions</h3>
+      <ol style="margin: 10px 0; padding-left: 25px;">
+        
+        <li><strong>Fix Serious Issues:</strong> 1 serious issue(s) significantly impact user experience.</li>
+        <li><strong>Regular Audits:</strong> Run this audit regularly during development</li>
+        <li><strong>Manual Testing:</strong> Supplement with keyboard navigation and screen reader testing</li>
+        <li><strong>Team Training:</strong> Ensure developers understand accessibility best practices</li>
+      </ol>
+    </div>
+    
+    <footer>
+      <p>Generated by <strong>axe-core</strong> accessibility testing tool</p>
+      <p>WCAG 2.1 AA Compliance Standard</p>
+      <p style="margin-top: 10px;">
+        <a href="/docs/">← Back to Documentation Portal</a> | 
+        <a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener noreferrer">WCAG 2.1 Guidelines</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

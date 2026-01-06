@@ -1,0 +1,292 @@
+{
+  "generatedAt": "2026-01-06T15:52:21.049Z",
+  "config": {
+    "viewports": {
+      "desktop": {
+        "width": 1920,
+        "height": 1080
+      },
+      "tablet": {
+        "width": 768,
+        "height": 1024
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    },
+    "wcagStandards": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa"
+    ]
+  },
+  "results": [
+    {
+      "path": "/",
+      "violations": [],
+      "passed": true,
+      "passes": 25,
+      "incomplete": 2,
+      "viewport": "desktop",
+      "timestamp": "2026-01-06T15:50:38.144Z"
+    },
+    {
+      "path": "/",
+      "violations": [],
+      "passed": true,
+      "passes": 24,
+      "incomplete": 1,
+      "viewport": "tablet",
+      "timestamp": "2026-01-06T15:50:42.379Z"
+    },
+    {
+      "path": "/",
+      "violations": [],
+      "passed": true,
+      "passes": 24,
+      "incomplete": 1,
+      "viewport": "mobile",
+      "timestamp": "2026-01-06T15:50:46.507Z"
+    },
+    {
+      "path": "/about",
+      "violations": [],
+      "passed": true,
+      "passes": 26,
+      "incomplete": 2,
+      "viewport": "desktop",
+      "timestamp": "2026-01-06T15:50:50.884Z"
+    },
+    {
+      "path": "/about",
+      "violations": [],
+      "passed": true,
+      "passes": 26,
+      "incomplete": 2,
+      "viewport": "tablet",
+      "timestamp": "2026-01-06T15:50:55.045Z"
+    },
+    {
+      "path": "/about",
+      "violations": [],
+      "passed": true,
+      "passes": 26,
+      "incomplete": 2,
+      "viewport": "mobile",
+      "timestamp": "2026-01-06T15:50:59.216Z"
+    },
+    {
+      "path": "/childhood-exposure",
+      "violations": [],
+      "passed": true,
+      "passes": 27,
+      "incomplete": 2,
+      "viewport": "desktop",
+      "timestamp": "2026-01-06T15:51:03.646Z"
+    },
+    {
+      "path": "/childhood-exposure",
+      "violations": [],
+      "passed": true,
+      "passes": 27,
+      "incomplete": 1,
+      "viewport": "tablet",
+      "timestamp": "2026-01-06T15:51:07.833Z"
+    },
+    {
+      "path": "/childhood-exposure",
+      "violations": [],
+      "passed": true,
+      "passes": 27,
+      "incomplete": 1,
+      "viewport": "mobile",
+      "timestamp": "2026-01-06T15:51:11.995Z"
+    },
+    {
+      "path": "/privacy",
+      "violations": [],
+      "passed": true,
+      "passes": 24,
+      "incomplete": 2,
+      "viewport": "desktop",
+      "timestamp": "2026-01-06T15:51:16.127Z"
+    },
+    {
+      "path": "/privacy",
+      "violations": [],
+      "passed": true,
+      "passes": 24,
+      "incomplete": 1,
+      "viewport": "tablet",
+      "timestamp": "2026-01-06T15:51:20.287Z"
+    },
+    {
+      "path": "/privacy",
+      "violations": [],
+      "passed": true,
+      "passes": 24,
+      "incomplete": 1,
+      "viewport": "mobile",
+      "timestamp": "2026-01-06T15:51:24.401Z"
+    },
+    {
+      "path": "/program-summary",
+      "violations": [],
+      "passed": true,
+      "passes": 25,
+      "incomplete": 2,
+      "viewport": "desktop",
+      "timestamp": "2026-01-06T15:51:28.564Z"
+    },
+    {
+      "path": "/program-summary",
+      "violations": [],
+      "passed": true,
+      "passes": 25,
+      "incomplete": 2,
+      "viewport": "tablet",
+      "timestamp": "2026-01-06T15:51:32.708Z"
+    },
+    {
+      "path": "/program-summary",
+      "violations": [],
+      "passed": true,
+      "passes": 25,
+      "incomplete": 2,
+      "viewport": "mobile",
+      "timestamp": "2026-01-06T15:51:36.840Z"
+    },
+    {
+      "path": "/research",
+      "violations": [],
+      "passed": true,
+      "passes": 26,
+      "incomplete": 2,
+      "viewport": "desktop",
+      "timestamp": "2026-01-06T15:51:41.371Z"
+    },
+    {
+      "path": "/research",
+      "violations": [],
+      "passed": true,
+      "passes": 25,
+      "incomplete": 2,
+      "viewport": "tablet",
+      "timestamp": "2026-01-06T15:51:45.561Z"
+    },
+    {
+      "path": "/research",
+      "violations": [],
+      "passed": true,
+      "passes": 25,
+      "incomplete": 2,
+      "viewport": "mobile",
+      "timestamp": "2026-01-06T15:51:49.725Z"
+    },
+    {
+      "path": "/resources",
+      "violations": [],
+      "passed": true,
+      "passes": 25,
+      "incomplete": 2,
+      "viewport": "desktop",
+      "timestamp": "2026-01-06T15:51:53.910Z"
+    },
+    {
+      "path": "/resources",
+      "violations": [],
+      "passed": true,
+      "passes": 25,
+      "incomplete": 1,
+      "viewport": "tablet",
+      "timestamp": "2026-01-06T15:51:58.164Z"
+    },
+    {
+      "path": "/resources",
+      "violations": [],
+      "passed": true,
+      "passes": 25,
+      "incomplete": 1,
+      "viewport": "mobile",
+      "timestamp": "2026-01-06T15:52:02.316Z"
+    },
+    {
+      "path": "/sites",
+      "violations": [],
+      "passed": true,
+      "passes": 37,
+      "incomplete": 4,
+      "viewport": "desktop",
+      "timestamp": "2026-01-06T15:52:10.189Z"
+    },
+    {
+      "path": "/sites",
+      "violations": [],
+      "passed": true,
+      "passes": 37,
+      "incomplete": 4,
+      "viewport": "tablet",
+      "timestamp": "2026-01-06T15:52:15.692Z"
+    },
+    {
+      "path": "/sites",
+      "violations": [
+        {
+          "id": "scrollable-region-focusable",
+          "impact": "serious",
+          "tags": [
+            "cat.keyboard",
+            "wcag2a",
+            "wcag211",
+            "wcag213",
+            "TTv5",
+            "TT4.a",
+            "EN-301-549",
+            "EN-9.2.1.1",
+            "EN-9.2.1.3"
+          ],
+          "description": "Ensure elements that have scrollable content are accessible by keyboard",
+          "help": "Scrollable region must have keyboard access",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/scrollable-region-focusable?application=playwright",
+          "nodes": [
+            {
+              "any": [
+                {
+                  "id": "focusable-content",
+                  "data": null,
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element should have focusable content"
+                },
+                {
+                  "id": "focusable-element",
+                  "data": null,
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element should be focusable"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<div id=\"legendPanel\" class=\"esri-legend esri-widget esri-widget--panel\">",
+              "target": [
+                "iframe",
+                "#legendPanel"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ],
+          "viewport": "mobile"
+        }
+      ],
+      "passed": false,
+      "passes": 37,
+      "incomplete": 4,
+      "viewport": "mobile",
+      "timestamp": "2026-01-06T15:52:21.014Z"
+    }
+  ]
+}
