@@ -1,5 +1,6 @@
 {
   "$schema": "https://typedoc.org/schema.json",
+  "tsconfig": "./tsconfig.json",
   "entryPoints": [
     "app/composables/states.ts",
     "app/utils/thumbor.js"
@@ -7,20 +8,24 @@
   "entryPointStrategy": "expand",
   "out": "public/docs/jsdoc",
   "name": "ICJIA Safe From the Start - API Documentation",
+  "readme": "none",
+  "includeVersion": true,
   "excludePrivate": true,
   "excludeProtected": true,
+  "excludeInternal": true,
   "excludeExternals": true,
+  "excludeNotDocumented": false,
   "skipErrorChecking": true,
-  "readme": "none",
   "sort": ["source-order"],
+  "sourceLinkTemplate": "https://github.com/ICJIA/icjia-sfs-2024/blob/main/{path}#L{line}",
   "validation": {
     "notExported": false,
     "invalidLink": false
   },
   "theme": "default",
   "navigationLinks": {
-    "Documentation Portal": "/docs/",
-    "Main Site": "/"
+    "Home": "/",
+    "Documentation Portal": "/docs/"
   }
 }
 

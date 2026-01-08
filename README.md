@@ -991,6 +991,65 @@ Content is managed in `/content` directory using Nuxt Content:
 
 **For more troubleshooting, see [MIGRATION.md](./MIGRATION.md#troubleshooting)**
 
+---
+
+## 📚 Documentation Portal
+
+This project includes a comprehensive documentation portal system that can be replicated for any Nuxt 4 + Vuetify 3 project.
+
+### Documentation Portal Features
+
+- **📊 Test Results** - Vitest test results with HTML reports at `/docs/tests/`
+- **♿ Accessibility Audits** - axe-core WCAG 2.1 AA compliance reports at `/docs/accessibility/`
+- **📖 API Documentation** - TypeDoc-generated API docs at `/docs/jsdoc/`
+- **🔗 Integrated Navigation** - Links in footer and navigation components
+
+### Documentation Portal Prompt
+
+**📖 For creating a documentation portal in your own Nuxt 4 + Vuetify 3 project, see:**
+
+**[DOCUMENTATION-PORTAL-PROMPT.md](./markdown-documentation/DOCUMENTATION-PORTAL-PROMPT.md)** (v1.4.0, 2,300+ lines)
+
+This comprehensive LLM prompt includes:
+
+- ✅ Complete file templates for all 9 required files
+- ✅ Package.json reference scripts (18 scripts)
+- ✅ Vitest configuration with HTML report generation
+- ✅ Accessibility audit scripts (basic + advanced)
+- ✅ TypeDoc configuration for API documentation
+- ✅ Placeholder strategy to prevent 404 errors
+- ✅ Footer and navigation integration examples
+- ✅ Light/dark mode testing patterns
+- ✅ Netlify deployment configuration
+- ✅ 18 LLM questions for customization
+- ✅ Challenges and solutions for testing and accessibility
+
+### How to Use the Documentation Portal Prompt
+
+1. **Copy** `DOCUMENTATION-PORTAL-PROMPT.md` to your project or provide it to an LLM
+2. **Answer** the 18 customization questions at the end of the prompt
+3. **Let the LLM generate** all required files and tests
+4. **Run** `yarn docs:all` to generate complete documentation
+
+### Documentation Scripts
+
+```bash
+# Generate all documentation
+yarn docs:all
+
+# Individual documentation commands
+yarn test:all           # Generate test HTML report
+yarn audit:a11y         # Run accessibility audit
+yarn audit:a11y:full    # Run advanced multi-viewport audit
+yarn docs:jsdoc         # Generate API documentation
+```
+
+### Platform Requirements
+
+> ⚠️ **IMPORTANT**: The documentation portal prompt is designed for **macOS** or **Linux (Ubuntu preferred)**. Windows is **NOT recommended** due to shell script compatibility.
+
+---
+
 ## Contributing
 
 This is an ICJIA (Illinois Criminal Justice Information Authority) project. For questions or contributions, please contact the ICJIA development team.

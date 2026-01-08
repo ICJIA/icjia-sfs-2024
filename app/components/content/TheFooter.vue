@@ -144,9 +144,19 @@
                 &nbsp;|&nbsp;
                 <strong>
                   <a
-                    href="/documentation/accessibility"
+                    href="/docs/index.html"
                     style="color: #fff"
-                    aria-label="Accessibility Report"
+                    aria-label="Documentation Portal"
+                    >Documentation
+                  </a>
+                </strong>
+
+                &nbsp;|&nbsp;
+                <strong>
+                  <a
+                    href="/docs/accessibility/index.html"
+                    style="color: #fff"
+                    aria-label="Accessibility Audit Report"
                     >Accessibility
                   </a>
                 </strong>

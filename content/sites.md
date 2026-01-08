@@ -100,13 +100,41 @@ searchMeta: null
 </style>
 <div style="margin-bottom: 50px;">
 
-<iframe src="https://illinois.maps.arcgis.com/apps/instant/sidebar/index.html?appid=877642cc77434653a76f93206694204b" width="100%" height="600" frameborder="0" style="border:0; display: block; max-width: 100%;" allowfullscreen title="Interactive map showing SFS program locations across Illinois">iFrames are not supported on this page.</iframe>
+<!-- Accessible map container with keyboard navigation support -->
+<div role="region" aria-label="Interactive SFS Program Locations Map" style="position: relative;">
+  <a href="#sites-table" class="skip-map-link" style="position: absolute; left: -9999px; z-index: 100; background: #0056b3; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px;">Skip to data table</a>
+  <p style="margin-bottom: 10px; font-size: 0.9rem; color: #666;">
+    <strong>Note:</strong> This interactive map shows SFS program locations. For keyboard users, a <a href="#sites-table">data table with all site information</a> is available below. 
+    <a href="https://illinois.maps.arcgis.com/apps/instant/sidebar/index.html?appid=877642cc77434653a76f93206694204b" target="_blank" rel="noopener noreferrer" aria-label="Open full map in new window">Open map in full window ↗</a>
+  </p>
+  <iframe 
+    src="https://illinois.maps.arcgis.com/apps/instant/sidebar/index.html?appid=877642cc77434653a76f93206694204b" 
+    width="100%" 
+    height="600" 
+    frameborder="0" 
+    style="border:0; display: block; max-width: 100%;" 
+    allowfullscreen 
+    title="Interactive map showing SFS program locations across Illinois. For keyboard navigation, use the data table below."
+    aria-describedby="map-description"
+    loading="lazy"
+  >iFrames are not supported on this page.</iframe>
+  <p id="map-description" style="font-size: 0.85rem; color: #666; margin-top: 8px;">
+    Interactive ArcGIS map displaying Safe From the Start program sites. All location data is also available in the table below for full accessibility.
+  </p>
+</div>
 
 </div>
 
-<div class="table-responsive">
+<style>
+.skip-map-link:focus {
+  left: 10px !important;
+  top: 10px;
+}
+</style>
 
-<table class="table table-striped" role="table">
+<div class="table-responsive" id="sites-table" tabindex="-1">
+
+<table class="table table-striped" role="table" aria-label="Safe From the Start Program Sites">
     <thead>
         <tr>
             <th scope="col"><strong>SFS Site</strong></th>

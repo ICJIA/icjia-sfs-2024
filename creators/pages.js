@@ -14,9 +14,9 @@
  * @module creators/pages
  */
 
-const fs = require("fs");
-const path = require("path");
-const yaml = require("js-yaml");
+import fs from "fs";
+import path from "path";
+import yaml from "js-yaml";
 
 // Directory containing page content markdown files
 const directoryPath = "./content";

@@ -17,14 +17,14 @@
     "create:siteMap": "node ./creators/generateSiteMap.mjs",
     "scripts": "yarn clear:cache && yarn create:pages && yarn create:routes && yarn create:siteMap",
     "ensure:docs": "node ./scripts/ensure-accessibility-report.js",
-    "audit:a11y": "node accessibility-audit.mjs",
-    "audit:a11y:full": "node ./scripts/accessibility-audit.mjs",
-    "test": "vitest run",
+    "dev:audit": "yarn clear:cache && yarn scripts && yarn ensure:docs && nuxt dev --port=8000",
+    "audit:a11y": "node ./scripts/accessibility-audit.mjs",
+    "test": "node ./test/run-all-tests.mjs",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "test:all": "node ./test/run-all-tests.mjs",
+    "test:run": "vitest run",
     "docs:jsdoc": "npx typedoc",
-    "docs:all": "yarn test:all && yarn audit:a11y:full && yarn docs:jsdoc"
+    "docs:all": "yarn test && yarn audit:a11y && yarn docs:jsdoc"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.2",

@@ -123,11 +123,11 @@ function generateAccessibilityPlaceholder() {
     <div class="info-box">
       <h3>How to Generate the Report</h3>
       <p>To generate the full accessibility audit report, run the following commands:</p>
-      <pre><code># Terminal 1: Start the development server
-yarn dev
+      <pre><code># Terminal 1: Start the development server for audits
+yarn dev:audit
 
 # Terminal 2: Run the accessibility audit
-yarn audit:a11y:full</code></pre>
+yarn audit:a11y</code></pre>
       <p style="margin-top: 15px;">The audit will:</p>
       <ul style="margin: 10px 0 0 20px;">
         <li>Test all pages from sitemap.xml</li>
@@ -234,7 +234,7 @@ function generateTestsPlaceholder() {
       <h3>How to Generate the Report</h3>
       <p>To generate the full test results report, run:</p>
       <pre><code># Run the complete test suite
-yarn test:all</code></pre>
+yarn test</code></pre>
       <p style="margin-top: 15px;">The test suite will:</p>
       <ul style="margin: 10px 0 0 20px;">
         <li>Run unit tests for utilities and composables</li>
@@ -294,4 +294,5 @@ function main() {
 }
 
 main();
+
 

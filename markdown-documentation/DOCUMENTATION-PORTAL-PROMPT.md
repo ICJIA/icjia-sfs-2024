@@ -1,7 +1,7 @@
 # Documentation Portal Creation Prompt (Nuxt 4 + Vuetify 3)
 
-**Version**: 1.0.0  
-**Last Updated**: January 6, 2026  
+**Version**: 1.0.4  
+**Last Updated**: January 8, 2026  
 **Purpose**: Comprehensive prompt for LLMs to create a documentation portal with testing, accessibility auditing, and JSDoc generation for any Nuxt 4 + Vuetify 3 application.
 
 ---
@@ -49,13 +49,13 @@ Copy and paste this entire document into an LLM along with your repository conte
 
 ### Required Environment
 
-| Requirement    | Minimum Version | Recommended Version | Notes                   |
-| -------------- | --------------- | ------------------- | ----------------------- |
-| **Node.js**    | 18.18.0         | 22.14.0+            | LTS version recommended |
-| **Yarn**       | 1.22.19         | 1.22.22+            | Or npm 10.0.0+          |
-| **Nuxt**       | 3.0.0           | 4.0.0+              | With Vue 3 support      |
-| **Vuetify**    | 3.0.0           | 3.7.0+              | For UI components       |
-| **TypeScript** | 5.0.0           | 5.7.0+              | For type safety         |
+| Requirement    | Minimum Version | Recommended Version | Notes                     |
+| -------------- | --------------- | ------------------- | ------------------------- |
+| **Node.js**    | 18.18.0         | 22.14.0+            | LTS version recommended   |
+| **Yarn**       | 1.22.19         | 1.22.22+            | Or npm 10.0.0+            |
+| **Nuxt**       | 3.0.0           | 4.0.0+              | With Vue 3 support        |
+| **Vuetify**    | 3.0.0           | 3.7.0+              | For UI components         |
+| **TypeScript** | 5.0.0           | 5.8.x               | For TypeDoc compatibility |
 
 ### Version File (`.nvmrc`)
 
@@ -76,11 +76,12 @@ Create `.nvmrc` in project root:
 ```json
 {
   "devDependencies": {
-    "@axe-core/playwright": "^4.10.2",
     "@vitejs/plugin-vue": "^5.2.0",
     "axe-core": "^4.11.0",
     "happy-dom": "^15.11.0",
-    "playwright": "^1.56.0",
+    "puppeteer": "^24.0.0",
+    "typescript": "^5.7.0",
+    "xml2js": "^0.6.2",
     "typedoc": "^0.27.0",
     "vitest": "^2.1.0"
   }
@@ -91,13 +92,10 @@ Create `.nvmrc` in project root:
 
 ```bash
 # Using Yarn
-yarn add -D @axe-core/playwright axe-core playwright vitest happy-dom typedoc @vitejs/plugin-vue
+yarn add -D axe-core puppeteer xml2js vitest happy-dom typedoc @vitejs/plugin-vue
 
 # Using npm
-npm install -D @axe-core/playwright axe-core playwright vitest happy-dom typedoc @vitejs/plugin-vue
-
-# Install Playwright browsers (required for accessibility testing)
-npx playwright install chromium
+npm install -D axe-core puppeteer xml2js vitest happy-dom typedoc @vitejs/plugin-vue
 ```
 
 **GitHub Reference**: [`package.json`](https://github.com/ICJIA/icjia-accessibility-portal/blob/main/package.json)
@@ -115,7 +113,9 @@ Implement this directory structure:
 │   │   ├── index.html                 # Portal landing page
 │   │   ├── accessibility/             # Accessibility audit reports
 │   │   │   ├── index.html             # Audit HTML report
-│   │   │   └── results.json           # Machine-readable results
+│   │   │   ├── results.json           # Machine-readable results (full run)
+│   │   │   ├── violations.json        # Violations-only
+│   │   │   └── errors.json            # Alias of violations.json (ICJIA standard)
 │   │   ├── tests/                     # Test result reports
 │   │   │   └── index.html             # Test HTML report
 │   │   └── jsdoc/                     # API documentation
@@ -138,7 +138,7 @@ Implement this directory structure:
 │   ├── run-all-tests.mjs              # Test runner with HTML output
 │   ├── setup.ts                       # Test setup file
 │   └── README.md                      # Test documentation
-├── accessibility-audit.mjs            # Accessibility audit script
+├── audit-accessibility.js            # Accessibility audit script (MUST mirror ICJIA reference)
 ├── vitest.config.ts                   # Vitest configuration
 ├── typedoc.json                       # TypeDoc configuration
 └── tsconfig.json                      # TypeScript configuration
@@ -295,6 +295,9 @@ global.ResizeObserver = vi.fn().mockImplementation(() => ({
 
 ## Package.json Scripts
 
+> ⚠️ **CRITICAL: ICJIA Standard Scripts**  
+> The script names, implementations, and outputs below are **standardized across all ICJIA web applications**. These exact script names and behaviors must be used to ensure consistency across the ICJIA web app ecosystem. Do not rename or modify the core behavior of these scripts.
+
 Add these scripts to your `package.json`:
 
 ```json
@@ -306,31 +309,39 @@ Add these scripts to your `package.json`:
 
     "ensure:docs": "node ./scripts/ensure-accessibility-report.js",
 
-    "test": "vitest run",
+    "test": "node ./test/run-all-tests.mjs",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "test:all": "node ./test/run-all-tests.mjs",
+    "test:run": "vitest run",
 
-    "audit:a11y": "node accessibility-audit.mjs",
+    "dev:audit": "yarn preflight && yarn ensure:docs && yarn clear:cache && yarn scripts && nuxt dev --port=8000",
+    "audit:a11y": "node ./audit-accessibility.js",
 
     "docs:jsdoc": "npx typedoc",
-    "docs:all": "yarn test:all && yarn audit:a11y && yarn docs:jsdoc"
+    "docs:all": "yarn test && yarn audit:a11y && yarn docs:jsdoc"
   }
 }
 ```
 
-**Script Descriptions**:
+**Script Descriptions** (ICJIA Standard):
 
-| Script          | Purpose                                            |
-| --------------- | -------------------------------------------------- |
-| `ensure:docs`   | Creates placeholder HTML files if they don't exist |
-| `test`          | Runs tests once                                    |
-| `test:watch`    | Runs tests in watch mode                           |
-| `test:coverage` | Runs tests with coverage report                    |
-| `test:all`      | Runs all tests and generates HTML report           |
-| `audit:a11y`    | Runs accessibility audit                           |
-| `docs:jsdoc`    | Generates API documentation                        |
-| `docs:all`      | Generates all documentation (tests + a11y + jsdoc) |
+| Script          | Purpose                                            | Standardization Requirement |
+| --------------- | -------------------------------------------------- | --------------------------- |
+| `ensure:docs`   | Creates placeholder HTML files if they don't exist | ICJIA standard              |
+| `test`          | Runs all tests and generates HTML report           | **MUST use exact name**     |
+| `test:watch`    | Runs tests in watch mode                           | ICJIA standard              |
+| `test:coverage` | Runs tests with coverage report                    | ICJIA standard              |
+| `test:run`      | Runs tests once without generating HTML report     | ICJIA standard              |
+| `audit:a11y`    | Runs accessibility audit                           | **MUST use exact name**     |
+| `dev:audit`     | Start dev server for audits (no browser)           | **MUST use exact name**     |
+| `docs:jsdoc`    | Generates API documentation                        | ICJIA standard              |
+| `docs:all`      | Generates all documentation (tests + a11y + jsdoc) | ICJIA standard              |
+
+**Critical Script Requirements**:
+
+1. **`yarn test`**: MUST run `node ./test/run-all-tests.mjs` and generate HTML report at `public/docs/tests/index.html`
+2. **`yarn audit:a11y`**: MUST run `node ./audit-accessibility.js` (or site-specific path) and output to `public/docs/accessibility/`
+3. **`yarn dev:audit`**: MUST start dev server without opening browser (for accessibility audits)
 
 **GitHub Reference**: [`package.json`](https://github.com/ICJIA/icjia-sfs-2024/blob/main/package.json)
 
@@ -338,7 +349,27 @@ Add these scripts to your `package.json`:
 
 ## Test Suite Implementation
 
+> ⚠️ **CRITICAL: ICJIA Standard Script**  
+> The test script **MUST use the exact script name `test`** (not `test:all` or other variants) and **MUST generate an HTML report** at `public/docs/tests/index.html`. This ensures consistency across all ICJIA web applications.
+>
+> 📌 **Reference Implementation**: The comprehensive test suite structure follows the [ICJIA Accessibility Portal test suite](https://github.com/ICJIA/icjia-accessibility-portal/tree/main/test) as a reference for ICJIA-standard testing practices, including unit tests, E2E tests, and integration tests.
+
 ### Test Runner with HTML Report (`test/run-all-tests.mjs`)
+
+**Standard Script Name** (MUST be used in `package.json`):
+
+```json
+{
+  "scripts": {
+    "test": "node ./test/run-all-tests.mjs",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:run": "vitest run"
+  }
+}
+```
+
+**Important**: The `test` script MUST run the test runner that generates the HTML report. Do not use `test:all` or other naming conventions — use `test` as the primary command.
 
 This script runs all tests and generates an HTML report at `/public/docs/tests/index.html`:
 
@@ -367,6 +398,8 @@ const projectRoot = join(__dirname, "..");
  *
  * IMPORTANT: Add a description for EVERY test in your project.
  * The key must match the test title exactly (from the `it()` or `test()` call).
+ *
+ * Reference: https://github.com/ICJIA/icjia-accessibility-portal/tree/main/test
  */
 const TEST_DESCRIPTIONS = {
   // Example descriptions - customize for your tests
@@ -375,6 +408,11 @@ const TEST_DESCRIPTIONS = {
   "should handle edge cases":
     "Tests edge cases like empty inputs, null values, and boundary conditions.",
   // Add your test descriptions here...
+  // Include descriptions for:
+  // - Unit tests (composables, components, utilities)
+  // - E2E tests (pages, navigation, content, search)
+  // - Integration tests (content generation, API routes)
+  // - Accessibility tests (skip links, ARIA labels, semantic HTML)
 };
 
 /**
@@ -601,13 +639,105 @@ main();
 
 **GitHub Reference**: [`test/run-all-tests.mjs`](https://github.com/ICJIA/icjia-sfs-2024/blob/main/test/run-all-tests.mjs)
 
+### Comprehensive Test Structure
+
+The test suite should include comprehensive coverage across multiple categories, following the [ICJIA Accessibility Portal test suite](https://github.com/ICJIA/icjia-accessibility-portal/tree/main/test) as a reference:
+
+#### Unit Tests (`test/unit/`)
+
+- **Composable Tests**: Test all composables (state management, utilities, helpers)
+  - `states.test.ts` - State management composables
+  - `eventBus.test.ts` - Event bus functionality
+  - `useCurrentPage.test.ts` - Page-specific composables
+  - Additional composable tests as needed
+
+- **Component Tests**: Test component logic and behavior
+  - `components/TheNav.test.ts` - Navigation component
+  - `components/Query.test.ts` - GraphQL query components
+  - Additional component tests as needed
+
+- **Accessibility Tests**: Test accessibility features
+  - `accessibility.test.ts` - Skip links, ARIA labels, semantic HTML
+
+#### E2E Tests (`test/e2e/`)
+
+- **Page Routing**: `pages.test.ts` - Test all page routes and navigation
+- **Navigation**: `navigation.test.ts` - Test navigation components and interactions
+- **Content**: `content.test.ts` - Test content loading and display
+- **Search**: `search.test.ts` - Test search functionality and query handling
+
+#### Integration Tests (`test/integration/`)
+
+- **Content Generation**: `content-generation.test.ts` - Test content generation scripts
+- **API Routes**: `api.test.ts` - Test API endpoints and integration
+
+**Test Coverage Goals**:
+
+- All composables should have unit tests
+- Key components should have component tests
+- All major user flows should have E2E tests
+- Content generation and API integration should have integration tests
+- Accessibility features should be tested
+
+**Reference Implementation**: [ICJIA Accessibility Portal Test Suite](https://github.com/ICJIA/icjia-accessibility-portal/tree/main/test)
+
 ---
 
 ## Accessibility Audit Implementation
 
-### Accessibility Audit Script (`accessibility-audit.mjs`)
+> ⚠️ **CRITICAL: ICJIA Standard Script**  
+> The accessibility audit script **MUST use the exact script name `audit:a11y`** and **MUST mirror the ICJIA Accessibility Portal reference implementation**. This ensures consistency across all ICJIA web applications. Only the Developer Configuration section should be customized per project.
 
-This script tests all pages for WCAG 2.1 AA compliance across multiple viewports:
+> 📌 **REFERENCE IMPLEMENTATION (CANONICAL SOURCE)**  
+> All accessibility audits across ICJIA web applications MUST be based on this reference script:
+>
+> **GitHub URL**: [https://github.com/ICJIA/icjia-accessibility-portal/blob/main/audit-accessibility.js](https://github.com/ICJIA/icjia-accessibility-portal/blob/main/audit-accessibility.js)
+>
+> **Raw File URL**: [https://raw.githubusercontent.com/ICJIA/icjia-accessibility-portal/main/audit-accessibility.js](https://raw.githubusercontent.com/ICJIA/icjia-accessibility-portal/main/audit-accessibility.js)
+>
+> When implementing or updating accessibility audits, always compare against this reference script for the latest features and bug fixes.
+
+### Accessibility Audit Script (`audit-accessibility.js`)
+
+**Standard Script Name** (MUST be used in `package.json`):
+
+```json
+{
+  "scripts": {
+    "audit:a11y": "node ./audit-accessibility.js"
+  }
+}
+```
+
+This script tests all pages for WCAG 2.1 AA compliance across multiple viewports **and MUST mirror the ICJIA reference script** in behavior and outputs:
+
+- **Reference implementation**: `audit-accessibility.js` from the ICJIA Accessibility Portal ([raw file](https://raw.githubusercontent.com/ICJIA/icjia-accessibility-portal/refs/heads/main/audit-accessibility.js))
+- **Required outputs (same directory, same filenames)**:
+  - `public/docs/accessibility/index.html`
+  - `public/docs/accessibility/results.json`
+  - `public/docs/accessibility/violations.json`
+  - `public/docs/accessibility/errors.json`
+- **Required behaviors to match**:
+  - Auto-start dev server if not running (development mode)
+  - Read URLs from `public/sitemap.xml` (and skip non-HTML assets)
+  - Test **desktop/tablet/mobile**
+  - Optional theme switching support (configurable)
+  - Skip-link verification (presence + target)
+  - Rule toggles via a boolean `AXE_RULE_CONFIG` object
+
+#### Allowed modifications (strict)
+
+Only change the **Developer Configuration** section at the top of `audit-accessibility.js`:
+
+- `TARGET_ENV`, `PRODUCTION_URL`, `DEV_SERVER_PORT`
+- `DEV_SERVER_COMMAND` (recommended: run `yarn dev:audit`)
+- `SITEMAP_PATH_CONFIG` (must be `public/sitemap.xml`)
+- `OUTPUT_DIR_CONFIG` (must be `public/docs/accessibility`)
+- `SITE_INFO`, compliance copy text
+- `THEME_CONFIG` (if theme switching exists)
+- `AXE_RULE_CONFIG` booleans (framework tuning)
+
+Do **not** change the output filenames or directory structure — all ICJIA audits must publish the same artifacts.
 
 ```javascript
 /**
@@ -840,7 +970,37 @@ function generateHTMLReport(results, timestamp, outputDir) {
 runAccessibilityAudit().catch(console.error);
 ```
 
-**GitHub Reference**: [`accessibility-audit.mjs`](https://github.com/ICJIA/icjia-sfs-2024/blob/main/accessibility-audit.mjs)
+**Reference**: ICJIA Accessibility Portal audit script ([raw file](https://raw.githubusercontent.com/ICJIA/icjia-accessibility-portal/refs/heads/main/audit-accessibility.js))
+
+### Accessibility Report Content Requirements
+
+> ⚠️ **CRITICAL: Comprehensive Information Required**  
+> The accessibility report HTML (`public/docs/accessibility/index.html`) **MUST include comprehensive information about axe-core and testing** at the bottom of the report. This information helps users understand:
+>
+> - What axe-core is and why it's used
+> - What accessibility standards are tested
+> - How the testing process works
+> - Rule categories and configurations
+> - Skip link implementation and testing
+> - Testing environment information
+> - Compliance standards (ADA, IITAA, Section 508)
+>
+> The reference implementation includes the following sections that MUST be present in all accessibility reports:
+>
+> 1. **About axe-core** - Overview of the testing engine
+> 2. **What does axe-core test for?** - Detailed list of accessibility checks
+> 3. **Why is axe-core critical for accessibility?** - Benefits and importance
+> 4. **Rule Categories in This Audit** - WCAG 2.1 Level A & AA, Best Practice, and Experimental rules
+> 5. **Configured Rules Status** - Enabled and disabled rules with descriptions
+> 6. **What Are Skip Links?** - Explanation and importance
+> 7. **Skip Link Implementation Requirements** - Technical requirements
+> 8. **Current Skip Link Status** - Results from the audit
+> 9. **Testing Skip Links** - How to manually test skip links
+> 10. **About Testing Environments** - Development vs. Production context
+> 11. **Accessibility Standards & Compliance** - Legal compliance information
+> 12. **Framework Notes** - Framework-specific accessibility considerations
+>
+> See the [ICJIA Accessibility Portal reference report](https://accessibility.icjia.app/docs/accessibility/) for the complete structure and content that should be included.
 
 ---
 
@@ -894,7 +1054,7 @@ export function useCounter() {
 Create the main documentation portal landing page at `public/docs/index.html`:
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1005,7 +1165,7 @@ Create the main documentation portal landing page at `public/docs/index.html`:
 
       <div class="doc-grid">
         <div class="doc-card">
-          <h3>🧪 Test Results</h3>
+          <h3>🧪 E2E and Unit Tests Report</h3>
           <p>
             Unit and integration test results with detailed descriptions and
             pass/fail status.
@@ -1198,7 +1358,7 @@ function main() {
   if (!existsSync(PATHS.testsReport)) {
     const html = generatePlaceholder(
       "Test Results",
-      "<p>Run: <pre>yarn test:all</pre></p>"
+      "<p>Run: <pre>yarn test</pre></p>"
     );
     writeFileSync(PATHS.testsReport, html);
     console.log("✓ Created placeholder: public/docs/tests/index.html");
@@ -1349,7 +1509,7 @@ After implementation, verify the following:
 ### 2. Scripts
 
 - [ ] `yarn ensure:docs` runs without errors
-- [ ] `yarn test:all` generates HTML report
+- [ ] `yarn test` generates HTML report
 - [ ] `yarn audit:a11y` generates accessibility report (requires running dev server)
 - [ ] `yarn docs:jsdoc` generates API documentation
 
@@ -1361,7 +1521,7 @@ yarn dev
 
 # In another terminal, run audits
 yarn audit:a11y
-yarn test:all
+yarn test
 ```
 
 ### 4. Static Generation
@@ -1467,7 +1627,7 @@ For production use, there's a more advanced accessibility audit script that:
 - Generates comprehensive HTML and JSON reports
 - Excludes `/docs/*` routes from testing
 
-**GitHub Reference**: [`scripts/accessibility-audit.mjs`](https://github.com/ICJIA/icjia-sfs-2024/blob/main/scripts/accessibility-audit.mjs)
+**Canonical Reference**: `audit-accessibility.js` from ICJIA Accessibility Portal ([raw file](https://raw.githubusercontent.com/ICJIA/icjia-accessibility-portal/refs/heads/main/audit-accessibility.js))
 
 Key features:
 
@@ -1610,19 +1770,18 @@ When testing light/dark modes, pay special attention to:
 
 All implementation files with direct links:
 
-| File                                     | Purpose                        | GitHub Link                                                                                                                   |
-| ---------------------------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
-| `vitest.config.ts`                       | Test configuration             | [View](https://github.com/ICJIA/icjia-sfs-2024/blob/main/vitest.config.ts)                                                    |
-| `test/run-all-tests.mjs`                 | Test runner with HTML report   | [View](https://github.com/ICJIA/icjia-sfs-2024/blob/main/test/run-all-tests.mjs)                                              |
-| `test/setup.ts`                          | Test environment setup         | [View](https://github.com/ICJIA/icjia-sfs-2024/blob/main/test/setup.ts)                                                       |
-| `accessibility-audit.mjs`                | Basic accessibility audit      | [View](https://github.com/ICJIA/icjia-sfs-2024/blob/main/accessibility-audit.mjs)                                             |
-| `scripts/accessibility-audit.mjs`        | Advanced audit (sitemap-based) | [View](https://github.com/ICJIA/icjia-sfs-2024/blob/main/scripts/accessibility-audit.mjs)                                     |
-| `scripts/ensure-accessibility-report.js` | Placeholder creator            | [View](https://github.com/ICJIA/icjia-sfs-2024/blob/main/scripts/ensure-accessibility-report.js)                              |
-| `typedoc.json`                           | TypeDoc configuration          | [View](https://github.com/ICJIA/icjia-accessibility-portal/blob/main/typedoc.json)                                            |
-| `package.json`                           | Scripts and dependencies       | [View](https://github.com/ICJIA/icjia-sfs-2024/blob/main/package.json)                                                        |
-| `nuxt.config.ts`                         | Nuxt configuration             | [View](https://github.com/ICJIA/icjia-sfs-2024/blob/main/nuxt.config.js)                                                      |
-| `.nvmrc`                                 | Node version                   | [View](https://github.com/ICJIA/icjia-accessibility-portal/blob/main/.nvmrc)                                                  |
-| `public/.well-known/...`                 | Chrome DevTools fix            | [View](https://github.com/ICJIA/icjia-accessibility-portal/blob/main/public/.well-known/appspecific/com.chrome.devtools.json) |
+| File                                     | Purpose                                                                              | GitHub Link                                                                                                                   |
+| ---------------------------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| `vitest.config.ts`                       | Test configuration                                                                   | [View](https://github.com/ICJIA/icjia-sfs-2024/blob/main/vitest.config.ts)                                                    |
+| `test/run-all-tests.mjs`                 | Test runner with HTML report                                                         | [View](https://github.com/ICJIA/icjia-sfs-2024/blob/main/test/run-all-tests.mjs)                                              |
+| `test/setup.ts`                          | Test environment setup                                                               | [View](https://github.com/ICJIA/icjia-sfs-2024/blob/main/test/setup.ts)                                                       |
+| `audit-accessibility.js`                 | **CANONICAL REFERENCE** - Accessibility audit (sitemap + skip link + multi-viewport) | [View (raw)](https://raw.githubusercontent.com/ICJIA/icjia-accessibility-portal/main/audit-accessibility.js)                  |
+| `scripts/ensure-accessibility-report.js` | Placeholder creator                                                                  | [View](https://github.com/ICJIA/icjia-sfs-2024/blob/main/scripts/ensure-accessibility-report.js)                              |
+| `typedoc.json`                           | TypeDoc configuration                                                                | [View](https://github.com/ICJIA/icjia-accessibility-portal/blob/main/typedoc.json)                                            |
+| `package.json`                           | Scripts and dependencies                                                             | [View](https://github.com/ICJIA/icjia-sfs-2024/blob/main/package.json)                                                        |
+| `nuxt.config.ts`                         | Nuxt configuration                                                                   | [View](https://github.com/ICJIA/icjia-sfs-2024/blob/main/nuxt.config.js)                                                      |
+| `.nvmrc`                                 | Node version                                                                         | [View](https://github.com/ICJIA/icjia-accessibility-portal/blob/main/.nvmrc)                                                  |
+| `public/.well-known/...`                 | Chrome DevTools fix                                                                  | [View](https://github.com/ICJIA/icjia-accessibility-portal/blob/main/public/.well-known/appspecific/com.chrome.devtools.json) |
 
 ---
 
@@ -1691,7 +1850,7 @@ Or use a separate CI step:
 # GitHub Actions example
 - name: Generate Documentation
   run: |
-    yarn test:all
+    yarn test
     yarn audit:a11y || true  # Don't fail on a11y warnings
     yarn docs:jsdoc
 
@@ -1705,10 +1864,41 @@ Or use a separate CI step:
 
 ## Version History
 
-| Version | Date            | Changes                                                                                  |
-| ------- | --------------- | ---------------------------------------------------------------------------------------- |
-| 1.0.0   | January 6, 2026 | Initial comprehensive prompt combining architecture guide and accessibility audit prompt |
+| Version | Date            | Changes                                                                                                                                              |
+| ------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1.0.4   | January 8, 2026 | Added canonical reference script designation for audit-accessibility.js, emphasized that ALL a11y audits must be based on the ICJIA reference script |
+| 1.0.3   | January 8, 2026 | Updated test card name to "E2E and Unit Tests Report", added requirement for comprehensive axe-core and testing information in accessibility reports |
+| 1.0.2   | January 7, 2026 | Standardized audit script to ICJIA reference, added docs dry-run, and updated TypeDoc guidance                                                       |
+| 1.0.1   | January 7, 2026 | Standardized audit script to ICJIA reference, added docs dry-run, and updated TypeDoc guidance                                                       |
+| 1.0.0   | January 6, 2026 | Initial comprehensive prompt combining architecture guide and accessibility audit prompt                                                             |
 
 ---
 
 _This prompt is designed to be copied in its entirety into an LLM along with repository context. The LLM will implement a complete documentation portal with testing, accessibility auditing, and API documentation._
+
+---
+
+## Gotchas (Read Before Implementing)
+
+0. **ICJIA Standard Scripts (CRITICAL)**
+   - **Script names are standardized**: Use exact names `yarn test` and `yarn audit:a11y` (not `test:all`, `a11y:audit`, etc.)
+   - **Test script**: MUST be `"test": "node ./test/run-all-tests.mjs"` and generate HTML report at `public/docs/tests/index.html`
+   - **Accessibility script**: MUST be `"audit:a11y": "node ./audit-accessibility.js"` and output to `public/docs/accessibility/`
+   - **Consistency requirement**: All ICJIA web apps must use the same script names and behaviors
+   - **Reference implementation**: `audit-accessibility.js` MUST mirror the ICJIA Accessibility Portal reference ([raw file](https://raw.githubusercontent.com/ICJIA/icjia-accessibility-portal/refs/heads/main/audit-accessibility.js))
+   - **Output standardization**: All outputs must use the same directory structure and filenames across all ICJIA web apps
+
+1. **Run via package scripts**
+   - Use `yarn dev` / `yarn dev:audit` instead of running `nuxt dev` directly, so `.bin` is on PATH and pre-steps run.
+
+2. **Dynamic content generation may overwrite `/content/`**
+   - If content is generated from a CMS/API, never hand-edit `/content/`. Re-run `yarn scripts` before auditing if content changed.
+
+3. **Docs portal links must be “full .html”**
+   - Use `/docs/index.html` and `/docs/accessibility/index.html` (not `/docs/`) to avoid Nuxt router interception.
+
+4. **Sitemap must exist**
+   - `audit-accessibility.js` requires `public/sitemap.xml` and will fail if missing. Ensure sitemap generation is part of your pipeline.
+
+5. **Exclude `/docs/*`**
+   - Keep `/docs/*` out of the sitemap and add Nitro prerender ignore rules for `/docs/**`.
