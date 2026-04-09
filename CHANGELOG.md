@@ -8,6 +8,9 @@ All notable changes to the ICJIA Safe From the Start (SFS) website are documente
 - Fix heading order on `/program-summary` (h3 changed to h2 to follow sequential order after h1)
 - Fix `/sites` performance (Perf 55 to 88) by deferring ArcGIS iframe load via IntersectionObserver
 - Fix CLS on `/childhood-exposure` by changing Google Fonts `font-display` from `swap` to `optional`
+- Clean up root directory: move 20 markdown files to `docs/`, axe/lighthouse JSON to report directories
+- Remove `markdown-documentation/` directory (merged into `docs/`)
+- Lighthouse audit: all 8 pages scoring 100/100/100/100 (Perf/A11y/BP/SEO) except `/sites` (98/100/96/100)
 - Remove mismatched `aria-label` attributes from footer links, SplashHome button, and research training materials link
 - Update `.nvmrc` to Node.js 22
 - Add MIT LICENSE
