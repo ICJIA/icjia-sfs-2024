@@ -126,12 +126,38 @@ const addTooltipsToAgencyLinks = () => {
   });
 };
 
+// Defer iframe loading until it scrolls into view
+const loadDeferredIframes = () => {
+  const iframes = document.querySelectorAll("iframe.deferred-iframe");
+  if (!iframes.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const iframe = entry.target;
+          const src = iframe.getAttribute("data-src");
+          if (src) {
+            iframe.setAttribute("src", src);
+            iframe.removeAttribute("data-src");
+          }
+          observer.unobserve(iframe);
+        }
+      });
+    },
+    { rootMargin: "200px" }
+  );
+
+  iframes.forEach((iframe) => observer.observe(iframe));
+};
+
 onMounted(async () => {
   isMounted.value = true;
 
   // Add tooltips after content is mounted
   await nextTick();
   addTooltipsToAgencyLinks();
+  loadDeferredIframes();
 
   // Also watch for content changes and re-add tooltips
   watch(

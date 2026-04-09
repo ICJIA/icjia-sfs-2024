@@ -125,11 +125,10 @@
                     href="https://icjia.illinois.gov"
                     target="_blank"
                     style="color: #fff"
-                    aria-label="Illinois Criminal Justice Information Authority (opens in new window)"
                     >Illinois Criminal Justice Information Authority<span
                       class="sr-only"
                     >
-                      (external link)</span
+                      (opens in new window)</span
                     ></a
                   >
                 </strong>
@@ -146,7 +145,6 @@
                   <a
                     href="/docs/index.html"
                     style="color: #fff"
-                    aria-label="Documentation Portal"
                     >Documentation
                   </a>
                 </strong>
@@ -156,7 +154,6 @@
                   <a
                     href="/docs/accessibility/index.html"
                     style="color: #fff"
-                    aria-label="Accessibility Audit Report"
                     >Accessibility
                   </a>
                 </strong>

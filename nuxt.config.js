@@ -137,7 +137,7 @@ export default defineNuxtConfig({
   googleFonts: {
     inject: true, // Automatically inject font CSS
     download: true, // Download fonts locally for better performance and privacy
-    display: "swap", // Use font-display: swap for better perceived performance
+    display: "optional", // Use font-display: optional to prevent layout shift from font swap
     prefetch: true, // Prefetch font files
     base64: true, // Inline small fonts as base64
 

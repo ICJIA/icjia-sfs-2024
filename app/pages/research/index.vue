@@ -123,7 +123,6 @@
                 <a
                   href="/QuickStart_PartOne_NavIntakeBIF.pdf"
                   target="_blank"
-                  aria-label="SFS Database 1.0 User's Quick Start Guide PT 1 (opens in new window)"
                   >SFS Database 1.0 User's Quick Start Guide PT 1<span
                     class="sr-only"
                   >

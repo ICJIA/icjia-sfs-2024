@@ -111,7 +111,6 @@
           <v-btn
             color="blue-darken-4"
             to="/about"
-            aria-label="Learn more about Safe From the Start program"
             style="
               background-color: #1a3a52 !important;
               color: #ffffff !important;

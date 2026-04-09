@@ -10,7 +10,7 @@ splash:
 
 The Safe From the Start (SFS) program provides developmentally and culturally appropriate services to children ages 0 to 5 who have witnessed or been exposed to violence. These services are also provided to their families or caregivers. SFS serves young victims of abuse, neglect, or maltreatment, and/or who witnessed domestic violence, sexual assault, or other violent crimes.
 
-### SFS Core Components
+## SFS Core Components
 
 • Coalition-Building: Partnerships with community-based agencies and other local and state organizations serving children exposed to violence and their families.
 
