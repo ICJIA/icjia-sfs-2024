@@ -148,10 +148,10 @@ import config from "@@/src/json/config.json"; // /src/json/config.json
 
 This project was migrated from Nuxt 3 to Nuxt 4 and from Nuxt Content v2 to v3. Migration guides are available for reference:
 
-- [MIGRATION-PROMPT.md](./MIGRATION-PROMPT.md) -- Universal Nuxt 3 to 4 migration guide (LLM-ready)
-- [NUXT-CONTENT-MIGRATION.md](./NUXT-CONTENT-MIGRATION.md) -- Nuxt Content v2 to v3 migration guide
-- [MIGRATION.md](./MIGRATION.md) -- Project-specific migration notes
-- [NUXT3-TO-NUXT4-QUICK-REFERENCE.md](./NUXT3-TO-NUXT4-QUICK-REFERENCE.md) -- Quick reference card
+- [MIGRATION-PROMPT.md](./docs/MIGRATION-PROMPT.md) -- Universal Nuxt 3 to 4 migration guide (LLM-ready)
+- [NUXT-CONTENT-MIGRATION.md](./docs/NUXT-CONTENT-MIGRATION.md) -- Nuxt Content v2 to v3 migration guide
+- [MIGRATION.md](./docs/MIGRATION.md) -- Project-specific migration notes
+- [NUXT3-TO-NUXT4-QUICK-REFERENCE.md](./docs/NUXT3-TO-NUXT4-QUICK-REFERENCE.md) -- Quick reference card
 
 ## Documentation Portal
 
@@ -165,7 +165,7 @@ yarn docs:all     # Generate all documentation
 - Accessibility audits: `/docs/accessibility/`
 - API docs: `/docs/jsdoc/`
 
-See [DOCUMENTATION-PORTAL-PROMPT.md](./markdown-documentation/DOCUMENTATION-PORTAL-PROMPT.md) for replicating this setup in other projects.
+See [DOCUMENTATION-PORTAL-PROMPT.md](./docs/DOCUMENTATION-PORTAL-PROMPT.md) for replicating this setup in other projects.
 
 ## License
 
