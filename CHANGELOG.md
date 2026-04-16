@@ -2,6 +2,10 @@
 
 All notable changes to the ICJIA Safe From the Start (SFS) website are documented in this file. Entries are in reverse chronological order.
 
+## 2026-04-16 (hotfix)
+
+- Restore correct fonts on production — `font-family: 'Roboto' !important` (app.css) and `$body-font-family: "Lato"` (variables.scss) had no fallback stack, so with Google Fonts `display: "optional"` any font variant that missed the 100ms activation window fell through to the UA default (Times/serif). Added a system-font fallback stack to both so fallback is still a sans-serif.
+
 ## 2026-04-16
 
 ### Accessibility (WCAG 2.1 AA — 100/100 on all routes)

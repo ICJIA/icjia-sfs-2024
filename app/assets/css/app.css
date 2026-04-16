@@ -26,21 +26,18 @@ h4,
 h5,
 h6,
 .app-title {
-    font-family: 'Roboto' !important;
-
+    font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
 }
 
-
-
 a {
-    font-family: 'Roboto' !important;
+    font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
     font-weight: 700;
 }
 
 .hover-anchor {
-    font-family: 'Roboto' !important;
-        font-weight: 700;
-        text-decoration: none;
+    font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    font-weight: 700;
+    text-decoration: none;
 }
 
 .hover-anchor:hover {
