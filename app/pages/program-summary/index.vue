@@ -53,18 +53,26 @@
 <script setup>
 import { getThumborUrl } from "@/utils/thumbor.js";
 
-let isMounted = ref(false);
-let splashFull = ref(null);
-let splashThumbnail = ref(null);
+const splashFull = ref(null);
+const splashThumbnail = ref(null);
 
-const { data } = await useAsyncData(`content-program`, async () => {
-  const post = await queryCollection("content")
-    .path("/program-summary")
-    .first();
-  return post;
+const { data } = await useAsyncData("content-program", async () => {
+  return await queryCollection("content").path("/program-summary").first();
 });
 
-if (data && data.value.splash && data.value.splash[0]) {
+useHead({
+  title: data.value?.title || "Program Summary",
+  meta: [
+    {
+      name: "description",
+      content:
+        data.value?.description ||
+        "Overview of the Safe From the Start program, its goals, and core components.",
+    },
+  ],
+});
+
+if (data.value?.splash?.[0]) {
   splashFull.value = getThumborUrl(data.value.splash[0]);
   splashThumbnail.value = getThumborUrl({
     url: data.value.splash[0].url,
@@ -72,14 +80,7 @@ if (data && data.value.splash && data.value.splash[0]) {
     height: 150,
     quality: 10,
   });
-} else {
-  splashFull.value = null;
-  splashThumbnail.value = null;
 }
-
-onMounted(async () => {
-  isMounted.value = true;
-});
 </script>
 
 <style lang="scss" scoped></style>

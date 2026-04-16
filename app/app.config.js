@@ -17,7 +17,8 @@ export default defineAppConfig({
   title: "SFS: Safe from the Start",
 
   /** Site description for SEO and meta tags */
-  description: "SFS description.",
+  description:
+    "The Safe From the Start (SFS) program provides developmentally and culturally appropriate direct services to children, ages 0-5, who have witnessed or been exposed to violence and their families.",
 
   /** Feature flag to enable/disable translation functionality */
   isTranslationEnabled: false,

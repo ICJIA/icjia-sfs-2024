@@ -21,6 +21,16 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+useHead({
+  title: "News",
+  meta: [
+    {
+      name: "description",
+      content: "News and updates from the Safe From the Start program.",
+    },
+  ],
+});
+</script>
 
 <style lang="scss" scoped></style>

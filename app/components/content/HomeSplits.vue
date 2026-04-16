@@ -27,9 +27,9 @@
       ><v-row
         ><v-col cols="12" md="12" class="">
           <v-sheet>
-            <h1 style="font-size: 36px" class="text-center">
+            <h2 style="font-size: 36px" class="text-center">
               About Safe From the Start
-            </h1>
+            </h2>
             <div
               style="font-size: 20px; font-family: 'Lato', sans-serif"
               class="mt-6 text-left"
@@ -110,7 +110,7 @@
       <v-container style="margin-top: 100px"
         ><v-row
           ><v-col cols="12" md="6"
-            ><h2>Coalition-Building and Collaboration</h2>
+            ><h3>Coalition-Building and Collaboration</h3>
             <p style="font-size: 20px">
               Coalition building, collaboration, and coordination are central
               components of the SFS program model. SFS coalitions build
@@ -221,13 +221,14 @@
               </template>
             </v-img> </v-col
           ><v-col cols="12" md="6"
-            ><h2>Direct Services</h2>
+            ><h3>Direct Services</h3>
             <p style="font-size: 20px">
               SFS primarily serves young children from birth to 5 years of age
               who have been exposed to violence in the home or community and
               their families or caregivers. Children older than five years may
-              be served if the primary client is aged 0 to 5. _Exposure to
-              violence_ occurs with being victimized or witnessing abuse,
+              be served if the primary client is aged 0 to 5.
+              <em>Exposure to violence</em> occurs with being victimized or
+              witnessing abuse,
               neglect, or maltreatment or a witness to domestic, physical, or
               sexual violence, or other violent crime.
             </p>
@@ -244,7 +245,7 @@
       <v-container style="margin-top: 100px"
         ><v-row
           ><v-col cols="12" md="6"
-            ><h2>Public Awareness</h2>
+            ><h3>Public Awareness</h3>
             <p style="font-size: 20px">
               The SFS program model’s third component is public awareness.
               Essential efforts include community member involvement, increased
@@ -325,54 +326,7 @@
 </template>
 
 <script setup>
-import { ThumborUrlBuilder } from "thumbor-url-builder-ts";
-
-// Track component mount state
-let isMounted = ref(false);
-
-/**
- * Generates optimized Thumbor image URLs for the three core component images.
- *
- * Creates URLs for both full-quality and placeholder images using the Thumbor
- * image optimization service. This component uses moderate quality settings (50%)
- * for a balance between visual quality and performance.
- *
- * @param {Object} params - Image processing parameters
- * @param {string} params.url - Source image URL
- * @param {number} params.width - Target width in pixels
- * @param {number} params.height - Target height in pixels
- * @param {number} params.quality - Image quality (0-100)
- * @param {string} params.format - Output format (e.g., "webp")
- * @returns {string} Signed Thumbor URL for the processed image
- */
-const getThumborUrl = ({ url, width, height, quality, format }) => {
-  let options = {
-    url: url || "https://sfs.icjia.illinois.gov/error.jpg",
-    width: width || 1024,
-    height: height || 768,
-    quality: quality || 50,
-    format: format || "webp",
-  };
-
-  const thumbor = new ThumborUrlBuilder(
-    import.meta.env.VITE_THUMBOR_KEY,
-    "https://image.icjia.cloud"
-  );
-
-  return thumbor
-    .setImagePath(options.url)
-    .resize(options.width, options.height)
-    .filter(`quality(${options.quality}):format('${options.format}')`)
-    .smartCrop(true)
-    .buildUrl();
-};
-
-/**
- * Lifecycle hook - runs when component is mounted.
- */
-onMounted(async () => {
-  isMounted.value = true;
-});
+import { getThumborUrl } from "@/utils/thumbor.js";
 </script>
 
 <style lang="scss" scoped></style>

@@ -61,17 +61,27 @@
 <script setup>
 import { getThumborUrl } from "@/utils/thumbor.js";
 
-let isMounted = ref(false);
-let splashFull = ref(null);
-let splashThumbnail = ref(null);
+const splashFull = ref(null);
+const splashThumbnail = ref(null);
 const contentDocRef = ref(null);
 
-const { data } = await useAsyncData(`content-sites`, async () => {
-  const post = await queryCollection("content").path("/sites").first();
-  return post;
+const { data } = await useAsyncData("content-sites", async () => {
+  return await queryCollection("content").path("/sites").first();
 });
 
-if (data && data.value.splash && data.value.splash[0]) {
+useHead({
+  title: data.value?.title || "Sites",
+  meta: [
+    {
+      name: "description",
+      content:
+        data.value?.description ||
+        "Directory of Safe From the Start program sites across Illinois.",
+    },
+  ],
+});
+
+if (data.value?.splash?.[0]) {
   splashFull.value = getThumborUrl(data.value.splash[0]);
   splashThumbnail.value = getThumborUrl({
     url: data.value.splash[0].url,
@@ -79,9 +89,6 @@ if (data && data.value.splash && data.value.splash[0]) {
     height: 150,
     quality: 10,
   });
-} else {
-  splashFull.value = null;
-  splashThumbnail.value = null;
 }
 
 // Function to add custom tooltips to agency name links
@@ -151,22 +158,19 @@ const loadDeferredIframes = () => {
   iframes.forEach((iframe) => observer.observe(iframe));
 };
 
-onMounted(async () => {
-  isMounted.value = true;
+watch(
+  () => data.value,
+  () => {
+    if (typeof window === "undefined") return;
+    setTimeout(addTooltipsToAgencyLinks, 100);
+  },
+  { deep: true }
+);
 
-  // Add tooltips after content is mounted
+onMounted(async () => {
   await nextTick();
   addTooltipsToAgencyLinks();
   loadDeferredIframes();
-
-  // Also watch for content changes and re-add tooltips
-  watch(
-    () => data.value,
-    () => {
-      setTimeout(addTooltipsToAgencyLinks, 100);
-    },
-    { deep: true }
-  );
 });
 </script>
 

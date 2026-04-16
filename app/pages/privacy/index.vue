@@ -41,17 +41,20 @@
 </template>
 
 <script setup>
-import { getThumborUrl } from "@/utils/thumbor.js";
-
-let isMounted = ref(false);
-
-const { data } = await useAsyncData(`content-privacy`, async () => {
-  const post = await queryCollection("content").path("/privacy").first();
-  return post;
+const { data } = await useAsyncData("content-privacy", async () => {
+  return await queryCollection("content").path("/privacy").first();
 });
 
-onMounted(async () => {
-  isMounted.value = true;
+useHead({
+  title: data.value?.title || "Privacy",
+  meta: [
+    {
+      name: "description",
+      content:
+        data.value?.description ||
+        "Privacy policy for the Safe From the Start website.",
+    },
+  ],
 });
 </script>
 

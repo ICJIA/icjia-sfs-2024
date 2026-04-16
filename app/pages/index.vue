@@ -68,22 +68,16 @@
 </template>
 
 <script setup>
-// Track component mount state (currently unused but available for future enhancements)
-let isMounted = ref(false);
+const appConfig = useAppConfig();
 
-/**
- * Set page metadata for SEO and browser tab.
- * Title and description are used by search engines and social media.
- */
 useHead({
   title: "Home",
-  meta: [{ name: "description", content: "Illinois Safe From the Start" }],
-});
-
-/**
- * Lifecycle hook - runs when page is mounted on the client.
- */
-onMounted(async () => {
-  isMounted.value = true;
+  meta: [
+    { name: "description", content: appConfig.description },
+    { property: "og:title", content: `${appConfig.title} – Home` },
+    { property: "og:description", content: appConfig.description },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: appConfig.root },
+  ],
 });
 </script>

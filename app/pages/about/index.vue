@@ -59,28 +59,26 @@
 <script setup>
 import { getThumborUrl } from "@/utils/thumbor.js";
 
-// Track component mount state
-let isMounted = ref(false);
-let splashFull = ref(null);
-let splashThumbnail = ref(null);
-import md from "markdown-it";
-import attrs from "markdown-it-attrs";
-const renderer = new md({
-  html: true,
-  xhtmlOut: false,
-  breaks: false,
-  langPrefix: "language-",
-  linkify: true,
-  typographer: true,
-  quotes: "“”‘’",
-}).use(attrs);
+const splashFull = ref(null);
+const splashThumbnail = ref(null);
 
-const { data } = await useAsyncData(`content-about`, async () => {
-  const post = await queryCollection("content").path("/about").first();
-  return post;
+const { data } = await useAsyncData("content-about", async () => {
+  return await queryCollection("content").path("/about").first();
 });
 
-if (data && data.value.splash && data.value.splash[0]) {
+useHead({
+  title: "About",
+  meta: [
+    {
+      name: "description",
+      content:
+        data.value?.description ||
+        "About the Safe From the Start program – services for children ages 0–5 who have been exposed to violence.",
+    },
+  ],
+});
+
+if (data.value?.splash?.[0]) {
   splashFull.value = getThumborUrl(data.value.splash[0]);
   splashThumbnail.value = getThumborUrl({
     url: data.value.splash[0].url,
@@ -88,14 +86,7 @@ if (data && data.value.splash && data.value.splash[0]) {
     height: 150,
     quality: 10,
   });
-} else {
-  splashFull.value = null;
-  splashThumbnail.value = null;
 }
-
-onMounted(async () => {
-  isMounted.value = true;
-});
 </script>
 
 <style lang="scss" scoped>

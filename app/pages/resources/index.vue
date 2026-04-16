@@ -41,17 +41,20 @@
 </template>
 
 <script setup>
-import { getThumborUrl } from "@/utils/thumbor.js";
-
-let isMounted = ref(false);
-
-const { data } = await useAsyncData(`content-resources`, async () => {
-  const post = await queryCollection("content").path("/resources").first();
-  return post;
+const { data } = await useAsyncData("content-resources", async () => {
+  return await queryCollection("content").path("/resources").first();
 });
 
-onMounted(async () => {
-  isMounted.value = true;
+useHead({
+  title: data.value?.title || "Resources",
+  meta: [
+    {
+      name: "description",
+      content:
+        data.value?.description ||
+        "Helpful resources and materials related to the Safe From the Start program.",
+    },
+  ],
 });
 </script>
 

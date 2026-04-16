@@ -62,104 +62,30 @@
 </template>
 
 <script setup>
-// Reactive state for tracking if current page is the home page
-// Currently unused but preserved for potential future home page customization
-let isHome = ref();
-
-// Flag to control breadcrumb bar visibility
-// Currently unused but preserved for potential future breadcrumb implementation
-let hideBreadcrumbBar = ref(false);
-
-// Access the current route for path tracking
-const route = useRoute();
-
-// Reactive reference to the current route path
-const routePath = ref(route.path);
-
-// Track whether the component has been mounted (client-side only)
-let isMounted = ref(false);
-
 /**
- * Watch for route changes and log the current path.
- * This helps with debugging navigation and can be extended for analytics tracking.
+ * Handles the skip to main content link for accessibility.
+ * Moves focus to the <main> landmark so subsequent Tab presses
+ * advance through the page content instead of the nav.
  *
- * The commented code shows a previous implementation that toggled breadcrumbs
- * based on whether the user was on the home page.
- */
-watchEffect(() => {
-  routePath.value = route.path;
-  console.log("route.path from app.vue: ", routePath.value);
-
-  // Previous breadcrumb logic - preserved for reference
-  // if (route.path === "/") {
-  //   hideBreadcrumbBar.value = true;
-  //   isHome = true;
-  // } else {
-  //   hideBreadcrumbBar.value = false;
-  //   isHome = false;
-  // }
-});
-
-/**
- * Smoothly scrolls the page to the top.
+ * WCAG 2.1 Level A – 2.4.1 Bypass Blocks.
+ * Respects prefers-reduced-motion for scroll behavior.
  *
- * This function is currently defined but not actively used in the template.
- * It's preserved for potential future use in navigation or UI interactions.
- * The isMounted check ensures it only runs on the client side.
- *
- * @returns {void}
- */
-const scrollToTop = () => {
-  // Prevent execution during server-side rendering
-  if (!isMounted.value) {
-    return;
-  }
-
-  // Smooth scroll to top of page
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: "smooth",
-  });
-};
-
-/**
- * Handles the skip to main content link functionality for accessibility.
- *
- * When activated (via click or Enter key), this function:
- * 1. Prevents default anchor link behavior
- * 2. Programmatically focuses the main content area
- * 3. Smoothly scrolls the main content into view
- *
- * This is a WCAG 2.1 Level A requirement (2.4.1 Bypass Blocks) that allows
- * keyboard users to skip repetitive navigation and jump directly to page content.
- *
- * @param {Event} event - The click or keydown event
- * @returns {void}
+ * @param {Event} event
  */
 const skipToMain = (event) => {
   event.preventDefault();
-
-  // Find the main content landmark element
   const mainContent = document.getElementById("main-content");
+  if (!mainContent) return;
 
-  if (mainContent) {
-    // Set focus to main content (enables keyboard navigation from this point)
-    mainContent.focus();
+  mainContent.focus();
 
-    // Smoothly scroll the main content into view
-    mainContent.scrollIntoView({ behavior: "smooth" });
-  }
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+  mainContent.scrollIntoView({
+    behavior: prefersReducedMotion ? "auto" : "smooth",
+  });
 };
-
-/**
- * Lifecycle hook that runs when the component is mounted on the client.
- * Sets the isMounted flag to true, enabling client-side only functionality.
- */
-onMounted(() => {
-  isMounted.value = true;
-  console.log("isMounted: ", isMounted.value);
-});
 </script>
 
 <style>

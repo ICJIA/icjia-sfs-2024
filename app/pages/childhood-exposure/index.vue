@@ -59,29 +59,26 @@
 <script setup>
 import { getThumborUrl } from "@/utils/thumbor.js";
 
-let isMounted = ref(false);
-let splashFull = ref(null);
-let splashThumbnail = ref(null);
-import md from "markdown-it";
-import attrs from "markdown-it-attrs";
-const renderer = new md({
-  html: true,
-  xhtmlOut: false,
-  breaks: false,
-  langPrefix: "language-",
-  linkify: true,
-  typographer: true,
-  quotes: "“”‘’",
-}).use(attrs);
+const splashFull = ref(null);
+const splashThumbnail = ref(null);
 
-const { data } = await useAsyncData(`content-childhood-exposure`, async () => {
-  const post = await queryCollection("content")
-    .path("/childhood-exposure")
-    .first();
-  return post;
+const { data } = await useAsyncData("content-childhood-exposure", async () => {
+  return await queryCollection("content").path("/childhood-exposure").first();
 });
 
-if (data && data.value.splash && data.value.splash[0]) {
+useHead({
+  title: data.value?.title || "Childhood Exposure to Violence",
+  meta: [
+    {
+      name: "description",
+      content:
+        data.value?.description ||
+        "Information on childhood exposure to violence (CEV) and trauma, statistics, and intervention strategies.",
+    },
+  ],
+});
+
+if (data.value?.splash?.[0]) {
   splashFull.value = getThumborUrl(data.value.splash[0]);
   splashThumbnail.value = getThumborUrl({
     url: data.value.splash[0].url,
@@ -89,22 +86,12 @@ if (data && data.value.splash && data.value.splash[0]) {
     height: 150,
     quality: 10,
   });
-} else {
-  splashFull.value = null;
-  splashThumbnail.value = null;
 }
 
 onMounted(async () => {
-  isMounted.value = true;
-  let footnoteLabel = document.getElementById("footnote-label");
-
-  // Check if the element exists
-  if (footnoteLabel) {
-    // Change the inner text of the element
-    footnoteLabel.innerText = "References";
-  } else {
-    console.log("Element with ID 'footnote-label' not found.");
-  }
+  await nextTick();
+  const footnoteLabel = document.getElementById("footnote-label");
+  if (footnoteLabel) footnoteLabel.innerText = "References";
 });
 </script>
 

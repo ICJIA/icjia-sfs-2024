@@ -72,54 +72,7 @@
 </template>
 
 <script setup>
-import { ThumborUrlBuilder } from "thumbor-url-builder-ts";
-
-// Track component mount state
-let isMounted = ref(false);
-
-/**
- * Generates optimized Thumbor image URLs for the secondary splash image.
- *
- * Creates URLs for both full-quality and placeholder images using the Thumbor
- * image optimization service. This component uses lower quality settings since
- * the image is decorative rather than primary content.
- *
- * @param {Object} params - Image processing parameters
- * @param {string} params.url - Source image URL
- * @param {number} params.width - Target width in pixels
- * @param {number} params.height - Target height in pixels
- * @param {number} params.quality - Image quality (0-100)
- * @param {string} params.format - Output format (e.g., "webp")
- * @returns {string} Signed Thumbor URL for the processed image
- */
-const getThumborUrl = ({ url, width, height, quality, format }) => {
-  let options = {
-    url: url || "https://sfs.icjia.illinois.gov/error.jpg",
-    width: width || 1024,
-    height: height || 768,
-    quality: quality || 50,
-    format: format || "webp",
-  };
-
-  const thumbor = new ThumborUrlBuilder(
-    import.meta.env.VITE_THUMBOR_KEY,
-    "https://image.icjia.cloud"
-  );
-
-  return thumbor
-    .setImagePath(options.url)
-    .resize(options.width, options.height)
-    .filter(`quality(${options.quality}):format('${options.format}')`)
-    .smartCrop(true)
-    .buildUrl();
-};
-
-/**
- * Lifecycle hook - runs when component is mounted.
- */
-onMounted(async () => {
-  isMounted.value = true;
-});
+import { getThumborUrl } from "@/utils/thumbor.js";
 </script>
 
 <style scoped>

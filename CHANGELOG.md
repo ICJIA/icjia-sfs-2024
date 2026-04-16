@@ -2,6 +2,52 @@
 
 All notable changes to the ICJIA Safe From the Start (SFS) website are documented in this file. Entries are in reverse chronological order.
 
+## 2026-04-16
+
+### Accessibility (WCAG 2.1 AA — 100/100 on all routes)
+
+- Convert navigation `<v-btn @click="$router.push">` buttons to real `<NuxtLink>` / `:to` links so screen readers announce "link" and middle/right-click work correctly (TheNavV2)
+- Restructure mobile sidebar to native `<nav><ul><li><NuxtLink>` — eliminates the post-mount `role="listitem"` → `role="button"` DOM patching hack (TheSidebar)
+- Move focus into the sidebar drawer when it opens and close on <kbd>Escape</kbd> (WCAG 2.4.3)
+- Wrap footer ICJIA logo in a real `<a href target="_blank" rel="noopener noreferrer">` so it's keyboard operable (TheFooter)
+- Add `rel="noopener noreferrer"` to every `target="_blank"` link
+- Homepage: exactly one `<h1>` (the hero headline); `HomeSplits` headings demoted to `<h2>`/`<h3>` to preserve heading order
+- Mobile "SFS" title now `<abbr title="Safe From the Start">` with an aria-label that contains "SFS" (WCAG 2.5.3 label-in-name)
+- Dropdown menus use `<template v-for>` so `role="menu"` contains `role="menuitem"` directly
+- Skip-link respects `prefers-reduced-motion`; global `scroll-behavior: smooth` gated behind the same media query
+- Loading indicators swapped from animated GIFs to `<v-progress-circular>` (SVG, respects reduced motion)
+- Context-footer hover contrast fixed (white underline on blue, removed `#aaa on #1263a5` = 2.24:1)
+- Removed double "(external link)" announcements; single "(opens in new window)" via aria-label
+- Fixed `_Exposure to violence_` rendering as literal markdown on the homepage
+
+### SEO / Best Practices (100/100)
+
+- Add `useHead` with title + description on every content page (fixes missing `<title>` on `/about`, `/sites`, `/research`, `/resources`, `/privacy`, `/program-summary`, `/childhood-exposure`, `/news`)
+- Rewrote `titleTemplate` to `"Page | Safe From the Start"` pattern
+- Added `og:*` and `twitter:card` meta tags, `theme-color`, `format-detection`
+- Fix root `description` meta (was `"SFS description."`)
+- Explicit `width`/`height` on nav + footer logos (correct 250:175 aspect) fixes unsized-images CLS warning
+- `loading="lazy"` / `decoding="async"` on the footer logo
+- `robots.txt` now points at the sitemap and allows crawling
+
+### Performance
+
+- Remove jQuery from global `<script>` (saved ~30 KB + third-party CDN dep)
+- Remove `vite-plugin-node-polyfills` from the client bundle (large prod savings)
+- Homepage nav is now fully SSR-rendered (was gated behind `v-if="isMounted"`) — removes a large CLS on hydration
+- Deduplicate `getThumborUrl`: SplashHome, HomeSplits, SplashHomeSecondary all import `@/utils/thumbor.js`
+
+### Code quality
+
+- Strip production `console.log` calls from app.vue, TheSidebar, research, childhood-exposure pages
+- Remove dead `isMounted`/`splashFull`/`splashThumbnail` refs and unused `markdown-it` imports across pages
+- Add `data.value?.splash?.[0]` null-guards (prevents SSR crashes on missing splash metadata)
+- Move `/sites` `watch` out of `onMounted` to prevent HMR leaks
+- Remove empty `content: {}` block and deprecated `fixed`/`app`/`dark` Vuetify 2 props
+- Move `.sr-only` to global `assets/css/app.css` (dedupe across components)
+- Delete `/sandbox` test page
+- Nitro prerender: `failOnError: false`, ignore `/news` (placeholder)
+
 ## 2026-04-09
 
 - Fix `label-content-name-mismatch` accessibility violations across all pages (footer, homepage button, research page link)

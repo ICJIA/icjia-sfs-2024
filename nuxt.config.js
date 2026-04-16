@@ -16,7 +16,6 @@
 
 import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 import vue from "@vitejs/plugin-vue";
-import { nodePolyfills } from "vite-plugin-node-polyfills";
 // Import the consolidated list of all application routes for static generation
 import appRoutes from "./src/json/appRoutes.json";
 
@@ -41,32 +40,28 @@ export default defineNuxtConfig({
       viewport: "width=device-width, initial-scale=1",
 
       // Template for page titles - %s is replaced with page-specific title
-      titleTemplate: "Safe From the Start %s ",
+      titleTemplate: (title) =>
+        title ? `${title} | Safe From the Start` : "Safe From the Start",
 
       // Default meta tags for SEO
       meta: [
-        { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: "theme-color", content: "#0d4474" },
+        { name: "format-detection", content: "telephone=no" },
         {
           hid: "description",
           name: "description",
           content:
-            "The Safe From the Start (SFS) program provides developmentally and culturally appropriate direct services to children, ages 0 through 5, who have witnessed or been exposed to violence and their families",
+            "The Safe From the Start (SFS) program provides developmentally and culturally appropriate direct services to children, ages 0–5, who have witnessed or been exposed to violence and their families.",
         },
+        { property: "og:site_name", content: "Safe From the Start" },
+        { property: "og:type", content: "website" },
+        { property: "og:locale", content: "en_US" },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
 
-      // Favicon configuration
-      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
-
-      /**
-       * External scripts loaded on all pages.
-       * jQuery is included for potential legacy compatibility or third-party integrations.
-       */
-      script: [
-        {
-          src: "https://code.jquery.com/jquery-3.7.1.slim.min.js",
-          type: "text/javascript",
-        },
+      link: [
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       ],
     },
   },
@@ -116,19 +111,6 @@ export default defineNuxtConfig({
       });
     },
   ],
-
-  /**
-   * @nuxt/content module configuration (v3).
-   *
-   * In Nuxt Content v3, most configuration has moved to content.config.ts.
-   * This section now only contains module-level options.
-   *
-   * @see https://content.nuxt.com/docs/getting-started/configuration
-   */
-  content: {
-    // Module-level options can be configured here if needed
-    // Collection-specific configuration is in content.config.ts
-  },
 
   /**
    * Google Fonts configuration.
@@ -217,7 +199,6 @@ export default defineNuxtConfig({
       plugins: [
         vue(), // Core Vue plugin
         vuetify(), // Vuetify integration
-        nodePolyfills(), // Node.js polyfills for browser compatibility
       ],
 
       template: {
@@ -251,11 +232,13 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       routes: appRoutes, // Use the consolidated routes from appRoutes.json
+      failOnError: false,
       ignore: [
         '/docs',
         '/docs/**',
         '/documentation',
         '/documentation/**',
+        '/news',
       ],
     },
   },

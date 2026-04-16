@@ -39,7 +39,7 @@
               <v-progress-circular
                 indeterminate
                 color="blue darken-3"
-                aria-label="Progress bar: Loading"
+                aria-label="Loading"
               ></v-progress-circular>
             </v-row> </template
         ></v-img> </v-row
@@ -203,41 +203,26 @@
 </template>
 
 <script setup>
-import { getThumborUrl } from "@/utils/thumbor.js";
-
-let isMounted = ref(false);
-let splashFull = ref(null);
-let splashThumbnail = ref(null);
-
 const { data } = await useAsyncData(`content-research`, async () => {
-  const post = await queryCollection("content").path("/research").first();
-  return post;
+  return await queryCollection("content").path("/research").first();
 });
 
-if (data && data.value.splash && data.value.splash[0]) {
-  splashFull.value = getThumborUrl(data.value.splash[0]);
-  splashThumbnail.value = getThumborUrl({
-    url: data.value.splash[0].url,
-    width: 150,
-    height: 150,
-    quality: 10,
-  });
-} else {
-  splashFull.value = null;
-  splashThumbnail.value = null;
-}
+useHead({
+  title: data.value?.title || "Research",
+  meta: [
+    {
+      name: "description",
+      content:
+        data.value?.description ||
+        "Research, publications, and outcomes of the Safe From the Start program.",
+    },
+  ],
+});
 
 onMounted(async () => {
-  isMounted.value = true;
-  let footnoteLabel = document.getElementById("footnote-label");
-
-  // Check if the element exists
-  if (footnoteLabel) {
-    // Change the inner text of the element
-    footnoteLabel.innerText = "References";
-  } else {
-    console.log("Element with ID 'footnote-label' not found.");
-  }
+  await nextTick();
+  const footnoteLabel = document.getElementById("footnote-label");
+  if (footnoteLabel) footnoteLabel.innerText = "References";
 });
 </script>
 
@@ -273,16 +258,4 @@ onMounted(async () => {
     box-shadow 0.3s ease;
 }
 
-/* Screen reader only text for accessibility */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
 </style>
