@@ -94,11 +94,15 @@ Key practices in the build:
 
 ## Performance
 
-Mobile Lighthouse (production, incognito): **95** on `/` (capped by hero LCP), **100** on every other route. Desktop: **100** across the board.
+Production Lighthouse (incognito):
+
+- **Desktop:** 100 on 7 of 8 routes; `/sites` lands at 99 (capped by the embedded ArcGIS map iframe).
+- **Mobile:** 100 on `/about`, `/childhood-exposure`, `/privacy`, `/research`; 94–98 on the rest. The hero image's LCP and the ArcGIS embed on `/sites` are what's left.
 
 Key optimizations:
 
 - `inlineStylesheets: "always"` removes the render-blocking external CSS link
+- `build.format: "file"` + `trailingSlash: "never"` emits flat `/about.html` so internal nav skips the Netlify trailing-slash redirect (~800 ms saved per nav on mobile)
 - All fonts self-hosted with immutable cache; fallback `@font-face` with `size-adjust` so font swap is invisible (CLS = 0)
 - LCP hero preloaded with `fetchpriority="high"`; preload + `<img>` share `crossorigin` mode so the browser uses the preload
 - Thumbor URLs sized to the largest container, served as WebP

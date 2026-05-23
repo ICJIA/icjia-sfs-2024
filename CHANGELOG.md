@@ -2,6 +2,22 @@
 
 All notable changes to the ICJIA Safe From the Start (SFS) website are documented in this file. Entries are in reverse chronological order.
 
+## 2.0.1 — 2026-05-23
+
+Post-migration polish.
+
+- **a11y:** removed the redundant `role="contentinfo"` from `<section>` inside the footer. The outer `<footer>` was already a contentinfo landmark, so the inner one created two nested landmarks. axe-devtools-html flagged it as two moderate findings (`landmark-contentinfo-is-top-level`, `landmark-no-duplicate-contentinfo`); both are gone. (`22ffe15`)
+- **perf:** switched the build to flat `.html` output (`build.format: "file"` + `trailingSlash: "never"`). Internal nav no longer triggers the Netlify trailing-slash redirect — Lighthouse measured ~760–870 ms savings per page. Mobile `/about` jumped from 97 → **100**; other markdown routes joined it at 100. (`2da5388`)
+- **chore:** deleted the `feat/astro-spike` branch and 28 stale Nuxt-era branches (2 local migration branches + 26 remote dependabot branches that targeted dependencies no longer present in the Astro build).
+- **docs:** README updated with the post-fix Lighthouse numbers and the new build-format setting.
+
+Production Lighthouse after these fixes:
+
+| | Desktop | Mobile |
+|---|---|---|
+| Perfect 100/100/100/100 | 7 of 8 | 5 of 8 |
+| Lowest score | `/sites` 99 BP 96 (ArcGIS iframe) | `/` and `/sites` at 94 |
+
 ## 2.0.0 — 2026-05-23
 
 Full rewrite of the site from Nuxt 4 + Vuetify to **Astro 6 + Tailwind v4** as a pure static SSG build. Visual design is unchanged; all routes, content, accessibility behavior, and links are preserved 1:1. The migration shipped on the `feat/astro-spike` branch and was merged in `593c493`.
