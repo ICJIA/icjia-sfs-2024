@@ -12,6 +12,8 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   build: {
-    inlineStylesheets: "auto",
+    // Inline ALL stylesheets into HTML to remove the render-blocking <link>
+    // path entirely. Net win on slow-4G FCP vs. the ~20 KB of extra inline.
+    inlineStylesheets: "always",
   },
 });

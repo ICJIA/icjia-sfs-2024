@@ -1,27 +1,31 @@
-# Nuxt dev/build outputs
-.output
-.data
-.nuxt
-.nitro
-.cache
-dist
+# Build outputs
+dist/
+.astro/
+.output/
+.nuxt/
+.data/
 
-# Node dependencies
-node_modules
+# Node
+node_modules/
 
 # Logs
-logs
 *.log
+logs/
 
-# Misc
+# Env
+.env
+.env.local
+
+# OS
 .DS_Store
+
+# IDEs
 .fleet
 .idea
 
-# Local env files
-.env
-
-
-
-# Local Netlify folder
+# Netlify
 .netlify
+
+# Local-only audit references
+.astro-reference/
+audits/

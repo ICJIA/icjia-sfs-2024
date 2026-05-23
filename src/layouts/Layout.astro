@@ -35,30 +35,12 @@ const fullTitle =
     <meta name="theme-color" content="#0d4474" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <!-- Speed up the first request to the Thumbor image origin. -->
     <link rel="preconnect" href="https://image.icjia.cloud" crossorigin />
-    <link
-      rel="preconnect"
-      href="https://fonts.googleapis.com"
-      crossorigin
-    />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
-    <!-- System-font fallbacks ship in global.css; Google Fonts loaded async. -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Roboto:ital,wght@0,400;0,700;0,900;1,400&family=Raleway:wght@700&display=swap"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Roboto:ital,wght@0,400;0,700;0,900;1,400&family=Raleway:wght@700&display=swap"
-      />
-    </noscript>
+    <!-- Fonts are self-hosted via Fontsource (imported in global.css)
+         and ship as immutably-cached files in /_astro/, so we no longer
+         contact fonts.googleapis.com on the critical path. -->
+
     {
       /* Preload hints. The <img> tags for these images use
          crossorigin="anonymous" so the browser fetches them in CORS-without-

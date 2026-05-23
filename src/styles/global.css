@@ -1,6 +1,19 @@
 @import "tailwindcss";
 
 /*
+ * Self-hosted fonts via Fontsource — no fonts.googleapis.com round-trip,
+ * served from /_astro/* with immutable caching by Netlify. Only the
+ * weights actually used on the site are pulled in.
+ */
+@import "@fontsource/lato/400.css";
+@import "@fontsource/lato/700.css";
+@import "@fontsource/lato/900.css";
+@import "@fontsource/roboto/400.css";
+@import "@fontsource/roboto/700.css";
+@import "@fontsource/roboto/900.css";
+@import "@fontsource/raleway/700.css";
+
+/*
  * Brand tokens mirroring the Nuxt/Vuetify SFS palette so Tailwind utility
  * names line up with the original visual design.
  *
