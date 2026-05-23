@@ -16,25 +16,13 @@
         alt=""
         role="presentation"
         aria-hidden="true"
-        :src="
-          getThumborUrl({
-            url: 'https://sfs.icjia.illinois.gov/splash-24-large-cropped.jpg',
-            width: 2000,
-            height: 1200,
-            quality: 80,
-          })
-        "
-        :lazy-src="
-          getThumborUrl({
-            url: 'https://sfs.icjia.illinois.gov/splash-24-large-cropped.jpg',
-            width: 250,
-            height: 150,
-            quality: 10,
-          })
-        "
+        :src="heroSrc"
+        :lazy-src="heroLazySrc"
         width="100%"
         height="700"
         cover
+        eager
+        fetchpriority="high"
         style="filter: grayscale(10%)"
         gradient="to bottom, rgba(0,0,0,.3), rgba(0,0,0,.1)"
       >
@@ -68,14 +56,13 @@
           );
           padding: 20px 30px;
           border-radius: 8px;
-          pointer-events: none;
         "
       >
         <h1 class="hero-title">
           Direct services to children who have been exposed to violence
         </h1>
 
-        <div class="mt-6" style="pointer-events: auto">
+        <div class="mt-6">
           <v-btn
             color="blue-darken-4"
             to="/about"
@@ -93,6 +80,39 @@
 
 <script setup>
 import { getThumborUrl } from "@/utils/thumbor.js";
+
+const HERO_SOURCE_URL =
+  "https://sfs.icjia.illinois.gov/splash-24-large-cropped.jpg";
+
+// Sized to the largest container the hero will ever render at (1600px wide on
+// 2x desktop screens); smaller than the old 2000×1200@80 export. Lighthouse
+// measured ~70 KiB of waste at that size.
+const heroSrc = getThumborUrl({
+  url: HERO_SOURCE_URL,
+  width: 1600,
+  height: 960,
+  quality: 72,
+});
+
+const heroLazySrc = getThumborUrl({
+  url: HERO_SOURCE_URL,
+  width: 250,
+  height: 150,
+  quality: 10,
+});
+
+// Preload the LCP image so the browser fetches it in parallel with the document
+// instead of waiting for the v-img component to mount.
+useHead({
+  link: [
+    {
+      rel: "preload",
+      as: "image",
+      href: heroSrc,
+      fetchpriority: "high",
+    },
+  ],
+});
 </script>
 
 <style scoped>
@@ -103,6 +123,18 @@ import { getThumborUrl } from "@/utils/thumbor.js";
   color: #ffffff;
   margin: 0 auto;
   max-width: 22ch;
+  /* Give axe-core a solid backdrop it can measure against. An effectively
+     opaque navy shape behind the headline keeps the original look (the design
+     already used a dark gradient block over the hero image) while letting the
+     contrast pass deterministically — white #fff on #1a3a52 is 12.07:1. */
+  background-color: #1a3a52;
+  padding: 0.4em 0.8em;
+  border-radius: 6px;
+  display: inline-block;
+  /* Override the wrapper's `pointer-events: none` so axe-core's
+     elementsFromPoint() check can find the headline when determining the
+     measured background. */
+  pointer-events: auto;
 }
 
 @media (max-width: 768px) {

@@ -34,9 +34,9 @@
         :src="
           getThumborUrl({
             url: 'https://sfs.icjia.illinois.gov/splash-28-large.jpg',
-            width: 2000,
-            height: 1200,
-            quality: 30, // Lower quality for decorative image
+            width: 1600,
+            height: 960,
+            quality: 35, // Lower quality for decorative image
           })
         "
         :lazy-src="
@@ -50,6 +50,7 @@
         width="100%"
         height="650"
         cover
+        loading="lazy"
         style="
           margin-top: -65px;
           filter: grayscale(10%);

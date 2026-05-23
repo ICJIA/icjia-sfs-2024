@@ -62,6 +62,8 @@ export default defineNuxtConfig({
 
       link: [
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+        // Speed up the first request to the Thumbor image origin used for splash images.
+        { rel: "preconnect", href: "https://image.icjia.cloud", crossorigin: "" },
       ],
     },
   },
@@ -84,6 +86,13 @@ export default defineNuxtConfig({
    */
   build: {
     transpile: ["vuetify"], // Vuetify must be transpiled for SSR compatibility
+  },
+
+  // Emit source maps for production JS so Lighthouse's valid-source-maps audit passes
+  // and stack traces in error reporting tools resolve correctly.
+  sourcemap: {
+    server: false,
+    client: true,
   },
 
   /**

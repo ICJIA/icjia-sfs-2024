@@ -2,12 +2,13 @@
 /**
  * TheNavV2 - Main navigation component.
  *
- * Desktop: horizontal menu with dropdown support.
- * Mobile: hamburger button toggles TheSidebar drawer.
+ * Renders the app bar with plain HTML elements (NuxtLink, button) so that
+ * automated accessibility checkers can see through to the real foreground /
+ * background pair. Vuetify's v-btn injects .v-btn__overlay / .v-btn__underlay
+ * spans that confuse axe-core's contrast algorithm, so we avoid it here.
  *
- * Navigation items render as real links (<a>/<nuxt-link> via Vuetify's `to`
- * prop) so that middle-click, right-click, and screen-reader link semantics
- * all work correctly.
+ * Desktop: horizontal links with click-to-open dropdown groups.
+ * Mobile: hamburger button toggles TheSidebar drawer.
  *
  * @component
  */
@@ -24,36 +25,31 @@
       class="pl-5 pr-5"
     >
       <!-- Mobile hamburger toggle -->
-      <v-btn
-        @click="toggleNav"
-        variant="text"
-        class="hover hamburger text-center hidden-md-and-up"
-        style="min-width: auto; padding: 8px"
+      <button
+        type="button"
+        class="navBtn navBtn--hamburger hidden-md-and-up"
         :aria-expanded="nav ? 'true' : 'false'"
         :aria-label="nav ? 'Close navigation menu' : 'Open navigation menu'"
         aria-controls="site-sidebar"
+        @click="toggleNav"
       >
-        <div class="d-flex flex-column align-center">
+        <span class="d-flex flex-column align-center">
           <v-icon
             :icon="nav ? 'mdi-window-close' : 'mdi-menu'"
             size="large"
             aria-hidden="true"
           ></v-icon>
-          <div style="font-size: 10px; font-weight: 900">
-            {{ nav ? "CLOSE" : "MENU" }}
-          </div>
-        </div>
-      </v-btn>
+          <span class="navBtn__hint">{{ nav ? "CLOSE" : "MENU" }}</span>
+        </span>
+      </button>
 
       <v-spacer class="hidden-md-and-up"></v-spacer>
 
       <!-- Logo + home link -->
-      <v-btn
+      <NuxtLink
         to="/"
-        variant="text"
-        class="hover ml-4 mr-4"
+        class="navBtn navBtn--logo"
         aria-label="Safe From the Start home"
-        style="min-width: auto; padding: 4px; background-color: white !important"
       >
         <img
           alt=""
@@ -63,144 +59,109 @@
           height="39"
           decoding="async"
         />
-      </v-btn>
+      </NuxtLink>
 
       <!-- Full title - md+ -->
-      <v-btn
+      <NuxtLink
         to="/"
-        variant="text"
-        class="hover hidden-sm-and-down"
+        class="navBtn navBtn--title hidden-sm-and-down"
         aria-label="Safe From the Start home"
-        style="
-          min-width: auto;
-          padding: 8px;
-          background-color: white !important;
-          color: #333 !important;
-        "
       >
-        <span
-          style="
-            font-weight: 900 !important;
-            font-size: 22px;
-            letter-spacing: 0.004em;
-          "
-          class="agency app-title"
-          >SAFE FROM THE START</span
-        >
-      </v-btn>
+        <span class="agency app-title navBtn__title">SAFE FROM THE START</span>
+      </NuxtLink>
 
       <!-- Abbreviated title - sm -->
-      <v-btn
+      <NuxtLink
         to="/"
-        variant="text"
-        class="hover hidden-md-and-up"
+        class="navBtn navBtn--title hidden-md-and-up"
         aria-label="SFS – Safe From the Start home"
-        style="
-          min-width: auto;
-          padding: 8px;
-          background-color: white !important;
-          color: #333 !important;
-        "
       >
-        <span
-          style="
-            font-weight: 900 !important;
-            font-size: 24px;
-            letter-spacing: 0.004em;
-          "
-          class="agency app-title"
-        >
+        <span class="agency app-title navBtn__title navBtn__title--abbr">
           <abbr
             title="Safe From the Start"
             style="text-decoration: none; border-bottom: 0"
             >SFS</abbr
           >
         </span>
-      </v-btn>
+      </NuxtLink>
 
       <v-spacer></v-spacer>
 
       <!-- Desktop menu -->
-      <nav aria-label="Primary">
+      <nav aria-label="Primary" class="primaryNav hidden-md-and-down">
         <template v-for="(menu, index) in navMenu" :key="`main-${index}`">
           <!-- Dropdown group -->
-          <v-menu
+          <div
             v-if="menu && menu.children"
-            :close-on-content-click="true"
+            class="primaryNav__group"
+            @keydown.esc="closeMenu(index)"
+            @mouseleave="scheduleClose(index)"
+            @mouseenter="cancelClose(index)"
           >
-            <template #activator="{ props: activatorProps }">
-              <v-btn
-                variant="text"
-                size="default"
-                class="hidden-md-and-down navItem"
-                v-bind="activatorProps"
-                :aria-haspopup="true"
-                style="
-                  font-weight: 900 !important;
-                  font-size: 18px;
-                  margin-bottom: 5px;
-                  background-color: white !important;
-                  color: #333 !important;
-                "
-              >
-                {{ menu.main }}
-                <v-icon end aria-hidden="true">mdi-menu-down</v-icon>
-              </v-btn>
-            </template>
-
-            <v-list nav density="compact" elevation="2" role="menu">
-              <template
-                v-for="(child, ci) in menu.children"
+            <button
+              :ref="(el) => setActivator(index, el)"
+              type="button"
+              class="navItem primaryNav__activator"
+              :aria-expanded="openMenu === index ? 'true' : 'false'"
+              :aria-controls="`primary-menu-${index}`"
+              :data-menu-open="openMenu === index ? 'true' : 'false'"
+              @click="toggleMenu(index)"
+            >
+              {{ menu.main }}
+              <v-icon end aria-hidden="true">mdi-menu-down</v-icon>
+            </button>
+            <ul
+              v-show="openMenu === index"
+              :id="`primary-menu-${index}`"
+              class="primaryNav__menu"
+              role="menu"
+            >
+              <li
+                v-for="(child, ci) in menu.children.filter((c) => !c.divider && c.link)"
                 :key="`child-${index}-${ci}`"
+                role="none"
               >
-                <v-divider v-if="child.divider" />
-                <v-list-item
-                  v-if="child.link"
-                  class="appNav hover"
-                  :to="child.external ? undefined : child.link"
-                  :href="child.external ? child.link : undefined"
-                  :target="child.external ? '_blank' : undefined"
-                  :rel="child.external ? 'noopener noreferrer' : undefined"
+                <NuxtLink
+                  v-if="!child.external"
+                  :to="child.link"
+                  class="primaryNav__menuItem"
                   role="menuitem"
+                  @click="closeMenu(index)"
+                  >{{ child.title }}</NuxtLink
                 >
-                  <v-list-item-title
-                    style="font-size: 14px !important; font-weight: 700"
-                  >
-                    {{ child.title
-                    }}<span v-if="child.external" class="sr-only">
-                      (opens in new window)</span
-                    >
-                  </v-list-item-title>
-                </v-list-item>
-              </template>
-            </v-list>
-          </v-menu>
+                <a
+                  v-else
+                  :href="child.link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="primaryNav__menuItem"
+                  role="menuitem"
+                  @click="closeMenu(index)"
+                  >{{ child.title
+                  }}<span class="sr-only"> (opens in new window)</span></a
+                >
+              </li>
+            </ul>
+          </div>
 
           <!-- Direct top-level link -->
-          <v-btn
-            v-else
-            :to="menu.external ? undefined : menu.link"
-            :href="menu.external ? menu.link : undefined"
-            :target="menu.external ? '_blank' : undefined"
-            :rel="menu.external ? 'noopener noreferrer' : undefined"
-            variant="text"
-            size="default"
-            class="hidden-sm-and-down navItem"
-            style="
-              font-weight: 900 !important;
-              font-size: 18px;
-              background-color: white !important;
-              color: #333 !important;
-            "
+          <NuxtLink
+            v-else-if="!menu.external"
+            :to="menu.link"
+            class="navItem primaryNav__link"
+            >{{ menu.main }}</NuxtLink
           >
-            {{ menu.main
-            }}<span v-if="menu.external" class="sr-only">
-              (opens in new window)</span
-            >
-          </v-btn>
+          <a
+            v-else
+            :href="menu.link"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="navItem primaryNav__link"
+            >{{ menu.main
+            }}<span class="sr-only"> (opens in new window)</span></a
+          >
         </template>
       </nav>
-
     </v-app-bar>
   </header>
 </template>
@@ -214,27 +175,180 @@ const toggleNav = () => {
 
 const appConfig = useAppConfig();
 const navMenu = appConfig.navMenu;
+
+const openMenu = ref(-1);
+const activators = new Map();
+const closeTimers = new Map();
+
+const setActivator = (index, el) => {
+  if (el) activators.set(index, el);
+  else activators.delete(index);
+};
+
+const toggleMenu = (index) => {
+  openMenu.value = openMenu.value === index ? -1 : index;
+};
+
+const closeMenu = (index) => {
+  if (openMenu.value === index) openMenu.value = -1;
+};
+
+const scheduleClose = (index) => {
+  cancelClose(index);
+  const t = setTimeout(() => {
+    if (openMenu.value === index) openMenu.value = -1;
+  }, 200);
+  closeTimers.set(index, t);
+};
+
+const cancelClose = (index) => {
+  const t = closeTimers.get(index);
+  if (t) {
+    clearTimeout(t);
+    closeTimers.delete(index);
+  }
+};
+
+if (typeof window !== "undefined") {
+  const onDocClick = (e) => {
+    if (openMenu.value === -1) return;
+    const activator = activators.get(openMenu.value);
+    if (activator && (activator === e.target || activator.contains(e.target))) {
+      return;
+    }
+    const menuEl = document.getElementById(`primary-menu-${openMenu.value}`);
+    if (menuEl && menuEl.contains(e.target)) return;
+    openMenu.value = -1;
+  };
+  onMounted(() => document.addEventListener("click", onDocClick));
+  onBeforeUnmount(() => document.removeEventListener("click", onDocClick));
+}
 </script>
 
 <style lang="scss" scoped>
-.navItem {
-  color: #333 !important;
+.navBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #333;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
   font-weight: 900;
-  background-color: white !important;
-
-  :deep(.v-btn__content) {
-    background-color: white !important;
-    color: #333 !important;
-  }
+  line-height: 1;
+  padding: 8px;
+  min-width: auto;
+  border-radius: 4px;
 }
 
-:deep(.v-btn.navItem) {
-  background-color: white !important;
-  color: #333 !important;
+.navBtn:focus-visible {
+  outline: 2px solid #1263a5;
+  outline-offset: 2px;
 }
 
-:deep(.v-btn.navItem .v-btn__content) {
-  background-color: white !important;
-  color: #333 !important;
+.navBtn--hamburger {
+  font-size: 10px;
+  padding: 8px;
+  font-weight: 900;
+}
+
+.navBtn__hint {
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.navBtn--logo {
+  margin-left: 16px;
+  margin-right: 16px;
+  padding: 4px;
+}
+
+.navBtn__title {
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: 0.004em;
+}
+
+.navBtn__title--abbr {
+  font-size: 24px;
+}
+
+.primaryNav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navItem,
+.primaryNav__link,
+.primaryNav__activator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #fff;
+  color: #333;
+  font-weight: 900;
+  font-size: 18px;
+  padding: 8px 12px;
+  text-decoration: none;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: 1;
+}
+
+.primaryNav__link:hover,
+.primaryNav__activator:hover {
+  background: #f5f5f5;
+}
+
+.primaryNav__link:focus-visible,
+.primaryNav__activator:focus-visible {
+  outline: 2px solid #1263a5;
+  outline-offset: 2px;
+}
+
+.primaryNav__link.router-link-exact-active,
+.primaryNav__link.router-link-active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+.primaryNav__group {
+  position: relative;
+}
+
+.primaryNav__menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  min-width: 200px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  z-index: 60;
+}
+
+.primaryNav__menuItem {
+  display: block;
+  padding: 8px 16px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.primaryNav__menuItem:hover,
+.primaryNav__menuItem:focus-visible {
+  background: #f5f5f5;
+  outline: none;
 }
 </style>

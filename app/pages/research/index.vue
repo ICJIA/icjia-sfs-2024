@@ -26,12 +26,13 @@
           </h1>
         </v-col>
         <v-img
-          src="https://agency.icjia-api.cloud/uploads/large_pexels_freestockpro_oleksander_p_80cff2f2da.jpg"
-          lazy-src="https://agency.icjia-api.cloud/uploads/thumbnail_pexels_freestockpro_oleksander_p_80cff2f2da.jpg"
+          :src="heroSrc"
+          :lazy-src="heroLazySrc"
           alt="Research and data analysis - representing evidence-based practices in the Safe From the Start program"
           width="100%"
           height="700"
           cover
+          loading="lazy"
           style="filter: grayscale(60%); position: relative"
           class="hidden-sm-and-down"
           ><template v-slot:placeholder>
@@ -55,8 +56,7 @@
             style="font-family: &quot;Lato&quot;, sans-serif"
           />
           <div class="markdown-body mt-10">
-            <br />
-            <p style="margin-top: -45px">
+            <p>
               Analysis of pre- and post-intervention data has shown
               <sup>1</sup>:
             </p>
@@ -203,8 +203,29 @@
 </template>
 
 <script setup>
+import { getThumborUrl } from "@/utils/thumbor.js";
+
 const { data } = await useAsyncData(`content-research`, async () => {
   return await queryCollection("content").path("/research").first();
+});
+
+const HERO_SOURCE_URL =
+  "https://agency.icjia-api.cloud/uploads/large_pexels_freestockpro_oleksander_p_80cff2f2da.jpg";
+
+// Route through Thumbor so the hero is served as a resized WebP. The image is
+// hidden below the sm breakpoint, so 1600×960 is enough for desktop displays.
+const heroSrc = getThumborUrl({
+  url: HERO_SOURCE_URL,
+  width: 1600,
+  height: 960,
+  quality: 72,
+});
+
+const heroLazySrc = getThumborUrl({
+  url: HERO_SOURCE_URL,
+  width: 250,
+  height: 150,
+  quality: 10,
 });
 
 useHead({
