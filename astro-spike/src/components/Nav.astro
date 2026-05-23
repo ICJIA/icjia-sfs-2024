@@ -79,7 +79,7 @@ import { primaryNav } from "../config/nav";
       />
     </a>
 
-    <!-- Full title (md+) -->
+    <!-- Full title (>= sm, matches Vuetify hidden-sm-and-down -> >=600px) -->
     <a
       href="/"
       class="hidden sm:inline-flex items-center px-2 py-1 rounded text-sfs-text-soft hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-sfs-blue focus-visible:outline-offset-2"
@@ -90,7 +90,8 @@ import { primaryNav } from "../config/nav";
       >
     </a>
 
-    <!-- Abbreviated title (sm) -->
+    <!-- Abbreviated title (< sm, matches Vuetify hidden-md-and-up -> <960px;
+         we approximate with <sm=600 to avoid overlap with the full title) -->
     <a
       href="/"
       class="inline-flex sm:hidden items-center px-2 py-1 rounded text-sfs-text-soft focus-visible:outline-2 focus-visible:outline-sfs-blue focus-visible:outline-offset-2"
@@ -105,7 +106,8 @@ import { primaryNav } from "../config/nav";
 
     <div class="grow"></div>
 
-    <!-- Desktop primary nav -->
+    <!-- Desktop primary nav (>= lg = 1280px, matches Vuetify
+         hidden-md-and-down) -->
     <nav aria-label="Primary" class="hidden lg:flex items-center gap-1">
       {
         primaryNav.map((item, index) =>

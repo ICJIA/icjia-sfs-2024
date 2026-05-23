@@ -39,12 +39,15 @@ const preload = heroSrc
             class="hidden md:block relative w-full h-[700px] overflow-hidden bg-neutral-200"
             style="filter: grayscale(60%);"
           >
+            {/* Eager + fetchpriority high so the desktop hero counts as the
+                page's LCP element; matches the preload hint in Layout. */}
             <img
               src={heroSrc}
               alt={heroAlt ?? ""}
               width="1600"
               height="960"
-              loading="lazy"
+              loading="eager"
+              fetchpriority="high"
               decoding="async"
               class="absolute inset-0 w-full h-full object-cover"
             />

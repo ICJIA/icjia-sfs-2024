@@ -60,6 +60,9 @@ const fullTitle =
       />
     </noscript>
     {
+      /* Preload hints — no crossorigin on images because the <img> elements
+         use the default no-cors mode; mismatched modes would make the
+         browser ignore the preload. */
       preload.map((p) => (
         <link
           rel="preload"
@@ -67,7 +70,6 @@ const fullTitle =
           href={p.href}
           type={p.type}
           fetchpriority="high"
-          crossorigin={p.as === "image" ? "anonymous" : undefined}
         />
       ))
     }
