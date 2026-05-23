@@ -1,0 +1,35 @@
+---
+/**
+ * Decorative secondary image strip between the Core Components and the
+ * Childhood Exposure section.
+ */
+import { getThumborUrl } from "../lib/thumbor";
+
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+
+const SRC = "https://sfs.icjia.illinois.gov/splash-28-large.jpg";
+const full = getThumborUrl({ url: SRC, width: 1600, height: 960, quality: 35 });
+const lazy = getThumborUrl({ url: SRC, width: 250, height: 150, quality: 10 });
+---
+
+<div class={className}>
+  <div
+    class="relative w-full h-[650px] bg-neutral-200 overflow-hidden border-t border-neutral-400 border-b border-neutral-700 -mt-16"
+    style="filter: grayscale(10%);"
+  >
+    <img
+      src={full}
+      alt=""
+      role="presentation"
+      width="1600"
+      height="960"
+      loading="lazy"
+      decoding="async"
+      class="absolute inset-0 w-full h-full object-cover"
+      style={`background-image:url('${lazy}');background-size:cover;background-position:center;`}
+    />
+  </div>
+</div>

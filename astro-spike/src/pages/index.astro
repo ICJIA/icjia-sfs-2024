@@ -1,0 +1,53 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SplashHome, { heroSrc } from "../components/SplashHome.astro";
+import HomeSplits from "../components/HomeSplits.astro";
+import SplashHomeSecondary from "../components/SplashHomeSecondary.astro";
+---
+
+<Layout
+  title="Home"
+  preload={[{ href: heroSrc, as: "image" }]}
+>
+  <SplashHome />
+
+  <div>
+    <HomeSplits />
+    <SplashHomeSecondary class="mt-16" />
+
+    <!-- Childhood Exposure callout (formerly the Vue inline section). -->
+    <div class="bg-sfs-surface-warm pt-10">
+      <div class="max-w-screen-md mx-auto px-4 py-16 text-left">
+        <h2 class="text-center text-[36px] font-bold">
+          Childhood Exposure to Violence and Trauma
+        </h2>
+        <p class="mt-5 text-[20px]" style="font-family: var(--font-body);">
+          Childhood exposure to violence (CEV) is pervasive and negatively
+          impacts communities. CEV includes experiencing or witnessing physical
+          abuse, sexual assault, maltreatment/neglect, domestic violence, and
+          other violent crimes. In its third National Survey of Children's
+          Exposure to Violence, the U.S. Department of Justice and the Centers
+          for Disease Control and Prevention found that almost 58% of children
+          and youth between 0 and 17 years old had been exposed to at least one
+          type of violence; 48% had experienced more than one type of
+          victimization within the previous year.
+        </p>
+        <p class="mt-3 text-[20px]" style="font-family: var(--font-body);">
+          The U.S. Department of Health and Human Services' 2020 Child
+          Maltreatment report series revealed 618,000 children in the United
+          States were victims of child abuse and neglect; 29% of them were
+          under age two.
+        </p>
+
+        <div class="text-center mt-12">
+          <a
+            href="/childhood-exposure"
+            class="inline-flex items-center px-5 py-2 bg-sfs-navy text-white font-black uppercase tracking-wide text-[14px] rounded shadow-md no-underline hover:brightness-110 focus-visible:outline-2 focus-visible:outline-sfs-blue focus-visible:outline-offset-2"
+          >
+            Read more&nbsp;&raquo;
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

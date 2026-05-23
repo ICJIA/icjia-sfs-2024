@@ -1,0 +1,168 @@
+---
+/**
+ * "About Safe From the Start" intro + three Core Components subsections,
+ * each with text and a Thumbor-served grayscale image, hidden on small
+ * screens to match the Nuxt site.
+ */
+import { getThumborUrl } from "../lib/thumbor";
+
+const splits = [
+  {
+    title: "Coalition-Building and Collaboration",
+    text: "Coalition building, collaboration, and coordination are central components of the SFS program model. SFS coalitions build relationships with community partners that can both make referrals into the program and link program participants with other resources. Additionally, SFS coalitions focus on broader program implementation, organizational change, information sharing enhancements, protocol creation, and other tasks related to service collaboration and coordination.",
+    image: "https://sfs.icjia.illinois.gov/splash-29-large.jpg",
+    alt: "Community members collaborating in a meeting - representing coalition building and collaboration",
+    imageFirst: false,
+  },
+  {
+    title: "Direct Services",
+    textHtml:
+      "SFS primarily serves young children from birth to 5 years of age who have been exposed to violence in the home or community and their families or caregivers. Children older than five years may be served if the primary client is aged 0 to 5. <em>Exposure to violence</em> occurs with being victimized or witnessing abuse, neglect, or maltreatment or a witness to domestic, physical, or sexual violence, or other violent crime.",
+    image: "https://sfs.icjia.illinois.gov/splash-05.jpg",
+    alt: "Healthcare provider working with a young child - representing direct services to children exposed to violence",
+    imageFirst: true,
+  },
+  {
+    title: "Public Awareness",
+    text: "The SFS program model's third component is public awareness. Essential efforts include community member involvement, increased public awareness, community-informed planning, education about the scope and impact of childhood exposure to violence, and promoting healing services. Public awareness activities range from community presentations and events to professional trainings and media campaigns.",
+    image: "https://sfs.icjia.illinois.gov/splash-06.jpg",
+    alt: "Community presentation or training session - representing public awareness and education efforts",
+    imageFirst: false,
+  },
+];
+
+const splitImageUrl = (url: string) =>
+  getThumborUrl({ url, width: 1200, height: 800, quality: 50 });
+
+const splitLazyUrl = (url: string) =>
+  getThumborUrl({ url, width: 250, height: 150, quality: 10 });
+---
+
+<div>
+  <!-- About intro -->
+  <div class="max-w-screen-md mx-auto px-4 mt-[65px] mb-[75px]">
+    <h2 class="text-center text-[36px] font-bold">About Safe From the Start</h2>
+    <div class="mt-6 text-left" style="font-family: var(--font-body); font-size: 20px;">
+      <p class="mb-5">
+        <a href="/about" class="text-sfs-blue-dark underline-offset-2"
+          >The Safe From the Start (SFS) program</a
+        >
+         provides developmentally and culturally appropriate direct services to
+        children, ages 0 – 5, who have witnessed or been exposed to violence
+        and their families. SFS focuses on serving young children who are
+        victims of abuse, neglect, or maltreatment, and/or witnesses to
+        domestic violence, sexual assault, or other violent crimes.
+      </p>
+      <p>
+        Safe From the Start began as a national initiative to reduce the impact
+        of early childhood exposure to violence. The program was implemented in
+        2001 to develop, implement, and evaluate comprehensive, coordinated,
+        community-based models to identify, assess, and serve children, ages 0
+        to 5, who have been exposed to violence in their homes and/or
+        communities.
+      </p>
+    </div>
+
+    <div class="text-center mt-16">
+      <a
+        href="/sites"
+        class="inline-flex items-center px-5 py-2 border-2 border-sfs-blue-darker text-sfs-blue-darker font-black uppercase tracking-wide text-[14px] rounded no-underline hover:bg-sfs-blue-darker hover:text-white focus-visible:outline-2 focus-visible:outline-sfs-blue focus-visible:outline-offset-2 transition-colors"
+      >
+        Find SFS sites in Illinois&nbsp;&raquo;
+      </a>
+    </div>
+  </div>
+
+  <!-- Core Components -->
+  <div
+    class="bg-sfs-surface-muted border-t border-neutral-200 py-8"
+    style="font-family: var(--font-body);"
+  >
+    <div class="max-w-screen-xl mx-auto px-4">
+      <h2 class="text-center text-[36px] font-bold">Core Components</h2>
+    </div>
+
+    {
+      splits.map((s, i) => (
+        <div class="max-w-screen-xl mx-auto px-4 mt-24">
+          <div
+            class={`grid grid-cols-1 md:grid-cols-2 gap-6 items-start ${
+              s.imageFirst ? "" : "md:[&>*:first-child]:order-1 md:[&>*:last-child]:order-2"
+            }`}
+          >
+            {s.imageFirst ? (
+              <>
+                <div class="hidden md:block px-4">
+                  <div class="relative w-full h-[400px] overflow-hidden bg-neutral-200 -mt-16 grayscale-[10%]">
+                    <img
+                      src={splitImageUrl(s.image)}
+                      alt={s.alt}
+                      width="1200"
+                      height="800"
+                      loading="lazy"
+                      decoding="async"
+                      class="absolute inset-0 w-full h-full object-cover"
+                      style={`background-image:url('${splitLazyUrl(s.image)}');background-size:cover;background-position:center;`}
+                    />
+                    <div
+                      class="absolute inset-0 pointer-events-none"
+                      style="background:linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.1));"
+                      aria-hidden="true"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <h3 class="text-[20px] font-bold">{s.title}</h3>
+                  {s.textHtml ? (
+                    <p class="text-[20px]" set:html={s.textHtml} />
+                  ) : (
+                    <p class="text-[20px]">{s.text}</p>
+                  )}
+                </div>
+              </>
+            ) : (
+              <>
+                <div>
+                  <h3 class="text-[20px] font-bold">{s.title}</h3>
+                  {s.textHtml ? (
+                    <p class="text-[20px]" set:html={s.textHtml} />
+                  ) : (
+                    <p class="text-[20px]">{s.text}</p>
+                  )}
+                </div>
+                <div class="hidden md:block px-4">
+                  <div class="relative w-full h-[400px] overflow-hidden bg-neutral-200 -mt-16 grayscale-[10%]">
+                    <img
+                      src={splitImageUrl(s.image)}
+                      alt={s.alt}
+                      width="1200"
+                      height="800"
+                      loading="lazy"
+                      decoding="async"
+                      class="absolute inset-0 w-full h-full object-cover"
+                      style={`background-image:url('${splitLazyUrl(s.image)}');background-size:cover;background-position:center;`}
+                    />
+                    <div
+                      class="absolute inset-0 pointer-events-none"
+                      style="background:linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.1));"
+                      aria-hidden="true"
+                    />
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      ))
+    }
+
+    <div class="max-w-screen-xl mx-auto px-4 text-center mt-10 mb-12">
+      <a
+        href="/program-summary"
+        class="inline-flex items-center px-5 py-2 bg-sfs-blue text-white font-black uppercase tracking-wide text-[14px] rounded shadow-md no-underline hover:brightness-110 focus-visible:outline-2 focus-visible:outline-sfs-blue focus-visible:outline-offset-2"
+      >
+        Read the Program Summary&nbsp;&raquo;
+      </a>
+    </div>
+  </div>
+</div>

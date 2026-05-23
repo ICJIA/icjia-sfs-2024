@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/*
+ * Brand tokens mirroring the Nuxt/Vuetify SFS palette so Tailwind utility
+ * names line up with the original visual design.
+ */
+@theme {
+  --color-sfs-navy: #0d4474;
+  --color-sfs-navy-deep: #1a3a52;
+  --color-sfs-blue: #1263a5;
+  --color-sfs-blue-dark: #0d47a1;
+  --color-sfs-blue-darker: #0b3b8a;
+  --color-sfs-text: #1a1a1a;
+  --color-sfs-text-soft: #333333;
+  --color-sfs-surface: #ffffff;
+  --color-sfs-surface-muted: #f5f5f5;
+  --color-sfs-surface-warm: #fafafa;
+
+  --font-display: "Roboto", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-body: "Lato", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --font-context: "Raleway", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+/*
+ * Base typography lives in @layer base so Tailwind utilities (text-white,
+ * font-bold, etc.) automatically win the cascade per Tailwind v4 layering.
+ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color: var(--color-sfs-text);
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: #fff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .app-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-sfs-text);
+  }
+
+  a {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-sfs-blue-dark);
+    text-underline-offset: 2px;
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--color-sfs-blue);
+    outline-offset: 2px;
+  }
+}
+
+/*
+ * Skip link — visually hidden until focused (WCAG 2.4.1 Bypass Blocks).
+ */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: #fff;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-weight: 700;
+  z-index: 1000;
+  border-radius: 4px;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* sr-only mirrors Vuetify's helper for accessible-only text. */
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
