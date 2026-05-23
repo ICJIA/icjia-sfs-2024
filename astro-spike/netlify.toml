@@ -1,0 +1,9 @@
+# Netlify config for the Astro spike. Tell Netlify to build out of this
+# subdirectory and publish dist/.
+[build]
+  base    = "astro-spike"
+  command = "yarn build"
+  publish = "astro-spike/dist"
+
+[build.environment]
+  NODE_VERSION = "22"
