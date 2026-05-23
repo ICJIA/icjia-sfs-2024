@@ -1,0 +1,24 @@
+---
+/**
+ * Dynamic route for the markdown-only pages. The research and sites pages
+ * have custom layouts and live in dedicated .astro files instead, so they
+ * are filtered out here.
+ */
+import { getCollection, render } from "astro:content";
+import MarkdownPage from "../layouts/MarkdownPage.astro";
+
+export async function getStaticPaths() {
+  const all = await getCollection("pages");
+  return all
+    .filter((p) => !["research", "sites"].includes(p.id))
+    .map((p) => ({ params: { slug: p.id }, props: { page: p } }));
+}
+
+const { page } = Astro.props;
+const { Content } = await render(page);
+const description = page.data.summary;
+---
+
+<MarkdownPage title={page.data.title} description={description}>
+  <Content />
+</MarkdownPage>

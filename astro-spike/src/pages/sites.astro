@@ -1,0 +1,165 @@
+---
+/**
+ * /sites — markdown body from content/sites.md (which contains the table
+ * styles, the deferred ArcGIS iframe, and the agency table itself) plus the
+ * client scripts that lazy-load the iframe and decorate agency links with
+ * hover tooltips. Mirrors app/pages/sites/index.vue.
+ */
+import { getEntry, render } from "astro:content";
+import MarkdownPage from "../layouts/MarkdownPage.astro";
+
+const page = await getEntry("pages", "sites");
+if (!page) throw new Error("sites.md not found");
+const { Content } = await render(page);
+---
+
+<MarkdownPage
+  title={page.data.title}
+  description={page.data.summary ??
+    "Directory of Safe From the Start program sites across Illinois."}
+>
+  <Content />
+</MarkdownPage>
+
+<script>
+  /*
+   * Defer the embedded ArcGIS map until the iframe scrolls into view —
+   * the embed is ~4 MB and we don't want it competing for the initial load.
+   * The markdown stores the real URL in data-src; we promote it to src
+   * when the iframe enters the viewport.
+   */
+  const iframes = document.querySelectorAll<HTMLIFrameElement>(
+    "iframe.deferred-iframe"
+  );
+  if (iframes.length) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          const f = entry.target as HTMLIFrameElement;
+          const src = f.getAttribute("data-src");
+          if (src) {
+            f.setAttribute("src", src);
+            f.removeAttribute("data-src");
+          }
+          io.unobserve(f);
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    iframes.forEach((f) => io.observe(f));
+  }
+
+  /*
+   * Tooltip-on-hover for agency links in the responsive table — surfaces the
+   * destination URL without changing layout. Uses fixed positioning relative
+   * to the cursored link so the tooltip can escape table overflow.
+   */
+  const agencyLinks = document.querySelectorAll<HTMLAnchorElement>(
+    '.markdown-body .table-responsive a[target="_blank"][rel="noopener noreferrer"]'
+  );
+  agencyLinks.forEach((link) => {
+    const href = link.getAttribute("href");
+    if (!href) return;
+    if (link.hasAttribute("data-tooltip-added")) return;
+    link.setAttribute("data-tooltip", href);
+    link.classList.add("agency-link-tooltip");
+    link.addEventListener("mouseenter", (e) => {
+      const t = e.currentTarget as HTMLElement;
+      const rect = t.getBoundingClientRect();
+      t.style.setProperty("--tooltip-top", `${rect.top - 10}px`);
+      t.style.setProperty(
+        "--tooltip-left",
+        `${rect.left + rect.width / 2}px`
+      );
+    });
+    link.setAttribute("data-tooltip-added", "true");
+  });
+</script>
+
+<style is:global>
+  /*
+   * Mirrors the tooltip CSS that lives in app/pages/sites/index.vue. Using
+   * `is:global` because the agency links live inside ContentRenderer'd
+   * markdown, which is out of any scoped style's reach.
+   */
+  .markdown-body .table-responsive {
+    position: relative;
+    overflow-x: auto;
+  }
+  .markdown-body .table-responsive td {
+    position: relative;
+  }
+  .agency-link-tooltip {
+    position: relative;
+    cursor: pointer;
+  }
+  .agency-link-tooltip::before {
+    content: attr(data-tooltip);
+    position: fixed;
+    top: var(--tooltip-top, auto);
+    left: var(--tooltip-left, 50%);
+    transform: translateX(-50%) translateY(-100%);
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: normal;
+    white-space: normal;
+    text-align: center;
+    text-decoration: none;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s,
+      visibility 0.3s;
+    z-index: 99999;
+    pointer-events: none;
+    max-width: 300px;
+    word-wrap: break-word;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  .agency-link-tooltip::after {
+    content: "";
+    position: fixed;
+    top: var(--tooltip-top, auto);
+    left: var(--tooltip-left, 50%);
+    transform: translateX(-50%) translateY(-100%) translateY(-5px);
+    border: 5px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s,
+      visibility 0.3s;
+    z-index: 99999;
+  }
+  .agency-link-tooltip:hover::before,
+  .agency-link-tooltip:hover::after,
+  .agency-link-tooltip:active::before,
+  .agency-link-tooltip:active::after {
+    opacity: 1;
+    visibility: visible;
+  }
+  @media (max-width: 768px) {
+    .agency-link-tooltip::before {
+      font-size: 12px;
+      padding: 6px 10px;
+      max-width: 250px;
+    }
+  }
+  @media (max-width: 480px) {
+    .agency-link-tooltip::before {
+      font-size: 11px;
+      padding: 5px 8px;
+      max-width: 200px;
+      left: 0;
+      transform: none;
+    }
+    .agency-link-tooltip::after {
+      left: 20px;
+      transform: none;
+    }
+  }
+</style>
