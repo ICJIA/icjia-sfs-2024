@@ -1,23 +1,36 @@
-# Build-hashed bundles in /_nuxt/* are immutable — cache forever.
+# Netlify config for the SFS Astro/Tailwind site.
+
+[build]
+  command = "yarn build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# --------------------------------------------------------------------------
+# Headers — caching + baseline security
+# --------------------------------------------------------------------------
+
+# Build-hashed Astro bundles are immutable; cache forever.
 [[headers]]
-  for = "/_nuxt/*"
+  for = "/_astro/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Static fonts shipped from the bundle.
+# Web fonts shipped from the bundle (Fontsource).
 [[headers]]
-  for = "/_nuxt/*.woff2"
+  for = "/_astro/*.woff2"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
     Access-Control-Allow-Origin = "*"
 
 [[headers]]
-  for = "/_nuxt/*.woff"
+  for = "/_astro/*.woff"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
     Access-Control-Allow-Origin = "*"
 
-# Splash/marketing imagery rarely changes; safe to cache for a week with revalidation.
+# Splash / marketing imagery.
 [[headers]]
   for = "/*.jpg"
   [headers.values]
@@ -33,13 +46,12 @@
   [headers.values]
     Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
 
-# Favicon
 [[headers]]
   for = "/favicon.ico"
   [headers.values]
     Cache-Control = "public, max-age=604800"
 
-# Downloadable assets (PDFs, docs) — moderate cache.
+# Downloadable assets.
 [[headers]]
   for = "/*.pdf"
   [headers.values]
@@ -52,7 +64,12 @@
 
 # Sitemap / robots — short cache so updates propagate quickly.
 [[headers]]
-  for = "/sitemap.xml"
+  for = "/sitemap-index.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/sitemap-0.xml"
   [headers.values]
     Cache-Control = "public, max-age=3600"
 
@@ -61,8 +78,8 @@
   [headers.values]
     Cache-Control = "public, max-age=3600"
 
-# HTML pages: short cache + must-revalidate so we can ship content quickly.
-# `must-revalidate` (not `no-store`) keeps the back/forward cache eligible.
+# HTML — short cache + must-revalidate (NOT no-store) so bf-cache stays
+# eligible. Baseline security headers applied here.
 [[headers]]
   for = "/*"
   [headers.values]
@@ -70,4 +87,3 @@
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "SAMEORIGIN"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Access-Control-Allow-Origin = "*"

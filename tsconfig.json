@@ -1,32 +1,5 @@
 {
-  // https://nuxt.com/docs/guide/concepts/typescript
-  "compilerOptions": {
-    "allowJs": true,
-    "target": "ES2020",
-    "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "moduleResolution": "bundler",
-    "strict": false,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "preserve",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./app/*"],
-      "@@/*": ["./*"],
-      "#app": ["node_modules/nuxt/dist/app/index.mjs"],
-      "#components": [".nuxt/components.d.ts"]
-    }
-  },
-  "exclude": [
-    "**/*.spec.ts",
-    "**/*.spec.js",
-    "node_modules",
-    ".nuxt",
-    ".output"
-  ]
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"]
 }

@@ -1,0 +1,104 @@
+---
+/**
+ * Site-wide layout shell. Owns the <head>, the skip-link, the nav, the
+ * sidebar drawer, the main slot, and the footer. Alpine is loaded with
+ * `defer` so it runs after the document is parsed but before user input.
+ */
+import "../styles/global.css";
+import Nav from "../components/Nav.astro";
+import Sidebar from "../components/Sidebar.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  preload?: { href: string; as: "image" | "font" | "style"; type?: string }[];
+}
+
+const {
+  title = "Safe From the Start",
+  description = "The Safe From the Start (SFS) program provides developmentally and culturally appropriate direct services to children, ages 0–5, who have witnessed or been exposed to violence and their families.",
+  preload = [],
+} = Astro.props;
+
+const fullTitle =
+  title === "Safe From the Start"
+    ? title
+    : `${title} | Safe From the Start`;
+---
+
+<!doctype html>
+<html lang="en" data-theme="sfs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0d4474" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <!-- Speed up the first request to the Thumbor image origin. -->
+    <link rel="preconnect" href="https://image.icjia.cloud" crossorigin />
+    <!-- Fonts are self-hosted via Fontsource (imported in global.css)
+         and ship as immutably-cached files in /_astro/, so we no longer
+         contact fonts.googleapis.com on the critical path. -->
+
+    {
+      /* Preload hints. The <img> tags for these images use
+         crossorigin="anonymous" so the browser fetches them in CORS-without-
+         credentials mode (drops third-party cookies); the preload must use
+         the same mode or the browser will discard it. */
+      preload.map((p) => (
+        <link
+          rel="preload"
+          as={p.as}
+          href={p.href}
+          type={p.type}
+          fetchpriority="high"
+          crossorigin={p.as === "image" ? "anonymous" : undefined}
+        />
+      ))
+    }
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Safe From the Start" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <style>
+      [x-cloak] {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <Nav />
+    <Sidebar />
+
+    <main id="main-content" tabindex="-1" class="min-h-[90vh] pt-[64px]">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <!-- Alpine for tiny island interactivity (nav drawer + dropdowns). ~14 KB gz. -->
+    <script>
+      import Alpine from "alpinejs";
+      // Shared store so the header hamburger and the sidebar agree on state.
+      Alpine.store("nav", {
+        open: false as boolean,
+        toggle() {
+          this.open = !this.open;
+        },
+        close() {
+          this.open = false;
+        },
+      });
+      // @ts-ignore -- expose for devtools/inspection
+      window.Alpine = Alpine;
+      Alpine.start();
+    </script>
+  </body>
+</html>

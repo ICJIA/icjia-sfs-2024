@@ -1,8 +1,8 @@
-# Mirrors netlify.toml so that local servers (e.g. `npx serve`) and Netlify
-# apply the same caching policy. Hashed build assets are immutable; HTML pages
-# revalidate every request but stay bf-cache eligible (no `no-store`).
+# Netlify cache + security headers for the Astro spike.
+# Hashed Astro bundles are immutable; HTML revalidates each request but
+# stays bf-cache eligible (no `no-store`).
 
-/_nuxt/*
+/_astro/*
   Cache-Control: public, max-age=31536000, immutable
 
 /*.woff2
@@ -22,6 +22,9 @@
 /*.gif
   Cache-Control: public, max-age=604800, stale-while-revalidate=86400
 
+/*.svg
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
 /favicon.ico
   Cache-Control: public, max-age=604800
 
@@ -31,7 +34,10 @@
 /*.docx
   Cache-Control: public, max-age=86400
 
-/sitemap.xml
+/sitemap-index.xml
+  Cache-Control: public, max-age=3600
+
+/sitemap-0.xml
   Cache-Control: public, max-age=3600
 
 /robots.txt
@@ -42,4 +48,3 @@
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
-  Access-Control-Allow-Origin: *

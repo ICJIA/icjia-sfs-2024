@@ -1,0 +1,154 @@
+---
+/**
+ * Shared layout for content-driven pages (about, privacy, etc.).
+ * Renders the title as an uppercase H1, optionally a desktop-only hero,
+ * then the markdown body inside a `.markdown-body` container styled to
+ * match the Vuetify github-markdown look in the Nuxt site.
+ */
+import Layout from "./Layout.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  heroSrc?: string;
+  heroAlt?: string;
+}
+
+const { title, description, heroSrc, heroAlt } = Astro.props;
+
+const preload = heroSrc
+  ? [{ href: heroSrc, as: "image" as const }]
+  : [];
+---
+
+<Layout title={title} description={description} preload={preload}>
+  <div class="pb-16">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <div class="text-center mb-6">
+        <h1
+          class="text-[40px] mt-20 uppercase font-bold"
+          style="letter-spacing: 0.01em;"
+        >
+          {title}
+        </h1>
+      </div>
+
+      {
+        heroSrc && (
+          <div
+            class="hidden md:block relative w-full h-[700px] overflow-hidden bg-neutral-200"
+            style="filter: grayscale(60%);"
+          >
+            {/* Eager + fetchpriority high so the desktop hero counts as the
+                page's LCP element; matches the preload hint in Layout. */}
+            <img
+              src={heroSrc}
+              alt={heroAlt ?? ""}
+              width="1600"
+              height="960"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              crossorigin="anonymous"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
+        )
+      }
+    </div>
+
+    <div class="max-w-screen-xl mx-auto px-4">
+      <div class="mt-10 markdown-body" style="font-family: var(--font-body);">
+        <slot />
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style is:global>
+  /*
+   * Light-weight port of the github-markdown styles the Nuxt site uses inside
+   * <ContentRenderer>. Just enough to match heading scale, link color, list
+   * spacing, and table look without pulling in the full github-markdown.css.
+   */
+  .markdown-body {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--color-sfs-text);
+  }
+  .markdown-body h1,
+  .markdown-body h2,
+  .markdown-body h3,
+  .markdown-body h4,
+  .markdown-body h5,
+  .markdown-body h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    margin-top: 1.6em;
+    margin-bottom: 0.6em;
+    line-height: 1.25;
+  }
+  .markdown-body h2 {
+    font-size: 1.8em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #eaecef;
+  }
+  .markdown-body h3 {
+    font-size: 1.4em;
+  }
+  .markdown-body h4 {
+    font-size: 1.15em;
+  }
+  .markdown-body p {
+    margin: 0 0 1em 0;
+  }
+  .markdown-body ul,
+  .markdown-body ol {
+    margin: 0 0 1em 0;
+    padding-left: 2em;
+  }
+  .markdown-body li {
+    margin: 0.25em 0;
+  }
+  .markdown-body a {
+    color: var(--color-sfs-blue-dark);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .markdown-body a:hover {
+    text-decoration-thickness: 2px;
+  }
+  .markdown-body blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 1em;
+    color: #6a737d;
+    margin: 0 0 1em 0;
+  }
+  .markdown-body table {
+    border-collapse: collapse;
+    margin: 0 0 1em 0;
+    width: 100%;
+  }
+  .markdown-body th,
+  .markdown-body td {
+    border: 1px solid #dfe2e5;
+    padding: 0.4rem 0.6rem;
+    vertical-align: top;
+  }
+  .markdown-body thead th {
+    background: #f6f8fa;
+    font-weight: 700;
+  }
+  .markdown-body img {
+    max-width: 100%;
+    height: auto;
+  }
+  .markdown-body hr {
+    border: 0;
+    border-top: 1px solid #eaecef;
+    margin: 1.5em 0;
+  }
+  .markdown-body sup a {
+    text-decoration: none;
+  }
+</style>

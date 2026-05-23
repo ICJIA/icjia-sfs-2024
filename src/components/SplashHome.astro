@@ -1,0 +1,70 @@
+---
+/**
+ * Hero block: full-bleed image with a navy headline card and Learn More CTA.
+ * The hero src is precomputed at build time via Thumbor and exported so the
+ * layout can preload it with fetchpriority="high".
+ */
+import { getThumborUrl } from "../lib/thumbor";
+
+export const heroSrc = getThumborUrl({
+  url: "https://sfs.icjia.illinois.gov/splash-24-large-cropped.jpg",
+  width: 1600,
+  height: 960,
+  quality: 72,
+});
+
+const heroLazySrc = getThumborUrl({
+  url: "https://sfs.icjia.illinois.gov/splash-24-large-cropped.jpg",
+  width: 250,
+  height: 150,
+  quality: 10,
+});
+---
+
+<section>
+  <div class="relative">
+    <!-- Hero image. Decorative; alt empty + role="presentation". -->
+    <div
+      class="relative w-full h-[700px] bg-neutral-200 overflow-hidden"
+      style="filter: grayscale(10%);"
+    >
+      <img
+        src={heroSrc}
+        alt=""
+        role="presentation"
+        width="1600"
+        height="960"
+        decoding="async"
+        fetchpriority="high"
+        crossorigin="anonymous"
+        class="absolute inset-0 w-full h-full object-cover"
+        style={`background-image: url('${heroLazySrc}'); background-size: cover; background-position: center;`}
+      />
+      <!-- Match the original v-img gradient overlay. -->
+      <div
+        class="absolute inset-0 pointer-events-none"
+        style="background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1));"
+        aria-hidden="true"
+      >
+      </div>
+    </div>
+
+    <!-- Overlay headline + CTA. -->
+    <div
+      class="absolute left-0 right-0 bottom-[25%] w-full text-center px-6"
+    >
+      <h1
+        class="inline-block bg-sfs-navy-deep text-white font-bold leading-[1.15] px-[0.8em] py-[0.4em] rounded-md max-w-[22ch] mx-auto text-[32px] md:text-[46px]"
+        style="text-shadow: 2px 2px 8px rgba(0,0,0,1), 1px 1px 4px rgba(0,0,0,0.9);"
+      >
+        Direct services to children who have been exposed to violence
+      </h1>
+
+      <div class="mt-6">
+        <a href="/about" class="sfs-btn sfs-btn--filled">
+          Learn More&nbsp;&raquo;
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
