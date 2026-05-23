@@ -2,6 +2,84 @@
 
 All notable changes to the ICJIA Safe From the Start (SFS) website are documented in this file. Entries are in reverse chronological order.
 
+## 2.0.0 — 2026-05-23
+
+Full rewrite of the site from Nuxt 4 + Vuetify to **Astro 6 + Tailwind v4** as a pure static SSG build. Visual design is unchanged; all routes, content, accessibility behavior, and links are preserved 1:1. The migration shipped on the `feat/astro-spike` branch and was merged in `593c493`.
+
+### Why
+
+Mobile Lighthouse Performance on the Nuxt build sat around 57 on production despite an A11y/SEO/BP sweep that already pushed those to 100. The 547 KB Vuetify JS chunk + ~785 KiB of unused CSS were the bottleneck — both structural to keeping the framework. Astro ships zero JS by default; the only client script that remains is Alpine for the mobile drawer and desktop dropdown.
+
+### Production Lighthouse (incognito)
+
+| | Nuxt + Vuetify | Astro + Tailwind |
+|---|---|---|
+| Mobile Performance | 57 | **95** |
+| Desktop Performance | 82 | **100** |
+| Mobile FCP | 10.6 s | 1.8 s |
+| Mobile LCP | 13.7 s | 2.9 s |
+| A11y / SEO / BP | 100 / 100 / 100 | 100 / 100 / 100 |
+
+### Bundle weight
+
+| | Before | After |
+|---|---|---|
+| `_nuxt/` / `_astro/` total | ~15 MB | ~70 KB JS + ~20 KB CSS (inlined) |
+
+### Stack
+
+- **Astro 6** static SSG with `output: "static"` and `inlineStylesheets: "always"`
+- **Tailwind v4** via `@tailwindcss/vite`; theme tokens for the SFS palette and Vuetify-matching breakpoints (`sm=600`, `md=960`, `lg=1280`)
+- **Alpine.js** (~14 KB gz) for the mobile drawer + desktop dropdown via a shared store
+- **Fontsource** (`@fontsource/lato`, `/roboto`, `/raleway`) — self-hosted fonts with immutable cache; no more `fonts.googleapis.com` round trip
+- **Astro Content Collections** backed by the same markdown files that powered `@nuxt/content`
+- **Thumbor** image utility ported as-is for splash imagery
+
+### Pages
+
+All routes 1:1 with the previous site:
+
+- `/` — splash hero, About intro, three Core Components subsections, secondary splash, Childhood Exposure callout
+- `/about` — markdown
+- `/childhood-exposure` — markdown
+- `/privacy` — markdown
+- `/program-summary` — markdown
+- `/research` — markdown + three-stat flex grid + Evaluation Resources + publications list
+- `/resources` — markdown
+- `/sites` — markdown + lazy ArcGIS map iframe + table hover-tooltips
+
+### Accessibility
+
+- Native `<NuxtLink>` → `<a href>` everywhere — middle/right-click and screen-reader semantics intact
+- Mobile drawer is a `<nav><ul>` with focus-on-open and Escape-to-close (WCAG 2.4.3)
+- Skip-link respects `prefers-reduced-motion`
+- Hero headline sits on a solid navy backdrop so `color-contrast` is measurable (12.07:1)
+- No more `v-btn` overlay/underlay spans confusing axe-core
+- `aria-controls` only emitted when the controlled popup actually exists in the DOM
+- 0 axe AA violations across all 8 routes at both desktop and mobile viewports
+- Buttons emit Vuetify-matching letter-spacing/elevation so visual focus indicators and contrast remain the same
+
+### Performance work
+
+- `inlineStylesheets: "always"` — kills the render-blocking external CSS link entirely (the biggest single win — Mobile FCP went from 10.6 s to 1.8 s)
+- Hero LCP image preloaded with matching `crossorigin="anonymous"` on `<img>` and `<link rel="preload">` (no wasted preload)
+- Thumbor URLs sized to the largest container they render at (1600×960 at q72 WebP for hero, 1200×800 at q50 for splits)
+- Splash imagery served `loading="lazy"` below the fold; hero is `eager fetchpriority="high"`
+- `crossorigin="anonymous"` on every Thumbor `<img>` to drop the third-party cookies that Lighthouse `inspector-issues` flagged
+- Custom `@font-face` Roboto/Lato/Raleway fallback families with `size-adjust` + `ascent-override`/`descent-override` so font swap is invisible (CLS = 0)
+
+### Infrastructure
+
+- `netlify.toml`: `command = yarn build`, `publish = dist`, Node 22; immutable cache on `/_astro/*`, 7-day cache with `stale-while-revalidate` on images, `must-revalidate` (NOT `no-store`) on HTML so back/forward cache stays eligible
+- `public/_headers`: same policy duplicated for any tooling that reads it
+- Baseline security headers (`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`)
+
+### Removed (no longer present on `main`)
+
+- `app/`, `content/`, `creators/`, `scripts/`, `server/`, `test/`, `src/json/`
+- `nuxt.config.js`, `vitest.config.ts`, `typedoc.json`, `jsconfig.json`, `.eslintrc`, `.eslintignore`
+- Historical `accessibility-reports/`, `lighthouse-reports/`, and the old root `docs/` (the runtime tree the footer links to lives at `public/docs/`)
+
 ## 2026-04-16 (hotfix)
 
 - Restore correct fonts on production — `font-family: 'Roboto' !important` (app.css) and `$body-font-family: "Lato"` (variables.scss) had no fallback stack, so with Google Fonts `display: "optional"` any font variant that missed the 100ms activation window fell through to the UA default (Times/serif). Added a system-font fallback stack to both so fallback is still a sans-serif.
