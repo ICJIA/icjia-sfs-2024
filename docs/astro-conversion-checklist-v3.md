@@ -800,6 +800,19 @@ descriptions get the site-wide default.
 >    connect-src 'self' https://plausible.icjia.cloud;
 >    ```
 >
+>    **If Netlify RUM is enabled** (Netlify auto-injects
+>    `/.netlify/scripts/rum` on sites with Analytics or RUM toggled
+>    on), the RUM script POSTs collected metrics to
+>    `https://ingesteer.services-prod.nsvcs.net/rum_collection`. Add
+>    that origin to `connect-src` too, or disable RUM in the Netlify
+>    dashboard:
+>
+>    ```
+>    connect-src 'self'
+>      https://plausible.icjia.cloud
+>      https://ingesteer.services-prod.nsvcs.net;
+>    ```
+>
 > 2. **Verification recipe.** After deploying, open the live site in
 >    DevTools, paste this into Console, and look for `202`:
 >

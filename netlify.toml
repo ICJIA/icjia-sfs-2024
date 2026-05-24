@@ -134,7 +134,7 @@ script-src 'self' 'sha256-Cd8mEBngrAm9wsHx9r1GVpVdHGGhGhBAHhVObVmEVbs=' 'sha256-
 style-src 'self' 'unsafe-inline'; \
 img-src 'self' data:; \
 font-src 'self' data:; \
-connect-src 'self' https://plausible.icjia.cloud; \
+connect-src 'self' https://plausible.icjia.cloud https://ingesteer.services-prod.nsvcs.net;\
 frame-src 'self' https://illinois.maps.arcgis.com; \
 frame-ancestors 'self'; \
 base-uri 'self'; \
@@ -154,7 +154,7 @@ script-src 'self' 'sha256-Cd8mEBngrAm9wsHx9r1GVpVdHGGhGhBAHhVObVmEVbs=' 'sha256-
 style-src 'self' 'unsafe-inline'; \
 img-src 'self' data:; \
 font-src 'self' data:; \
-connect-src 'self' https://plausible.icjia.cloud; \
+connect-src 'self' https://plausible.icjia.cloud https://ingesteer.services-prod.nsvcs.net;\
 frame-src 'self' https://illinois.maps.arcgis.com https://app.netlify.com; \
 frame-ancestors 'self'; \
 base-uri 'self'; \
@@ -171,7 +171,7 @@ script-src 'self' 'sha256-Cd8mEBngrAm9wsHx9r1GVpVdHGGhGhBAHhVObVmEVbs=' 'sha256-
 style-src 'self' 'unsafe-inline'; \
 img-src 'self' data:; \
 font-src 'self' data:; \
-connect-src 'self' https://plausible.icjia.cloud; \
+connect-src 'self' https://plausible.icjia.cloud https://ingesteer.services-prod.nsvcs.net;\
 frame-src 'self' https://illinois.maps.arcgis.com https://app.netlify.com; \
 frame-ancestors 'self'; \
 base-uri 'self'; \
