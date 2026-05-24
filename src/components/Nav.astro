@@ -5,6 +5,8 @@
  * shared `nav` store. Desktop dropdown groups use a click/keyboard-driven
  * disclosure pattern; aria-expanded reflects state.
  */
+import { Image } from "astro:assets";
+import icjiaLogo from "../assets/icjia-logo.png";
 import { primaryNav } from "../config/nav";
 ---
 
@@ -70,11 +72,14 @@ import { primaryNav } from "../config/nav";
       class="inline-flex items-center mx-4 rounded p-1 focus-visible:outline-2 focus-visible:outline-sfs-blue focus-visible:outline-offset-2"
       aria-label="Safe From the Start home"
     >
-      <img
-        src="/icjia-logo.png"
+      <Image
+        src={icjiaLogo}
         alt=""
-        width="55"
-        height="39"
+        widths={[55, 110, 165]}
+        sizes="55px"
+        format="webp"
+        quality={85}
+        loading="eager"
         decoding="async"
       />
     </a>

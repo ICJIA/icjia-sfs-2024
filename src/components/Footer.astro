@@ -3,6 +3,8 @@
  * Two-tier footer: context strip with footer nav, then ICJIA branding + socials.
  * Matches the Nuxt site's color tokens (#1263a5 / #0d4474) and link semantics.
  */
+import { Image } from "astro:assets";
+import icjiaLogo from "../assets/icjia-logo.png";
 import { footerNav } from "../config/nav";
 const year = new Date().getFullYear();
 ---
@@ -45,11 +47,13 @@ const year = new Date().getFullYear();
         aria-label="Illinois Criminal Justice Information Authority (opens in new window)"
         class="inline-block leading-none focus-visible:outline-3 focus-visible:outline-white focus-visible:outline-offset-4"
       >
-        <img
-          src="/icjia-logo.png"
+        <Image
+          src={icjiaLogo}
           alt=""
-          width="150"
-          height="105"
+          widths={[150, 300, 450]}
+          sizes="150px"
+          format="webp"
+          quality={85}
           loading="lazy"
           decoding="async"
           class="inline"
