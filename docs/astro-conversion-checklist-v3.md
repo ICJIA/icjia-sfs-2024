@@ -1,20 +1,31 @@
-# Astro Migration Checklist — v2 (ICJIA i2i, 2026-05 snapshot)
+# Astro Migration Checklist — v3 (ICJIA SFS, 2026-05 snapshot)
 
-> **Checklist version: v2 (canonical / current).**
-> v1 lives at [adult-redeploy-client-next/docs/astro-conversion-checklist.md](https://github.com/ICJIA/adult-redeploy-client-next/blob/master/docs/astro-conversion-checklist.md)
-> (Astro 5 + yarn era, mid-2025).
+> **Checklist version: v3 (canonical / current).**
 >
-> This v2 supersedes v1 with patterns shipped in this repo's v0.2.0 /
-> v0.2.1 release (May 2026). Use **v2** for any new ICJIA Astro
-> migration. v1 is still valid for projects already on the older
-> Astro 5 + yarn stack that don't want to upgrade.
+> - **v3** is this file, shipped from the May 2026 ICJIA Safe From the
+>   Start (SFS) migration. It supersedes v2 with the hard-won fixes
+>   listed in the "What changed v2 → v3" section below — most notably
+>   the CSP hash-all-inline-scripts rule, the canonical-URL bug with
+>   `format: "file"`, the `rehype-external-links` pattern, and the
+>   local-preview vs Netlify-deployed scoring gap.
+> - **v2** was shipped from the i2i.illinois.gov migration (May 2026)
+>   and standardized on pnpm 10 + Astro 6.3.
+> - **v1** lives at
+>   [adult-redeploy-client-next/docs/astro-conversion-checklist.md](https://github.com/ICJIA/adult-redeploy-client-next/blob/master/docs/astro-conversion-checklist.md)
+>   (Astro 5 + yarn era, mid-2025).
+>
+> Use **v3** for any new ICJIA Astro migration. v2 is still valid for
+> existing projects; v1 is valid for projects on the older Astro 5 +
+> yarn stack that don't want to upgrade.
 
 Practical patterns that earned their keep on the Vue 2 / Nuxt → Astro 6
-+ Tailwind 4 + pnpm rewrite of <https://i2i.illinois.gov>. Copy what
-fits; nothing here is sacred.
++ Tailwind 4 + pnpm rewrites of <https://i2i.illinois.gov> (v2) and
+<https://sfs.icjia.illinois.gov> (v3). Copy what fits; nothing here is
+sacred.
 
-**Production reference:** <https://i2i.illinois.gov> (mobile Lighthouse
-on launch: A11y 100 / Perf 100 / BP 100 / SEO 100).
+**Production references:**
+- <https://i2i.illinois.gov> (mobile Lighthouse on launch: A11y 100 / Perf 100 / BP 100 / SEO 100)
+- <https://sfs.icjia.illinois.gov> (mobile Lighthouse on launch: A11y 100 / Perf 98-100 deployed / BP 100 / SEO 100; `/sites` capped at Perf 93 by the embedded 4 MB ArcGIS iframe)
 
 ---
 
@@ -48,14 +59,36 @@ holds. The v2 deltas worth knowing before you start:
 
 ---
 
+## What changed from v2 → v3
+
+v2 was solid; v3 adds the deltas that came out of the SFS migration —
+mostly things v2 *said* worked but in practice had sharper edges than
+the original example showed.
+
+| Area | v2 (i2i, 2026-05) | v3 (SFS, 2026-05) |
+|---|---|---|
+| **CSP `script-src`** | Hash **one** inline script (the URL normalizer) | Hash **every** inline `<script>` Astro emits. Astro auto-inlines small `<script>` blocks (Nav active-link markers, Sidebar focus mgmt, /sites lazy-iframe, etc.) even without `is:inline`. Each one needs its own sha256. Ship a `scripts/csp-hashes.mjs` helper that walks `dist/` and prints every unique hash + a ready-to-paste snippet (see §11) |
+| **CSP `connect-src`** | "Allow Plausible host" (implied) | **Explicit:** must include `https://plausible.icjia.cloud` or events silently 0. Script loads fine but `/api/event` POSTs are blocked, dashboard sits empty. Easy to miss because no console error is visible without DevTools open (see §9, §11) |
+| **Canonical URL** | Default works | **Bug with `format: "file"`** — `Astro.url.pathname` is `/index.html`, `/about.html`, etc. astro-seo's `canonical` prop uses that verbatim, emitting `https://site/index.html` as canonical. Strip `.html` (and `/index.html` → `/`) before passing (see §8) |
+| **Markdown external links** | "Use plain `<a>`" (no plugin) | **`rehype-external-links` + drop any Pandoc-style `{target="_blank"}`** annotations in markdown source. Astro/remark doesn't parse the markdown-it-attrs syntax — those braces render as literal text. Plugin auto-applies `target="_blank" rel="noopener noreferrer"` to every external href, no per-link annotation (see §4) |
+| **Markdown lists** | Worked by accident | **Tailwind preflight strips `list-style-type`** — markdown-rendered `<ul>`/`<ol>` show no bullets/numbers without an explicit restore in `.markdown-body`. Cosmetically obvious once you load /resources but easy to miss in audit screenshots (see §4) |
+| **Image LCP tuning** | `widths=[640, 960, 1280, 1600]`, `quality=82` | Add a **`1200w` intermediate variant** to hit DPR-3 mobile's 1125 device-px sweet spot (browser picks 1280w otherwise = ~15 KB heavier). Quality 45-55 is fine for grayscale-overlaid heroes — the dark gradient hides any compression artifacts. SFS hero went 918 KB JPEG → 34 KB WebP at the picked variant (see §5, §15) |
+| **`start-dev-server`** | Bail if port is busy | **Auto-kill the existing listener** (SIGTERM → SIGKILL fallback) before starting. Devs almost always want "restart it" not "free the port first" (see §19) |
+| **Audit measurement** | "Deploy to a real URL before trusting numbers" (one line) | **Explicit:** local `pnpm preview` does NOT gzip/brotli; Netlify deploy adds ~2-3 Perf points. A 96 on local preview typically = 98-99 on the prod deploy. Document this prominently or reviewers chase phantom regressions (see §14) |
+| **Plausible verification** | "Verify on the deployed page" | **Recipe:** in DevTools console, run `fetch('https://YOUR_PLAUSIBLE/api/event', { method: 'POST', headers: {'Content-Type':'text/plain'}, body: JSON.stringify({n:'pageview', u:location.href, d:'YOUR_DOMAIN', w:innerWidth}) }).then(r=>console.log(r.status))`. 202 confirms the path; final truth is the dashboard. The auto-fired pageview may not appear in the network panel (sendBeacon / timing) — don't conclude broken from that alone (see §9) |
+| **netlify.toml + `_headers`** | Both shown but not flagged | **They must stay in sync.** Easy to update one and forget the other; non-Netlify hosts (or Netlify's preview-overlay) trip on the mismatch. CSP changes especially (see §11) |
+| **Sharp dep** | "Add it if you use `<Image>`" | **Add it unconditionally** to `pnpm.onlyBuiltDependencies` even if the project uses no `<Image>` directly — Astro 6 pulls Sharp transitively and pnpm 10 will block its postinstall otherwise (see §18) |
+
+---
+
 ## How to use this checklist
 
 **Direct URL** (preferred):
-<https://github.com/ICJIA/icjia-i2i-v2-2024/blob/main/docs/astro-conversion-checklist.md>
+<https://github.com/ICJIA/icjia-sfs-2024/blob/main/docs/astro-conversion-checklist-v3.md>
 
 - **In Claude Code (other repos):** point the assistant at the URL —
   e.g. *"apply the patterns from
-  github.com/ICJIA/icjia-i2i-v2-2024/blob/main/docs/astro-conversion-checklist.md
+  github.com/ICJIA/icjia-sfs-2024/blob/main/docs/astro-conversion-checklist-v3.md
   to this codebase, starting with the image pipeline."* Claude will
   fetch and apply.
 - **Locally:** clone or `gh api ... | base64 -d` the file into your
@@ -222,6 +255,50 @@ export const collections = { news, /* ... */ };
 
 ## 4. Markdown rendering — markdown-it + xss + post-process
 
+> **v3 update.** The pattern below describes the markdown-it path used
+> when the project does its own server-side markdown render of CMS
+> bodies (i2i, adultredeploy). If the project instead uses **Astro's
+> built-in remark pipeline** for content collections (SFS, content/*.md),
+> two extra lessons apply:
+>
+> 1. **External links → `rehype-external-links`.** Astro/remark does
+>    not parse the markdown-it-attrs syntax `[text](url){target="_blank"}`,
+>    so those braces render as literal text on the page. Strip the
+>    annotations from markdown source and install
+>    [`rehype-external-links`](https://github.com/rehypejs/rehype-external-links)
+>    instead. It auto-applies `target="_blank" rel="noopener noreferrer"`
+>    to every external `<a>` — no per-link annotation, no CMS-author
+>    burden:
+>
+>    ```ts
+>    // astro.config.mjs
+>    import rehypeExternalLinks from 'rehype-external-links';
+>    export default defineConfig({
+>      markdown: {
+>        rehypePlugins: [
+>          [rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
+>        ],
+>      },
+>    });
+>    ```
+>
+> 2. **Lists need `list-style-type` restored.** Tailwind preflight
+>    strips the default browser styles, so markdown-rendered `<ul>` /
+>    `<ol>` render as un-bulleted, un-numbered indented text. The /resources
+>    page on SFS shipped this way for 30 seconds before someone noticed.
+>    Add to your `.markdown-body` (or equivalent) style block:
+>
+>    ```css
+>    .markdown-body ul { list-style-type: disc; }
+>    .markdown-body ol { list-style-type: decimal; }
+>    .markdown-body ul ul { list-style-type: circle; }
+>    .markdown-body ul ul ul { list-style-type: square; }
+>    .markdown-body ol ol { list-style-type: lower-alpha; }
+>    .markdown-body ol ol ol { list-style-type: lower-roman; }
+>    .markdown-body li > p { margin: 0; }   /* remark wraps li bodies in <p> */
+>    ```
+>
+
 ```ts
 // src/lib/markdown.ts
 import MarkdownIt from 'markdown-it';
@@ -270,6 +347,32 @@ function rewriteImages(html: string) {
 ---
 
 ## 5. Image optimization — three tiers
+
+> **v3 update — hero quality tuning for the DPR-3 mobile sweet spot.**
+> Lighthouse mobile emulates 375 CSS-px × DPR 3 = **1125 device-px**
+> for the hero. With `sizes="100vw"`, the browser picks the smallest
+> srcset variant ≥ 1125. If your `widths` array is the standard
+> `[640, 960, 1280, 1600]`, mobile picks 1280w. Add a **1200w**
+> variant (smaller than 1280) and mobile DPR-3 picks that instead,
+> shaving ~15-20 KB off the LCP byte:
+>
+> ```astro
+> <Image
+>   src={hero}
+>   widths={[480, 768, 1024, 1200, 1600]}  /* v3: add 1200w */
+>   sizes="100vw"
+>   format="webp"
+>   quality={45}                           /* v3: 45 is fine for */
+>   loading="eager"                        /*       grayscale-overlaid */
+>   fetchpriority="high"                   /*       heroes; the dark */
+> />                                       /*       gradient hides any */
+>                                          /*       compression artifacts */
+> ```
+>
+> SFS hero went from 918 KB source JPEG → **34 KB WebP** at the picked
+> 1200w variant after this tuning. Mobile LCP dropped from 2.6s → 2.3s.
+> For non-overlaid photographic heroes, stay closer to quality 65-72;
+> the grayscale + dark-gradient combo on SFS is the special case.
 
 ### Tier 1: local assets you control
 
@@ -527,6 +630,31 @@ Stimulus, yes). Most sites don't need this.
 
 ## 8. SEO — `astro-seo` + per-page descriptions
 
+> **v3 update — canonical URL bug with `format: "file"`.**
+> If your `astro.config.mjs` uses `build.format: "file"` +
+> `trailingSlash: "never"` (the v2.0.1 perf pattern that emits flat
+> `/about.html` so internal nav skips the trailing-slash redirect),
+> `Astro.url.pathname` includes the `.html` extension during build:
+> `/index.html` for the homepage, `/about.html` for /about, etc.
+>
+> Passing that raw value to astro-seo's `canonical` prop emits canonical
+> URLs like `https://site.example/index.html` and `…/about.html` —
+> which is **wrong** (Netlify pretty-URLs serve `/` and `/about` as
+> the actual user-facing URLs). Search engines will pick up the
+> `.html` form as canonical and your sitemap entries won't match.
+>
+> Fix in `BaseLayout.astro` (or wherever you build the canonical):
+>
+> ```ts
+> const SITE_ORIGIN = "https://your-site.example";
+> // Strip /index.html → / and .html → '' to match the URL the host serves.
+> const rawPath = Astro.url.pathname
+>   .replace(/\/index\.html$/, "/")
+>   .replace(/\.html$/, "");
+> const canonical = new URL(rawPath, Astro.site ?? SITE_ORIGIN).toString();
+> ```
+>
+
 ```sh
 pnpm add astro-seo
 ```
@@ -601,6 +729,41 @@ descriptions get the site-wide default.
 ---
 
 ## 9. Analytics — Plausible (self-hosted) snippet
+
+> **v3 update — two things v2 didn't call out loudly enough.**
+>
+> 1. **`connect-src` in the CSP must include the Plausible host.**
+>    `script-src` lets the script *load*; `connect-src` lets it *POST*
+>    the `/api/event` pageview. Forgetting `connect-src` produces the
+>    silent-failure mode where the dashboard sits at zero pageviews
+>    while the deploy looks fine — there's no console error visible
+>    without DevTools open. Always:
+>
+>    ```
+>    connect-src 'self' https://plausible.icjia.cloud;
+>    ```
+>
+> 2. **Verification recipe.** After deploying, open the live site in
+>    DevTools, paste this into Console, and look for `202`:
+>
+>    ```js
+>    fetch('https://plausible.icjia.cloud/api/event', {
+>      method: 'POST',
+>      headers: { 'Content-Type': 'text/plain' },
+>      body: JSON.stringify({
+>        n: 'pageview',
+>        u: location.href,
+>        d: 'your-domain.example',
+>        w: innerWidth,
+>      }),
+>    }).then(r => console.log('plausible:', r.status));
+>    ```
+>
+>    202 Accepted = Plausible received the event end-to-end. The final
+>    truth is the Plausible dashboard showing the row for your domain
+>    — don't rely solely on the Network panel for the auto-fired
+>    pageview; some script variants use `navigator.sendBeacon` which
+>    DevTools doesn't always surface.
 
 **Use this exact snippet across every ICJIA site.** Only the
 `data-domain` value changes per site.
@@ -716,6 +879,68 @@ hand-port a robots.txt from an old Nuxt site, it probably says
 ---
 
 ## 11. Security headers (Netlify) — the modern pattern
+
+> **v3 update — hash EVERY inline `<script>`, not just the URL normalizer.**
+> v2 showed the SHA-256 hash for the one inline executable script (the
+> URL normalizer) and said "drop `'unsafe-inline'` entirely." That part
+> is right. The trap: **Astro auto-inlines small `<script>` blocks**
+> even when you didn't write `is:inline`. On SFS that produced four
+> additional inline scripts beyond the normalizer:
+>
+> | # | Script | Where |
+> |---|---|---|
+> | 1 | URL normalizer | `Layout.astro` — every page |
+> | 2 | Nav active-link marker | `Nav.astro` — every page |
+> | 3 | Sidebar focus management | `Sidebar.astro` — every page |
+> | 4 | JSDoc theme switcher | `public/docs/jsdoc/*` (auto-gen) |
+> | 5 | Sites page deferred-iframe + tooltip | `/sites` only |
+>
+> All five need their own sha256 in `script-src`, or the missed ones
+> are CSP-blocked at runtime. Symptoms: the navy hamburger active-state
+> doesn't highlight; the sidebar doesn't focus its first link when
+> opened; the ArcGIS iframe never lazy-loads. Each shows up as one
+> CSP violation in the browser console — and the violation message
+> conveniently includes the correct hash to add.
+>
+> **Ship a `scripts/csp-hashes.mjs` helper** that walks `dist/`, finds
+> every inline `<script>`, prints each unique sha256 plus a
+> ready-to-paste `script-src` snippet. Workflow when something gets
+> blocked:
+>
+> ```sh
+> pnpm build && node scripts/csp-hashes.mjs
+> # → copy the printed "CSP script-src snippet" line
+> # → paste into BOTH netlify.toml AND public/_headers
+> ```
+>
+> The helper (~40 lines, see SFS repo `scripts/csp-hashes.mjs`):
+>
+> ```js
+> import fs from 'node:fs';
+> import path from 'node:path';
+> import c from 'node:crypto';
+> const hashes = new Map();
+> (function walk(d) {
+>   for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+>     const p = path.join(d, e.name);
+>     if (e.isDirectory()) walk(p);
+>     else if (p.endsWith('.html')) {
+>       const html = fs.readFileSync(p, 'utf8');
+>       const rx = /<script\b(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g;
+>       let m;
+>       while ((m = rx.exec(html)) !== null) {
+>         hashes.set('sha256-' + c.createHash('sha256').update(m[1], 'utf8').digest('base64'), true);
+>       }
+>     }
+>   }
+> })('dist');
+> console.log([...hashes.keys()].map(h => `'${h}'`).join(' '));
+> ```
+>
+> Also: **keep `netlify.toml` and `public/_headers` in sync.** Both
+> declare the CSP; updating one and forgetting the other trips
+> non-Netlify mirrors (and Netlify's own deploy-preview overlay reads
+> different sources in different contexts).
 
 The most-evolved area since the adultredeploy original. Full
 `netlify.toml` pattern below.
@@ -996,6 +1221,28 @@ i2i v0.2.0 launch: **0 broken internal links across 36 pages.**
 
 ## 14. Audit & ship loop
 
+> **v3 update — local-preview vs deployed scoring gap.**
+> v2 says "Deploy to a real URL before trusting numbers" in passing.
+> Worth restating loudly: **`pnpm preview` does NOT serve gzip/brotli**,
+> so Lighthouse on the local preview measures uncompressed transfer
+> times. The Netlify production deploy compresses, which typically
+> adds **2-3 mobile Perf points** on text-heavy routes.
+>
+> Concretely on SFS:
+>
+> | Route | Local `pnpm preview` Perf | Production (compressed) Perf |
+> |---|---|---|
+> | `/about` | 100 | 100 |
+> | `/research` | 98 | 100 |
+> | `/` (home) | 96 | 98-99 |
+> | `/resources` | 96 | 98-99 |
+> | `/sites` | 93 (ArcGIS iframe cap) | 94-96 |
+>
+> Don't chase the last 2-3 points locally — deploy to a Netlify branch
+> preview and re-audit there. If the local number is 96+ on the
+> bottleneck routes, the production number will almost certainly hit
+> the 98-100 ICJIA bar.
+
 After each meaningful change:
 
 ```sh
@@ -1227,6 +1474,38 @@ Then update:
 
 ## 19. Dev-server wrapper script
 
+> **v3 update — auto-kill the port instead of bailing.**
+> v2's example fails with a "port busy" message and exits 1 if `astro
+> dev` is already running on the dev port. In practice that's friction
+> — the next thing the developer does is `lsof -ti:4321 | xargs kill`
+> and re-run the script. Just do that for them: SIGTERM the existing
+> listener, give it ~3s to release the port, SIGKILL if it doesn't,
+> then continue. SFS's `start-dev-server` does this:
+>
+> ```bash
+> PORT=4321
+> if command -v lsof >/dev/null 2>&1; then
+>   pids=$(lsof -iTCP:"$PORT" -sTCP:LISTEN -nP -t 2>/dev/null || true)
+>   if [ -n "$pids" ]; then
+>     echo "start-dev-server: port $PORT busy — SIGTERM to: $pids"
+>     kill -TERM $pids 2>/dev/null || true
+>     for _ in 1 2 3; do
+>       sleep 1
+>       still=$(lsof -iTCP:"$PORT" -sTCP:LISTEN -nP -t 2>/dev/null || true)
+>       [ -z "$still" ] && break
+>     done
+>     if [ -n "$still" ]; then
+>       echo "start-dev-server: SIGKILL to: $still"
+>       kill -KILL $still 2>/dev/null || true
+>       sleep 1
+>     fi
+>   fi
+> fi
+> ```
+>
+> The `--port N` flag still works (parse it and probe that port
+> instead of the default).
+
 Adds a canonical `./start-dev-server` at the repo root so contributors
 can launch the dev server from any working directory without
 remembering to `cd astro/ && pnpm dev`.
@@ -1268,10 +1547,49 @@ Both `chmod +x`. Flags pass through:
 
 ---
 
-## 20. Migration deltas — v1 → v2 worklist
+## 20. Migration deltas — v2 → v3 worklist
 
-If you maintained an Astro project against v1 (the adultredeploy
-checklist) and want to bring it forward to v2, the diff-only worklist:
+If you maintained an Astro project against v2 (the i2i checklist) and
+want to bring it forward to v3, the diff-only worklist:
+
+1. **Add `scripts/csp-hashes.mjs`** and run it after every build. Add
+   every printed hash to `script-src` in both `netlify.toml` AND
+   `public/_headers`. Astro auto-inlines small scripts (Nav, Sidebar,
+   etc.) that v2's recipe missed (see §11).
+2. **Add `connect-src 'self' https://your-plausible-host` to the CSP.**
+   Otherwise Plausible loads but never POSTs an event. Verify with
+   the 202-recipe in §9.
+3. **If you use `build.format: "file"` (Astro emits flat `.html`),
+   strip `.html` from `Astro.url.pathname`** before passing to
+   astro-seo's `canonical` prop. Otherwise canonical URLs are
+   `…/index.html` and `…/about.html` (see §8).
+4. **Switch to `rehype-external-links`** for `target="_blank"` on
+   external markdown links. Strip any literal `{target="_blank"}`
+   annotations from markdown source — Astro/remark renders them as
+   visible text (see §4).
+5. **Restore `list-style-type`** on your markdown body — Tailwind
+   preflight strips it (see §4).
+6. **Add the 1200w intermediate variant** + drop quality to 45-55 on
+   grayscale-overlaid heroes (see §5). Mobile DPR-3 picks 1200w
+   instead of 1280w, shaving 15-20 KB off the LCP byte.
+7. **Make `start-dev-server` auto-kill the port** instead of bailing
+   (see §19).
+8. **Add `"sharp"` to `pnpm.onlyBuiltDependencies` unconditionally**,
+   even if the project uses no `<Image>` directly. Astro 6 pulls it
+   transitively and pnpm 10 blocks its postinstall otherwise (see §18).
+9. **Document the local-preview vs deployed gap in your perf notes.**
+   `pnpm preview` doesn't gzip; Netlify deploy adds 2-3 Perf points.
+   A local 96 ≈ a deployed 98 (see §14).
+
+If you adopt all nine, you're at the SFS v0.3.x baseline — and at v3
+of this checklist.
+
+---
+
+## 21. Migration deltas — v1 → v2 worklist
+
+(Kept for projects still on v1. New projects should jump straight to
+v3.)
 
 1. **Astro 5 → 6.** Mostly transparent. Watch for `<Image format=>`
    (singular, was `formats=` plural in the adultredeploy docs).
