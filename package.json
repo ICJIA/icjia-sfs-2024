@@ -8,21 +8,35 @@
     "url": "https://github.com/ICJIA/icjia-sfs-2024.git"
   },
   "license": "SEE LICENSE IN LICENSE",
+  "packageManager": "pnpm@10.33.0",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=22.12.0",
+    "pnpm": ">=10.0.0"
   },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check:links": "node scripts/check-links.mjs",
+    "check:links:internal": "node scripts/check-links.mjs --internal-only",
+    "audit:lh": "node scripts/audit-lh.mjs",
+    "audit:axe": "node scripts/audit-axe.mjs"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
   },
   "dependencies": {
     "@fontsource/lato": "^5.2.7",
     "@fontsource/raleway": "^5.2.8",
     "@fontsource/roboto": "^5.2.10",
     "astro": "^6.3.7",
-    "thumbor-url-builder-ts": "^0.1.9"
+    "astro-seo": "^1.1.0",
+    "rehype-external-links": "^3.0.0",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.7.2",

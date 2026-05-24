@@ -1,16 +1,21 @@
 ---
 /**
- * "About Safe From the Start" intro + three Core Components subsections,
- * each with text and a Thumbor-served grayscale image, hidden on small
- * screens to match the Nuxt site.
+ * "About Safe From the Start" intro + three Core Components subsections.
+ * Each section has text plus a grayscale image rendered via Astro <Image>
+ * (Sharp at build time → WebP). Images are hidden on small screens
+ * (md:block) to match the original Nuxt layout, so mobile doesn't fetch
+ * them at all (lazy + display:none = no request).
  */
-import { getThumborUrl } from "../lib/thumbor";
+import { Image } from "astro:assets";
+import imgCoalition from "../assets/splash-29-large.jpg";
+import imgDirectServices from "../assets/splash-05.jpg";
+import imgPublicAwareness from "../assets/splash-06.jpg";
 
 const splits = [
   {
     title: "Coalition-Building and Collaboration",
     text: "Coalition building, collaboration, and coordination are central components of the SFS program model. SFS coalitions build relationships with community partners that can both make referrals into the program and link program participants with other resources. Additionally, SFS coalitions focus on broader program implementation, organizational change, information sharing enhancements, protocol creation, and other tasks related to service collaboration and coordination.",
-    image: "https://sfs.icjia.illinois.gov/splash-29-large.jpg",
+    image: imgCoalition,
     alt: "Community members collaborating in a meeting - representing coalition building and collaboration",
     imageFirst: false,
   },
@@ -18,24 +23,18 @@ const splits = [
     title: "Direct Services",
     textHtml:
       "SFS primarily serves young children from birth to 5 years of age who have been exposed to violence in the home or community and their families or caregivers. Children older than five years may be served if the primary client is aged 0 to 5. <em>Exposure to violence</em> occurs with being victimized or witnessing abuse, neglect, or maltreatment or a witness to domestic, physical, or sexual violence, or other violent crime.",
-    image: "https://sfs.icjia.illinois.gov/splash-05.jpg",
+    image: imgDirectServices,
     alt: "Healthcare provider working with a young child - representing direct services to children exposed to violence",
     imageFirst: true,
   },
   {
     title: "Public Awareness",
     text: "The SFS program model's third component is public awareness. Essential efforts include community member involvement, increased public awareness, community-informed planning, education about the scope and impact of childhood exposure to violence, and promoting healing services. Public awareness activities range from community presentations and events to professional trainings and media campaigns.",
-    image: "https://sfs.icjia.illinois.gov/splash-06.jpg",
+    image: imgPublicAwareness,
     alt: "Community presentation or training session - representing public awareness and education efforts",
     imageFirst: false,
   },
 ];
-
-const splitImageUrl = (url: string) =>
-  getThumborUrl({ url, width: 1200, height: 800, quality: 50 });
-
-const splitLazyUrl = (url: string) =>
-  getThumborUrl({ url, width: 250, height: 150, quality: 10 });
 ---
 
 <div>
@@ -80,7 +79,7 @@ const splitLazyUrl = (url: string) =>
     </div>
 
     {
-      splits.map((s, i) => (
+      splits.map((s) => (
         <div class="max-w-screen-xl mx-auto px-4 mt-24">
           <div
             class={`grid grid-cols-1 md:grid-cols-2 gap-6 items-start ${
@@ -91,16 +90,16 @@ const splitLazyUrl = (url: string) =>
               <>
                 <div class="hidden md:block px-4">
                   <div class="relative w-full h-[400px] overflow-hidden bg-neutral-200 -mt-16 grayscale-[10%]">
-                    <img
-                      src={splitImageUrl(s.image)}
+                    <Image
+                      src={s.image}
                       alt={s.alt}
-                      width="1200"
-                      height="800"
+                      widths={[640, 960, 1280, 1920]}
+                      sizes="(min-width: 1280px) 600px, 50vw"
+                      format="webp"
+                      quality={70}
                       loading="lazy"
                       decoding="async"
-                      crossorigin="anonymous"
                       class="absolute inset-0 w-full h-full object-cover"
-                      style={`background-image:url('${splitLazyUrl(s.image)}');background-size:cover;background-position:center;`}
                     />
                     <div
                       class="absolute inset-0 pointer-events-none"
@@ -130,16 +129,16 @@ const splitLazyUrl = (url: string) =>
                 </div>
                 <div class="hidden md:block px-4">
                   <div class="relative w-full h-[400px] overflow-hidden bg-neutral-200 -mt-16 grayscale-[10%]">
-                    <img
-                      src={splitImageUrl(s.image)}
+                    <Image
+                      src={s.image}
                       alt={s.alt}
-                      width="1200"
-                      height="800"
+                      widths={[640, 960, 1280, 1920]}
+                      sizes="(min-width: 1280px) 600px, 50vw"
+                      format="webp"
+                      quality={70}
                       loading="lazy"
                       decoding="async"
-                      crossorigin="anonymous"
                       class="absolute inset-0 w-full h-full object-cover"
-                      style={`background-image:url('${splitLazyUrl(s.image)}');background-size:cover;background-position:center;`}
                     />
                     <div
                       class="absolute inset-0 pointer-events-none"

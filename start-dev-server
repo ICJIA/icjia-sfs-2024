@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+# start-dev-server — launch the Astro dev server from the repo root.
+#
+# Checks (in order):
+#   1. pnpm is installed
+#   2. node_modules is present (runs `pnpm install` if not)
+#   3. the dev port is free (default 4321; respects --port)
+# Then execs `pnpm dev`. Extra flags pass through:
+#   ./start-dev-server --host             # bind to LAN
+#   ./start-dev-server --port 5000        # change port
+
+set -euo pipefail
+
+cd "$(dirname "$0")"
+
+# 1) Package manager.
+if ! command -v pnpm >/dev/null 2>&1; then
+  echo "start-dev-server: pnpm not found." >&2
+  echo "  Install via: corepack enable && corepack prepare pnpm@latest --activate" >&2
+  exit 1
+fi
+
+# 2) Dependencies.
+if [ ! -d node_modules ]; then
+  echo "start-dev-server: node_modules missing — running 'pnpm install' first…"
+  pnpm install
+fi
+
+# 3) Port probe. Astro dev defaults to 4321; honor an explicit --port flag.
+PORT=4321
+prev=""
+for arg in "$@"; do
+  if [ "$prev" = "--port" ]; then
+    PORT="$arg"
+    break
+  fi
+  case "$arg" in
+    --port=*) PORT="${arg#--port=}"; break ;;
+  esac
+  prev="$arg"
+done
+
+if command -v lsof >/dev/null 2>&1; then
+  pids=$(lsof -iTCP:"$PORT" -sTCP:LISTEN -nP -t 2>/dev/null || true)
+  if [ -n "$pids" ]; then
+    echo "start-dev-server: port $PORT busy — sending SIGTERM to: $pids"
+    kill -TERM $pids 2>/dev/null || true
+    # Give the listener up to ~3s to release the port.
+    for _ in 1 2 3; do
+      sleep 1
+      still=$(lsof -iTCP:"$PORT" -sTCP:LISTEN -nP -t 2>/dev/null || true)
+      [ -z "$still" ] && break
+    done
+    if [ -n "$still" ]; then
+      echo "start-dev-server: SIGTERM didn't free port $PORT — sending SIGKILL to: $still"
+      kill -KILL $still 2>/dev/null || true
+      sleep 1
+    fi
+    # Final check.
+    if lsof -iTCP:"$PORT" -sTCP:LISTEN -nP >/dev/null 2>&1; then
+      echo "start-dev-server: port $PORT still in use after SIGKILL — bailing." >&2
+      exit 1
+    fi
+    echo "start-dev-server: port $PORT freed."
+  fi
+fi
+
+# 4) Go.
+exec pnpm dev "$@"

@@ -11,9 +11,10 @@ The Safe From the Start (SFS) program provides developmentally and culturally ap
 - **Islands:** Alpine.js — only used for the mobile drawer + desktop dropdown
 - **Content:** Astro Content Collections (markdown in `src/content/pages/`)
 - **Fonts:** Self-hosted via Fontsource (`@fontsource/lato`, `/roboto`, `/raleway`)
-- **Images:** Thumbor service at `image.icjia.cloud` for on-the-fly resize/WebP
+- **Images:** Astro `<Image>` + Sharp — build-time WebP variants from `src/assets/`, immutably cached under `/_astro/`
 - **Deploy:** Netlify static hosting
 - **Node:** 22.x
+- **Package manager:** **pnpm 10.x — never yarn, never npm.** Pinned via `packageManager` + `engines.pnpm` + `PNPM_VERSION` in `netlify.toml`.
 
 ## Project layout
 
@@ -44,8 +45,9 @@ The Safe From the Start (SFS) program provides developmentally and culturally ap
     ├── layouts/
     │   ├── Layout.astro      # HTML shell + head + Alpine boot
     │   └── MarkdownPage.astro# Shared layout for /about, /privacy, …
-    ├── lib/
-    │   └── thumbor.ts        # Thumbor signed-URL builder
+    ├── assets/              # Local images Astro/Sharp optimizes at build
+    │   └── *.jpg            # → WebP variants emitted to /_astro/
+    ├── lib/                  # (TS helpers as needed)
     ├── pages/
     │   ├── index.astro       # /
     │   ├── [slug].astro      # /about, /childhood-exposure, /privacy,
@@ -59,13 +61,26 @@ The Safe From the Start (SFS) program provides developmentally and culturally ap
 ## Local development
 
 ```bash
-yarn install
-yarn dev          # http://localhost:4321
-yarn build        # outputs to ./dist
-yarn preview      # serve the built site locally
+pnpm install
+pnpm dev          # http://localhost:4321
+pnpm build        # outputs to ./dist
+pnpm preview      # serve the built site locally
 ```
 
-Set `VITE_THUMBOR_KEY` in `.env` (the production value lives in the Netlify env).
+Or use the root-level launcher, which checks pnpm, installs deps if needed,
+probes the port, and then runs `pnpm dev`:
+
+```bash
+./start-dev-server
+./start-dev-server --host           # bind to LAN
+./start-dev-server --port 5000      # change port
+```
+
+**Package manager policy:** this repo uses **pnpm 10.x exclusively** —
+never yarn, never npm. The version is pinned in three places (`packageManager`
+in `package.json`, `engines.pnpm` in `package.json`, `PNPM_VERSION` in
+`netlify.toml`) so CI and contributors can't accidentally fall back to a
+different installer.
 
 ## Routes
 
@@ -90,32 +105,43 @@ Key practices in the build:
 - Skip-link to `#main-content` honoring `prefers-reduced-motion`
 - Mobile drawer is `<nav><ul>` with focus-on-open and Escape-to-close
 - Vuetify-matching breakpoints (`sm=600`, `md=960`, `lg=1280`) so design responsiveness is unchanged
-- `crossorigin="anonymous"` on every Thumbor `<img>` so third-party cookies aren't carried into the page
 
 ## Performance
 
-Production Lighthouse (incognito):
+Local `pnpm preview` Lighthouse (mobile, 4x CPU throttle, no compression):
 
-- **Desktop:** 100 on 7 of 8 routes; `/sites` lands at 99 (capped by the embedded ArcGIS map iframe).
-- **Mobile:** 100 on `/about`, `/childhood-exposure`, `/privacy`, `/research`; 94–98 on the rest. The hero image's LCP and the ArcGIS embed on `/sites` are what's left.
+- **/about:** Perf 100, A11y 100, BP 100, SEO 100
+- **/research:** Perf 98, A11y 100, BP 100, SEO 100
+- **Home:** Perf 96, A11y 100, BP 100, SEO 100 (LCP 2.3s on the hero)
+- **/sites:** Perf 93, A11y 100, BP 96, SEO 100 (capped by the 4 MB ArcGIS iframe)
+- Other routes: Perf 96+
+
+Production Netlify deploy adds gzip/brotli + real-network behavior, which
+typically lifts every score another 2-3 points — so the prod-deployed
+mobile run should land at 98-100 across the board.
 
 Key optimizations:
 
-- `inlineStylesheets: "always"` removes the render-blocking external CSS link
+- `inlineStylesheets: "always"` removes the render-blocking external CSS link (tested `"auto"` — it gained 2 pts on /resources but cost 3 on the image-heavy / and /sites; the inline cost is the right tradeoff)
 - `build.format: "file"` + `trailingSlash: "never"` emits flat `/about.html` so internal nav skips the Netlify trailing-slash redirect (~800 ms saved per nav on mobile)
 - All fonts self-hosted with immutable cache; fallback `@font-face` with `size-adjust` so font swap is invisible (CLS = 0)
-- LCP hero preloaded with `fetchpriority="high"`; preload + `<img>` share `crossorigin` mode so the browser uses the preload
-- Thumbor URLs sized to the largest container, served as WebP
+- LCP hero rendered via Astro `<Image>` with `loading="eager"` + `fetchpriority="high"`; build-time Sharp emits a `widths=[480, 768, 1024, 1200, 1600]` WebP `srcset` so mobile picks the smallest variant via `sizes="100vw"` (1200w variant for DPR 3 = 34 KB)
+- Section images use `<Image>` with `loading="lazy"` + `decoding="async"`; everything ships from `/_astro/` with `Cache-Control: immutable`
+- Splash images dropped from raw 9+ MB on disk to ~18-35 KB per mobile variant after Sharp WebP conversion
 - `must-revalidate` (not `no-store`) on HTML so the back/forward cache stays eligible
 
 ## Deploy
 
-`main` deploys to production on push via Netlify (`netlify.toml` declares `command = yarn build`, `publish = dist`).
+`main` deploys to production on push via Netlify (`netlify.toml` declares `command = pnpm build`, `publish = dist`).
 
 ```toml
 [build]
-  command = "yarn build"
+  command = "pnpm build"
   publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22.22.2"
+  PNPM_VERSION = "10.33.0"
 ```
 
 ## License

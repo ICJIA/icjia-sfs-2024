@@ -1,14 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SplashHome, { heroSrc } from "../components/SplashHome.astro";
+import SplashHome from "../components/SplashHome.astro";
 import HomeSplits from "../components/HomeSplits.astro";
 import SplashHomeSecondary from "../components/SplashHomeSecondary.astro";
 ---
 
-<Layout
-  title="Home"
-  preload={[{ href: heroSrc, as: "image" }]}
->
+<Layout title="Home">
   <SplashHome />
 
   <div>

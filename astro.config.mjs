@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
+import rehypeExternalLinks from "rehype-external-links";
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,12 +13,32 @@ export default defineConfig({
   // measures ~800 ms of redirect-to-trailing-slash on every internal nav.
   trailingSlash: "never",
   integrations: [sitemap()],
+  markdown: {
+    // Auto-decorate external links so CMS authors don't need to write
+    // Pandoc-style {target="_blank"} attributes in markdown (Astro's
+    // default markdown pipeline doesn't parse that syntax and renders
+    // the braces as literal text).
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        {
+          target: "_blank",
+          rel: ["noopener", "noreferrer"],
+        },
+      ],
+    ],
+  },
   vite: {
     plugins: [tailwindcss()],
   },
   build: {
-    // Inline ALL stylesheets into HTML to remove the render-blocking <link>
-    // path entirely. Net win on slow-4G FCP vs. the ~20 KB of extra inline.
+    // Inline ALL stylesheets so the HTML payload carries everything it
+    // needs to render — no render-blocking external CSS request. We
+    // tested "auto" (~80 KB Tailwind goes external): /resources gained
+    // ~2 Perf points but the image-heavy / and /sites lost ~3 — the
+    // render-blocking CSS hurt LCP more than the smaller HTML helped on
+    // pages where the hero image dominates. Production gzip/brotli
+    // also makes the inline-HTML weight much less painful on the wire.
     inlineStylesheets: "always",
     // Pair with trailingSlash: "never" — produces /about.html, /privacy.html
     // etc. so the canonical URL has no trailing slash.

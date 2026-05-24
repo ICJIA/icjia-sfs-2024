@@ -1,24 +1,13 @@
 ---
 /**
  * Hero block: full-bleed image with a navy headline card and Learn More CTA.
- * The hero src is precomputed at build time via Thumbor and exported so the
- * layout can preload it with fetchpriority="high".
+ * The LCP image is rendered via Astro <Image>; Sharp emits a WebP srcset at
+ * build time and the browser picks the smallest variant for mobile via
+ * sizes="100vw". loading="eager" + fetchpriority="high" lets the browser
+ * preloader prioritize it without needing a manual <link rel="preload">.
  */
-import { getThumborUrl } from "../lib/thumbor";
-
-export const heroSrc = getThumborUrl({
-  url: "https://sfs.icjia.illinois.gov/splash-24-large-cropped.jpg",
-  width: 1600,
-  height: 960,
-  quality: 72,
-});
-
-const heroLazySrc = getThumborUrl({
-  url: "https://sfs.icjia.illinois.gov/splash-24-large-cropped.jpg",
-  width: 250,
-  height: 150,
-  quality: 10,
-});
+import { Image } from "astro:assets";
+import heroImg from "../assets/splash-24-large-cropped.jpg";
 ---
 
 <section>
@@ -28,17 +17,18 @@ const heroLazySrc = getThumborUrl({
       class="relative w-full h-[700px] bg-neutral-200 overflow-hidden"
       style="filter: grayscale(10%);"
     >
-      <img
-        src={heroSrc}
+      <Image
+        src={heroImg}
         alt=""
         role="presentation"
-        width="1600"
-        height="960"
-        decoding="async"
+        widths={[480, 768, 1024, 1200, 1600]}
+        sizes="100vw"
+        format="webp"
+        quality={45}
+        loading="eager"
         fetchpriority="high"
-        crossorigin="anonymous"
+        decoding="async"
         class="absolute inset-0 w-full h-full object-cover"
-        style={`background-image: url('${heroLazySrc}'); background-size: cover; background-position: center;`}
       />
       <!-- Match the original v-img gradient overlay. -->
       <div

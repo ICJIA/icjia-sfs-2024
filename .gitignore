@@ -29,3 +29,4 @@ logs/
 # Local-only audit references
 .astro-reference/
 audits/
+reports/

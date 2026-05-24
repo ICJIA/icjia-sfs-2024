@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sfs.icjia.illinois.gov/sitemap-index.xml

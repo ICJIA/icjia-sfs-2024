@@ -7,25 +7,18 @@
  */
 import { getEntry, render } from "astro:content";
 import MarkdownPage from "../layouts/MarkdownPage.astro";
-import { getThumborUrl } from "../lib/thumbor";
+import researchHero from "../assets/research-hero.jpg";
 
 const page = await getEntry("pages", "research");
 if (!page) throw new Error("research.md not found");
 const { Content } = await render(page);
-
-const heroSrc = getThumborUrl({
-  url: "https://agency.icjia-api.cloud/uploads/large_pexels_freestockpro_oleksander_p_80cff2f2da.jpg",
-  width: 1600,
-  height: 960,
-  quality: 72,
-});
 ---
 
 <MarkdownPage
   title={page.data.title}
   description={page.data.summary ??
     "Research, publications, and outcomes of the Safe From the Start program."}
-  heroSrc={heroSrc}
+  hero={researchHero}
   heroAlt="Research and data analysis - representing evidence-based practices in the Safe From the Start program"
 >
   <Content />

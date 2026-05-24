@@ -1,11 +1,15 @@
 # Netlify config for the SFS Astro/Tailwind site.
 
 [build]
-  command = "yarn build"
+  command = "pnpm build"
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "22"
+  NODE_VERSION = "22.22.2"
+  # Belt-and-suspenders pin alongside the `packageManager` field in
+  # package.json. Guards against an older corepack on Netlify's build
+  # image silently falling back to npm.
+  PNPM_VERSION = "10.33.0"
 
 # --------------------------------------------------------------------------
 # Headers — caching + baseline security
@@ -79,11 +83,94 @@
     Cache-Control = "public, max-age=3600"
 
 # HTML — short cache + must-revalidate (NOT no-store) so bf-cache stays
-# eligible. Baseline security headers applied here.
+# eligible. Full security header set applied here.
 [[headers]]
   for = "/*"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "SAMEORIGIN"
+    # Modern guidance: the legacy XSS filter has had CVEs; explicit "0"
+    # beats unset.
+    X-XSS-Protection = "0"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    # Process isolation: blocks cross-origin windows from accessing this
+    # origin via window.opener.
+    Cross-Origin-Opener-Policy = "same-origin"
+    # Blocks third-party origins from embedding our responses
+    # cross-origin (defense against Spectre-style reads).
+    Cross-Origin-Resource-Policy = "same-origin"
+    # Content-Security-Policy:
+    #   - script-src: 'self' for bundled Astro scripts; sha256 hash for
+    #     the one inline executable script (URL normalizer in
+    #     src/layouts/Layout.astro). If you change the byte content of
+    #     that <script is:inline>…</script> block, regenerate the hash:
+    #
+    #       node --input-type=module -e "
+    #         import fs from 'node:fs';
+    #         import c from 'node:crypto';
+    #         const m = fs.readFileSync('dist/index.html','utf8')
+    #           .match(/<script>([^<]*history\.replaceState[^<]*)<\/script>/);
+    #         console.log('sha256-' + c.createHash('sha256').update(m[1],'utf8').digest('base64'));
+    #       "
+    #
+    #   - 'unsafe-eval' is required by Alpine.js (evaluates x-* directives
+    #     via new Function()). Documented tradeoff per the checklist §7.
+    #   - https://plausible.icjia.cloud allows the analytics script + XHR.
+    #   - frame-src adds illinois.maps.arcgis.com for the ArcGIS map embed
+    #     on /sites.
+    #   - style-src keeps 'unsafe-inline' because of inline style="…"
+    #     attributes ported from the Vue/Vuetify build. Long-term migrate
+    #     those to scoped <style> blocks and drop the exception.
+    Content-Security-Policy = """\
+default-src 'self'; \
+script-src 'self' 'sha256-Cd8mEBngrAm9wsHx9r1GVpVdHGGhGhBAHhVObVmEVbs=' 'unsafe-eval' https://plausible.icjia.cloud; \
+style-src 'self' 'unsafe-inline'; \
+img-src 'self' data:; \
+font-src 'self' data:; \
+connect-src 'self' https://plausible.icjia.cloud; \
+frame-src 'self' https://illinois.maps.arcgis.com; \
+frame-ancestors 'self'; \
+base-uri 'self'; \
+form-action 'self'; \
+object-src 'none'\
+"""
+
+# Deploy-preview / branch-deploy CSP overrides — add app.netlify.com to
+# frame-src so the preview admin overlay can iframe back to Netlify
+# without throwing console errors. Production stays strict.
+[[context.deploy-preview.headers]]
+  for = "/*"
+  [context.deploy-preview.headers.values]
+    Content-Security-Policy = """\
+default-src 'self'; \
+script-src 'self' 'sha256-Cd8mEBngrAm9wsHx9r1GVpVdHGGhGhBAHhVObVmEVbs=' 'unsafe-eval' https://plausible.icjia.cloud; \
+style-src 'self' 'unsafe-inline'; \
+img-src 'self' data:; \
+font-src 'self' data:; \
+connect-src 'self' https://plausible.icjia.cloud; \
+frame-src 'self' https://illinois.maps.arcgis.com https://app.netlify.com; \
+frame-ancestors 'self'; \
+base-uri 'self'; \
+form-action 'self'; \
+object-src 'none'\
+"""
+
+[[context.branch-deploy.headers]]
+  for = "/*"
+  [context.branch-deploy.headers.values]
+    Content-Security-Policy = """\
+default-src 'self'; \
+script-src 'self' 'sha256-Cd8mEBngrAm9wsHx9r1GVpVdHGGhGhBAHhVObVmEVbs=' 'unsafe-eval' https://plausible.icjia.cloud; \
+style-src 'self' 'unsafe-inline'; \
+img-src 'self' data:; \
+font-src 'self' data:; \
+connect-src 'self' https://plausible.icjia.cloud; \
+frame-src 'self' https://illinois.maps.arcgis.com https://app.netlify.com; \
+frame-ancestors 'self'; \
+base-uri 'self'; \
+form-action 'self'; \
+object-src 'none'\
+"""

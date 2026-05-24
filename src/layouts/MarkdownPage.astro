@@ -1,27 +1,26 @@
 ---
 /**
  * Shared layout for content-driven pages (about, privacy, etc.).
- * Renders the title as an uppercase H1, optionally a desktop-only hero,
- * then the markdown body inside a `.markdown-body` container styled to
- * match the Vuetify github-markdown look in the Nuxt site.
+ * Renders the title as an uppercase H1, optionally a desktop-only hero
+ * via Astro <Image> (Sharp at build time → WebP srcset), then the
+ * markdown body inside a `.markdown-body` container styled to match
+ * the Vuetify github-markdown look in the Nuxt site.
  */
 import Layout from "./Layout.astro";
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
 interface Props {
   title: string;
   description?: string;
-  heroSrc?: string;
+  hero?: ImageMetadata;
   heroAlt?: string;
 }
 
-const { title, description, heroSrc, heroAlt } = Astro.props;
-
-const preload = heroSrc
-  ? [{ href: heroSrc, as: "image" as const }]
-  : [];
+const { title, description, hero, heroAlt } = Astro.props;
 ---
 
-<Layout title={title} description={description} preload={preload}>
+<Layout title={title} description={description}>
   <div class="pb-16">
     <div class="max-w-screen-xl mx-auto px-4">
       <div class="text-center mb-6">
@@ -34,22 +33,24 @@ const preload = heroSrc
       </div>
 
       {
-        heroSrc && (
+        hero && (
           <div
             class="hidden md:block relative w-full h-[700px] overflow-hidden bg-neutral-200"
             style="filter: grayscale(60%);"
           >
-            {/* Eager + fetchpriority high so the desktop hero counts as the
-                page's LCP element; matches the preload hint in Layout. */}
-            <img
-              src={heroSrc}
+            {/* Desktop-only hero (hidden md:block). loading="eager" +
+                fetchpriority="high" tells the browser preloader to grab
+                the LCP-eligible variant first. */}
+            <Image
+              src={hero}
               alt={heroAlt ?? ""}
-              width="1600"
-              height="960"
+              widths={[640, 960, 1280, 1600]}
+              sizes="(min-width: 1280px) 1280px, 100vw"
+              format="webp"
+              quality={72}
               loading="eager"
               fetchpriority="high"
               decoding="async"
-              crossorigin="anonymous"
               class="absolute inset-0 w-full h-full object-cover"
             />
           </div>
@@ -107,8 +108,32 @@ const preload = heroSrc
     margin: 0 0 1em 0;
     padding-left: 2em;
   }
+  /* Tailwind preflight strips the default list-style; restore it so
+     markdown-authored lists actually show bullets / numbers. */
+  .markdown-body ul {
+    list-style-type: disc;
+  }
+  .markdown-body ol {
+    list-style-type: decimal;
+  }
+  .markdown-body ul ul {
+    list-style-type: circle;
+  }
+  .markdown-body ul ul ul {
+    list-style-type: square;
+  }
+  .markdown-body ol ol {
+    list-style-type: lower-alpha;
+  }
+  .markdown-body ol ol ol {
+    list-style-type: lower-roman;
+  }
   .markdown-body li {
     margin: 0.25em 0;
+  }
+  /* Markdown often wraps each <li> body in <p>; flatten the visual margin. */
+  .markdown-body li > p {
+    margin: 0;
   }
   .markdown-body a {
     color: var(--color-sfs-blue-dark);

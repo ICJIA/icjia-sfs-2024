@@ -2,6 +2,36 @@
 
 All notable changes to the ICJIA Safe From the Start (SFS) website are documented in this file. Entries are in reverse chronological order.
 
+## Unreleased — checklist v2 alignment
+
+A sweep aligning the repo with the v2 of `docs/astro-conversion-checklist.md`
+(the canonical ICJIA Astro pattern) and removing the Thumbor dependency.
+
+- **chore(pkg):** migrated yarn → **pnpm 10.33**. Removed `yarn.lock` + `node_modules`, added `packageManager: "pnpm@10.33.0"` + `engines.pnpm` + `pnpm.onlyBuiltDependencies: ["esbuild", "sharp"]`. Updated `netlify.toml` to `command = "pnpm build"` + `PNPM_VERSION = "10.33.0"`. Codified "pnpm only — never yarn, never npm" as a hard rule near the top of the v2 checklist (§intro + §18).
+- **perf(images):** removed Thumbor entirely. The five splash images and the remote research hero now live in `src/assets/` and are processed at build time by Astro `<Image>` + Sharp into hashed WebP variants under `/_astro/`. Hero `splash-24-large-cropped.jpg` went from a 918 KB JPEG to **34 KB at the 1200w variant** picked by mobile DPR-3 devices. `splash-05.jpg` dropped from 5 MB → ~46 KB at 640w. Deleted `src/lib/thumbor.ts` and `thumbor-url-builder-ts`; dropped the `https://image.icjia.cloud` preconnect from `<head>`.
+- **feat(seo):** swapped hand-rolled `<meta>` tags for `astro-seo` with full OG / Twitter / canonical / hreflang coverage. Added `public/og-image.jpg` (1200×630 generated from the hero via Sharp). Fixed canonical URLs that previously included `.html` (e.g. `https://sfs.icjia.illinois.gov/index.html` → `…/`).
+- **feat(analytics):** added the self-hosted Plausible script (`script.file-downloads.outbound-links.js`, `data-domain="sfs.icjia.illinois.gov"`). Pairs with a tiny inline trailing-slash normalizer so Plausible doesn't double-count `/foo` and `/foo/`.
+- **feat(security):** full CSP with the SHA-256 hash of the inline normalizer (drops `'unsafe-inline'` from `script-src`). Added `Strict-Transport-Security`, `Permissions-Policy`, `Cross-Origin-Opener-Policy`, `Cross-Origin-Resource-Policy`, `X-XSS-Protection: 0`. Context-scoped deploy-preview override allows `app.netlify.com` in `frame-src` without relaxing prod.
+- **feat(scripts):** added `scripts/check-links.mjs` (internal + external link scanner — internal failures exit 1, external warn), `scripts/audit-lh.mjs` (Lighthouse mobile with process-group cleanup), `scripts/audit-axe.mjs` (axe-core CLI wrapper). Wired `pnpm check:links`, `pnpm check:links:internal`, `pnpm audit:lh`, `pnpm audit:axe`. Internal link sweep passed (16 internal links, 0 broken) after fixing a stale `/sitemap.xml` reference in `public/docs/index.html`.
+- **feat(dev):** `start-dev-server` wrapper at repo root checks `pnpm`, installs deps if missing, **and auto-kills any existing listener on port 4321** (SIGTERM → SIGKILL fallback) before starting. Flags pass through (`--host`, `--port N`).
+- **feat(markdown):** added `rehype-external-links` so all external `<a>` get `target="_blank" rel="noopener noreferrer"` automatically. Stripped the literal Pandoc-style `{target="\_blank"}` annotations from `content/pages/resources.md` (markdown-it style; remark doesn't parse them so they were rendering as visible text).
+- **fix(css):** Tailwind preflight strips default `list-style-type`; restored `disc`/`decimal` (plus nested `circle`/`square`/`lower-alpha`/`lower-roman`) on `.markdown-body ul/ol` so the /resources lists actually show bullets.
+- **chore(seo):** added `public/robots.txt` pointing crawlers at the generated `sitemap-index.xml`.
+
+Local `pnpm preview` mobile Lighthouse (4x CPU throttle, no compression):
+
+| Route | Perf | A11y | BP | SEO |
+|---|---|---|---|---|
+| `/about` | **100** | 100 | 100 | 100 |
+| `/research` | **98** | 100 | 100 | 100 |
+| `/` (home) | 96 | 100 | 100 | 100 |
+| `/resources` | 96 | 100 | 100 | 100 |
+| `/sites` | 93 | 100 | 96 | 100 |
+
+Production Netlify deploy adds gzip/brotli + real-network behavior, which
+typically lifts scores 2-3 points (per checklist §14) — the prod-deployed
+run should land at 98-100 across the board.
+
 ## 2.0.1 — 2026-05-23
 
 Post-migration polish.
