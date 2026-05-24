@@ -103,18 +103,22 @@
     # cross-origin (defense against Spectre-style reads).
     Cross-Origin-Resource-Policy = "same-origin"
     # Content-Security-Policy:
-    #   - script-src: 'self' for bundled Astro scripts; sha256 hash for
-    #     the one inline executable script (URL normalizer in
-    #     src/layouts/Layout.astro). If you change the byte content of
-    #     that <script is:inline>…</script> block, regenerate the hash:
+    #   - script-src: 'self' for bundled Astro scripts; sha256 hashes
+    #     for every inline <script> Astro emits (it auto-inlines small
+    #     ones). Currently five:
+    #       1. URL normalizer (Layout.astro)               — every page
+    #       2. Nav active-link marker (Nav.astro)          — every page
+    #       3. Sidebar focus mgmt (Sidebar.astro)          — every page
+    #       4. JSDoc theme switcher (public/docs/jsdoc/)   — /docs/jsdoc/*
+    #       5. Sites iframe lazy + tooltip (sites.astro)   — /sites
+    #     If you change the byte content of ANY inline <script> (even
+    #     whitespace), the hash invalidates and the script is CSP-
+    #     blocked. Regenerate the full list via:
     #
-    #       node --input-type=module -e "
-    #         import fs from 'node:fs';
-    #         import c from 'node:crypto';
-    #         const m = fs.readFileSync('dist/index.html','utf8')
-    #           .match(/<script>([^<]*history\.replaceState[^<]*)<\/script>/);
-    #         console.log('sha256-' + c.createHash('sha256').update(m[1],'utf8').digest('base64'));
-    #       "
+    #       pnpm build && node scripts/csp-hashes.mjs
+    #
+    #     then paste the printed snippet into both netlify.toml AND
+    #     public/_headers (they must stay in sync).
     #
     #   - 'unsafe-eval' is required by Alpine.js (evaluates x-* directives
     #     via new Function()). Documented tradeoff per the checklist §7.
@@ -126,7 +130,7 @@
     #     those to scoped <style> blocks and drop the exception.
     Content-Security-Policy = """\
 default-src 'self'; \
-script-src 'self' 'sha256-Cd8mEBngrAm9wsHx9r1GVpVdHGGhGhBAHhVObVmEVbs=' 'unsafe-eval' https://plausible.icjia.cloud; \
+script-src 'self' 'sha256-Cd8mEBngrAm9wsHx9r1GVpVdHGGhGhBAHhVObVmEVbs=' 'sha256-QWkIYfizOi4HhlKEM/5yWFw1w8UpH40yQDDMISsaLSU=' 'sha256-Nw3h4P1P6nPfDCdi6PBFqsRj5gBh2Xq+HOKQZVVOA/U=' 'sha256-eGswe35FnL0qFxV3WCZp41JwANsgqDQRAkc2trsPHO0=' 'sha256-ctg3AOn8ce69bX68AGji4LYCAowlnnSmUoWaA64ngN8=' 'unsafe-eval' https://plausible.icjia.cloud; \
 style-src 'self' 'unsafe-inline'; \
 img-src 'self' data:; \
 font-src 'self' data:; \
@@ -146,7 +150,7 @@ object-src 'none'\
   [context.deploy-preview.headers.values]
     Content-Security-Policy = """\
 default-src 'self'; \
-script-src 'self' 'sha256-Cd8mEBngrAm9wsHx9r1GVpVdHGGhGhBAHhVObVmEVbs=' 'unsafe-eval' https://plausible.icjia.cloud; \
+script-src 'self' 'sha256-Cd8mEBngrAm9wsHx9r1GVpVdHGGhGhBAHhVObVmEVbs=' 'sha256-QWkIYfizOi4HhlKEM/5yWFw1w8UpH40yQDDMISsaLSU=' 'sha256-Nw3h4P1P6nPfDCdi6PBFqsRj5gBh2Xq+HOKQZVVOA/U=' 'sha256-eGswe35FnL0qFxV3WCZp41JwANsgqDQRAkc2trsPHO0=' 'sha256-ctg3AOn8ce69bX68AGji4LYCAowlnnSmUoWaA64ngN8=' 'unsafe-eval' https://plausible.icjia.cloud; \
 style-src 'self' 'unsafe-inline'; \
 img-src 'self' data:; \
 font-src 'self' data:; \
@@ -163,7 +167,7 @@ object-src 'none'\
   [context.branch-deploy.headers.values]
     Content-Security-Policy = """\
 default-src 'self'; \
-script-src 'self' 'sha256-Cd8mEBngrAm9wsHx9r1GVpVdHGGhGhBAHhVObVmEVbs=' 'unsafe-eval' https://plausible.icjia.cloud; \
+script-src 'self' 'sha256-Cd8mEBngrAm9wsHx9r1GVpVdHGGhGhBAHhVObVmEVbs=' 'sha256-QWkIYfizOi4HhlKEM/5yWFw1w8UpH40yQDDMISsaLSU=' 'sha256-Nw3h4P1P6nPfDCdi6PBFqsRj5gBh2Xq+HOKQZVVOA/U=' 'sha256-eGswe35FnL0qFxV3WCZp41JwANsgqDQRAkc2trsPHO0=' 'sha256-ctg3AOn8ce69bX68AGji4LYCAowlnnSmUoWaA64ngN8=' 'unsafe-eval' https://plausible.icjia.cloud; \
 style-src 'self' 'unsafe-inline'; \
 img-src 'self' data:; \
 font-src 'self' data:; \
