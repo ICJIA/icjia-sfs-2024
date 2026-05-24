@@ -29,6 +29,24 @@ sacred.
 
 ---
 
+## Current stack snapshot (as of v3 launch, 2026-05)
+
+| Package | Version on launch | Policy |
+|---|---|---|
+| **astro** | `6.3.7` | **Always latest stable.** Astro ships frequent patch releases with real perf + a11y fixes — don't pin to an older minor. Check with `pnpm view astro version`; bump with `pnpm up astro@latest`. Avoid 7.0 alphas in production. |
+| **@astrojs/sitemap** | `3.7.2` | Latest stable. |
+| **@tailwindcss/vite** + **tailwindcss** | `4.3.0` | Latest stable; Tailwind v4 only — do not use the v3 PostCSS plugin. |
+| **sharp** | `0.34.5` | Latest stable. Must be explicit dep + in `pnpm.onlyBuiltDependencies` (see §5, §18). |
+| **astro-seo** | `1.1.0` | Latest stable. |
+| **rehype-external-links** | `3.0.0` | Latest stable. |
+| **alpinejs** | `3.15.12` | Latest stable (only if you have islands needing reactivity; see §7). |
+| **pnpm** | `10.33.0` | Pin via `packageManager` + `engines.pnpm` + `PNPM_VERSION` in `netlify.toml` (see §18). |
+| **node** | `22.22.2` | LTS. Set `NODE_VERSION` in `netlify.toml`. |
+
+**Stay current.** Run `pnpm outdated` periodically; empty output is the goal. If something *is* outdated, bump in a dedicated PR so the upgrade is reviewable independent of feature work. Major bumps (Astro 6 → 7, Tailwind 4 → 5) get their own PR with a build + audit re-run.
+
+---
+
 ## What changed from v1 → v2
 
 > **Hard rule for all ICJIA Astro projects from v2 onward:**
@@ -67,6 +85,8 @@ the original example showed.
 
 | Area | v2 (i2i, 2026-05) | v3 (SFS, 2026-05) |
 |---|---|---|
+| **`<Image>` sizing** | `widths={[...]}` shown without `width`/`height` | **Always pair `widths` with explicit `width`/`height`** matching the rendered display size, or Astro emits the largest variant's dimensions as the HTML width/height and the image blows out the layout (see §5) |
+| **Dependency freshness** | Snapshot listed, no policy | **"Always latest stable"** documented as policy. Run `pnpm outdated` periodically; empty output is the goal. Snapshot kept above for context (see "Current stack snapshot") |
 | **CSP `script-src`** | Hash **one** inline script (the URL normalizer) | Hash **every** inline `<script>` Astro emits. Astro auto-inlines small `<script>` blocks (Nav active-link markers, Sidebar focus mgmt, /sites lazy-iframe, etc.) even without `is:inline`. Each one needs its own sha256. Ship a `scripts/csp-hashes.mjs` helper that walks `dist/` and prints every unique hash + a ready-to-paste snippet (see §11) |
 | **CSP `connect-src`** | "Allow Plausible host" (implied) | **Explicit:** must include `https://plausible.icjia.cloud` or events silently 0. Script loads fine but `/api/event` POSTs are blocked, dashboard sits empty. Easy to miss because no console error is visible without DevTools open (see §9, §11) |
 | **Canonical URL** | Default works | **Bug with `format: "file"`** — `Astro.url.pathname` is `/index.html`, `/about.html`, etc. astro-seo's `canonical` prop uses that verbatim, emitting `https://site/index.html` as canonical. Strip `.html` (and `/index.html` → `/`) before passing (see §8) |
@@ -373,6 +393,43 @@ function rewriteImages(html: string) {
 > 1200w variant after this tuning. Mobile LCP dropped from 2.6s → 2.3s.
 > For non-overlaid photographic heroes, stay closer to quality 65-72;
 > the grayscale + dark-gradient combo on SFS is the special case.
+
+> **v3 update — `<Image>` always needs explicit `width`/`height` when
+> you use a `widths` array.** Sharp edge: passing only `widths={[...]}`
+> (no `width`/`height` props) makes Astro emit the **largest** variant's
+> dimensions as the rendered `<img>`'s `width`/`height` attrs. On SFS
+> the ICJIA logo was meant to render 55x39 in the nav and 150x105 in
+> the footer; without explicit `width`/`height` Astro emitted
+> `width="165" height="116"` (Nav) and `width="450" height="315"`
+> (Footer) — the logo blew through the 64 px header. The browser
+> *was* picking the right srcset variant byte-wise; the HTML
+> dimensions were just lying.
+>
+> Always pair `widths={[...]}` with explicit `width={N}` / `height={M}`
+> matching the rendered display size:
+>
+> ```astro
+> <!-- Bad: HTML width/height end up as the largest srcset variant -->
+> <Image src={logo} widths={[55, 110, 165]} sizes="55px" ... />
+>
+> <!-- Good: HTML width/height match display; srcset still handles DPR -->
+> <Image
+>   src={logo}
+>   width={55}
+>   height={39}
+>   widths={[55, 110, 165]}
+>   sizes="55px"
+>   ...
+> />
+> ```
+>
+> Aspect ratio must match the source — Astro errors otherwise. If your
+> display ratio differs, crop the source asset first.
+>
+> Related: Astro clamps `widths` to the source image's intrinsic width.
+> If you ask for `widths=[150, 300, 450]` but the source PNG is 250 px
+> wide, you get `[150, 250]` (no 300 / 450 variants generated). For
+> DPR-3 crispness at a 150 px display, provide a ≥ 450 px source.
 
 ### Tier 1: local assets you control
 
@@ -1580,8 +1637,17 @@ want to bring it forward to v3, the diff-only worklist:
 9. **Document the local-preview vs deployed gap in your perf notes.**
    `pnpm preview` doesn't gzip; Netlify deploy adds 2-3 Perf points.
    A local 96 ≈ a deployed 98 (see §14).
+10. **Audit every `<Image widths={[...]}>` for explicit `width`/`height`.**
+    Without them, Astro emits the largest srcset variant's dimensions
+    to HTML and breaks the layout. Grep your repo for `widths={` and
+    confirm each tag pairs it with `width=` + `height=` matching the
+    display size (see §5).
+11. **Run `pnpm outdated` and bump anything that drifts.** v3 policy is
+    "always latest stable" for astro / sitemap / sharp / astro-seo /
+    tailwind / rehype-external-links. Major bumps (Astro 6 → 7,
+    Tailwind 4 → 5) get a dedicated PR with a fresh audit run.
 
-If you adopt all nine, you're at the SFS v0.3.x baseline — and at v3
+If you adopt all eleven, you're at the SFS v0.3.x baseline — and at v3
 of this checklist.
 
 ---
