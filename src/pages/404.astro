@@ -15,21 +15,25 @@
 import Layout from "../layouts/Layout.astro";
 import { footerNav } from "../config/nav";
 
-const cards = footerNav.map((item) => {
-  const blurbs: Record<string, string> = {
-    "/": "Overview of the Safe From the Start program.",
-    "/about": "History and goals of the SFS program in Illinois.",
-    "/program-summary": "How SFS sites identify, assess, and serve children 0–5.",
-    "/research": "Pre/post-intervention data, evaluation, and publications.",
-    "/resources": "Partner organizations, downloads, and reference materials.",
-    "/sites": "Directory of active SFS program sites across the state.",
-  };
-  return {
-    title: item.main,
-    href: item.link ?? "/",
-    blurb: blurbs[item.link ?? "/"] ?? "",
-  };
-});
+// Filter out /search — this page already has a search form in the hero,
+// a redundant card below would be confusing.
+const cards = footerNav
+  .filter((item) => item.link !== "/search")
+  .map((item) => {
+    const blurbs: Record<string, string> = {
+      "/": "Overview of the Safe From the Start program.",
+      "/about": "History and goals of the SFS program in Illinois.",
+      "/program-summary": "How SFS sites identify, assess, and serve children 0–5.",
+      "/research": "Pre/post-intervention data, evaluation, and publications.",
+      "/resources": "Partner organizations, downloads, and reference materials.",
+      "/sites": "Directory of active SFS program sites across the state.",
+    };
+    return {
+      title: item.main,
+      href: item.link ?? "/",
+      blurb: blurbs[item.link ?? "/"] ?? "",
+    };
+  });
 ---
 
 <Layout

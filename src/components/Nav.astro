@@ -113,6 +113,31 @@ import { primaryNav } from "../config/nav";
 
     <div class="grow"></div>
 
+    <!-- Search icon (visible at all breakpoints; sits to the right of
+         the title on mobile, left of the primary nav on desktop). -->
+    <a
+      href="/search"
+      aria-label="Search"
+      class="inline-flex items-center justify-center w-11 h-11 rounded text-sfs-text-soft hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-sfs-blue focus-visible:outline-offset-2"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <circle cx="11" cy="11" r="7"></circle>
+        <line x1="20" y1="20" x2="16.65" y2="16.65"></line>
+      </svg>
+    </a>
+
     <!-- Desktop primary nav (>= lg = 1280px, matches Vuetify
          hidden-md-and-down) -->
     <nav aria-label="Primary" class="hidden lg:flex items-center gap-1">

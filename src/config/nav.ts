@@ -43,4 +43,5 @@ export const footerNav: NavItem[] = [
   { main: "Research", link: "/research" },
   { main: "Resources", link: "/resources" },
   { main: "Sites", link: "/sites" },
+  { main: "Search", link: "/search" },
 ];
