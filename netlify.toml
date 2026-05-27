@@ -12,6 +12,30 @@
   PNPM_VERSION = "10.33.0"
 
 # --------------------------------------------------------------------------
+# Redirects / rewrites
+# --------------------------------------------------------------------------
+
+# `/sitemap.xml` 200-rewrite to the flat shard.
+#
+# `@astrojs/sitemap` always emits TWO files — `sitemap-index.xml` (a
+# `<sitemapindex>` wrapper) and `sitemap-0.xml` (the actual `<urlset>`).
+# It never emits `sitemap.xml`, so the conventional URL returns 404 by
+# default. SEO scanners, Google Search Console's submission UI, and AI
+# crawlers all probe `/sitemap.xml` first, so we 200-rewrite (NOT 301)
+# to the flat shard. The trailing-slash variant covers link checkers
+# that auto-append `/`. Pattern from v6.3 checklist §"/sitemap.xml
+# routing".
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-0.xml"
+  status = 200
+
+[[redirects]]
+  from = "/sitemap.xml/"
+  to = "/sitemap-0.xml"
+  status = 200
+
+# --------------------------------------------------------------------------
 # Headers — caching + baseline security
 # --------------------------------------------------------------------------
 

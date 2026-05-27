@@ -2,10 +2,27 @@
 
 All notable changes to the ICJIA Safe From the Start (SFS) website are documented in this file. Entries are in reverse chronological order.
 
-## Unreleased — checklist v2 alignment
+## Unreleased — checklist v2 → v6.3 alignment
 
-A sweep aligning the repo with the v2 of `docs/astro-conversion-checklist.md`
+A sweep aligning the repo with `docs/astro-conversion-checklist-v6.3.md`
 (the canonical ICJIA Astro pattern) and removing the Thumbor dependency.
+
+**v6.3 increment (2026-05-27)** — back-port of the two Infonet/DVFR
+patterns the checklist promoted to canonical:
+
+- **feat(search):** added `/search` with a Fuse.js client island over a build-time JSON index (`src/pages/search-index.json.ts`). Index covers home + the seven markdown pages, ~30 KB uncompressed. Page uses DOM API (createElement / textContent) for result rendering — no innerHTML, defense-in-depth against XSS. `noindex` via the new Layout prop.
+- **feat(404):** added `src/pages/404.astro` per the v6.3 "Standard 404 page" template: navy-to-blue gradient `404` numeral (`aria-hidden`), `<h1>` carries the announcement, Fuse-deep-link search form (`action="/search"`, `name="q"`), 6-card quick-link grid mirroring `footerNav` (Home / About / Program Summary / Research / Resources / Sites), help line. `.sfs-nf-*` class prefix. `noindex={true}` + `min-h-[40vh]` to avoid the CLS dip from footer drop-in.
+- **feat(seo):** added `noindex?: boolean` prop to `Layout.astro`, threaded into `astro-seo`'s `<SEO noindex={…}>`. `/404` and `/search` opt in.
+- **fix(sitemap):** two `[[redirects]]` in `netlify.toml` so `/sitemap.xml` (and the trailing-slash variant) 200-rewrite to `/sitemap-0.xml`. Closes the `@astrojs/sitemap` emits-two-files / never-emits-`sitemap.xml` gap so SEO scanners probing the conventional URL get the URL list directly. `public/robots.txt` now points at `/sitemap.xml`.
+- **fix(sitemap):** `astro.config.mjs` filter excludes `/404` and `/search` from `sitemap-0.xml`. Filter receives the canonical URL (no `.html` suffix) so the regex anchors on `\/(?:404|search)\/?$`.
+- **feat(seo):** JSON-LD `WebPage` schema emitted from `Layout.astro` (one block per page) — name/description/url/image/inLanguage + `datePublished`/`dateModified` (build time fallback) + `isPartOf` WebSite + `publisher` Organization (ICJIA with logo). CSP doesn't enforce on `type="application/ld+json"` data blocks, so no hash needed. Layout also takes optional `publishedAt`/`updatedAt` props for future per-page freshness.
+- **feat(ai-readiness):** `public/llms.txt` per [llmstxt.org](https://llmstxt.org) — site overview, URL index, reference docs, topic taxonomy, and citation guidance for AI crawlers (ChatGPT, Claude, Perplexity, Bing Copilot).
+- **chore(tooling):** `scripts/csp-hashes.mjs` now skips `type="application/ld+json"` blocks (data blocks don't need CSP hashes), keeping the helper's output clean.
+- **docs(readme):** OG image header + 7-badge tech-stack row (License / Astro / Tailwind / Alpine / Fuse / Node / pnpm / Sharp). Mentioned the new `/search`, JSON-LD, and `/llms.txt` features in the Stack section.
+
+---
+
+
 
 - **chore(pkg):** migrated yarn → **pnpm 10.33**. Removed `yarn.lock` + `node_modules`, added `packageManager: "pnpm@10.33.0"` + `engines.pnpm` + `pnpm.onlyBuiltDependencies: ["esbuild", "sharp"]`. Updated `netlify.toml` to `command = "pnpm build"` + `PNPM_VERSION = "10.33.0"`. Codified "pnpm only — never yarn, never npm" as a hard rule near the top of the v2 checklist (§intro + §18).
 - **perf(images):** removed Thumbor entirely. The five splash images and the remote research hero now live in `src/assets/` and are processed at build time by Astro `<Image>` + Sharp into hashed WebP variants under `/_astro/`. Hero `splash-24-large-cropped.jpg` went from a 918 KB JPEG to **34 KB at the 1200w variant** picked by mobile DPR-3 devices. `splash-05.jpg` dropped from 5 MB → ~46 KB at 640w. Deleted `src/lib/thumbor.ts` and `thumbor-url-builder-ts`; dropped the `https://image.icjia.cloud` preconnect from `<head>`.

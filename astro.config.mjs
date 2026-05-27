@@ -12,7 +12,18 @@ export default defineConfig({
   // the no-trailing-slash form (/about) directly. Lighthouse otherwise
   // measures ~800 ms of redirect-to-trailing-slash on every internal nav.
   trailingSlash: "never",
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // Sitemap filter receives the canonical URL (e.g.
+      // "https://sfs.icjia.illinois.gov/search"), not the dist filename
+      // — so match against the no-extension path. @astrojs/sitemap also
+      // excludes /404 by default, but we belt-and-suspender it. The
+      // search results page has no durable content (it's a client-side
+      // island over a build-time JSON blob) so it stays out of the index.
+      filter: (page) =>
+        !/\/(?:404|search)\/?$/.test(page),
+    }),
+  ],
   markdown: {
     // Auto-decorate external links so CMS authors don't need to write
     // Pandoc-style {target="_blank"} attributes in markdown (Astro's

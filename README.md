@@ -1,4 +1,17 @@
+<p align="center">
+  <img src="./public/og-image.jpg" alt="Safe From the Start — direct services for children exposed to violence" width="820" />
+</p>
+
 # Safe From the Start (SFS)
+
+[![License](https://img.shields.io/badge/License-See%20LICENSE-yellow.svg)](./LICENSE)
+[![Astro 6](https://img.shields.io/badge/Astro-6-FF5D01?logo=astro&logoColor=white)](https://astro.build)
+[![Tailwind CSS 4](https://img.shields.io/badge/Tailwind%20CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![Alpine.js 3](https://img.shields.io/badge/Alpine.js-3-77C1D2?logo=alpinedotjs&logoColor=black)](https://alpinejs.dev)
+[![Fuse.js 7](https://img.shields.io/badge/Fuse.js-7-7E57C2)](https://www.fusejs.io)
+[![Node ≥22](https://img.shields.io/badge/Node-%E2%89%A522-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org)
+[![pnpm 10](https://img.shields.io/badge/pnpm-10-F69220?logo=pnpm&logoColor=white)](https://pnpm.io)
+[![Built with Sharp](https://img.shields.io/badge/images-Sharp-99CC00?logo=sharp&logoColor=white)](https://sharp.pixelplumbing.com)
 
 The Safe From the Start (SFS) program provides developmentally and culturally appropriate direct services to children, ages 0 – 5, who have witnessed or been exposed to violence and their families. SFS focuses on serving young children who are victims of abuse, neglect, or maltreatment, and/or witnesses to domestic violence, sexual assault, or other violent crimes.
 
@@ -10,6 +23,8 @@ The Safe From the Start (SFS) program provides developmentally and culturally ap
 - **Styling:** Tailwind v4 via `@tailwindcss/vite`
 - **Islands:** Alpine.js — only used for the mobile drawer + desktop dropdown
 - **Content:** Astro Content Collections (markdown in `src/content/pages/`)
+- **Search:** Fuse.js client island over a build-time JSON index (`/search` + `/search-index.json`)
+- **SEO/AI:** `astro-seo` (OG/Twitter/canonical/hreflang), JSON-LD `WebPage`, `/llms.txt`, `/sitemap.xml`
 - **Fonts:** Self-hosted via Fontsource (`@fontsource/lato`, `/roboto`, `/raleway`)
 - **Images:** Astro `<Image>` + Sharp — build-time WebP variants from `src/assets/`, immutably cached under `/_astro/`
 - **Deploy:** Netlify static hosting

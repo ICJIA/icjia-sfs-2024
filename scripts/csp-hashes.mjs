@@ -19,15 +19,22 @@ function walk(d) {
     if (e.isDirectory()) walk(p);
     else if (e.isFile() && e.name.endsWith(".html")) {
       const html = fs.readFileSync(p, "utf8");
-      const rx = /<script\b(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g;
+      // Match every <script>…</script> WITHOUT a src= attribute. We capture
+      // the attribute string (group 1) so we can skip data blocks — CSP
+      // doesn't enforce on type="application/ld+json" or any other
+      // non-executable type, so hashing them only adds noise.
+      const rx = /<script\b((?![^>]*\bsrc=)[^>]*)>([\s\S]*?)<\/script>/g;
       let m;
       while ((m = rx.exec(html)) !== null) {
+        const attrs = m[1] ?? "";
+        const body = m[2];
+        if (/\btype\s*=\s*["']?application\/ld\+json/i.test(attrs)) continue;
         const h =
           "sha256-" +
-          c.createHash("sha256").update(m[1], "utf8").digest("base64");
+          c.createHash("sha256").update(body, "utf8").digest("base64");
         if (!hashes.has(h)) {
           hashes.set(h, {
-            preview: m[1].slice(0, 80).replace(/\s+/g, " ").trim(),
+            preview: body.slice(0, 80).replace(/\s+/g, " ").trim(),
             files: new Set(),
           });
         }

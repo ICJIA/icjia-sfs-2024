@@ -15,11 +15,17 @@ import Footer from "../components/Footer.astro";
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
+  publishedAt?: string;
+  updatedAt?: string;
 }
 
 const {
   title = "Safe From the Start",
   description = "The Safe From the Start (SFS) program provides developmentally and culturally appropriate direct services to children, ages 0–5, who have witnessed or been exposed to violence and their families.",
+  noindex = false,
+  publishedAt,
+  updatedAt,
 } = Astro.props;
 
 const fullTitle =
@@ -37,6 +43,42 @@ const rawPath = Astro.url.pathname
   .replace(/\.html$/, "");
 const canonical = new URL(rawPath, Astro.site ?? SITE_ORIGIN).toString();
 const ogImage = `${SITE_ORIGIN}/og-image.jpg`;
+
+// JSON-LD WebPage schema for SEO + AI Readiness (MetaPeek-style checks
+// look for this). Per v6.3 checklist §"JSON-LD WebPage + freshness dates":
+//   - WebPage with name/description/url/image/inLanguage
+//   - datePublished + dateModified (build time when the page doesn't
+//     pass an explicit publishedAt/updatedAt)
+//   - isPartOf the WebSite
+//   - publisher Organization (ICJIA) with logo
+// JSON-LD lives in <script type="application/ld+json"> which CSP does
+// NOT enforce on (it's a data block, not executable), so no hash needed.
+const buildTime = new Date().toISOString();
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: fullTitle,
+  description,
+  url: canonical,
+  image: ogImage,
+  inLanguage: "en-US",
+  datePublished: publishedAt ?? buildTime,
+  dateModified: updatedAt ?? buildTime,
+  isPartOf: {
+    "@type": "WebSite",
+    name: "Safe From the Start",
+    url: `${SITE_ORIGIN}/`,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Illinois Criminal Justice Information Authority",
+    url: "https://icjia.illinois.gov",
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_ORIGIN}/og-image.jpg`,
+    },
+  },
+};
 ---
 
 <!doctype html>
@@ -51,6 +93,8 @@ const ogImage = `${SITE_ORIGIN}/og-image.jpg`;
       title={fullTitle}
       description={description}
       canonical={canonical}
+      noindex={noindex}
+      nofollow={false}
       openGraph={{
         basic: {
           title: fullTitle,
@@ -80,8 +124,20 @@ const ogImage = `${SITE_ORIGIN}/og-image.jpg`;
           { rel: "alternate", hreflang: "en", href: canonical },
           { rel: "alternate", hreflang: "x-default", href: canonical },
         ],
+        meta: [
+          { name: "author", content: "Illinois Criminal Justice Information Authority" },
+          ...(publishedAt
+            ? [{ property: "article:published_time", content: publishedAt }]
+            : []),
+          ...(updatedAt
+            ? [{ property: "article:modified_time", content: updatedAt }]
+            : []),
+        ],
       }}
     />
+
+    <!-- JSON-LD WebPage. CSP doesn't enforce on data blocks. -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
     <!-- URL normalizer: strips a trailing slash from non-root paths so
          Plausible doesn't log /foo and /foo/ as separate pages. Inline +

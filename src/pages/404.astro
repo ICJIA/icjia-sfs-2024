@@ -1,0 +1,308 @@
+---
+/**
+ * Standard 404 page (v6.3 checklist canonical template).
+ *
+ *   - BaseLayout wrap with noindex={true} + title="Page Not Found".
+ *   - Hero band: gradient 404 numeral (aria-hidden) + <h1> with the
+ *     actual announcement + a lede line.
+ *   - Fuse-deep-link search form (method="get" action="/search" name="q").
+ *   - 6-card quick-link grid mirroring footerNav (Home / About / Program
+ *     Summary / Research / Sites / Resources).
+ *   - Help line below the grid.
+ *   - Class prefix is .sfs-nf-* per the checklist's per-site naming rule.
+ *   - min-h-[40vh] on the wrapper to avoid the CLS hit from footer drop-in.
+ */
+import Layout from "../layouts/Layout.astro";
+import { footerNav } from "../config/nav";
+
+const cards = footerNav.map((item) => {
+  const blurbs: Record<string, string> = {
+    "/": "Overview of the Safe From the Start program.",
+    "/about": "History and goals of the SFS program in Illinois.",
+    "/program-summary": "How SFS sites identify, assess, and serve children 0–5.",
+    "/research": "Pre/post-intervention data, evaluation, and publications.",
+    "/resources": "Partner organizations, downloads, and reference materials.",
+    "/sites": "Directory of active SFS program sites across the state.",
+  };
+  return {
+    title: item.main,
+    href: item.link ?? "/",
+    blurb: blurbs[item.link ?? "/"] ?? "",
+  };
+});
+---
+
+<Layout
+  title="Page Not Found"
+  description="The page you were looking for couldn't be found."
+  noindex={true}
+>
+  <div class="sfs-nf-root min-h-[40vh]">
+    <section class="sfs-nf-hero">
+      <div class="max-w-screen-md mx-auto px-4 py-14 sm:py-20 text-center">
+        <div class="sfs-nf-number" aria-hidden="true">404</div>
+        <h1 class="sfs-nf-title">We couldn't find that page</h1>
+        <p class="sfs-nf-lede">
+          The link you followed may be broken, or the page may have moved.
+          Try a search below, or jump straight to one of the main sections.
+        </p>
+
+        <form
+          role="search"
+          aria-label="Search Safe From the Start"
+          action="/search"
+          method="get"
+          class="sfs-nf-search"
+        >
+          <label for="sfs-nf-q" class="sr-only">Search Safe From the Start</label>
+          <input
+            id="sfs-nf-q"
+            name="q"
+            type="search"
+            autocomplete="off"
+            placeholder="Search the site…"
+            class="sfs-nf-search__input"
+          />
+          <button type="submit" class="sfs-nf-search__btn">Search</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="max-w-[1100px] mx-auto px-4 py-10">
+      <h2 class="sfs-nf-links__heading">Or jump to a section</h2>
+
+      <ul class="sfs-nf-cards list-none p-0">
+        {
+          cards.map((c) => (
+            <li class="sfs-nf-card">
+              <a href={c.href} class="sfs-nf-card__a">
+                <div class="sfs-nf-card__text">
+                  <h3 class="sfs-nf-card__title">{c.title}</h3>
+                  {c.blurb && <p class="sfs-nf-card__blurb">{c.blurb}</p>}
+                </div>
+                <svg
+                  class="sfs-nf-card__arrow"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="sfs-nf-help">
+        Still can't find what you're looking for? Visit the
+        <a href="/resources">Resources</a> page for partner organizations and
+        contact details.
+      </p>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .sfs-nf-root {
+    color: var(--color-sfs-text);
+  }
+
+  .sfs-nf-hero {
+    background: #f2f2f2;
+    text-align: center;
+  }
+
+  .sfs-nf-number {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(96px, 22vw, 200px);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.25em;
+    text-align: center;
+    background: linear-gradient(
+      180deg,
+      var(--color-sfs-navy) 0%,
+      var(--color-sfs-blue) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .sfs-nf-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(26px, 5vw, 40px);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    color: var(--color-sfs-navy);
+    margin: 0 0 0.75rem;
+    text-align: center;
+  }
+
+  .sfs-nf-lede {
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--color-sfs-text-soft);
+    max-width: 36rem;
+    margin: 0 auto 1.75rem;
+    text-align: center;
+  }
+
+  .sfs-nf-search {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 36rem;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 480px) {
+    .sfs-nf-search {
+      flex-direction: row;
+    }
+  }
+
+  .sfs-nf-search__input {
+    flex: 1 1 auto;
+    height: 48px;
+    padding: 0 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccd0d4;
+    background: #fff;
+    color: var(--color-sfs-text);
+    font-size: 16px;
+  }
+  .sfs-nf-search__input:focus-visible {
+    outline: 2px solid var(--color-sfs-blue);
+    outline-offset: 2px;
+  }
+
+  .sfs-nf-search__btn {
+    height: 48px;
+    padding: 0 1.5rem;
+    border-radius: 6px;
+    background: var(--color-sfs-navy);
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: background-color 150ms ease;
+  }
+  .sfs-nf-search__btn:hover {
+    background: var(--color-sfs-blue);
+  }
+  .sfs-nf-search__btn:focus-visible {
+    outline: 2px solid var(--color-sfs-blue);
+    outline-offset: 2px;
+  }
+
+  .sfs-nf-links__heading {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--color-sfs-navy);
+    margin: 0 0 1.25rem;
+    text-align: center;
+  }
+
+  .sfs-nf-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+    margin: 0;
+  }
+
+  @media (min-width: 960px) {
+    .sfs-nf-cards {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .sfs-nf-card {
+    margin: 0;
+  }
+
+  .sfs-nf-card__a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid #e2e6ea;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--color-sfs-text);
+    text-decoration: none;
+    transition:
+      border-color 150ms ease,
+      background-color 150ms ease,
+      transform 150ms ease;
+  }
+  .sfs-nf-card__a:hover {
+    border-color: var(--color-sfs-blue);
+    background: #f7fafd;
+  }
+  .sfs-nf-card__a:focus-visible {
+    outline: 2px solid var(--color-sfs-blue);
+    outline-offset: 2px;
+  }
+
+  .sfs-nf-card__text {
+    min-width: 0;
+  }
+
+  .sfs-nf-card__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color-sfs-navy);
+    margin: 0;
+  }
+
+  .sfs-nf-card__blurb {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--color-sfs-text-soft);
+    margin: 0.2rem 0 0;
+    line-height: 1.45;
+  }
+
+  .sfs-nf-card__arrow {
+    flex: 0 0 auto;
+    color: var(--color-sfs-blue);
+  }
+
+  .sfs-nf-help {
+    margin: 1.75rem auto 0;
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--color-sfs-text-soft);
+  }
+  .sfs-nf-help a {
+    color: var(--color-sfs-blue-dark);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sfs-nf-card__a {
+      transition: none;
+    }
+    .sfs-nf-search__btn {
+      transition: none;
+    }
+  }
+</style>

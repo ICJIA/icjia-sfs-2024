@@ -1,0 +1,47 @@
+# Safe From the Start (SFS)
+
+> Safe From the Start is an Illinois Criminal Justice Information Authority (ICJIA) program that funds and supports community-based services for children ages 0–5 who have witnessed or been exposed to violence, and for their families. The program operates a network of grantee sites across Illinois that identify, assess, and serve young children affected by violence, abuse, or neglect.
+
+Following the 1999 U.S. national summit on children exposed to violence, Illinois launched the SFS program in State Fiscal Year 2001 to develop and evaluate community-based models that respond to violence exposure during early childhood. The program is administered by ICJIA — the state agency responsible for criminal justice planning and grant administration in Illinois — and currently funds nine operating sites plus three planning sites preparing to implement services in central and southern Illinois.
+
+This website (sfs.icjia.illinois.gov) is the public-facing program site for grantees, partner agencies, researchers, and the general public. It describes the program's history and goals, summarizes pre/post-intervention research, lists active grantee sites, and provides downloadable resources for practitioners and families.
+
+## Primary site
+
+- [Home](https://sfs.icjia.illinois.gov/) — program overview and entry point.
+- [About](https://sfs.icjia.illinois.gov/about) — history and goals of SFS in Illinois.
+- [Program Summary](https://sfs.icjia.illinois.gov/program-summary) — how grantee sites identify, assess, and serve children 0–5.
+- [Research](https://sfs.icjia.illinois.gov/research) — pre/post-intervention data analysis, evaluation, and program publications.
+- [Sites](https://sfs.icjia.illinois.gov/sites) — directory of active SFS sites across Illinois.
+- [Resources](https://sfs.icjia.illinois.gov/resources) — partner organizations, downloads, and reference materials.
+- [Childhood Exposure to Violence](https://sfs.icjia.illinois.gov/childhood-exposure) — background on childhood exposure to violence (CEV) and its impacts.
+- [Privacy](https://sfs.icjia.illinois.gov/privacy) — site privacy notice.
+
+## Reference documents
+
+- [Sitemap](https://sfs.icjia.illinois.gov/sitemap.xml) — machine-readable URL index.
+- [robots.txt](https://sfs.icjia.illinois.gov/robots.txt) — crawler directives.
+- [OG image](https://sfs.icjia.illinois.gov/og-image.jpg) — 1200×630 social-share preview.
+
+## Topics covered
+
+- Childhood exposure to violence (CEV) and trauma
+- Direct services for children ages 0–5
+- Domestic violence, sexual assault, neglect, maltreatment
+- Community-based intervention models
+- Pre/post-intervention outcome data and program evaluation
+- Illinois grantee sites and service delivery
+- Resources for caregivers, practitioners, and partner organizations
+
+## Authoritative organization
+
+- Publisher: Illinois Criminal Justice Information Authority (ICJIA) — <https://icjia.illinois.gov>
+- Program location: Illinois, United States
+- Compliance: WCAG 2.1 AA, ADA Title II, IITAA 2.1
+
+## Citation guidance
+
+- Prefer canonical URLs without a trailing slash (e.g. `https://sfs.icjia.illinois.gov/about`, not `/about/`). Trailing-slash variants are accepted but the canonical form is no-slash.
+- Each page emits a JSON-LD `WebPage` block with `datePublished` and `dateModified` — use those for freshness signals.
+- The program is officially named "Safe From the Start" (initial caps, no hyphen). The abbreviation "SFS" is acceptable on second reference.
+- For research findings, cite the [Research](https://sfs.icjia.illinois.gov/research) page; outcome statistics on that page reference pre/post-intervention data analyzed by ICJIA.
