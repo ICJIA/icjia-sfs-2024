@@ -1,10 +1,11 @@
-# Astro Migration Checklist — v6.3 (DVFR post-cutover 404 + sitemap.xml polish, 2026-05-27)
+# Astro Migration Checklist — v6.4 (SFS search-affordances pattern, 2026-05-27)
 
-> **Checklist version: v6.3 (canonical / current). Continuously updated.**
+> **Checklist version: v6.4 (canonical / current). Continuously updated.**
 >
-> File renamed from `astro-conversion-checklist-v6.2.md` → `astro-conversion-checklist-v6.3.md` on 2026-05-27 to signal the **DVFR back-port** of v6.2's two highest-impact Infonet patterns (the **"Standard 404 page"** + the **`/sitemap.xml` 200-rewrite + `robots.txt` naming fix**). Both patterns were authored in v6.2 from the Infonet post-cutover work; v6.3 captures their confirmation on a second site (DVFR) and elevates them to canonical-and-replicable status. **The v6.2 ancestor (Infonet post-cutover era) lives in git history at the commit just before this rename.**
+> File renamed from `astro-conversion-checklist-v6.3.md` → `astro-conversion-checklist-v6.4.md` on 2026-05-27 to signal the **SFS-authored "search affordances" canonical pattern** — a small but load-bearing addition to the v6.3 Standard 404 / `/search` work: every site that ships a `/search` route ALSO needs a top-nav search icon + a footer "Search" link, with the 404 card grid carving `/search` out. v6.3's surface (Infonet + DVFR) shipped Pagefind/Fuse but left the chrome-discoverability question implicit; SFS made it explicit and codifiable.
 >
-> - **v6.3** is this file. Shipped after the DVFR post-cutover audit ran against the freshly-written v6.2 checklist. Two patterns earned confirmation as **portable, copy-paste-into-any-ICJIA-site** rather than Infonet-only:
+> - **v6.4** is this file. Shipped after the SFS Fuse.js search + 404 increment landed and revealed that `/search` without chrome affordances is effectively undiscoverable. One new canonical rule promoted: **search appears EXACTLY twice in the chrome** (top-nav icon + footer text link), and **`/search` is filtered OUT of the 404 card grid**. Detailed pattern in §"Search affordances" further down.
+> - **v6.3** shipped after the DVFR post-cutover audit ran against the freshly-written v6.2 checklist. Two patterns earned confirmation as **portable, copy-paste-into-any-ICJIA-site** rather than Infonet-only:
 >   - **Standard 404 page** — the BaseLayout + hero band + Pagefind-or-Fuse search form + 4–6-card quick-link grid + help line pattern now has *two* shipping sites (Infonet, DVFR). Both sites ship the same component shape with site-specific brand colors swapped in (DVFR = `#391856` purple + Oswald narrow display; Infonet = `#0d4270` navy + Raleway). **Treat the 404 as a template, not a per-site bespoke design** — copy the structure, swap the palette + font tokens, rename `not-found-*` → `<site>-nf-*`. Detailed pattern in §"404 page — stylish, on-brand" further down.
 >   - **`/sitemap.xml` routing** — v6.2 documented the `@astrojs/sitemap` emits-two-files pitfall (`sitemap-index.xml` + `sitemap-0.xml`, but never `sitemap.xml`). DVFR confirmed the two-rewrite Netlify pattern (`/sitemap.xml` + `/sitemap.xml/` both → `/sitemap-0.xml` with `status = 200`) is the right shape for any single-shard site. Plus: **the `_robots.txt` leading-underscore trap** — Astro's `public/` directory does NOT auto-exclude underscore-prefixed files (unlike `src/pages/`), so a file named `public/_robots.txt` ships to production as `/_robots.txt` and the conventional `/robots.txt` returns 404. **Always name it `public/robots.txt` (no underscore).** Added to the §"Common confusions" surface in v6.3.
 > - **v6.2** was shipped after IFVCC's cutover to production
@@ -308,6 +309,23 @@ v6.3 is a **back-port-and-confirm** increment, not a new-pattern increment. v6.2
 - Root `README.md` — checklist filename reference bumped to `v6.3`.
 - `CHANGELOG.md` — `[3.1.0] - 2026-05-27` entry describing the 404 + sitemap + robots fix landing.
 - `package.json` — version `3.0.1` → `3.1.0`.
+
+---
+
+## What changed from v6.3 → v6.4
+
+v6.4 is a **single-pattern increment** authored from the SFS post-launch UX surface. v6.3's "Standard 404 page" pattern documented an in-page search form that hands off to `/search/?q=…`, but assumed the rest of the site offered some way to reach `/search` directly. The SFS sweep revealed that **without explicit chrome-level affordances, `/search` is effectively undiscoverable** — only users who hit the 404 (or who manually type the URL) ever find it. v6.4 codifies the two-affordance + redundancy-carve-out rule that closes the gap.
+
+| Area | v6.3 (Infonet/DVFR pattern) | v6.4 (SFS-authored canonical pattern) |
+|---|---|---|
+| **Search affordances — top-nav icon + footer "Search" link + 404-card carve-out** | Not documented. Pagefind/Fuse shipped on Infonet + DVFR but the discoverability surface was site-specific and undocumented; the 404-card-redundancy carve-out (don't show a Search card when the search form is already in the hero) was implicit. | **New canonical SFS-authored rule (2026-05-27):** every site that ships a `/search` route ALSO ships exactly two chrome-level affordances + one redundancy carve-out: (1) **magnifying-glass `<svg>` icon link** in the top nav, visible at every breakpoint, 44×44 touch target, `aria-label="Search"` + SVG `aria-hidden="true"`; (2) **`{ main: "Search", link: "/search" }` appended to `footerNav`** in `src/config/nav.ts`; (3) **filter `/search` OUT of the 404 card grid** so the Search-card-next-to-search-form regression doesn't happen. Don't add Search to `sidebarNav` (the mobile drawer) — the top-nav icon is already visible when the drawer is open, so a third surface in the same viewport is over-affordance. **The rule of thumb:** search appears EXACTLY twice in the chrome (icon + footer). Full pattern in §"Search affordances" further down. |
+
+**Cross-reference updates that landed with v6.4:**
+- File rename: `docs/astro-conversion-checklist-v6.3.md` → `docs/astro-conversion-checklist-v6.4.md`.
+- Root `README.md` — checklist filename reference bumped to `v6.4`.
+- `CHANGELOG.md` — `v6.4 increment` bullet added to the Unreleased section describing the search-affordances pattern landing on SFS.
+
+**Why this didn't earn promotion to "back-port-and-confirm canonical" yet:** v6.4's rule was authored from a single site (SFS). Per the v6.3 discipline note above, true canonical status requires confirmation on a second site without site-specific carve-outs. The next ICJIA migration that ships `/search` (Infonet retrofit, or the flagship) will validate the pattern and earn it the promotion; for now the rule is "SFS-authored, mandatory on every new site, treat as canonical until proven site-specific."
 - `docs/icjia-strapi-cheatsheet.md` — no change needed (Strapi-specific).
 - `src/components/HeadMeta.astro` + `src/layouts/BaseLayout.astro` — `noindex?: boolean` prop added.
 - `src/pages/404.astro` — full rewrite from the Vuetify-mimic placeholder to the Standard 404 page template.
@@ -837,7 +855,7 @@ What does NOT count:
 
 - **In Claude Code (other repos):** point the assistant at the URL —
   e.g. *"apply the patterns from
-  github.com/ICJIA/icjia-sfs-2024/blob/main/docs/astro-conversion-checklist-v3.md
+  github.com/ICJIA/icjia-sfs-2024/blob/main/docs/astro-conversion-checklist-v6.4.md
   to this codebase, starting with the image pipeline."* Claude will
   fetch and apply.
 - **Locally:** clone or `gh api ... | base64 -d` the file into your
@@ -3906,9 +3924,9 @@ Lessons from the final pixel-perfect stretch + the cutover commit. These were pa
 - The v1 → v2 + v2 → v3 + v3 → v4 + v4 → v5 + v5 → v6 changelog sections document the *why* behind every current rule. The "always pnpm, never yarn" rule (v1 → v2), "Pagefind for static search" (v4 → v5), and "OG image SVG → PNG with `font-family='sans-serif'` only" (v5 → v6) are all still load-bearing in their original form.
 - The "Why migrate (two-part case)" framing at the top remains current and worth keeping.
 
-### Companion docs (current as of v6.3.0)
+### Companion docs (current as of v6.4.0)
 
-- `docs/astro-conversion-checklist-v6.3.md` — this file. The canonical checklist. **Use for any new ICJIA migration (next: infonet).**
+- `docs/astro-conversion-checklist-v6.4.md` — this file. The canonical checklist. **Use for any new ICJIA migration (next: infonet).**
 - `docs/icjia-strapi-cheatsheet.md` — Strapi-specific reference. **Read first** when starting a new ICJIA migration. Update with the v3 unwrap lane when migrating each site.
 - `docs/superpowers/specs/<date>-astro-migration-design.md` — per-site spec template. IFVCC's lives at `docs/superpowers/specs/2026-05-25-astro-migration-design.md`.
 - `docs/superpowers/plans/<date>-astro-migration-phase{1..7}.md` — phase-by-phase implementation plans (Phase 1-3 explicit; Phase 4-7 dispatched inline once patterns are established).
@@ -4388,6 +4406,103 @@ The cards themselves keep their **internal flex** layout (text left, arrow right
 - Lighthouse mobile audit on the 404 itself: A11y 100, BP 100, SEO 100 (Perf is irrelevant — it's a 404).
 
 **Reusability:** the same pattern (`BaseLayout` + hero band + Pagefind form + curated grid + help line) is the right shape for `/search-no-results/` pages, maintenance pages, and any other "this isn't the content you wanted" exit point. Treat the 404 as a template; copy-paste-rename for the next dead-end.
+
+#### Search affordances — top-nav icon, footer "Search" link, and the 404-card carve-out
+
+> **v6.3 SFS addition (2026-05-27).** Shipping `/search` is necessary but
+> not sufficient. If the only entry points to the search page are (a) the
+> 404 form and (b) someone manually typing `/search` in the URL bar,
+> discoverability is effectively zero. Every site that ships a `/search`
+> route ALSO needs two chrome-level affordances + one redundancy carve-out.
+
+**1. Top-nav search icon (mandatory, visible at every breakpoint).** A
+single magnifying-glass `<svg>` inside an `<a href="/search">` link. The
+icon is small (~22 px stroke) but the touch target is 44×44 (per Apple
+HIG / WCAG 2.5.5 minimum). `aria-label="Search"` carries the accessible
+name; the SVG is `aria-hidden="true"` + `focusable="false"`. **Don't
+gate the icon behind `lg:` like the desktop primary nav** — search is
+the highest-leverage affordance for mobile users who hit a chrome dead
+end (hamburger drawer is one tap; search icon is zero taps once the
+chrome is on screen).
+
+Pattern that landed on SFS (`src/components/Nav.astro`):
+
+```astro
+<a
+  href="/search"
+  aria-label="Search"
+  class="inline-flex items-center justify-center w-11 h-11 rounded text-sfs-text-soft hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-sfs-blue focus-visible:outline-offset-2"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+       fill="none" stroke="currentColor" stroke-width="2"
+       stroke-linecap="round" stroke-linejoin="round"
+       aria-hidden="true" focusable="false">
+    <circle cx="11" cy="11" r="7" />
+    <line x1="20" y1="20" x2="16.65" y2="16.65" />
+  </svg>
+</a>
+```
+
+Place the icon **AFTER the `flex-grow` that pushes the title block to
+the left**, BEFORE the desktop primary nav. On mobile (`< lg`), the
+icon becomes the sole right-side element — anchoring the bar visually.
+On desktop, it sits left of the primary nav links, mirroring the
+"icons on the inside, text links on the outside" convention common in
+gov-ish nav bars.
+
+**2. Footer "Search" text link (mandatory).** Append `{ main: "Search",
+link: "/search" }` to `footerNav` in `src/config/nav.ts`. The footer
+already renders `footerNav` 1:1 with no special-casing, so this is a
+one-line config change with no template edits. Users who scroll past
+the content body and reach the footer get a second, label-bearing
+entry point that doesn't depend on noticing a chrome icon.
+
+**3. Carve `/search` OUT of the 404 card grid.** The Standard 404 page
+template already iterates `footerNav` for its quick-link card grid.
+With Search added to `footerNav`, the 404 would now show a Search
+card RIGHT NEXT TO the search form in its own hero band — visually
+confusing and a clear UX regression. Filter it out:
+
+```astro
+const cards = footerNav
+  .filter((item) => item.link !== "/search")
+  .map(...);
+```
+
+The 404 keeps its 6-card grid; the footer keeps its 7-link row;
+`footerNav` remains the canonical source of truth.
+
+**4. Don't add Search to `sidebarNav` (the mobile drawer)** unless the
+sidebar duplicates the full primary nav. SFS's `sidebarNav` is a
+streamlined "About / Sites / Resources" three-entry drawer; the top-nav
+search icon is already visible when the drawer is open, so adding
+Search inside the drawer would be a third copy on the same viewport.
+The rule of thumb: **search appears EXACTLY twice in the chrome** — once
+as an icon in the top nav, once as a text link in the footer.
+
+**Verification checklist:**
+
+- `viewcap` at 375 px: search icon visible at the right edge of the top
+  nav, no overlap with the hamburger or wordmark.
+- `viewcap` at 1400 px (`> lg`): search icon visible left of the primary
+  nav text links.
+- `curl -sS https://<site>/ | grep -o 'aria-label="Search"' | wc -l`
+  → expect `1` (top nav only; the footer Search is plain text).
+- `curl -sS https://<site>/404 | grep -c 'sfs-nf-card__title'` → expect
+  `6`, not `7` (no Search card next to the form). Substitute the
+  per-site class prefix (`.dvfr-nf-*`, `.not-found-*`, etc.).
+- `axecap` AA on `/`: no `landmark-unique` / `label-content-name-mismatch`
+  warnings introduced by the icon. The icon link's accessible name is
+  "Search" (from `aria-label`); the visible content is an SVG with
+  `aria-hidden="true"`, so the rule that bites text-bearing links with
+  non-matching aria-label doesn't apply here.
+
+**Why this matters at scale:** any future ICJIA site that ships
+Pagefind or Fuse without these two chrome affordances will fail the
+"can I find the search box?" usability test — and yet the failure mode
+is invisible to the developer (they know `/search` exists, so they type
+it). Codifying this as a hard rule prevents the next site from having
+to learn it post-launch.
 
 #### Build chain: two-pass `astro build` for any CMS image manifest
 

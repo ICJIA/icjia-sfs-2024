@@ -2,10 +2,24 @@
 
 All notable changes to the ICJIA Safe From the Start (SFS) website are documented in this file. Entries are in reverse chronological order.
 
-## Unreleased — checklist v2 → v6.3 alignment
+## Unreleased — checklist v2 → v6.4 alignment
 
-A sweep aligning the repo with `docs/astro-conversion-checklist-v6.3.md`
+A sweep aligning the repo with `docs/astro-conversion-checklist-v6.4.md`
 (the canonical ICJIA Astro pattern) and removing the Thumbor dependency.
+
+**v6.4 increment (2026-05-27)** — SFS-authored canonical pattern:
+
+- **feat(nav):** added magnifying-glass search icon to the top nav
+  (`src/components/Nav.astro`, 44×44 touch target, `aria-label="Search"`)
+  and appended `{ main: "Search", link: "/search" }` to `footerNav`.
+  Filtered `/search` out of the 404 card grid so the Search-card-next-to-
+  search-form regression doesn't happen. **The rule of thumb:** search
+  appears EXACTLY twice in the chrome (icon + footer).
+- **docs(checklist):** rename `astro-conversion-checklist-v6.3.md` →
+  `astro-conversion-checklist-v6.4.md`. Added §"What changed from
+  v6.3 → v6.4" + §"Search affordances" full pattern. Marked as
+  "SFS-authored, awaiting second-site confirmation for canonical
+  promotion" per the v6.3 back-port-and-confirm discipline.
 
 **v6.3 increment (2026-05-27)** — back-port of the two Infonet/DVFR
 patterns the checklist promoted to canonical:
