@@ -1,7 +1,7 @@
 ---
 title: About Us
 slug: "about"
-summary: "In June 1999, the U.S. Department of Justice and the U.S. Department of Health and Human Services held Safe from the Start: The National Summit on Children Exposed to Violence in Washington D.C."
+summary: "The history and origins of Illinois' Safe From the Start (SFS) program — from the 1999 National Summit on Children Exposed to Violence to services today."
 publishedAt: "2024-07-16"
 section: ""
 searchMeta: null

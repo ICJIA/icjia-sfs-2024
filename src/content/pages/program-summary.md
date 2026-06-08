@@ -1,7 +1,7 @@
 ---
 title: "Program Summary"
 slug: "program-summary"
-summary: "This is the program summary summary."
+summary: "Overview of the Safe From the Start (SFS) program model: direct services, coalition-building, and public awareness for children ages 0–5 exposed to violence."
 publishedAt: "2024-04-26"
 section: ""
 searchMeta: null

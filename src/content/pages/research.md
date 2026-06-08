@@ -1,7 +1,7 @@
 ---
 title: "Research"
 slug: "research"
-summary: "SFS research information."
+summary: "ICJIA's outcome evaluation of the Safe From the Start (SFS) program — standardized intake and exit assessment data measuring client outcomes and efficacy."
 publishedAt: "2024-04-26"
 section: ""
 searchMeta: null

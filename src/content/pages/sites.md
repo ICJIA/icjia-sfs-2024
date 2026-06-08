@@ -1,7 +1,7 @@
 ---
 title: "Sites"
 slug: "sites"
-summary: "This is the sites page summary"
+summary: "Find current Safe From the Start (SFS) program sites and providers serving children ages 0–5 across Illinois, with an interactive locations map."
 publishedAt: "2024-05-01"
 section: ""
 searchMeta: null

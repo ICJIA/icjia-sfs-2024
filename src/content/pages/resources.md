@@ -1,7 +1,7 @@
 ---
 title: "Resources"
 slug: "resources"
-summary: "SFS resources."
+summary: "Resources and coalitions supporting children exposed to violence and their families, curated by Illinois' Safe From the Start (SFS) program."
 publishedAt: "2024-04-26"
 section: ""
 searchMeta: null

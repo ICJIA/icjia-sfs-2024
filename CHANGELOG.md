@@ -7,7 +7,7 @@ All notable changes to the ICJIA Safe From the Start (SFS) website are documente
 A sweep aligning the repo with `docs/astro-conversion-checklist-v6.4.md`
 (the canonical ICJIA Astro pattern) and removing the Thumbor dependency.
 
-**v6.4 increment (2026-06-08)** — OG share-card + CORP fix:
+**v6.4 increment (2026-06-08)** — OG share-card, CORP fix + meta-description cleanup:
 
 - **feat(seo):** replaced the photo-based `public/og-image.jpg` with a
   generated `public/og-image.png` — a 1200×630 brand-color share card
@@ -30,6 +30,11 @@ A sweep aligning the repo with `docs/astro-conversion-checklist-v6.4.md`
   scanner's own permissive `img-src *`. Server-side crawlers (Facebook,
   LinkedIn) were unaffected, which is why it "worked everywhere but the
   checker." COOP stays `same-origin` (orthogonal — window isolation only).
+- **fix(seo):** tightened every page's meta description to ≤160 chars (the
+  Google/MetaPeek snippet limit) and replaced the placeholder `summary`
+  stubs with real, page-specific descriptions across the seven
+  `src/content/pages/*.md` files (these also feed the Fuse search index).
+  Home default 195→155, `/about` 194→153; all 10 built pages now ≤160.
 
 **v6.4 increment (2026-05-27)** — SFS-authored canonical pattern:
 

@@ -1,7 +1,7 @@
 ---
 title: "State of Illinois Privacy Policy"
 slug: "privacy"
-summary: This is the privacy summary
+summary: "The State of Illinois privacy policy and terms of use for this site — disclaimers of liability, warranties, endorsement, and external links."
 publishedAt: "2024-07-16"
 section: ""
 searchMeta: null

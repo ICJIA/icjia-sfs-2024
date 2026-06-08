@@ -1,7 +1,7 @@
 ---
 title: "Childhood Exposure to Violence and Trauma"
 slug: "childhood-exposure"
-summary: "This is the childhood-exposure summary."
+summary: "How childhood exposure to violence affects children's health, development, and behavior — and how early intervention and protective factors build resilience."
 publishedAt: "2024-05-02"
 section: ""
 searchMeta: null
