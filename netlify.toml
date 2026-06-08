@@ -35,6 +35,14 @@
   to = "/sitemap-0.xml"
   status = 200
 
+# OG image moved jpg → png (v6.4, 2026-06-08). 301 so any already-cached
+# /og-image.jpg reference (social scrapers, mail templates) resolves to the
+# new branded card instead of 404ing.
+[[redirects]]
+  from = "/og-image.jpg"
+  to = "/og-image.png"
+  status = 301
+
 # --------------------------------------------------------------------------
 # Headers — caching + baseline security
 # --------------------------------------------------------------------------
@@ -123,9 +131,12 @@
     # Process isolation: blocks cross-origin windows from accessing this
     # origin via window.opener.
     Cross-Origin-Opener-Policy = "same-origin"
-    # Blocks third-party origins from embedding our responses
-    # cross-origin (defense against Spectre-style reads).
-    Cross-Origin-Resource-Policy = "same-origin"
+    # Public share assets (og-image, favicon, hotlinked logos, PDFs) must
+    # be embeddable from other origins. same-origin made browser-based OG
+    # scanners (MetaPeek + Slack/iMessage/Discord unfurlers) refuse them
+    # despite a 200 OK; server-side crawlers (FB/LinkedIn) were fine. See
+    # checklist v6.4 §4. COOP above stays same-origin (orthogonal).
+    Cross-Origin-Resource-Policy = "cross-origin"
     # Content-Security-Policy:
     #   - script-src: 'self' for bundled Astro scripts; sha256 hashes
     #     for every inline <script> Astro emits (it auto-inlines small

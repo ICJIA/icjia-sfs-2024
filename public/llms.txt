@@ -21,7 +21,7 @@ This website (sfs.icjia.illinois.gov) is the public-facing program site for gran
 
 - [Sitemap](https://sfs.icjia.illinois.gov/sitemap.xml) — machine-readable URL index.
 - [robots.txt](https://sfs.icjia.illinois.gov/robots.txt) — crawler directives.
-- [OG image](https://sfs.icjia.illinois.gov/og-image.jpg) — 1200×630 social-share preview.
+- [OG image](https://sfs.icjia.illinois.gov/og-image.png) — 1200×630 branded social-share card.
 
 ## Topics covered
 

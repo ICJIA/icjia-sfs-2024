@@ -42,7 +42,7 @@ const rawPath = Astro.url.pathname
   .replace(/\/index\.html$/, "/")
   .replace(/\.html$/, "");
 const canonical = new URL(rawPath, Astro.site ?? SITE_ORIGIN).toString();
-const ogImage = `${SITE_ORIGIN}/og-image.jpg`;
+const ogImage = `${SITE_ORIGIN}/og-image.png`;
 
 // JSON-LD WebPage schema for SEO + AI Readiness (MetaPeek-style checks
 // look for this). Per v6.3 checklist §"JSON-LD WebPage + freshness dates":
@@ -75,7 +75,7 @@ const jsonLd = {
     url: "https://icjia.illinois.gov",
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_ORIGIN}/og-image.jpg`,
+      url: `${SITE_ORIGIN}/og-image.png`,
     },
   },
 };

@@ -21,7 +21,8 @@
     "check:links": "node scripts/check-links.mjs",
     "check:links:internal": "node scripts/check-links.mjs --internal-only",
     "audit:lh": "node scripts/audit-lh.mjs",
-    "audit:axe": "node scripts/audit-axe.mjs"
+    "audit:axe": "node scripts/audit-axe.mjs",
+    "og-image": "node scripts/build-og-image.mjs"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./public/og-image.jpg" alt="Safe From the Start — direct services for children exposed to violence" width="820" />
+  <img src="./public/og-image.png" alt="Safe From the Start — direct services for children exposed to violence" width="820" />
 </p>
 
 # Safe From the Start (SFS)

@@ -7,6 +7,30 @@ All notable changes to the ICJIA Safe From the Start (SFS) website are documente
 A sweep aligning the repo with `docs/astro-conversion-checklist-v6.4.md`
 (the canonical ICJIA Astro pattern) and removing the Thumbor dependency.
 
+**v6.4 increment (2026-06-08)** — OG share-card + CORP fix:
+
+- **feat(seo):** replaced the photo-based `public/og-image.jpg` with a
+  generated `public/og-image.png` — a 1200×630 brand-color share card
+  (navy→blue gradient, "ILLINOIS CRIMINAL JUSTICE INFORMATION AUTHORITY"
+  eyebrow, the lightly-condensed core description, and a vector ICJIA
+  wordmark). Authored as pure SVG → PNG via Sharp in the new
+  `scripts/build-og-image.mjs` (`pnpm og-image`). Per checklist §8 the
+  card is set in the generic system sans — librsvg renders any *named*
+  Fontsource webfont as `.notdef` boxes, so the brand is carried by
+  color/weight/layout instead. Repointed every `og-image.jpg` reference
+  to `.png` (`Layout.astro` og:image + Twitter + JSON-LD, `llms.txt`,
+  `README.md`) and added a `301` `/og-image.jpg → /og-image.png` redirect
+  for any already-cached references.
+- **fix(security):** flipped `Cross-Origin-Resource-Policy` from
+  `same-origin` to `cross-origin` site-wide (`netlify.toml` +
+  `public/_headers`) per checklist §4. `same-origin` made browser-based
+  OG scanners refuse the share image even though it's `200 OK` on curl —
+  MetaPeek (`metapeek.icjia.app`) renders the preview via a client-side
+  `<img>`, and CORP is enforced in any browser context regardless of the
+  scanner's own permissive `img-src *`. Server-side crawlers (Facebook,
+  LinkedIn) were unaffected, which is why it "worked everywhere but the
+  checker." COOP stays `same-origin` (orthogonal — window isolation only).
+
 **v6.4 increment (2026-05-27)** — SFS-authored canonical pattern:
 
 - **feat(nav):** added magnifying-glass search icon to the top nav
