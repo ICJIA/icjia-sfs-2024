@@ -1,21 +1,21 @@
 ---
 /**
- * Mobile navigation drawer. Native nav/ul/li so ARIA roles fall out for free.
- * State lives in Alpine's `nav` store so the header hamburger toggles us.
- * Focus management: when opened, focus moves to the first link.
+ * Navigation drawer for viewports below lg (1280px) — the same range that
+ * shows the hamburger. Native nav/ul/li so ARIA roles fall out for free;
+ * a plain disclosure, not a dialog (no focus trap to fake). Server-rendered
+ * closed: slid offscreen AND inert + aria-hidden, so its links stay out of
+ * the tab order and the accessibility tree until opened. The interactions
+ * script in Layout.astro toggles state, moves focus to the first link on
+ * open, and restores focus to the hamburger on close.
  */
 import { sidebarNav } from "../config/nav";
 ---
 
 <div
   id="site-sidebar"
-  class="md:hidden fixed top-0 left-0 h-full w-[280px] max-w-[80vw] bg-white shadow-2xl z-[60] transform -translate-x-full transition-transform duration-200"
-  :class="{ 'translate-x-0': $store.nav.open, '-translate-x-full': !$store.nav.open }"
-  role="dialog"
-  aria-modal="true"
-  aria-label="Main navigation"
-  x-data
-  @keydown.escape.window="$store.nav.close()"
+  class="lg:hidden fixed top-0 left-0 h-full w-[280px] max-w-[80vw] bg-white shadow-2xl z-[60] transform -translate-x-full transition-transform duration-200"
+  inert
+  aria-hidden="true"
 >
   <nav aria-label="Main navigation" class="py-2">
     <ul class="m-0 p-0 list-none">
@@ -23,8 +23,6 @@ import { sidebarNav } from "../config/nav";
         <a
           href="/"
           class="flex items-center justify-between w-full px-4 py-3 text-[16px] font-black text-sfs-text hover:bg-neutral-100 focus-visible:bg-neutral-100 focus-visible:outline-none no-underline"
-          data-first-link
-          @click="$store.nav.close()"
         >
           Home
         </a>
@@ -32,16 +30,13 @@ import { sidebarNav } from "../config/nav";
       {
         sidebarNav.map((item, index) =>
           item.children ? (
-            <li
-              class="border-t border-neutral-100"
-              x-data={`{ open: true }`}
-            >
+            <li class="border-t border-neutral-100">
               <button
                 type="button"
                 class="flex items-center justify-between w-full text-left px-4 py-3 text-[16px] font-black text-sfs-text bg-transparent border-0 cursor-pointer hover:bg-neutral-100 focus-visible:bg-neutral-100 focus-visible:outline-none"
-                :aria-expanded="open ? 'true' : 'false'"
+                data-acc-toggle
+                aria-expanded="true"
                 aria-controls={`sb-group-${index}`}
-                @click="open = !open"
               >
                 <span>{item.main}</span>
                 <svg
@@ -50,25 +45,18 @@ import { sidebarNav } from "../config/nav";
                   height="20"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  :class="open ? '' : '-rotate-90'"
                   class="transition-transform"
                   aria-hidden="true"
                 >
                   <path d="M7 10l5 5 5-5z" />
                 </svg>
               </button>
-              <ul
-                id={`sb-group-${index}`}
-                class="m-0 p-0 list-none"
-                x-show="open"
-                x-cloak
-              >
+              <ul id={`sb-group-${index}`} class="m-0 p-0 list-none">
                 {item.children.map((child) => (
                   <li>
                     <a
                       href={child.link}
                       class="block px-8 py-3 text-[16px] font-normal text-sfs-text-soft no-underline hover:bg-neutral-100 focus-visible:bg-neutral-100 focus-visible:outline-none"
-                      @click="$store.nav.close()"
                     >
                       {child.title}
                     </a>
@@ -81,7 +69,6 @@ import { sidebarNav } from "../config/nav";
               <a
                 href={item.link}
                 class="flex items-center justify-between w-full px-4 py-3 text-[16px] font-black text-sfs-text no-underline hover:bg-neutral-100 focus-visible:bg-neutral-100 focus-visible:outline-none"
-                @click="$store.nav.close()"
               >
                 {item.main}
               </a>
@@ -93,35 +80,11 @@ import { sidebarNav } from "../config/nav";
   </nav>
 </div>
 
-<!-- Scrim — only ever rendered on < md so it can't dim desktop. -->
+<!-- Scrim — only ever rendered below lg so it can't dim desktop. -->
 <div
-  class="md:hidden fixed inset-0 bg-black/40 z-[55]"
-  x-data
-  x-show="$store.nav.open"
-  x-cloak
-  x-transition.opacity.duration.150ms
-  @click="$store.nav.close()"
+  class="lg:hidden fixed inset-0 bg-black/40 z-[55]"
+  data-nav-scrim
+  hidden
   aria-hidden="true"
 >
 </div>
-
-<script>
-  // After the drawer opens, move focus to its first link (WCAG 2.4.3).
-  document.addEventListener("alpine:init", () => {
-    // After Alpine wires the store, watch for opens.
-    setTimeout(() => {
-      const drawer = document.getElementById("site-sidebar");
-      if (!drawer) return;
-      const focusFirstLink = () => {
-        const link = drawer.querySelector<HTMLElement>("[data-first-link]");
-        if (link && typeof link.focus === "function") link.focus();
-      };
-      // Alpine $store.nav has watch via x-effect; use MutationObserver fallback
-      const obs = new MutationObserver(() => {
-        const isOpen = drawer.classList.contains("translate-x-0");
-        if (isOpen) requestAnimationFrame(focusFirstLink);
-      });
-      obs.observe(drawer, { attributes: true, attributeFilter: ["class"] });
-    }, 0);
-  });
-</script>

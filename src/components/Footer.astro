@@ -6,6 +6,8 @@
 import { Image } from "astro:assets";
 import icjiaLogo from "../assets/icjia-logo.png";
 import { footerNav } from "../config/nav";
+// Build-time fallback; the Layout script refreshes it client-side so the
+// copyright doesn't go stale across a year boundary between deploys.
 const year = new Date().getFullYear();
 ---
 
@@ -109,7 +111,7 @@ const year = new Date().getFullYear();
 
       <div class="text-[12px] font-normal">
         <strong>
-          &copy; {year}
+          &copy; <span data-footer-year>{year}</span>
           <a
             href="https://icjia.illinois.gov"
             target="_blank"

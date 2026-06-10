@@ -57,5 +57,5 @@ for (const [h, info] of hashes) {
   console.log();
 }
 
-console.log("CSP script-src snippet (paste between 'self' and 'unsafe-eval'):");
+console.log("CSP script-src snippet (paste after 'self'):");
 console.log([...hashes.keys()].map((h) => `'${h}'`).join(" "));

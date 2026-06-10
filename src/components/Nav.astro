@@ -1,9 +1,12 @@
 ---
 /**
  * Top app bar — logo + wordmark on the left, primary nav on the right.
- * Mobile (< md) shows a hamburger that toggles the Sidebar via Alpine's
- * shared `nav` store. Desktop dropdown groups use a click/keyboard-driven
- * disclosure pattern; aria-expanded reflects state.
+ * Below lg (1280px) a hamburger toggles the Sidebar drawer; at lg and up
+ * the primary nav links render inline. The two ranges meet exactly at lg
+ * so no viewport width is left without navigation. Behavior is wired up
+ * by the vanilla interactions script in Layout.astro via data-* hooks.
+ * Dropdown groups use a click/keyboard disclosure pattern; aria-expanded
+ * reflects state.
  */
 import { Image } from "astro:assets";
 import icjiaLogo from "../assets/icjia-logo.png";
@@ -14,14 +17,15 @@ import { primaryNav } from "../config/nav";
   <div
     class="fixed top-0 inset-x-0 z-50 bg-white shadow-md h-[64px] flex items-center px-5"
   >
-    <!-- Mobile hamburger -->
+    <!-- Hamburger — shown below lg (1280px), where the inline primary nav
+         takes over. (md:hidden here once orphaned 960–1279px with no nav
+         controls at all.) -->
     <button
       type="button"
-      class="md:hidden inline-flex flex-col items-center justify-center min-w-[44px] min-h-[44px] rounded text-sfs-text hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-sfs-blue focus-visible:outline-offset-2"
-      x-data
-      @click="$store.nav.toggle()"
-      :aria-expanded="$store.nav.open ? 'true' : 'false'"
-      :aria-label="$store.nav.open ? 'Close navigation menu' : 'Open navigation menu'"
+      class="lg:hidden inline-flex flex-col items-center justify-center min-w-[44px] min-h-[44px] rounded text-sfs-text hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-sfs-blue focus-visible:outline-offset-2"
+      data-nav-toggle
+      aria-expanded="false"
+      aria-label="Open navigation menu"
       aria-controls="site-sidebar"
     >
       <svg
@@ -35,7 +39,6 @@ import { primaryNav } from "../config/nav";
         stroke-linecap="round"
         stroke-linejoin="round"
         aria-hidden="true"
-        x-show="!$store.nav.open"
       >
         <line x1="3" y1="6" x2="21" y2="6"></line>
         <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -52,19 +55,18 @@ import { primaryNav } from "../config/nav";
         stroke-linecap="round"
         stroke-linejoin="round"
         aria-hidden="true"
-        x-show="$store.nav.open"
-        x-cloak
+        hidden
       >
         <line x1="18" y1="6" x2="6" y2="18"></line>
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
       <span
         class="text-[10px] font-black tracking-wide leading-none mt-1"
-        x-text="$store.nav.open ? 'CLOSE' : 'MENU'">MENU</span
+        data-nav-toggle-label>MENU</span
       >
     </button>
 
-    <div class="md:hidden grow"></div>
+    <div class="lg:hidden grow"></div>
 
     <!-- Logo + home link -->
     <a
@@ -139,23 +141,19 @@ import { primaryNav } from "../config/nav";
     </a>
 
     <!-- Desktop primary nav (>= lg = 1280px, matches Vuetify
-         hidden-md-and-down) -->
+         hidden-md-and-down). Dropdowns are plain disclosure lists —
+         deliberately NOT role="menu"/"menuitem", which would promise
+         APG arrow-key behavior these simple link lists don't need. -->
     <nav aria-label="Primary" class="hidden lg:flex items-center gap-1">
       {
         primaryNav.map((item, index) =>
           item.children ? (
-            <div
-              class="relative"
-              x-data={`{ open: false }`}
-              @keydown.escape="open = false"
-              @click.outside="open = false"
-            >
+            <div class="relative" data-dropdown>
               <button
                 type="button"
                 class="inline-flex items-center gap-1 px-3 py-2 text-[18px] font-black text-sfs-text-soft rounded hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-sfs-blue focus-visible:outline-offset-2"
-                :aria-expanded="open ? 'true' : 'false'"
+                aria-expanded="false"
                 aria-controls={`primary-menu-${index}`}
-                @click="open = !open"
               >
                 {item.main}
                 <svg
@@ -172,17 +170,13 @@ import { primaryNav } from "../config/nav";
               <ul
                 id={`primary-menu-${index}`}
                 class="absolute right-0 top-full mt-1 min-w-[200px] bg-white border border-neutral-200 rounded shadow-lg py-1 z-[60]"
-                role="menu"
-                x-show="open"
-                x-cloak
-                x-transition.opacity.duration.150ms
+                hidden
               >
                 {item.children.map((child) => (
-                  <li role="none">
+                  <li>
                     <a
                       href={child.link}
                       class="block px-4 py-2 text-[14px] font-bold text-sfs-text-soft hover:bg-neutral-100 focus-visible:bg-neutral-100 focus-visible:outline-none"
-                      role="menuitem"
                     >
                       {child.title}
                     </a>

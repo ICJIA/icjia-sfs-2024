@@ -2,9 +2,9 @@
 /**
  * Site-wide layout shell. Owns the <head> (via astro-seo for OG/Twitter/
  * canonical + extend for custom <link>/<meta>), the skip-link, the nav,
- * the sidebar drawer, the main slot, and the footer. Alpine is loaded
- * with `defer` so it runs after the document is parsed but before user
- * input.
+ * the sidebar drawer, the main slot, and the footer. All header/drawer/
+ * dropdown interactivity lives in the vanilla script at the bottom — no
+ * framework, no eval, so the CSP carries no 'unsafe-eval'.
  */
 import "../styles/global.css";
 import { SEO } from "astro-seo";
@@ -62,8 +62,11 @@ const jsonLd = {
   url: canonical,
   image: ogImage,
   inLanguage: "en-US",
+  // Real frontmatter dates when the page provides them; build time only as
+  // a last resort (home/search/404). Falling back to publishedAt for
+  // dateModified beats stamping every page "modified today" on each deploy.
   datePublished: publishedAt ?? buildTime,
-  dateModified: updatedAt ?? buildTime,
+  dateModified: updatedAt ?? publishedAt ?? buildTime,
   isPartOf: {
     "@type": "WebSite",
     name: "Safe From the Start",
@@ -155,12 +158,6 @@ const jsonLd = {
       data-domain="sfs.icjia.illinois.gov"
       src="https://plausible.icjia.cloud/js/script.file-downloads.outbound-links.js"
     ></script>
-
-    <style>
-      [x-cloak] {
-        display: none !important;
-      }
-    </style>
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -174,22 +171,122 @@ const jsonLd = {
 
     <Footer />
 
-    <!-- Alpine for tiny island interactivity (nav drawer + dropdowns). ~14 KB gz. -->
+    <!-- Header / drawer / dropdown interactivity. Vanilla DOM so the CSP
+         needs no 'unsafe-eval' (the old Alpine island evaluated x-*
+         directives via new Function()). -->
     <script>
-      import Alpine from "alpinejs";
-      // Shared store so the header hamburger and the sidebar agree on state.
-      Alpine.store("nav", {
-        open: false as boolean,
-        toggle() {
-          this.open = !this.open;
-        },
-        close() {
-          this.open = false;
-        },
+      const hamburger = document.querySelector<HTMLButtonElement>("[data-nav-toggle]");
+      const drawer = document.getElementById("site-sidebar");
+      const scrim = document.querySelector<HTMLElement>("[data-nav-scrim]");
+
+      let drawerOpen = false;
+
+      // Drawer state. Closed = slid offscreen AND inert/aria-hidden, so its
+      // links leave the tab order and the accessibility tree (WCAG 2.4.3 —
+      // previously the offscreen links stayed keyboard-focusable).
+      function setDrawer(open: boolean) {
+        if (!hamburger || !drawer || !scrim) return;
+        drawerOpen = open;
+        drawer.classList.toggle("translate-x-0", open);
+        drawer.classList.toggle("-translate-x-full", !open);
+        drawer.toggleAttribute("inert", !open);
+        if (open) drawer.removeAttribute("aria-hidden");
+        else drawer.setAttribute("aria-hidden", "true");
+        scrim.hidden = !open;
+        hamburger.setAttribute("aria-expanded", open ? "true" : "false");
+        hamburger.setAttribute(
+          "aria-label",
+          open ? "Close navigation menu" : "Open navigation menu"
+        );
+        const [burgerIcon, closeIcon] = hamburger.querySelectorAll("svg");
+        if (burgerIcon) burgerIcon.toggleAttribute("hidden", open);
+        if (closeIcon) closeIcon.toggleAttribute("hidden", !open);
+        const label = hamburger.querySelector("[data-nav-toggle-label]");
+        if (label) label.textContent = open ? "CLOSE" : "MENU";
+      }
+
+      // Move focus out BEFORE the drawer goes inert/aria-hidden.
+      function closeDrawer(restoreFocus: boolean) {
+        if (!drawerOpen) return;
+        if (restoreFocus || drawer?.contains(document.activeElement)) {
+          hamburger?.focus();
+        }
+        setDrawer(false);
+      }
+
+      hamburger?.addEventListener("click", () => {
+        if (drawerOpen) {
+          closeDrawer(true);
+        } else {
+          setDrawer(true);
+          drawer?.querySelector<HTMLElement>("a[href]")?.focus();
+        }
       });
-      // @ts-ignore -- expose for devtools/inspection
-      window.Alpine = Alpine;
-      Alpine.start();
+      scrim?.addEventListener("click", () => closeDrawer(false));
+      drawer?.addEventListener("click", (e) => {
+        if ((e.target as HTMLElement).closest("a[href]")) setDrawer(false);
+      });
+      // Disclosure pattern: tabbing out of the open drawer closes it, so
+      // keyboard focus never lands on content hidden behind the scrim.
+      drawer?.addEventListener("focusout", (e) => {
+        const next = e.relatedTarget as Node | null;
+        if (drawerOpen && next && !drawer.contains(next) && next !== hamburger) {
+          setDrawer(false);
+        }
+      });
+
+      // Sidebar accordion groups.
+      document.querySelectorAll<HTMLButtonElement>("[data-acc-toggle]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const panel = document.getElementById(btn.getAttribute("aria-controls") ?? "");
+          const isOpen = btn.getAttribute("aria-expanded") === "true";
+          btn.setAttribute("aria-expanded", isOpen ? "false" : "true");
+          if (panel) panel.hidden = isOpen;
+          btn.querySelector("svg")?.classList.toggle("-rotate-90", isOpen);
+        });
+      });
+
+      // Desktop nav dropdowns (plain disclosure: button + list, no menu roles).
+      const dropdowns = document.querySelectorAll<HTMLElement>("[data-dropdown]");
+      function closeDropdown(dd: HTMLElement, restoreFocus = false) {
+        const btn = dd.querySelector<HTMLButtonElement>("button");
+        const panel = dd.querySelector<HTMLElement>("ul");
+        if (!btn || !panel || panel.hidden) return;
+        if (restoreFocus && dd.contains(document.activeElement)) btn.focus();
+        panel.hidden = true;
+        btn.setAttribute("aria-expanded", "false");
+      }
+      dropdowns.forEach((dd) => {
+        const btn = dd.querySelector<HTMLButtonElement>("button");
+        const panel = dd.querySelector<HTMLElement>("ul");
+        if (!btn || !panel) return;
+        btn.addEventListener("click", () => {
+          const willOpen = panel.hidden;
+          dropdowns.forEach((other) => closeDropdown(other));
+          panel.hidden = !willOpen;
+          btn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+        });
+        dd.addEventListener("focusout", (e) => {
+          const next = e.relatedTarget as Node | null;
+          if (next && !dd.contains(next)) closeDropdown(dd);
+        });
+      });
+      document.addEventListener("click", (e) => {
+        const t = e.target as Node;
+        dropdowns.forEach((dd) => {
+          if (!dd.contains(t)) closeDropdown(dd);
+        });
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key !== "Escape") return;
+        if (drawerOpen) closeDrawer(true);
+        else dropdowns.forEach((dd) => closeDropdown(dd, true));
+      });
+
+      // Keep the footer copyright honest between deploys.
+      const year = document.querySelector("[data-footer-year]");
+      if (year) year.textContent = String(new Date().getFullYear());
     </script>
   </body>
 </html>

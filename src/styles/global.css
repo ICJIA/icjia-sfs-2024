@@ -83,8 +83,15 @@
  */
 @layer base {
   html {
-    scroll-behavior: smooth;
     color: var(--color-sfs-text);
+  }
+
+  /* Animated in-page scrolling (skip-link, footnote jumps) only for users
+     who haven't asked for reduced motion (WCAG 2.3.3). */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
   body {
@@ -136,6 +143,19 @@
 
 .skip-link:focus {
   top: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link {
+    transition: none;
+  }
+  /* Drawer slides via Tailwind's transition-transform; snap instead. */
+  #site-sidebar {
+    transition: none;
+  }
+  .sfs-btn {
+    transition: none;
+  }
 }
 
 /* sr-only mirrors Vuetify's helper for accessible-only text. */
