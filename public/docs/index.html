@@ -11,15 +11,10 @@
       --accent: #38a169;
       --accent-hover: #2f855a;
       --info: #3182ce;
-      --warning: #dd6b20;
-      --success: #38a169;
-      --danger: #e53e3e;
       --light: #f7fafc;
-      --dark: #1a202c;
       --gray-100: #f7fafc;
       --gray-200: #edf2f7;
       --gray-300: #e2e8f0;
-      --gray-400: #cbd5e0;
       --gray-500: #a0aec0;
       --gray-600: #718096;
       --gray-700: #4a5568;
@@ -79,12 +74,6 @@
       border-radius: 12px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
       overflow: hidden;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
     }
 
     .card-header {
@@ -138,7 +127,6 @@
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
-      transition: all 0.2s ease;
       text-align: center;
     }
 
@@ -149,15 +137,6 @@
 
     .btn-primary:hover {
       background: var(--accent-hover);
-    }
-
-    .btn-secondary {
-      background: var(--gray-200);
-      color: var(--gray-700);
-    }
-
-    .btn-secondary:hover {
-      background: var(--gray-300);
     }
 
     .quick-links {
@@ -189,7 +168,6 @@
       border-radius: 8px;
       text-decoration: none;
       color: var(--gray-700);
-      transition: all 0.2s ease;
     }
 
     .quick-link:hover {
@@ -206,9 +184,24 @@
       margin-left: 8px;
     }
 
-    .badge-success { background: #c6f6d5; color: #22543d; }
-    .badge-warning { background: #feebc8; color: #744210; }
     .badge-info { background: #bee3f8; color: #2a4365; }
+
+    .stack-note {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    }
+
+    .stack-note h2 {
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+    }
+
+    .stack-note p {
+      color: var(--gray-600);
+    }
 
     .footer {
       text-align: center;
@@ -226,23 +219,11 @@
       text-decoration: underline;
     }
 
-    .status-indicator {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      display: inline-block;
-      margin-right: 8px;
-    }
-
-    .status-success { background: var(--success); }
-    .status-warning { background: var(--warning); }
-    .status-pending { background: var(--gray-400); }
-
     @media (max-width: 768px) {
       .header h1 {
         font-size: 1.8rem;
       }
-      
+
       .cards-grid {
         grid-template-columns: 1fr;
       }
@@ -252,7 +233,7 @@
 <body>
   <header class="header">
     <h1>📚 Documentation Portal</h1>
-    <p>ICJIA Safe From the Start - Development Resources, Testing Reports, and API Documentation</p>
+    <p>ICJIA Safe From the Start — site documentation and audit reports</p>
   </header>
 
   <div class="container">
@@ -263,13 +244,9 @@
           <span>🏠</span>
           <span>Main Website</span>
         </a>
-        <a href="https://github.com/ICJIA/icjia-sfs-2024" target="_blank" rel="noopener noreferrer" class="quick-link">
-          <span>📦</span>
-          <span>GitHub Repository</span>
-        </a>
-        <a href="https://sfs.icjia.illinois.gov" target="_blank" rel="noopener noreferrer" class="quick-link">
-          <span>🌐</span>
-          <span>Production Site</span>
+        <a href="https://icjia.illinois.gov" target="_blank" rel="noopener noreferrer" class="quick-link">
+          <span>🏛️</span>
+          <span>ICJIA</span>
         </a>
         <a href="/sitemap-index.xml" class="quick-link">
           <span>🗺️</span>
@@ -289,7 +266,7 @@
           </h2>
         </div>
         <div class="card-body">
-          <p>Comprehensive accessibility testing using axe-core across all pages and viewports.</p>
+          <p>Accessibility testing using axe-core across all pages and viewports.</p>
           <ul>
             <li>Desktop viewport (1920×1080)</li>
             <li>Tablet viewport (768×1024)</li>
@@ -299,88 +276,17 @@
           <a href="./accessibility/" class="btn btn-primary">View Accessibility Report</a>
         </div>
       </article>
-
-      <!-- Test Results Card -->
-      <article class="card">
-        <div class="card-header">
-          <h2>
-            <span class="icon">🧪</span>
-            E2E and Unit Tests Report
-            <span class="badge badge-success">Vitest</span>
-          </h2>
-        </div>
-        <div class="card-body">
-          <p>Unit tests and Nuxt environment tests for utilities, composables, and components.</p>
-          <ul>
-            <li>Unit tests for pure functions</li>
-            <li>Nuxt environment tests</li>
-            <li>Component integration tests</li>
-            <li>Detailed test descriptions</li>
-          </ul>
-          <a href="./tests/" class="btn btn-primary">View Test Results</a>
-        </div>
-      </article>
-
-      <!-- API Documentation Card -->
-      <article class="card">
-        <div class="card-header">
-          <h2>
-            <span class="icon">📖</span>
-            API Documentation
-            <span class="badge badge-warning">TypeDoc</span>
-          </h2>
-        </div>
-        <div class="card-body">
-          <p>Auto-generated API documentation from JSDoc comments in the codebase.</p>
-          <ul>
-            <li>Composables documentation</li>
-            <li>Utility functions</li>
-            <li>Component scripts</li>
-            <li>Type definitions</li>
-          </ul>
-          <a href="./jsdoc/" class="btn btn-primary">View API Docs</a>
-        </div>
-      </article>
-
-      <!-- Architecture Guide Card -->
-      <article class="card">
-        <div class="card-header">
-          <h2>
-            <span class="icon">🏗️</span>
-            Architecture Guide
-          </h2>
-        </div>
-        <div class="card-body">
-          <p>Comprehensive guide to the application architecture, patterns, and best practices.</p>
-          <ul>
-            <li>Project structure</li>
-            <li>Design patterns</li>
-            <li>Vuetify + Nuxt integration</li>
-            <li>Deployment configuration</li>
-          </ul>
-          <a href="./architecture/" class="btn btn-primary">View Architecture</a>
-        </div>
-      </article>
     </div>
 
-    <section class="quick-links">
-      <h2>🛠️ Development Commands</h2>
-      <div style="background: #2d3748; color: #e2e8f0; padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.9rem; overflow-x: auto;">
-        <div style="margin-bottom: 10px;"><span style="color: #68d391;"># Start development server</span></div>
-        <div style="margin-bottom: 15px;">yarn dev</div>
-        
-        <div style="margin-bottom: 10px;"><span style="color: #68d391;"># Run all tests and generate report</span></div>
-        <div style="margin-bottom: 15px;">yarn test</div>
-        
-        <div style="margin-bottom: 10px;"><span style="color: #68d391;"># Run accessibility audit (requires dev server running)</span></div>
-        <div style="margin-bottom: 15px;">yarn audit:a11y</div>
-        
-        <div style="margin-bottom: 10px;"><span style="color: #68d391;"># Generate API documentation</span></div>
-        <div style="margin-bottom: 15px;">yarn docs:jsdoc</div>
-        
-        <div style="margin-bottom: 10px;"><span style="color: #68d391;"># Generate static site</span></div>
-        <div>yarn generate</div>
-      </div>
+    <section class="stack-note">
+      <h2>🛠️ About this site</h2>
+      <p>
+        sfs.icjia.illinois.gov is a static site built with Astro and
+        Tailwind CSS, deployed on Netlify by the Illinois Criminal Justice
+        Information Authority. Content questions and link corrections can be
+        directed to the ICJIA web team via
+        <a href="https://icjia.illinois.gov" target="_blank" rel="noopener noreferrer">icjia.illinois.gov</a>.
+      </p>
     </section>
   </div>
 
@@ -392,5 +298,3 @@
   </footer>
 </body>
 </html>
-
-
