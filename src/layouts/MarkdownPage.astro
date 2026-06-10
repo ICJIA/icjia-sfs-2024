@@ -15,12 +15,21 @@ interface Props {
   description?: string;
   hero?: ImageMetadata;
   heroAlt?: string;
+  /** Frontmatter dates, forwarded to Layout for JSON-LD freshness. */
+  publishedAt?: string;
+  updatedAt?: string;
 }
 
-const { title, description, hero, heroAlt } = Astro.props;
+const { title, description, hero, heroAlt, publishedAt, updatedAt } =
+  Astro.props;
 ---
 
-<Layout title={title} description={description}>
+<Layout
+  title={title}
+  description={description}
+  publishedAt={publishedAt}
+  updatedAt={updatedAt}
+>
   <div class="pb-16">
     <div class="max-w-screen-xl mx-auto px-4">
       <div class="text-center mb-6">

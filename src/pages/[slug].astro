@@ -19,6 +19,10 @@ const { Content } = await render(page);
 const description = page.data.summary;
 ---
 
-<MarkdownPage title={page.data.title} description={description}>
+<MarkdownPage
+  title={page.data.title}
+  description={description}
+  publishedAt={page.data.publishedAt}
+>
   <Content />
 </MarkdownPage>

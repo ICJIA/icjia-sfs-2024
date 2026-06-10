@@ -17,6 +17,7 @@ const { Content } = await render(page);
   title={page.data.title}
   description={page.data.summary ??
     "Directory of Safe From the Start program sites across Illinois."}
+  publishedAt={page.data.publishedAt}
 >
   <Content />
 </MarkdownPage>
