@@ -14,7 +14,7 @@ splash:
 
 - [Illinois HEALS](https://ilheals.com/)
 
-- [Center for Childhood Resilience](https://childhoodresilience.org/)
+- Center for Childhood Resilience <!-- link removed 2026-06-10: https://childhoodresilience.org/ serves an invalid TLS certificate (ERR_CERT_COMMON_NAME_INVALID); site authors to supply the updated URL -->
 
 - [The Attachment, Regulation and Competency (ARC) Framework](https://arcframework.org/what-is-arc/)
 

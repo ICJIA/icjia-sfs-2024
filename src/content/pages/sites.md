@@ -155,7 +155,9 @@ searchMeta: null
             <td>Elizabeth Johnson<br>Fatima Smith<br>5435 W. North Ave.<br>Chicago, IL 60639<br>County: Cook</td>
         </tr>
         <tr>
-            <td><a href="https://www.primeforchange.org/safehaven" target="_blank" rel="noopener noreferrer">Prime</a></td>
+            <!-- Link removed 2026-06-10: https://www.primeforchange.org/safehaven
+                 returns 404. Site authors to supply the updated URL. -->
+            <td>Prime</td>
             <td>Cook County: Auburn Gresham, Ashburn, South Chicago</td>
             <td>Tammy Brownlee<br>8915 S. Commercial Ave.<br>Chicago, IL 60617<br>County: Cook</td>
         </tr>

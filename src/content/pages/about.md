@@ -17,7 +17,7 @@ In response to the National Summit, Illinois held a Safe From the Start Illinois
 
 The SFS grant program was initiated in State Fiscal Year 2001 (July 2001 – June 2002) to develop, implement, and evaluate comprehensive, coordinated community-based models to identify, assess, and serve children, ages 0-5, who have been exposed to violence in their home and/or community. The Illinois Violence Prevention Authority (IVPA), the state agency that aims to prevent interpersonal violence, selected its first three pilot sites in the Chicago Area.
 
-Since the program’s launch, twelve sites have been funded to implement services and provide additional support for children and families in Illinois. Since then, three sites have closed due to challenges including the budget impasse. Currently, nine sites are still in functioning. In January 2024, three planning sites, located in Central and Southern Illinois, were awarded funding to begin strategic planning with the goal of program implementation in their areas in 2025.
+Since the program’s launch, twelve sites have been funded to implement services and provide additional support for children and families in Illinois. Since then, three sites have closed due to challenges including the budget impasse. Currently, nine sites are still functioning. In January 2024, three planning sites, located in Central and Southern Illinois, were awarded funding to begin strategic planning with the goal of program implementation in their areas in 2025.
 
 ## Guiding Principles
 
