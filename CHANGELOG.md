@@ -7,6 +7,61 @@ All notable changes to the ICJIA Safe From the Start (SFS) website are documente
 A sweep aligning the repo with `docs/astro-conversion-checklist-v6.4.md`
 (the canonical ICJIA Astro pattern) and removing the Thumbor dependency.
 
+**v2.1.0 increment (2026-06-10)** — full-app assessment fixes: nav gap, drawer
+keyboard a11y, de-Alpine (CSP without `'unsafe-eval'`), dead-asset purge:
+
+- **fix(nav):** closed the 960–1279px navigation gap. The hamburger (and the
+  drawer + scrim it controls) now hides at `lg` instead of `md`, meeting the
+  inline primary nav exactly at 1280px. Previously iPad-landscape-class
+  viewports had no nav controls at all — only the logo and search icon.
+- **fix(a11y):** the closed nav drawer is now `inert` + `aria-hidden`, so its
+  six links no longer sit invisibly in the keyboard tab order (WCAG 2.4.3).
+  Dropped the bogus always-on `role="dialog" aria-modal="true"` in favor of a
+  plain disclosure; opening focuses the first link, Escape/scrim-click close
+  and restore focus to the hamburger, and tabbing out of the open drawer
+  closes it so focus never lands behind the scrim.
+- **refactor(csp):** replaced the Alpine.js island with ~100 lines of vanilla
+  DOM in `Layout.astro` (drawer, sidebar accordions, desktop dropdowns,
+  footer year). Alpine evaluated `x-*` directives via `new Function()`, which
+  forced `'unsafe-eval'` into `script-src`; the directive is now hash-only.
+  Also dropped `role="menu"/"menuitem"` from the desktop dropdown (plain
+  disclosure list per APG — menu roles promise arrow-key behavior).
+- **fix(a11y):** `scroll-behavior: smooth`, the skip-link transition, and the
+  drawer slide are now gated behind `prefers-reduced-motion` (the README
+  claimed this; the CSS didn't do it).
+- **chore(assets):** deleted ~60 MB of unreferenced legacy assets from
+  `public/` (31 Thumbor-era `splash-*.jpg`, two loading GIFs, `error.jpg`,
+  `dvfr-logo-notext-01.jpg`, the default-Astro `favicon.svg`) — the live
+  pages render exclusively from Sharp-optimized `src/assets/`. dist/ drops
+  from 71 MB to 12 MB. Also removed the stale `VITE_THUMBOR_KEY` env sample.
+- **fix(content):** the privacy page no longer claims the site uses Google
+  Analytics — replaced with an accurate description of the self-hosted,
+  cookieless Plausible instance. Typo pass on about/childhood-exposure
+  (broken footnote-7 label, stray inline ".4" citation, "in functioning",
+  "county"→"country", spacing).
+- **fix(content):** unlinked two broken/unsafe external links, keeping their
+  labels for the site authors to re-point: Prime
+  (`primeforchange.org/safehaven`, 404) and Center for Childhood Resilience
+  (`childhoodresilience.org`, invalid TLS certificate).
+- **chore(docs):** removed the stale Nuxt-era `/docs` subtrees (architecture
+  guide describing "Nuxt 4 / Vue 3", TypeDoc for deleted composables/Thumbor
+  utils, Vitest report) and rebuilt the portal index around the current
+  accessibility report; unlinked the private-repo GitHub references.
+- **feat(seo):** JSON-LD `datePublished`/`dateModified` now use the real
+  frontmatter `publishedAt` (threaded `[slug]`/`research`/`sites` →
+  `MarkdownPage` → `Layout`) instead of stamping every page with the build
+  time on every deploy. Home/search/404 still fall back to build time.
+- **chore(deps):** astro 6.4.6, sharp 0.35.0, fuse.js 7.4.2,
+  @astrojs/sitemap 3.7.3; removed `alpinejs`; added a pnpm override forcing
+  `yaml >= 2.8.3` (GHSA-48c2-rrv3-qjmp) — `pnpm audit` is clean.
+- **chore(headers):** netlify.toml and `public/_headers` re-synced (added the
+  missing `/*.svg` cache rule to netlify.toml, scoped `_headers` font rules
+  to `/_astro/*`), CSP hashes regenerated for the new inline script set.
+- Verified post-fix: clean build (10 pages), 0 broken internal links,
+  axe-core AA 0 violations on / /about /research /sites /search (desktop +
+  mobile), Lighthouse mobile home 95/100/100/100, drawer/dropdown keyboard
+  behavior exercised in Chrome at 600/1024/1366px.
+
 **v6.4 increment (2026-06-08)** — OG share-card, CORP fix + meta-description cleanup:
 
 - **feat(seo):** replaced the photo-based `public/og-image.jpg` with a

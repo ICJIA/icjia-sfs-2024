@@ -1,7 +1,7 @@
 {
   "name": "icjia-sfs",
   "type": "module",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "ICJIA Safe From the Start — static site built with Astro 6 + Tailwind v4.",
   "repository": {
     "type": "git",
@@ -28,22 +28,24 @@
     "onlyBuiltDependencies": [
       "esbuild",
       "sharp"
-    ]
+    ],
+    "overrides": {
+      "yaml@<2.8.3": ">=2.8.3"
+    }
   },
   "dependencies": {
     "@fontsource/lato": "^5.2.7",
     "@fontsource/raleway": "^5.2.8",
     "@fontsource/roboto": "^5.2.10",
-    "astro": "^6.3.7",
+    "astro": "^6.4.6",
     "astro-seo": "^1.1.0",
-    "fuse.js": "^7.3.0",
+    "fuse.js": "^7.4.2",
     "rehype-external-links": "^3.0.0",
-    "sharp": "^0.34.5"
+    "sharp": "^0.35.0"
   },
   "devDependencies": {
-    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/sitemap": "^3.7.3",
     "@tailwindcss/vite": "^4.3.0",
-    "alpinejs": "^3.15.12",
     "tailwindcss": "^4.3.0"
   }
 }
