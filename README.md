@@ -43,7 +43,6 @@ The Safe From the Start (SFS) program provides developmentally and culturally ap
 │   ├── og-image.png          # Generated 1200×630 share card (pnpm og-image)
 │   ├── llms.txt              # AI-crawler site summary
 │   ├── robots.txt
-│   ├── docs/                 # Footer-linked docs (accessibility report)
 │   ├── _headers              # Mirrors netlify.toml for non-Netlify hosts
 │   └── favicon.ico
 └── src/

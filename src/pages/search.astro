@@ -55,13 +55,6 @@ import Layout from "../layouts/Layout.astro";
     >
       Enter a search term above.
     </p>
-
-    <ul
-      class="mt-6 space-y-5 list-none p-0"
-      data-search-results
-      aria-label="Search results"
-    >
-    </ul>
   </div>
 </Layout>
 
@@ -73,11 +66,12 @@ import Layout from "../layouts/Layout.astro";
   const form = document.querySelector<HTMLFormElement>("[data-search-form]");
   const input = document.querySelector<HTMLInputElement>("[data-search-input]");
   const status = document.querySelector<HTMLElement>("[data-search-status]");
-  const results = document.querySelector<HTMLUListElement>(
-    "[data-search-results]"
-  );
+  // The results <ul> is created on demand (see ensureResultsList) and removed
+  // when empty, so the static page never ships an empty container element
+  // (SiteImprove sia-r68 "Container element is empty").
+  let resultsEl: HTMLUListElement | null = null;
 
-  if (!form || !input || !status || !results) {
+  if (!form || !input || !status) {
     // Defensive: the template guarantees these exist, but bail rather than
     // throw if a future refactor drops one.
     console.warn("[search] missing required DOM nodes");
@@ -120,8 +114,21 @@ import Layout from "../layouts/Layout.astro";
       return loading;
     }
 
+    function ensureResultsList(): HTMLUListElement {
+      if (!resultsEl) {
+        resultsEl = document.createElement("ul");
+        resultsEl.className = "mt-6 space-y-5 list-none p-0";
+        resultsEl.setAttribute("aria-label", "Search results");
+        status!.insertAdjacentElement("afterend", resultsEl);
+      }
+      return resultsEl;
+    }
+
     function clearResults(): void {
-      while (results!.firstChild) results!.removeChild(results!.firstChild);
+      if (resultsEl) {
+        resultsEl.remove();
+        resultsEl = null;
+      }
     }
 
     function renderResult(item: Doc, query: string): HTMLLIElement {
@@ -176,7 +183,7 @@ import Layout from "../layouts/Layout.astro";
         for (const { item } of matches) {
           frag.appendChild(renderResult(item, trimmed));
         }
-        results!.appendChild(frag);
+        ensureResultsList().appendChild(frag);
       } catch (err) {
         console.error("[search]", err);
         status!.textContent = "Search is temporarily unavailable.";
