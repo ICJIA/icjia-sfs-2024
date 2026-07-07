@@ -15,7 +15,7 @@ This website **substantially conforms** to the [Web Content Accessibility Guidel
 
 Meeting WCAG 2.1 Level AA also addresses the site's obligations under:
 
-- the **Illinois Information Technology Accessibility Act (IITAA) 2.1**, the standard for State of Illinois agency websites, which is based on WCAG 2.1 Level AA; and
+- the **[Illinois Information Technology Accessibility Act (IITAA) 2.1](https://doit.illinois.gov/initiatives/accessibility/iitaa.html)**, the standard for State of Illinois agency websites, which is based on WCAG 2.1 Level AA; and
 - **Title II of the Americans with Disabilities Act (ADA)**, which requires state and local government web content to meet WCAG 2.1 Level AA.
 
 ## Measures to support accessibility
