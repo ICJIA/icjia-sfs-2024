@@ -133,14 +133,13 @@ const cards = footerNav
     letter-spacing: -0.02em;
     margin-bottom: 0.25em;
     text-align: center;
-    background: linear-gradient(
-      180deg,
-      var(--color-sfs-navy) 0%,
-      var(--color-sfs-blue) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    /* Solid navy — ~8:1 on the #f2f2f2 hero. A gradient-clipped fill
+       (background-clip:text + transparent text) renders fine visually but
+       is unreadable to pixel-sampling contrast scanners: they sample the
+       glyph itself as the "background" and report a false failure at any
+       color. Solid keeps the numeral high-contrast AND lets every scanner
+       verify it. */
+    color: var(--color-sfs-navy);
   }
 
   .sfs-nf-title {
