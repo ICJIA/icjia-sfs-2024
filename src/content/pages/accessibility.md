@@ -1,7 +1,7 @@
 ---
 title: "Accessibility Statement"
 slug: "accessibility"
-summary: "How the Safe From the Start site supports accessibility — its conformance with WCAG 2.1 AA and the Illinois Information Technology Accessibility Act, how it is tested, and how to report a barrier."
+summary: "How the Safe From the Start site supports accessibility — its WCAG 2.1 AA and Illinois IITAA 2.1 conformance, how it is tested, and how to report a barrier."
 publishedAt: "2026-07-06"
 section: ""
 searchMeta: null
