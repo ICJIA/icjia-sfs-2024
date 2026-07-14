@@ -5,7 +5,10 @@ import HomeSplits from "../components/HomeSplits.astro";
 import SplashHomeSecondary from "../components/SplashHomeSecondary.astro";
 ---
 
-<Layout title="Home">
+<!-- `title` feeds the <title> tag and JSON-LD only — the homepage renders no
+     <h1> from it — so it carries the descriptive form rather than "Home",
+     which was too terse to stand alone in a search result. -->
+<Layout title="Direct Services for Children Ages 0–5">
   <SplashHome />
 
   <div>

@@ -12,6 +12,8 @@ import type { ImageMetadata } from "astro";
 
 interface Props {
   title: string;
+  /** <title> override. The <h1> below always renders `title`. */
+  metaTitle?: string;
   description?: string;
   hero?: ImageMetadata;
   heroAlt?: string;
@@ -20,12 +22,12 @@ interface Props {
   updatedAt?: string;
 }
 
-const { title, description, hero, heroAlt, publishedAt, updatedAt } =
+const { title, metaTitle, description, hero, heroAlt, publishedAt, updatedAt } =
   Astro.props;
 ---
 
 <Layout
-  title={title}
+  title={metaTitle ?? title}
   description={description}
   publishedAt={publishedAt}
   updatedAt={updatedAt}
