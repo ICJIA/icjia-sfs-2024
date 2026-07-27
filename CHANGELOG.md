@@ -19,6 +19,74 @@ A sweep aligning the repo with `docs/astro-conversion-checklist-v6.4.md`
   in the dist output, and no other page links to the
   `#sfs-evaluation-resources` anchor or either document.
 
+**SiteImprove remediation increment (2026-07-06 → 2026-07-14)** — accessibility
+statement page, /docs purge, focus/contrast/font-size fixes, meta-title
+overhaul, last Strapi reference dropped (backfilled 2026-07-27; bullets
+newest-first):
+
+- **a11y(css):** converted all 45 fixed px font sizes across 12 files (13
+  `font-size:` declarations + 32 Tailwind `text-[Npx]` values, 16 distinct
+  sizes 10–46px) to rem — SiteImprove's worst-scoring item ("Font size is
+  fixed", 9.69/100). The anchors were `.markdown-body` at 17px (every content
+  page's body copy, with `em` headings chained to it) and `.sfs-btn` at 14px.
+  Arithmetically lossless (no html/:root font-size is set, so 1rem = 16px and
+  N/16 terminates exactly): pixel-identical at default zoom, and text now
+  tracks the reader's browser font-size preference. Zero px font sizes remain
+  in src/ or dist/.
+- **feat(seo):** added optional `metaTitle` frontmatter so `<title>` can
+  differ from the `<h1>` — SiteImprove "Meta titles are too short" (6 of 9
+  pages under 40 chars) was structural: `title` did double duty as both.
+  Threaded `[slug]`/`research`/`sites` → `MarkdownPage` → `Layout` with a
+  `metaTitle ?? title` fallback; every `<h1>` unchanged, all six thin titles
+  now 43–59 chars (e.g. /research 30 → 53 "Research and Program Evaluation |
+  …").
+- **fix(seo):** trimmed the accessibility page's meta description 196 → 156
+  chars — it landed after the ≤160-char sweep and missed it. Keeps WCAG 2.1
+  AA, IITAA 2.1, how the site is tested, and how to report a barrier.
+- **fix(research):** repointed the Evaluation Protocol DOCX from the legacy
+  Strapi upload host (`agency.icjia-api.cloud`) to the byte-identical copy
+  (SHA-256-verified) already sitting unlinked in `public/` — the only
+  icjia-api.cloud reference in the codebase, i.e. the site's last runtime
+  dependency on Strapi. Also added the target/sr-only "(DOCX, opens in new
+  window)" affordance to match the PDF link below it.
+- **perf(images):** downsampled `splash-05.jpg`/`splash-06.jpg` from camera
+  originals (5616×3744 / 5342×3556) to the 2400px house convention — Astro
+  emits the fallback `src` at intrinsic size, so the homepage shipped a
+  2.23 MB WebP. Largest built image now 0.49 MB, nothing in dist/ exceeds
+  1 MB, repo sheds ~6 MB, no visual change (600px display slot).
+- **fix(content):** unlinked the dead childwelfare.gov citation on
+  childhood-exposure — the 2024 site migration orphaned the PDF (redirects to
+  an AccessDenied S3 object; verified in a real browser). The two other
+  scanner-flagged 403s (DOI/JAMA, CDC) load fine in-browser (bot-blocking)
+  and were left alone. Label kept + dated comment for content authors, per
+  house policy.
+- **fix(a11y):** visible keyboard focus for the nav dropdown and sidebar
+  drawer items (previously `focus-visible:outline-none` with only a #f5f5f5
+  tint — effectively invisible; now the standard sfs-blue ring, inset −2px)
+  per 2.4.7, and restored underlines on two inline links set off by color
+  alone (homepage intro, footer copyright row) per 1.4.1.
+- **fix(a11y):** the /404 numeral's gradient `background-clip:text` became
+  solid navy #0d4474 (~8:1) — its real contrast was fine (~5.6–8.7:1), but
+  pixel-sampling scanners (contrastcap, SiteImprove) sample the glyph itself
+  as background on gradient-clipped text and report a false failure at any
+  color.
+- **fix(content):** linked IITAA 2.1 on the accessibility statement to its
+  official Illinois DoIT page.
+- **feat(a11y):** added `/accessibility` — a WCAG 2.1 AA / IITAA 2.1
+  conformance statement ("substantially conforms", citing ADA Title II) with
+  a feedback contact, replacing the old footer link to the removed
+  auto-generated audit dump. Auto-routes via `[slug].astro`, joins the search
+  index (9 docs), footer row now © ICJIA | Privacy | Accessibility. Verified:
+  axe A+AA 0 violations, contrastcap 59/59, Lighthouse a11y 100.
+- **fix(a11y):** removed the hand-built /docs portal + static audit report
+  (`public/docs/*`, ~85k lines) that generated the bulk of SiteImprove's
+  findings (294 "text not in an ARIA landmark", 2 link-identity, 40
+  contrast-cantTell). Footer nav separators went `text-white/60` (3.32:1,
+  uncomputable for SiteImprove) → solid white (6.26:1); /search now creates
+  the results `<ul>` on demand so the static page never ships an empty
+  container (sia-r68). Verified: axe A+AA 0 violations and Lighthouse a11y
+  100 across six pages; contrastcap 0 failures.
+
 **v2.1.0 increment (2026-06-10)** — full-app assessment fixes: nav gap, drawer
 keyboard a11y, de-Alpine (CSP without `'unsafe-eval'`), dead-asset purge:
 
