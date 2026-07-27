@@ -66,8 +66,12 @@ Validated assessments used in client treatment are:
 
 - [Child Behavior Checklist (CBCL)](https://www.apa.org/depression-guideline/child-behavior-checklist.pdf)
 
-- [Ages and Stages Questionnaire (ASQ)](https://agesandstages.com/products-pricing/asq3/)
+<!--
+
+ - [Ages and Stages Questionnaire (ASQ)](https://agesandstages.com/products-pricing/asq3/)
 
 - [Ages and Stages Questionnaire for Social Emotional Development (ASQ:SE)](https://agesandstages.com/products-pricing/asqse-2/)
+
+ -->
 
 ## Program Outcomes

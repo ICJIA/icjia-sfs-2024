@@ -7,6 +7,18 @@ All notable changes to the ICJIA Safe From the Start (SFS) website are documente
 A sweep aligning the repo with `docs/astro-conversion-checklist-v6.4.md`
 (the canonical ICJIA Astro pattern) and removing the Thumbor dependency.
 
+**Content update (2026-07-27)** — research page: evaluation resources hidden:
+
+- **chore(research):** commented out the "SFS Evaluation Resources" section
+  on /research (the "Forthcoming" intake/exit forms, the Evaluation Protocol
+  DOCX, and the SFS Database 1.0 Quick Start Guide PT 1 PDF) and the
+  ASQ / ASQ:SE assessment links in `research.md`. Hidden, not deleted — both
+  blocks remain in the source as HTML comments for easy restoration, and the
+  DOCX/PDF stay published in `public/` at their existing URLs. Verified:
+  clean build (11 pages), both blocks confirmed comment-wrapped (invisible)
+  in the dist output, and no other page links to the
+  `#sfs-evaluation-resources` anchor or either document.
+
 **v2.1.0 increment (2026-06-10)** — full-app assessment fixes: nav gap, drawer
 keyboard a11y, de-Alpine (CSP without `'unsafe-eval'`), dead-asset purge:
 
