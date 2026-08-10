@@ -246,6 +246,30 @@ with the same shape.
 > (`"No dev server is running."`), never on the exit code. Output is a JSON
 > envelope: `{"message":"…","label":"SKIP_FORMAT","level":"info"}`.
 
+### Where server output goes now
+
+The daemon has no terminal, so **server-side output no longer streams to the
+shell you launched from**. This catches people out far more than the port
+issue. Verified by probe on this repo:
+
+| Output | Astro 6 | Astro 7 |
+|---|---|---|
+| `console.log` in `.astro` frontmatter, endpoints, `getStaticPaths`, `astro.config` | your terminal | daemon log — `astro dev logs` |
+| Server-side thrown errors + stack traces | your terminal | daemon log (page still returns HTTP 500) |
+| `console.log` in client `<script>` / components | browser devtools | browser devtools (unchanged) |
+
+So `pnpm dev` no longer shows you your own server-side debugging. Use
+`astro dev logs --follow`, or `./dev-server.sh watch` for a full old-style
+attached session that streams the log and stops on a keypress.
+
+### HMR is *not* affected
+
+Worth stating plainly, because the daemon makes people suspicious of it: HMR
+works exactly as before. The file watcher and the update websocket belong to
+the **server process**, not to the shell that launched it. Verified here — a
+CSS edit hot-patched an already-open tab (no reload; the document generation
+counter never incremented) with the launching script long since exited.
+
 ---
 
 ## The rest of the breaking changes
@@ -435,10 +459,19 @@ and adapts, so the commands your team types never change:
 ```bash
 ./dev-server.sh            # status - what's running, and what to type next
 ./dev-server.sh start      # start detached
+./dev-server.sh watch      # attached: stream the server log until you stop it
 ./dev-server.sh stop       # stop it AND free the port
 ./dev-server.sh restart
 ./dev-server.sh logs -f
 ```
+
+`watch` exists specifically to undo Trap 4's ergonomic damage: it restores the
+old `pnpm dev` foreground session — server log streaming live (stack traces
+included), a heartbeat line every 60s, `q` to stop the server, `d` or Ctrl-C to
+detach and leave it running, and automatic exit if the server dies so the
+watcher never outlives what it watches. The heartbeat is a real HTTP request,
+not a port check: a wedged dev server keeps its socket bound long after it
+stops serving.
 
 ### Why it earns its place on Astro 6, before any upgrade
 

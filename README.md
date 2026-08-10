@@ -93,6 +93,7 @@ nothing gets orphaned:
 ```bash
 ./dev-server.sh            # status: what's running, and what to type next
 ./dev-server.sh start      # start detached on http://localhost:4321
+./dev-server.sh watch      # attached: stream the server log until you stop it
 ./dev-server.sh stop       # stop it and free the port
 ./dev-server.sh restart
 ./dev-server.sh logs -f    # follow the background server's log
@@ -102,6 +103,39 @@ It checks pnpm, installs deps if `node_modules` is missing, and refuses to
 double-start. `stop` clears **both** the Astro-managed server and anything else
 squatting on the port (a stray `pnpm dev`, an old `astro preview`) — Astro's
 lock file only knows about servers it started itself.
+
+#### Where did my `console.log` go?
+
+This is the part of Astro 7 that surprises people. **Server-side** output —
+`console.log` and errors in `.astro` frontmatter, endpoints, `getStaticPaths`,
+`astro.config.mjs` — used to stream to the terminal running `pnpm dev`. The
+daemon has no terminal, so it goes to the daemon's log instead:
+
+```bash
+./dev-server.sh logs -f    # follow it
+./dev-server.sh watch      # or get the whole old-style session back
+```
+
+`watch` is the closest thing to the old `pnpm dev`: it streams the server log
+live (including full error stack traces), prints a heartbeat every 60s, and
+runs until you stop it.
+
+| key | effect |
+|---|---|
+| `q` | stop the server **and** exit |
+| `d` | detach — leave the server running, exit the watcher |
+| `Ctrl-C` | same as `d` (losing your server because you wanted to stop *watching* would be a nasty surprise) |
+
+It also exits on its own if the server dies, so the watcher never outlives what
+it is watching. Set the heartbeat interval with `DEV_SERVER_INTERVAL=10`.
+
+**Browser** `console.log` still goes to the browser devtools console, as always —
+it never appears in the terminal.
+
+**HMR is unaffected** by any of this. The server does its own file watching and
+pushes updates over its own websocket, so edits hot-reload whether or not the
+script is still running. (Verified: a CSS edit hot-patched an already-open tab
+without a reload, with `dev-server.sh` long since exited.)
 
 Flags pass through to `astro dev`:
 

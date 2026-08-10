@@ -7,6 +7,36 @@ All notable changes to the ICJIA Safe From the Start (SFS) website are documente
 A sweep aligning the repo with `docs/astro-conversion-checklist-v6.4.md`
 (the canonical ICJIA Astro pattern) and removing the Thumbor dependency.
 
+**Tooling (2026-08-10)** — `dev-server.sh` attached mode:
+
+- **feat(dev):** added `./dev-server.sh watch` — the old `pnpm dev` foreground
+  session, restored. Astro 7's daemon has no terminal, so server-side
+  `console.log` and errors no longer stream to the shell you launched from;
+  `watch` tails the daemon log live (full stack traces included), prints a
+  heartbeat every 60s (`DEV_SERVER_INTERVAL` to change), and runs until you
+  stop it. `q` stops the server and exits, `d` detaches, Ctrl-C detaches —
+  losing the server because you wanted to stop *watching* would be a nasty
+  surprise. Exits on its own if the server dies, so the watcher never outlives
+  what it watches. The heartbeat is a real HTTP request, not a port check: a
+  wedged dev server keeps its socket bound long after it stops serving.
+- **feat(dev):** URLs in the output are OSC 8 terminal hyperlinks, so they are
+  click/cmd-clickable. Emitted only when stdout is a TTY, so piped output stays
+  clean. Clickability lives in the printed characters, not in a running
+  process — the link keeps working in scrollback after the script exits.
+- Documented where output actually goes, verified by probe rather than assumed:
+  server-side `console.log`/errors → daemon log (`./dev-server.sh logs -f`);
+  browser `console.log` → devtools only, never the server log. **HMR is
+  unaffected** by the script exiting — the watcher and update websocket belong
+  to the server process. Confirmed by hot-patching a CSS edit into an
+  already-open tab with no reload while the script was not running.
+- Two bugs found and fixed by testing rather than reading: `$key` was declared
+  inside the interactive branch, so under `set -u` a piped `watch` died on the
+  first heartbeat and orphaned its log streamer; and `cleanup_stream` killed
+  only the immediate child, leaving the `pnpm exec astro dev logs --follow`
+  grandchildren running — the exact orphan class this script exists to
+  prevent. Now walks the process tree. Interactive `q` path verified through a
+  real pty via `expect`.
+
 **Docs (2026-08-10)** — Astro 6 → 7 migration guide:
 
 - **docs(astro7):** added `docs/astro-6-to-7-migration-guide.md`, written from
