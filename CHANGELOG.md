@@ -51,6 +51,42 @@ A sweep aligning the repo with `docs/astro-conversion-checklist-v6.4.md`
   prevent. Now walks the process tree. Interactive `q` path verified through a
   real pty via `expect`.
 
+**Tooling (2026-08-10)** — readable crash logs after the server dies:
+
+- **fix(dev):** `./dev-server.sh logs` now falls back to reading
+  `.astro/dev.log` when the server is not running. `astro dev logs` only talks
+  to a *live* server — once it stops it answers "No dev server is running" and
+  the log is unreachable through the CLI at exactly the moment you want it
+  (why did it crash?). The file outlives the process and is already gitignored.
+  Works with `-f` too.
+- **fix(dev):** the running-server path now unwraps Astro's JSON log envelope
+  the same way the fallback does, instead of printing raw
+  `{"message":"[200] / 17ms","label":null,...}` lines. Both paths now look
+  identical.
+- Confirmed the "daemon" and the dev server are **one process**, not two:
+  a single listening PID while up, and after `stop` no astro processes remain
+  and the port is free. Only `.astro/dev.log` survives.
+
+**Docs (2026-08-10)** — watch-mode findings folded into the migration guide:
+
+- **docs(astro7):** added "Findings from building `watch`" to
+  `docs/astro-6-to-7-migration-guide.md` — the eight bash traps met while
+  restoring the foreground dev session, written for whoever wraps the Astro 7
+  daemon next. Headline item is the job-control notice, with the full
+  isolated-reproduction table showing that `disown`, `disown -a`, `wait`,
+  `set +m` and subshell wrapping all fail because the notice comes from the
+  streamer subshell, not the main shell. Also covers `kill_tree` (killing the
+  PID orphans pnpm's grandchildren), the `set -u` conditionally-declared-
+  variable bug that kills the parent and leaves the child running, Astro's
+  mixed JSON/plain log output, health-checking with a real HTTP request rather
+  than a port probe (a wedged server keeps its socket bound), Ctrl-C detaching
+  rather than stopping, OSC 8 links surviving script exit, and testing the
+  interactive path with a real pty via `expect`.
+- The guide's `kill_tree` and its noisy/quiet `stream()` snippets were
+  extracted from the published markdown and executed: the pipeline form emits
+  the job notice and the process-substitution form does not, exactly as
+  documented, with no orphans left behind.
+
 **Docs (2026-08-10)** — Astro 6 → 7 migration guide:
 
 - **docs(astro7):** added `docs/astro-6-to-7-migration-guide.md`, written from

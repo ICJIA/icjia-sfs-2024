@@ -116,6 +116,16 @@ daemon has no terminal, so it goes to the daemon's log instead:
 ./dev-server.sh watch      # or get the whole old-style session back
 ```
 
+This works whether or not the script that started the server is still
+running — the log belongs to the server, not to your shell.
+
+It also works **after the server has stopped**, which is when you most need it.
+`astro dev logs` refuses at that point (*"No dev server is running"*), so the
+wrapper falls back to reading `.astro/dev.log` directly — that file outlives
+the server, so a crash is still readable afterwards. Note `astro dev` and "the
+daemon" are the same single process: stopping the server stops everything, and
+`.astro/dev.log` is what survives.
+
 `watch` is the closest thing to the old `pnpm dev`: it streams the server log
 live (including full error stack traces), prints a heartbeat every 60s, and
 runs until you stop it.

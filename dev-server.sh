@@ -146,6 +146,12 @@ detect_supervision() {
 # node_modules/ so it needs no .gitignore entry.
 LEGACY_LOG="node_modules/.astro/dev-server.log"
 
+# Astro 7 writes the daemon's output here and the file OUTLIVES the server.
+# That matters: `astro dev logs` answers "No dev server is running" once the
+# server stops, so a crash log is unreachable through the CLI at exactly the
+# moment you need it. Read the file directly instead. Already gitignored.
+DAEMON_LOG=".astro/dev.log"
+
 # Astro exits 0 from `dev status`/`dev stop` whether or not a server is up, so
 # every check below branches on the message text instead of the exit code.
 astro_status_msg() {
@@ -190,7 +196,21 @@ show_logs() {
   done
 
   if [ "$SUPERVISED" = "yes" ]; then
-    pnpm exec astro dev logs ${ARGS+"${ARGS[@]}"} 2>&1 || true
+    local out
+    out="$(pnpm exec astro dev logs ${ARGS+"${ARGS[@]}"} 2>&1 || true)"
+    # The CLI refuses once the server is gone -- which is precisely when you
+    # want to read why it died. Fall back to the file, which outlives it.
+    if printf '%s' "$out" | grep -q "No dev server is running" && [ -f "$DAEMON_LOG" ]; then
+      echo "dev-server: server not running - reading $DAEMON_LOG (last session)."
+      if [ -n "$follow" ]; then
+        tail -f "$DAEMON_LOG" | while IFS= read -r l; do pretty "$l"; done
+      else
+        while IFS= read -r l; do pretty "$l"; done < <(tail -50 "$DAEMON_LOG")
+      fi
+      return 0
+    fi
+    # Same unwrapping as the fallback path, so both look identical.
+    while IFS= read -r l; do pretty "$l"; done <<< "$out"
     return 0
   fi
 

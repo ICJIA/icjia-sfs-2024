@@ -262,6 +262,24 @@ So `pnpm dev` no longer shows you your own server-side debugging. Use
 `astro dev logs --follow`, or `./dev-server.sh watch` for a full old-style
 attached session that streams the log and stops on a keypress.
 
+**And know where the log actually lives.** `astro dev logs` only talks to a
+*running* server — once it stops, the CLI answers *"No dev server is
+running."* and your crash log is unreachable through it, at exactly the moment
+you want it. The file outlives the process:
+
+```bash
+tail -50 .astro/dev.log        # last session, readable after the server dies
+```
+
+`.astro/` is already gitignored in the standard Astro template. `dev-server.sh`
+falls back to this file automatically when the CLI refuses.
+
+One clarification worth stating, because the wording invites confusion: **the
+"daemon" and the dev server are one process**, not two. `astro dev` daemonizes
+itself. Stopping the server stops everything — verified: one listening PID
+while up, no astro processes and a free port after `stop`. Only `.astro/dev.log`
+survives.
+
 ### HMR is *not* affected
 
 Worth stating plainly, because the daemon makes people suspicious of it: HMR
@@ -513,6 +531,116 @@ thing precisely when you have lost track of the state, and running it twice
 silently undoes itself. Status answers the actual question — *"is it up?"* —
 and prints the next command to type.
 
+### Findings from building `watch` — read this before writing your own
+
+Restoring the foreground session means backgrounding a log tail and killing it
+cleanly. That is a surprisingly sharp corner of bash, and every item below cost
+real debugging time. If you are writing your own wrapper, these are the traps.
+
+**1. A backgrounded `producer | while read` reports its own death.**
+
+This is the one that will waste your afternoon. Kill a function you launched
+with `&` whose body is a pipeline, and bash prints:
+
+```
+dev-server.sh: line 391: 12345 Terminated: 15   { pnpm exec astro dev logs …
+       12346 Done                               | while IFS= read -r line; do …
+```
+
+The instinct is to suppress it at the kill site. **Nothing there works.** The
+notice is not printed by your main shell about the job — it is printed by the
+*streamer subshell itself*, reporting its own dying pipeline member. Bash tells
+you so: the line number it blames is inside the function, not at the `kill`.
+
+Tested in an isolated reproduction, all at the kill site, all still noisy:
+
+| Attempt | Result |
+|---|---|
+| `disown "$PID"` | still prints |
+| `disown -a` | still prints |
+| `wait "$PID" 2>/dev/null` | still prints |
+| `set +m` | still prints |
+| wrapping the launch in a subshell | still prints |
+| `stream_logs 2>/dev/null &` | **clean** — but swallows real errors |
+| **process substitution instead of a pipeline** | **clean** |
+
+The fix is structural — remove the pipeline, so there is no job to report:
+
+```bash
+# Noisy: a backgrounded pipeline reports its own dying member.
+stream() { producer | while IFS= read -r line; do fmt "$line"; done; }
+
+# Quiet: process substitution creates no job.
+stream() { while IFS= read -r line; do fmt "$line"; done < <(producer); }
+```
+
+Keep the loop body pipeline-free too — `fmt "$line"`, not `printf … | fmt`.
+
+**2. Killing the PID leaves the grandchildren.**
+
+`kill "$STREAM_PID"` kills the subshell and orphans what it spawned: with pnpm
+the real work is `pnpm exec astro dev logs --follow` two levels down, and pnpm
+re-execs itself. Walk the tree:
+
+```bash
+kill_tree() {
+  local pid="$1" child
+  [ -n "$pid" ] || return 0
+  for child in $(pgrep -P "$pid" 2>/dev/null); do kill_tree "$child"; done
+  kill -TERM "$pid" 2>/dev/null || true
+}
+```
+
+Leaving a `--follow` process attached to the daemon is exactly the orphan class
+the wrapper exists to prevent, so this one is self-defeating if you skip it.
+
+**3. `set -u` plus a conditionally-declared variable orphans the child.**
+
+A `local key=""` declared *inside* the interactive branch, then read on every
+loop iteration, kills a piped run on the first tick — and because the parent
+dies mid-loop, the log streamer it launched is left running. The visible
+symptom is confusing: output keeps flowing, so it looks like it is working.
+Declare loop state before the loop.
+
+**4. Astro's log output is a mix of JSON envelopes and plain lines.**
+
+`astro dev logs` emits `{"message":"…","label":"vite","level":"info"}` for some
+events and pre-formatted lines for others. Unwrap the former, pass the latter
+through. Messages carry escaped newlines, so expand them (`printf '%b'`).
+
+**5. Health-check with a real request, not a port check.**
+
+A wedged dev server keeps its socket bound long after it stops serving, so
+`lsof` says "up" when the site is dead. `curl -o /dev/null -w '%{http_code}'`
+against the actual URL is the honest signal.
+
+**6. Ctrl-C should detach, not stop.**
+
+Once the server outlives your shell, Ctrl-C in a watcher is ambiguous. Losing
+the server because you wanted to stop *watching* is a nasty surprise, so make
+Ctrl-C and `d` detach, and require an explicit `q` to stop. Print what happened
+either way — the user cannot see the daemon.
+
+**7. Clickable URLs do not need a resident process.**
+
+OSC 8 hyperlinks (`\033]8;;URL\033\\label\033]8;;\033\\`) are baked into the
+characters you print, so the link keeps working in scrollback after the script
+exits. Guard on `[ -t 1 ]` so piped output does not capture raw escape bytes.
+
+**8. Test the interactive path with a real pty.**
+
+Keypress handling needs `[ -t 0 ]`, so piping stdin silently selects the
+non-interactive branch and tests nothing. `expect` gives you a real terminal:
+
+```tcl
+set timeout 90
+spawn ./dev-server.sh watch
+expect "streaming server log"
+sleep 6
+send "q"
+expect { "Port 4321 is free" { exit 0 } timeout { exit 1 } }
+```
+
 Full script: [`dev-server.sh`](../dev-server.sh) at the repo root.
 
 ---
@@ -580,7 +708,12 @@ it to stakeholders as a site-speed improvement.
 
 ## Changelog for this document
 
-- **2026-08-10** — written from the SFS 6.4.6 → 7.2.0 upgrade. Next site to
-  migrate: update this file with anything that generalizes, especially
-  MDX-heavy or SSR/adapter-based sites, which SFS (static, no MDX, no adapter)
-  could not exercise.
+- **2026-08-10** — written from the SFS 6.4.6 → 7.2.0 upgrade. Later the same
+  day: added "Where server output goes now" and "HMR is *not* affected" under
+  Trap 4, both verified by probe rather than assumed, plus
+  "Findings from building `watch`" — eight bash traps met while restoring the
+  foreground dev session, with the isolated-reproduction results for the
+  job-control notice.
+- Next site to migrate: update this file with anything that generalizes,
+  especially MDX-heavy or SSR/adapter-based sites, which SFS (static, no MDX,
+  no adapter) could not exercise.
