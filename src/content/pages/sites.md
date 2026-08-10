@@ -2,210 +2,287 @@
 title: "Sites"
 metaTitle: "Program Sites Across Illinois"
 slug: "sites"
-summary: "Find current Safe From the Start (SFS) program sites and providers serving children ages 0–5 across Illinois, with an interactive locations map."
+summary: "Find current Safe From the Start (SFS) program sites and providers serving children ages 0–5 across Illinois, with areas served and contact information for each site."
 publishedAt: "2024-05-01"
 section: ""
 searchMeta: null
 ---
 
 <div style="margin-bottom: 50px"></div>
-<h2 style="border-bottom: none; text-align: center; padding-bottom: 1.5rem;">Current SFS Programs SFY 2026</h2>
+<h2 style="border-bottom: none; text-align: center; padding-bottom: 1.5rem;">Current SFS Programs SFY 2027</h2>
 
 <style>
-.table-responsive {
+/* ------------------------------------------------------------------ *
+ * SFS sites directory table
+ *
+ * Two layouts from one table. At >=768px it renders as an ordinary
+ * three-column data table. Below that — and at high zoom, where the CSS
+ * viewport narrows the same way — each row reflows into a stacked card so
+ * the content never needs horizontal scrolling and the type stays at a
+ * readable size instead of shrinking to fit.
+ *
+ * Because the stacked layout overrides `display` on the table elements
+ * (which drops the native table semantics), every element carries an
+ * explicit ARIA role in the markup to keep the accessibility tree intact.
+ * The per-cell labels are aria-hidden: assistive tech gets the real
+ * <th> associations, sighted users get the visible label.
+ *
+ * Selectors are prefixed with .markdown-body to outrank the generic
+ * table rules in layouts/MarkdownPage.astro.
+ * ------------------------------------------------------------------ */
+
+.markdown-body .sfs-sites-wrap {
+    position: relative;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     margin-bottom: 1.5rem;
 }
 
-.table-responsive table {
+/* Only focusable when it actually overflows — see sites.astro. */
+.markdown-body .sfs-sites-wrap:focus-visible {
+    outline: 3px solid var(--color-sfs-blue);
+    outline-offset: 3px;
+}
+
+.markdown-body .sfs-sites-table {
     width: 100%;
-    margin-bottom: 0;
-    font-size: 0.75rem;
-    line-height: 1.2;
+    /* Auto layout hands most of the width to "Areas Serviced" (one long run of
+       county names) and starves the contact column, whose <br>-separated lines
+       each measure short. Fixed layout + the colgroup below split it sensibly. */
+    table-layout: fixed;
+    min-width: 44rem;
+    margin: 0;
     border-collapse: collapse;
+    font-size: 0.875rem;
+    line-height: 1.45;
 }
 
-.table-responsive th,
-.table-responsive td {
-    padding: 0.4rem 0.5rem;
-    vertical-align: top;
-    border-bottom: 1px solid #dee2e6;
-}
-
-.table-responsive thead th {
-    vertical-align: bottom;
-    border-bottom: 2px solid #dee2e6;
-    font-weight: 600;
-}
-
-.table-responsive caption {
-    padding: 0.5rem;
-    text-align: left;
+.markdown-body .sfs-sites-table caption {
     caption-side: top;
-    color: #6c757d;
-    font-size: 0.85rem;
+    text-align: left;
+    padding: 0 0 0.75rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: #3f4a54;
 }
 
-/* Improve link accessibility */
-.table-responsive a {
+.markdown-body .sfs-sites-table th,
+.markdown-body .sfs-sites-table td {
+    padding: 0.625rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #d6dbe0;
+    /* Fixed layout can hand a column less room than a long email address
+       needs; break rather than spill out of the cell. */
+    overflow-wrap: break-word;
+}
+
+.markdown-body .sfs-sites-table thead th {
+    background: #eef1f5;
+    font-weight: 700;
+    vertical-align: bottom;
+    border-bottom-width: 2px;
+}
+
+/* First column is the row header (the agency name). */
+.markdown-body .sfs-sites-table tbody th {
+    font-weight: 700;
+}
+
+.markdown-body .sfs-sites-table tbody tr:nth-child(even) > * {
+    background-color: #f6f8fa;
+}
+
+.markdown-body .sfs-sites-table a {
+    color: var(--color-sfs-blue-dark);
     text-decoration: underline;
-    color: #0056b3;
+    text-underline-offset: 2px;
 }
 
-.table-responsive a:hover,
-.table-responsive a:focus {
-    color: #003d82;
-    text-decoration: none;
+.markdown-body .sfs-sites-table a:hover,
+.markdown-body .sfs-sites-table a:focus-visible {
+    color: var(--color-sfs-blue-darker);
+    text-decoration-thickness: 2px;
 }
 
-/* Tablet and smaller */
-@media (max-width: 768px) {
-    .table-responsive table {
-        font-size: 0.7rem;
-    }
-
-    .table-responsive th,
-    .table-responsive td {
-        padding: 0.35rem 0.4rem;
-        word-wrap: break-word;
-    }
-
-    .table-responsive th:first-child,
-    .table-responsive td:first-child {
-        min-width: 100px;
-    }
+/* Visible only in the stacked layout below. */
+.markdown-body .sfs-sites-table .cell-label {
+    display: none;
 }
 
-/* Mobile */
-@media (max-width: 480px) {
-    .table-responsive table {
-        font-size: 0.65rem;
+/* ---- Stacked card layout ---------------------------------------- */
+
+@media (max-width: 767px) {
+    .markdown-body .sfs-sites-wrap {
+        overflow-x: visible;
     }
 
-    .table-responsive th,
-    .table-responsive td {
-        padding: 0.3rem 0.25rem;
+    .markdown-body .sfs-sites-table,
+    .markdown-body .sfs-sites-table tbody,
+    .markdown-body .sfs-sites-table tbody tr,
+    .markdown-body .sfs-sites-table tbody th,
+    .markdown-body .sfs-sites-table tbody td {
+        display: block;
+        width: auto;
+        min-width: 0;
     }
 
-    .table-responsive caption {
+    /* The caption must go block too. Left as display:table-caption inside a
+       now-block table it shrink-wraps to a sliver and wraps one word per
+       line. */
+    .markdown-body .sfs-sites-table caption {
+        display: block;
+    }
+
+    /* Cards are narrow enough that a long address may need to break
+       mid-token to stay inside the viewport at 320px. */
+    .markdown-body .sfs-sites-table tbody td {
+        overflow-wrap: anywhere;
+    }
+
+    /* Kept in the accessibility tree — only the visual column strip goes. */
+    .markdown-body .sfs-sites-table thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        clip-path: inset(50%);
+        border: 0;
+    }
+
+    .markdown-body .sfs-sites-table {
+        font-size: 0.9375rem;
+    }
+
+    .markdown-body .sfs-sites-table tbody tr {
+        margin-bottom: 1rem;
+        border: 1px solid #d6dbe0;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    /* Card header: the agency name. */
+    .markdown-body .sfs-sites-table tbody th {
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 0;
+        border-bottom: 1px solid #d6dbe0;
+    }
+
+    .markdown-body .sfs-sites-table tbody td {
+        padding: 0.75rem;
+        border: 0;
+    }
+
+    .markdown-body .sfs-sites-table tbody td + td {
+        border-top: 1px solid #e6eaee;
+    }
+
+    /* Striping reads as noise once rows are cards; header strip carries it. */
+    .markdown-body .sfs-sites-table tbody tr:nth-child(even) > * {
+        background-color: transparent;
+    }
+
+    .markdown-body .sfs-sites-table tbody th {
+        background-color: #eef1f5;
+    }
+
+    .markdown-body .sfs-sites-table .cell-label {
+        display: block;
+        margin-bottom: 0.25rem;
         font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #4a555f;
     }
 }
 
-/* Ensure table is keyboard accessible */
-.table-responsive:focus-within {
-    outline: 2px solid #0056b3;
-    outline-offset: 2px;
-}
-</style>
-<div style="margin-bottom: 50px;">
-
-<!-- Accessible map container with keyboard navigation support -->
-<div role="region" aria-label="Interactive SFS Program Locations Map" style="position: relative;">
-  <a href="#sites-table" class="skip-map-link" style="position: absolute; left: -9999px; z-index: 100; background: #0056b3; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px;">Skip to data table</a>
-  <p style="margin-bottom: 10px; font-size: 0.9rem; color: #666;">
-    <strong>Note:</strong> This interactive map shows SFS program locations. For keyboard users, a <a href="#sites-table">data table with all site information</a> is available below. 
-    <a href="https://illinois.maps.arcgis.com/apps/instant/sidebar/index.html?appid=877642cc77434653a76f93206694204b" target="_blank" rel="noopener noreferrer">Open map in full window<span class="sr-only"> (opens in new window)</span> ↗</a>
-  </p>
-  <iframe 
-    data-src="https://illinois.maps.arcgis.com/apps/instant/sidebar/index.html?appid=877642cc77434653a76f93206694204b" 
-    width="100%" 
-    height="600" 
-    frameborder="0" 
-    style="border:0; display: block; max-width: 100%;" 
-    allowfullscreen 
-    title="Interactive map showing SFS program locations across Illinois. For keyboard navigation, use the data table below."
-    aria-describedby="map-description"
-    loading="lazy"
-    class="deferred-iframe"
-  >iFrames are not supported on this page.</iframe>
-  <p id="map-description" style="font-size: 0.85rem; color: #666; margin-top: 8px;">
-    Interactive ArcGIS map displaying Safe From the Start program sites. All location data is also available in the table below for full accessibility.
-  </p>
-</div>
-
-</div>
-
-<style>
-.skip-map-link:focus {
-  left: 10px !important;
-  top: 10px;
+@media (prefers-reduced-motion: no-preference) {
+    .markdown-body .sfs-sites-wrap {
+        scroll-behavior: smooth;
+    }
 }
 </style>
 
-<div class="table-responsive" id="sites-table" tabindex="-1">
+<div class="sfs-sites-wrap" id="sites-table">
 
-<table class="table table-striped" role="table" aria-label="Safe From the Start Program Sites">
-    <thead>
-        <tr>
-            <th scope="col"><strong>SFS Site</strong></th>
-            <th scope="col"><strong>Areas Serviced</strong></th>
-            <th scope="col"><strong>Contact Information</strong></th>
+<table class="sfs-sites-table" role="table">
+    <caption>
+        Safe From the Start program sites for SFY 2027, with the areas each site
+        serves and its contact information. On narrow screens each site is
+        listed as a stacked card rather than a table row.
+    </caption>
+    <colgroup>
+        <col style="width: 20%">
+        <col style="width: 32%">
+        <col style="width: 48%">
+    </colgroup>
+    <thead role="rowgroup">
+        <tr role="row">
+            <th scope="col" role="columnheader">SFS Site</th>
+            <th scope="col" role="columnheader">Areas Serviced</th>
+            <th scope="col" role="columnheader">Contact Information</th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-            <td>KCC Academy</td>
-            <td>Chicago, Cook County: Chatham, Burnside, Greater Grand Crossing</td>
-            <td>Davonna Hawkins<br>7945 S PEORIA ST<br>CHICAGO, IL 60620<br>County: COOK</td>
+    <tbody role="rowgroup">
+        <tr role="row">
+            <th scope="row" role="rowheader"><a href="https://www.sga-youth.org/" target="_blank" rel="noopener noreferrer">SGA Youth &amp; Family Services</a></th>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Areas Serviced</span>Cook County: Village of Summit, Town of Cicero, Berwyn</td>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Contact Information</span>SFS Coordinator: Melissa Moore<br>11 East Adams St, Suite 240<br>Chicago, IL 60603-6309<br>County: Cook<br>Email: <a href="mailto:MMoore@sga-youth.org">MMoore@sga-youth.org</a></td>
         </tr>
-        <tr>
-            <td><a href="https://5peasinapod.org/" target="_blank" rel="noopener noreferrer">5 Peas in a Pod</a></td>
-            <td>Chicago’s 60639 and surrounding areas on the West and South Sides: Humboldt Park, Roseland, Pullman, Bronzeville, Logan Square, South Austin, Irving Park, Portage Park, and Cragin</td>
-            <td>Elizabeth Johnson<br>Fatima Smith<br>5435 W. North Ave.<br>Chicago, IL 60639<br>County: Cook</td>
+        <tr role="row">
+            <th scope="row" role="rowheader"><a href="https://www.centerforpreventionofabuse.org/" target="_blank" rel="noopener noreferrer">Center for Prevention of Abuse</a></th>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Areas Serviced</span>Peoria, Tazewell and Woodford Counties</td>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Contact Information</span>SFS Coordinator: Josh Yetter<br>720 W. Joan Court<br>Peoria, IL 61614-5976<br>County: Peoria<br>Email: <a href="mailto:jyetter@centerforpreventionofabuse.org">jyetter@centerforpreventionofabuse.org</a></td>
         </tr>
-        <tr>
-            <!-- Link removed 2026-06-10: https://www.primeforchange.org/safehaven
-                 returns 404. Site authors to supply the updated URL. -->
-            <td>Prime</td>
-            <td>Cook County: Auburn Gresham, Ashburn, South Chicago</td>
-            <td>Tammy Brownlee<br>8915 S. Commercial Ave.<br>Chicago, IL 60617<br>County: Cook</td>
+        <tr role="row">
+            <th scope="row" role="rowheader"><a href="https://www.metrofamily.org/" target="_blank" rel="noopener noreferrer">Metropolitan Family Services</a></th>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Areas Serviced</span>Chicago neighborhoods of Roseland, Pullman, and West Pullman</td>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Contact Information</span>SFS Coordinator: Jennifer McCraw<br>101 N. Wacker Drive, 17<sup>th</sup> Floor<br>Chicago, IL 60606-7384<br>County: Cook<br>Email: <a href="mailto:mccrawj@metrofamily.org">mccrawj@metrofamily.org</a></td>
         </tr>
-        <tr>
-            <td><a href="https://anewdv.org/" target="_blank" rel="noopener noreferrer">Anew</a></td>
-            <td>Cook and Will Counties</td>
-            <td>Carol Gsell<br>18139 S. Harwood Ave.<br>Homewood, Illinois 60430-2118<br>County: Cook</td>
+        <tr role="row">
+            <th scope="row" role="rowheader"><a href="https://anewdv.org/" target="_blank" rel="noopener noreferrer">Anew</a></th>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Areas Serviced</span>Cook and Will Counties</td>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Contact Information</span>SFS Coordinator: Debra Nobles<br>18139 S. Harwood Ave.<br>Homewood, Illinois 60430-2118<br>County: Cook<br>Email: <a href="mailto:debra.n@anewdv.org">debra.n@anewdv.org</a></td>
         </tr>
-        <tr>
-            <td>The Legacy Foundation</td>
-            <td>JOLIET, SURROUNDING CITIES IN WILL COUNTY</td>
-            <td>Latrice Whittaker<br>101 NORTH REED STREET<br>JOLIET, IL 60435<br>County: WILL</td>
+        <tr role="row">
+            <th scope="row" role="rowheader"><a href="https://www.casacentral.org/" target="_blank" rel="noopener noreferrer">Casa Central Social Services Corporation</a></th>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Areas Serviced</span>Cook County</td>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Contact Information</span>SFS Coordinator: Nilsa Ramirez<br>1343 N California Ave<br>Chicago, IL 60622<br>County: Cook<br>Email: <a href="mailto:nramirez@casacentral.org">nramirez@casacentral.org</a></td>
         </tr>
-        <tr>
-            <td><a href="http://www.thecarvercenter.com/" target="_blank" rel="noopener noreferrer">George Washington Carver Association</a></td>
-            <td>Peoria County, Tazewell County</td>
-            <td>Jacobie Proctor<br>Brianne J.<br>710 W Third St<br>Peoria, IL 61605<br>County: Peoria</td>
+        <tr role="row">
+            <th scope="row" role="rowheader"><a href="https://stressandtrauma.org/" target="_blank" rel="noopener noreferrer">Stress and Trauma Treatment Center</a></th>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Areas Serviced</span>Alexander, Edwards, Franklin, Gallatin, Hamilton, Hardin, Jackson, Jefferson, Johnson, Massac, Perry, Pope, Pulaski, Randolph, Richland, Saline, Union, Wabash, Washington, Wayne, Williamson, and White Counties in southern Illinois</td>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Contact Information</span>SFS Coordinator: Matt Buckman<br>1200 Locust St<br>Eldorado, IL 62930<br>County: Saline<br>Email: <a href="mailto:dmattbuckman@stressandtrauma.org">dmattbuckman@stressandtrauma.org</a></td>
         </tr>
-        <tr>
-            <td><a href="https://www.foreverychild.org/safe-from-the-start" target="_blank" rel="noopener noreferrer">EveryChild</a></td>
-            <td>Rock Island, Henry and Mercer Counties</td>
-            <td>Brittany Littrel<br>524 15<sup>th</sup> Street<br>Moline, IL 61265-2151<br>County: Rock Island</td>
+        <tr role="row">
+            <th scope="row" role="rowheader"><a href="https://www.foreverychild.org/safe-from-the-start" target="_blank" rel="noopener noreferrer">Every Child</a></th>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Areas Serviced</span>Rock Island, Henry and Mercer Counties</td>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Contact Information</span>SFS Coordinator: Brittany Littrel<br>524 15<sup>th</sup> Street<br>Moline, IL 61265-2151<br>County: Rock Island<br>Email: <a href="mailto:brittanyl@foreverychild.org">brittanyl@foreverychild.org</a></td>
         </tr>
-        <tr>
-            <td><a href="https://www.siumed.org/src" target="_blank" rel="noopener noreferrer">SIU School of Medicine</a></td>
-            <td>Sangamon County</td>
-            <td>Jeanne Hansen<br>Taylor Sutton<br>801 N Rutledge; PO Box 19616<br>Springfield, Illinois 62794-9616<br>County: Sangamon</td>
+        <tr role="row">
+            <th scope="row" role="rowheader"><a href="https://www.siumed.org/src" target="_blank" rel="noopener noreferrer">SIU School of Medicine</a></th>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Areas Serviced</span>Sangamon County</td>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Contact Information</span>SFS Coordinator: Jeanne Hansen<br>801 N Rutledge; PO Box 19616<br>Springfield, Illinois 62794-9616<br>County: Sangamon<br>Email: <a href="mailto:jhansen@siumed.edu">jhansen@siumed.edu</a></td>
         </tr>
-        <tr>
-            <td>Youth with a Positive Direction</td>
-            <td>Macon County</td>
-            <td>Margaret Walker<br>Jalynn Reid<br>2000 N. Main St.<br>Decatur, Illinois 62526-4336<br>County: Macon</td>
+        <tr role="row">
+            <th scope="row" role="rowheader"><a href="https://www.eastsidealigned.org/" target="_blank" rel="noopener noreferrer">East Side Aligned</a></th>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Areas Serviced</span>St. Clair County: City of East St. Louis, Village of Washington Park, City of Cahokia Heights, and Village of Fairmont City</td>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Contact Information</span>SFS Coordinator: Olivia Borland<br>1468 State Street<br>East St. Louis, IL 62205-2010<br>County: St. Clair<br>Email: <a href="mailto:OBorland@eastsidealigned.org">OBorland@eastsidealigned.org</a></td>
         </tr>
-        <tr>
-            <td><a href="https://www.eastsidealigned.org/" target="_blank" rel="noopener noreferrer">East Side Aligned</a></td>
-            <td>St. Clair County: City of East St. Louis, Village of Washington Park, City of Cahokia Heights, and Village of Fairmont City.</td>
-            <td>Evan Krauss<br>Kendra Coppas<br>1468 State Street<br>East St. Louis, IL 62205-2010<br>County: St. Clair</td>
+        <tr role="row">
+            <th scope="row" role="rowheader"><a href="https://refuge4kids.org/" target="_blank" rel="noopener noreferrer">Safe Surroundings and Refuge</a></th>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Areas Serviced</span>Madison County</td>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Contact Information</span>SFS Coordinator: Erin Bickle<br>44 E. Ferguson Ave.<br>Wood River, IL 62095-2024<br>County: Madison<br>Email: <a href="mailto:erin@refuge4kids.org">erin@refuge4kids.org</a></td>
         </tr>
-        <tr>
-            <td><a href="https://refuge4kids.org/" target="_blank" rel="noopener noreferrer">Safe Surroundings and Refuge</a></td>
-            <td>Madison County</td>
-            <td>Erin Bickle<br>44 E. Ferguson Ave City<br>Wood River, IL 62095-2024<br>County: Madison</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.cachelps.org/safe-from-the-start" target="_blank" rel="noopener noreferrer">CAC North and NW Cook County</a></td>
-            <td>North and NW Cook County and surrounding areas</td>
-            <td>Bianca Gonzalez<br>657 E. Golf Rd., Suite 310<br>Arlington Heights, IL 60005<br>County: Cook</td>
+        <tr role="row">
+            <th scope="row" role="rowheader"><a href="https://www.cachelps.org/safe-from-the-start" target="_blank" rel="noopener noreferrer">CAC North and NW Cook County</a></th>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Areas Serviced</span>North and NW Cook County and surrounding areas</td>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Contact Information</span>SFS Coordinator: Bianca Gonzalez<br>657 E. Golf Rd., Suite 310<br>Arlington Heights, IL 60005<br>County: Cook<br>Email: <a href="mailto:bgonzalez@cachelps.org">bgonzalez@cachelps.org</a></td>
         </tr>
     </tbody>
 </table>

@@ -1,8 +1,8 @@
 ---
 /**
  * /sites — markdown body from content/sites.md (which contains the table
- * styles, the deferred ArcGIS iframe, and the agency table itself) plus the
- * client scripts that lazy-load the iframe and decorate agency links with
+ * styles and the agency table itself) plus the client scripts that keep the
+ * table's scroll container keyboard-reachable and decorate agency links with
  * hover tooltips. Mirrors app/pages/sites/index.vue.
  */
 import { getEntry, render } from "astro:content";
@@ -25,31 +25,62 @@ const { Content } = await render(page);
 
 <script>
   /*
-   * Defer the embedded ArcGIS map until the iframe scrolls into view —
-   * the embed is ~4 MB and we don't want it competing for the initial load.
-   * The markdown stores the real URL in data-src; we promote it to src
-   * when the iframe enters the viewport.
+   * A container that scrolls horizontally has to be reachable by keyboard
+   * (WCAG 2.1.1) — otherwise the clipped columns are unreachable without a
+   * mouse. But the sites table only overflows at wider viewports: below
+   * 768px it reflows into stacked cards and there is nothing to scroll, so a
+   * permanent tabindex would leave an empty tab stop on phones. Toggle it to
+   * match the element's actual state.
    */
-  const iframes = document.querySelectorAll<HTMLIFrameElement>(
-    "iframe.deferred-iframe"
-  );
-  if (iframes.length) {
-    const io = new IntersectionObserver(
-      (entries) => {
+  const scrollers =
+    document.querySelectorAll<HTMLElement>(".sfs-sites-wrap");
+
+  const syncScrollability = (el: HTMLElement) => {
+    // 1px of slack absorbs sub-pixel layout rounding.
+    const overflows = el.scrollWidth - el.clientWidth > 1;
+    if (overflows) {
+      el.setAttribute("tabindex", "0");
+      el.setAttribute("role", "region");
+      el.setAttribute("aria-label", "Safe From the Start program sites, scrollable table");
+    } else {
+      el.removeAttribute("tabindex");
+      el.removeAttribute("role");
+      el.removeAttribute("aria-label");
+    }
+  };
+
+  if (scrollers.length) {
+    scrollers.forEach(syncScrollability);
+    if ("ResizeObserver" in window) {
+      /*
+       * Observe the table as well as its container. A ResizeObserver on the
+       * container alone reports only the container's own box, which does not
+       * change when the *content* grows past it — so a late-loading webfont
+       * widening the table would go unnoticed. Both targets map back to the
+       * container that has to carry the tabindex.
+       */
+      const ro = new ResizeObserver((entries) => {
+        const seen = new Set<HTMLElement>();
         for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          const f = entry.target as HTMLIFrameElement;
-          const src = f.getAttribute("data-src");
-          if (src) {
-            f.setAttribute("src", src);
-            f.removeAttribute("data-src");
+          const wrap = (entry.target as HTMLElement).closest<HTMLElement>(
+            ".sfs-sites-wrap"
+          );
+          if (wrap && !seen.has(wrap)) {
+            seen.add(wrap);
+            syncScrollability(wrap);
           }
-          io.unobserve(f);
         }
-      },
-      { rootMargin: "200px" }
-    );
-    iframes.forEach((f) => io.observe(f));
+      });
+      scrollers.forEach((el) => {
+        ro.observe(el);
+        const table = el.querySelector("table");
+        if (table) ro.observe(table);
+      });
+    } else {
+      window.addEventListener("resize", () =>
+        scrollers.forEach(syncScrollability)
+      );
+    }
   }
 
   /*
@@ -58,7 +89,7 @@ const { Content } = await render(page);
    * to the cursored link so the tooltip can escape table overflow.
    */
   const agencyLinks = document.querySelectorAll<HTMLAnchorElement>(
-    '.markdown-body .table-responsive a[target="_blank"][rel="noopener noreferrer"]'
+    '.markdown-body .sfs-sites-wrap a[target="_blank"][rel="noopener noreferrer"]'
   );
   agencyLinks.forEach((link) => {
     const href = link.getAttribute("href");
@@ -85,13 +116,8 @@ const { Content } = await render(page);
    * `is:global` because the agency links live inside ContentRenderer'd
    * markdown, which is out of any scoped style's reach.
    */
-  .markdown-body .table-responsive {
-    position: relative;
-    overflow-x: auto;
-  }
-  .markdown-body .table-responsive td {
-    position: relative;
-  }
+  /* Layout for .sfs-sites-wrap itself lives with the rest of the table CSS
+     in content/pages/sites.md; only the tooltip belongs here. */
   .agency-link-tooltip {
     position: relative;
     cursor: pointer;

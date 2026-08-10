@@ -7,6 +7,55 @@ All notable changes to the ICJIA Safe From the Start (SFS) website are documente
 A sweep aligning the repo with `docs/astro-conversion-checklist-v6.4.md`
 (the canonical ICJIA Astro pattern) and removing the Thumbor dependency.
 
+**Content update (2026-08-10)** — /sites: ArcGIS map removed, SFY 2027 grantee
+table:
+
+- **feat(sites):** replaced the embedded ArcGIS locations map with the SFY 2027
+  grantee roster supplied by program staff ("SFS IFVCC SFY27 contact & areas
+  served.docx" — SFS table only; the IFVCC table in that document is not used
+  on this site). The iframe, its skip-link, note paragraph, and description are
+  gone, along with the `deferred-iframe` IntersectionObserver in `sites.astro`
+  that lazy-loaded the ~4 MB embed. The SFY 2026 roster (12 sites) is replaced
+  by the SFY 2027 roster (11 sites): 6 sites dropped (KCC Academy, 5 Peas in a
+  Pod, Prime, The Legacy Foundation, George Washington Carver Association,
+  Youth with a Positive Direction), 5 added (SGA Youth & Family Services,
+  Center for Prevention of Abuse, Metropolitan Family Services, Casa Central,
+  Stress and Trauma Treatment Center). Coordinator emails are now `mailto:`
+  links. All 11 agency names link to the agency site — the 6 carried over from
+  the previous table plus 5 newly sourced from each coordinator's email domain
+  and confirmed by page title; none of the 5 has an SFS-specific landing page
+  (homepage links, per their homepage links and sitemaps).
+- **a11y(sites):** rebuilt the table as one markup source with two layouts. At
+  ≥768px it is an ordinary three-column table with a `colgroup` at 20/32/48 —
+  auto layout was handing most of the width to "Areas Serviced" and fragmenting
+  the email addresses. Below 768px each row reflows into a stacked card, so
+  body type holds at 0.9375rem instead of the old table's 0.65rem (~10px)
+  squeeze, and 200% zoom gets the card layout for free since it narrows the CSS
+  viewport the same way. Because the stacked layout overrides `display` (which
+  drops native table semantics), every element carries an explicit ARIA role;
+  the per-cell visual labels are `aria-hidden` so assistive tech reads the real
+  `<th>` associations rather than duplicates. Agency names became
+  `<th scope="row">` and the table gained a real `<caption>`. The scroll
+  container is now keyboard-focusable only while it actually overflows
+  (WCAG 2.1.1), which avoids an empty tab stop on phones — its `ResizeObserver`
+  watches the table as well as the container, since a container-only observer
+  never fires when the *content* outgrows it.
+- Verified: axe-core AA 0 violations (desktop + mobile), Lighthouse
+  accessibility 100/100 (desktop + mobile), contrast 70/70 pass, internal link
+  check 0 broken, all 11 external agency URLs 200. Chrome's accessibility tree
+  at 390px confirms the table survives the stacked layout intact — 1 table,
+  2 rowgroups, 12 rows, 11 rowheaders, 22 cells, 3 columnheaders, with the
+  `aria-hidden` labels correctly excluded from cell text.
+- Four transcription artifacts in the source document were corrected and
+  flagged back to staff: Casa Central's ZIP was orphaned below its county line
+  (now `Chicago, IL 60622`); Every Child's email row was labelled "SFS
+  Coordinator:" twice (second one is "Email:"); CAC North and NW Cook County
+  had a blank "County:" (filled as Cook from the Arlington Heights address);
+  and Stress and Trauma Treatment Center's address was all-caps (lowercased for
+  legibility and screen-reader pronunciation). Also dropped the stray trailing
+  "City" token from Safe Surroundings and Refuge's street address, an artifact
+  that was present in the SFY 2026 table too.
+
 **Content update (2026-07-27)** — research page: evaluation resources hidden:
 
 - **chore(research):** commented out the "SFS Evaluation Resources" section
