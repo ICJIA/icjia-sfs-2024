@@ -7,6 +7,40 @@ All notable changes to the ICJIA Safe From the Start (SFS) website are documente
 A sweep aligning the repo with `docs/astro-conversion-checklist-v6.4.md`
 (the canonical ICJIA Astro pattern) and removing the Thumbor dependency.
 
+**Docs (2026-08-10)** — Astro 6 → 7 migration guide:
+
+- **docs(astro7):** added `docs/astro-6-to-7-migration-guide.md`, written from
+  this upgrade and generalized for the rest of the portfolio. Leads with the
+  point that matters: both serious defects ship a **green build** — nothing
+  throws, nothing warns — so the guide is organized around diffing rendered
+  output rather than reading error messages. Covers the four traps (markdown
+  plugins silently stop running, `compressHTML` joins words, CSP hashes rotate,
+  `astro dev` daemonizes), the remaining breaking changes SFS didn't exercise
+  (Vite 8, Rust-compiler HTML strictness, graduated experimental flags,
+  reserved `src/fetch.ts`, container-renderer import path, `@astrojs/db`
+  removal, `astro:transitions` API removals), a version table for the
+  integrations an ICJIA site actually uses, a copy-paste audit script, the
+  same-origin `innerText` + DOM-attribute diffing method, and the measured
+  build numbers including the dev-cold-start regression.
+- Researched beyond this repo so it holds for sites SFS could not exercise:
+  MDX carries its own `processor` (setting `markdown.processor` does **not**
+  affect `.mdx`), Sätteri does not support Recma plugins, and
+  `syntaxHighlight` / `shikiConfig` stay top-level rather than moving into the
+  processor. Every external link verified 200; all 12 TOC anchors verified
+  against GitHub's slug rules; the audit script extracted from the published
+  markdown and run verbatim.
+- **feat(dev):** made `dev-server.sh` version-aware so it runs on **Astro 6
+  and 7 alike** — the guide recommends adopting it *before* upgrading. It
+  feature-detects `--background` in `astro dev --help` rather than parsing a
+  version; on Astro 6 it detaches via `nohup`/`disown` and treats the port as
+  the source of truth, giving v6 sites `stop`/`status`/`logs` a major early
+  and absorbing the v7 daemon change so no one has to learn `astro dev stop`.
+  Also carries forward the v6.4 checklist §19 `--port` fix: `--port` is
+  stripped from the passthrough list and re-supplied once, so Astro never sees
+  `--port 4321 --port 5000` and silently falls back to its default. Verified
+  end to end against a real 6.4.6 checkout and against 7.2.0, including
+  custom `--port` binding the requested socket.
+
 **Tooling (2026-08-10)** — one dev-server entry point:
 
 - **feat(dev):** replaced the root `start-dev-server` launcher with

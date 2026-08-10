@@ -58,9 +58,21 @@ for arg in "$@"; do
   esac
   prev="$arg"
 done
-# --all is ours, not a flag astro understands.
+# Rebuild the passthrough list: drop --all (ours, not Astro's) and strip any
+# --port/--port=N, because we re-supply the parsed $PORT exactly once below.
+# Forwarding both yields `astro dev --port 4321 --port 5000`, which Astro
+# resolves by silently falling back to its default port.
 ARGS=()
-for arg in "$@"; do [ "$arg" = "--all" ] || ARGS+=("$arg"); done
+skip_next=""
+for arg in "$@"; do
+  if [ -n "$skip_next" ]; then skip_next=""; continue; fi
+  case "$arg" in
+    --all)     continue ;;
+    --port)    skip_next=1; continue ;;
+    --port=*)  continue ;;
+  esac
+  ARGS+=("$arg")
+done
 
 have()  { command -v "$1" >/dev/null 2>&1; }
 usable() { have pnpm && [ -d node_modules ]; }
@@ -82,11 +94,41 @@ pretty() {
   fi
 }
 
+# Astro 7 supervises the dev server (`--background`, `dev stop`, `dev status`).
+# Astro 6 has none of that, so we background it ourselves and treat the port as
+# the source of truth. Detect once, from the CLI's own help output, rather than
+# parsing a version number -- that keeps working if the flag lands in a
+# backport. Result is cached for the life of the script.
+SUPERVISED=""
+detect_supervision() {
+  [ -n "$SUPERVISED" ] && return 0
+  if ! usable; then SUPERVISED="no"; return 0; fi
+  if pnpm exec astro dev --help 2>/dev/null | grep -q -- "--background"; then
+    SUPERVISED="yes"
+  else
+    SUPERVISED="no"
+  fi
+}
+
+# Astro 6 fallback: our own log so `logs` works on both majors. Lives under
+# node_modules/ so it needs no .gitignore entry.
+LEGACY_LOG="node_modules/.astro/dev-server.log"
+
 # Astro exits 0 from `dev status`/`dev stop` whether or not a server is up, so
 # every check below branches on the message text instead of the exit code.
 astro_status_msg() {
   usable || { echo "No dev server is running."; return 0; }
-  pnpm exec astro dev status 2>/dev/null || true
+  detect_supervision
+  if [ "$SUPERVISED" = "yes" ]; then
+    pnpm exec astro dev status 2>/dev/null || true
+  else
+    # Astro 6: no supervisor to ask. The socket is the only truth.
+    if [ -n "$(port_pids "$PORT")" ]; then
+      echo "Dev server running at http://localhost:$PORT (pid $(port_pids "$PORT" | tr '\n' ' ')unsupervised)"
+    else
+      echo "No dev server is running."
+    fi
+  fi
 }
 
 port_pids() {
@@ -104,6 +146,27 @@ require_toolchain() {
     echo "dev-server: node_modules missing -- running 'pnpm install' first."
     pnpm install
   fi
+}
+
+# `logs` on either major: Astro 7 has its own log store; on 6 we tail the file
+# the start path redirected into. Honors -f/--follow in both cases.
+show_logs() {
+  detect_supervision
+  local follow=""
+  for a in ${ARGS+"${ARGS[@]}"}; do
+    case "$a" in -f|--follow) follow=1 ;; esac
+  done
+
+  if [ "$SUPERVISED" = "yes" ]; then
+    pnpm exec astro dev logs ${ARGS+"${ARGS[@]}"} 2>&1 || true
+    return 0
+  fi
+
+  if [ ! -f "$LEGACY_LOG" ]; then
+    echo "dev-server: no log yet at $LEGACY_LOG (start the server first)."
+    return 0
+  fi
+  if [ -n "$follow" ]; then tail -f "$LEGACY_LOG"; else tail -50 "$LEGACY_LOG"; fi
 }
 
 # SIGTERM, then SIGKILL, then confirm the socket is actually released.
@@ -129,12 +192,15 @@ sweep_port() {
 }
 
 cmd_status() {
-  local msg pids
+  local msg pids kind
+  detect_supervision
+  [ "$SUPERVISED" = "yes" ] && kind="Astro-supervised" || kind="unsupervised (Astro 6)"
+
   msg="$(astro_status_msg)"
   if printf '%s' "$msg" | grep -q "No dev server is running"; then
-    echo "STOPPED  no Astro-managed dev server"
+    echo "STOPPED  no dev server [$kind mode]"
   else
-    echo "RUNNING  Astro-managed dev server"
+    echo "RUNNING  dev server [$kind mode]"
     printf '%s' "$msg" | pretty | sed 's/^/  /'
   fi
 
@@ -179,11 +245,21 @@ cmd_start() {
     fi
   fi
 
+  detect_supervision
   echo "dev-server: starting on port $PORT ..."
-  if ! pnpm exec astro dev --background ${ARGS+"${ARGS[@]}"} >/dev/null 2>&1; then
-    echo "dev-server: astro failed to start. Recent logs:" >&2
-    pnpm exec astro dev logs 2>&1 | tail -20 >&2 || true
-    exit 1
+  if [ "$SUPERVISED" = "yes" ]; then
+    if ! pnpm exec astro dev --background --port "$PORT" ${ARGS+"${ARGS[@]}"} >/dev/null 2>&1; then
+      echo "dev-server: astro failed to start. Recent logs:" >&2
+      show_logs | tail -20 >&2
+      exit 1
+    fi
+  else
+    # Astro 6: detach it ourselves so the terminal comes back either way.
+    mkdir -p "$(dirname "$LEGACY_LOG")"
+    : > "$LEGACY_LOG"
+    nohup pnpm exec astro dev --port "$PORT" ${ARGS+"${ARGS[@]}"} \
+      >>"$LEGACY_LOG" 2>&1 &
+    disown 2>/dev/null || true
   fi
 
   local url="http://localhost:$PORT/" ready=""
@@ -219,7 +295,8 @@ cmd_start() {
 cmd_stop() {
   SWEPT=""
 
-  if usable; then
+  detect_supervision
+  if [ "$SUPERVISED" = "yes" ]; then
     local msg
     msg="$(pnpm exec astro dev stop 2>/dev/null || true)"
     if printf '%s' "$msg" | grep -q "No dev server is running"; then
@@ -228,9 +305,8 @@ cmd_stop() {
       printf '%s' "$msg" | pretty | sed 's/^/  /'
       SWEPT=1
     fi
-  else
-    echo "dev-server: skipping 'astro dev stop' (pnpm or node_modules missing)."
   fi
+  # On Astro 6 there is no supervisor; the port sweep below is the whole story.
 
   sweep_port "$PORT"
   for extra in $SWEEP_EXTRA; do sweep_port "$extra"; done
@@ -257,5 +333,5 @@ case "$CMD" in
   start)   cmd_start ;;
   stop)    cmd_stop ;;
   restart) cmd_stop; echo; cmd_start ;;
-  logs)    require_toolchain; pnpm exec astro dev logs ${ARGS+"${ARGS[@]}"} ;;
+  logs)    require_toolchain; show_logs ;;
 esac

@@ -184,6 +184,17 @@ Key optimizations:
   PNPM_VERSION = "10.33.0"
 ```
 
+## Docs
+
+- [**Astro 6 → 7 migration guide**](docs/astro-6-to-7-migration-guide.md) —
+  written from this site's 6.4.6 → 7.2.0 upgrade, generalized for the rest of
+  the ICJIA portfolio. Four traps that ship a **green build and a broken site**
+  (markdown plugins silently stop running, `compressHTML` joins words, CSP
+  hashes rotate, `astro dev` daemonizes), a copy-paste audit script, the
+  output-diffing method that actually catches them, and measured build numbers.
+- [Astro conversion checklist v6.4](docs/astro-conversion-checklist-v6.4.md) —
+  the canonical ICJIA Vue/Nuxt → Astro conversion reference.
+
 ## License
 
 See [LICENSE](LICENSE).
