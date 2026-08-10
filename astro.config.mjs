@@ -2,12 +2,23 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
+import { unified } from "@astrojs/markdown-remark";
 import rehypeExternalLinks from "rehype-external-links";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://sfs.icjia.illinois.gov",
   output: "static",
+  // Astro 7 changed the default from `true` (HTML-aware) to `'jsx'`, which
+  // strips whitespace between inline elements the way JSX does. On this site
+  // that silently joined words wherever a text run met an inline tag —
+  // "(SFS) programprovides", "Visit theResources page", "(2022).State fiscal
+  // year", and "© 2026Illinois Criminal Justice Information Authority" in the
+  // footer of all 11 pages. Verified against the v6 build: with `true` every
+  // page's rendered innerText is byte-identical to v6, with 'jsx' all 11
+  // regress. Keep the v6 semantics; the alternative is hand-auditing every
+  // inline boundary in templates and author-managed markdown forever.
+  compressHTML: true,
   // Emit /about.html instead of /about/index.html so Netlify can serve
   // the no-trailing-slash form (/about) directly. Lighthouse otherwise
   // measures ~800 ms of redirect-to-trailing-slash on every internal nav.
@@ -25,19 +36,26 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    // Auto-decorate external links so CMS authors don't need to write
-    // Pandoc-style {target="_blank"} attributes in markdown (Astro's
-    // default markdown pipeline doesn't parse that syntax and renders
-    // the braces as literal text).
-    rehypePlugins: [
-      [
-        rehypeExternalLinks,
-        {
-          target: "_blank",
-          rel: ["noopener", "noreferrer"],
-        },
+    // Astro 7 swapped the default markdown pipeline to Sätteri, which has its
+    // own plugin model and does not run remark/rehype. Selecting `unified()`
+    // from @astrojs/markdown-remark keeps us on the remark/rehype pipeline v6
+    // used, which is what rehype-external-links below plugs into. Dropping
+    // this would silently stop decorating external links rather than error.
+    processor: unified({
+      // Auto-decorate external links so CMS authors don't need to write
+      // Pandoc-style {target="_blank"} attributes in markdown (the markdown
+      // pipeline doesn't parse that syntax and renders the braces as
+      // literal text).
+      rehypePlugins: [
+        [
+          rehypeExternalLinks,
+          {
+            target: "_blank",
+            rel: ["noopener", "noreferrer"],
+          },
+        ],
       ],
-    ],
+    }),
   },
   vite: {
     plugins: [tailwindcss()],

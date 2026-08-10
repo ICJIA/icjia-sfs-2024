@@ -5,7 +5,7 @@
 # Safe From the Start (SFS)
 
 [![License](https://img.shields.io/badge/License-See%20LICENSE-yellow.svg)](./LICENSE)
-[![Astro 6](https://img.shields.io/badge/Astro-6-FF5D01?logo=astro&logoColor=white)](https://astro.build)
+[![Astro 7](https://img.shields.io/badge/Astro-7-FF5D01?logo=astro&logoColor=white)](https://astro.build)
 [![Tailwind CSS 4](https://img.shields.io/badge/Tailwind%20CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Fuse.js 7](https://img.shields.io/badge/Fuse.js-7-7E57C2)](https://www.fusejs.io)
 [![Node ≥22](https://img.shields.io/badge/Node-%E2%89%A522-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org)
@@ -18,7 +18,7 @@ The Safe From the Start (SFS) program provides developmentally and culturally ap
 
 ## Stack
 
-- **Framework:** Astro 6 (static SSG)
+- **Framework:** Astro 7 (static SSG)
 - **Styling:** Tailwind v4 via `@tailwindcss/vite`
 - **Interactivity:** ~100 lines of vanilla DOM in `Layout.astro` (nav drawer,
   dropdowns, footer year) — no framework island, so the CSP carries no

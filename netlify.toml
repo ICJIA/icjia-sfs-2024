@@ -149,10 +149,13 @@
     #       1. URL normalizer (Layout.astro)                 — every page
     #       2. Nav active-link marker (Nav.astro)            — every page
     #       3. Header/drawer/dropdown wiring (Layout.astro)  — every page
-    #       4. Sites iframe lazy + tooltip (sites.astro)     — /sites
+    #       4. Sites table scroll a11y + tooltip (sites.astro) — /sites
     #     If you change the byte content of ANY inline <script> (even
     #     whitespace), the hash invalidates and the script is CSP-
-    #     blocked. Regenerate the full list via:
+    #     blocked. NOTE: an Astro upgrade rotates these too — the Astro 7
+    #     compiler re-minifies inline scripts (backticks, shorter idents),
+    #     which changed 3 of the 4 hashes below. Regenerate the full list
+    #     via:
     #
     #       pnpm build && node scripts/csp-hashes.mjs
     #
@@ -162,19 +165,20 @@
     #   - No 'unsafe-eval': the nav interactivity is vanilla DOM (the old
     #     Alpine island needed eval for its x-* directives; removed v2.1).
     #   - https://plausible.icjia.cloud allows the analytics script + XHR.
-    #   - frame-src adds illinois.maps.arcgis.com for the ArcGIS map embed
-    #     on /sites.
+    #   - frame-src is 'self' only. The ArcGIS allowance was dropped when
+    #     the map embed was removed from /sites in favour of the SFY 2027
+    #     grantee table; the site no longer frames any third-party origin.
     #   - style-src keeps 'unsafe-inline' because of inline style="…"
     #     attributes ported from the Vue/Vuetify build. Long-term migrate
     #     those to scoped <style> blocks and drop the exception.
     Content-Security-Policy = """\
 default-src 'self'; \
-script-src 'self' 'sha256-Cd8mEBngrAm9wsHx9r1GVpVdHGGhGhBAHhVObVmEVbs=' 'sha256-QWkIYfizOi4HhlKEM/5yWFw1w8UpH40yQDDMISsaLSU=' 'sha256-MF+QXgPuwp6NwgzjOLZXpEZb8z/bXJYgFRCkk/24y/w=' 'sha256-ctg3AOn8ce69bX68AGji4LYCAowlnnSmUoWaA64ngN8=' https://plausible.icjia.cloud; \
+script-src 'self' 'sha256-Cd8mEBngrAm9wsHx9r1GVpVdHGGhGhBAHhVObVmEVbs=' 'sha256-RRXLRvtjQfzsd4i/TXrKRhXfyRU4KVuI4+p2UcDDgGo=' 'sha256-k7GotmwmqTd6ZKHyaVKDud/h/pZsGM/xC8tCcg1YESo=' 'sha256-vHV+LWRQtmFlZpY+o7oiOdn4qiY+b8bpIY8gOyTB/L0=' https://plausible.icjia.cloud; \
 style-src 'self' 'unsafe-inline'; \
 img-src 'self' data:; \
 font-src 'self' data:; \
 connect-src 'self' https://plausible.icjia.cloud https://ingesteer.services-prod.nsvcs.net;\
-frame-src 'self' https://illinois.maps.arcgis.com; \
+frame-src 'self'; \
 frame-ancestors 'self'; \
 base-uri 'self'; \
 form-action 'self'; \
@@ -189,12 +193,12 @@ object-src 'none'\
   [context.deploy-preview.headers.values]
     Content-Security-Policy = """\
 default-src 'self'; \
-script-src 'self' 'sha256-Cd8mEBngrAm9wsHx9r1GVpVdHGGhGhBAHhVObVmEVbs=' 'sha256-QWkIYfizOi4HhlKEM/5yWFw1w8UpH40yQDDMISsaLSU=' 'sha256-MF+QXgPuwp6NwgzjOLZXpEZb8z/bXJYgFRCkk/24y/w=' 'sha256-ctg3AOn8ce69bX68AGji4LYCAowlnnSmUoWaA64ngN8=' https://plausible.icjia.cloud; \
+script-src 'self' 'sha256-Cd8mEBngrAm9wsHx9r1GVpVdHGGhGhBAHhVObVmEVbs=' 'sha256-RRXLRvtjQfzsd4i/TXrKRhXfyRU4KVuI4+p2UcDDgGo=' 'sha256-k7GotmwmqTd6ZKHyaVKDud/h/pZsGM/xC8tCcg1YESo=' 'sha256-vHV+LWRQtmFlZpY+o7oiOdn4qiY+b8bpIY8gOyTB/L0=' https://plausible.icjia.cloud; \
 style-src 'self' 'unsafe-inline'; \
 img-src 'self' data:; \
 font-src 'self' data:; \
 connect-src 'self' https://plausible.icjia.cloud https://ingesteer.services-prod.nsvcs.net;\
-frame-src 'self' https://illinois.maps.arcgis.com https://app.netlify.com; \
+frame-src 'self' https://app.netlify.com; \
 frame-ancestors 'self'; \
 base-uri 'self'; \
 form-action 'self'; \
@@ -206,12 +210,12 @@ object-src 'none'\
   [context.branch-deploy.headers.values]
     Content-Security-Policy = """\
 default-src 'self'; \
-script-src 'self' 'sha256-Cd8mEBngrAm9wsHx9r1GVpVdHGGhGhBAHhVObVmEVbs=' 'sha256-QWkIYfizOi4HhlKEM/5yWFw1w8UpH40yQDDMISsaLSU=' 'sha256-MF+QXgPuwp6NwgzjOLZXpEZb8z/bXJYgFRCkk/24y/w=' 'sha256-ctg3AOn8ce69bX68AGji4LYCAowlnnSmUoWaA64ngN8=' https://plausible.icjia.cloud; \
+script-src 'self' 'sha256-Cd8mEBngrAm9wsHx9r1GVpVdHGGhGhBAHhVObVmEVbs=' 'sha256-RRXLRvtjQfzsd4i/TXrKRhXfyRU4KVuI4+p2UcDDgGo=' 'sha256-k7GotmwmqTd6ZKHyaVKDud/h/pZsGM/xC8tCcg1YESo=' 'sha256-vHV+LWRQtmFlZpY+o7oiOdn4qiY+b8bpIY8gOyTB/L0=' https://plausible.icjia.cloud; \
 style-src 'self' 'unsafe-inline'; \
 img-src 'self' data:; \
 font-src 'self' data:; \
 connect-src 'self' https://plausible.icjia.cloud https://ingesteer.services-prod.nsvcs.net;\
-frame-src 'self' https://illinois.maps.arcgis.com https://app.netlify.com; \
+frame-src 'self' https://app.netlify.com; \
 frame-ancestors 'self'; \
 base-uri 'self'; \
 form-action 'self'; \

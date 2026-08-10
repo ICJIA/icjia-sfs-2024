@@ -7,6 +7,51 @@ All notable changes to the ICJIA Safe From the Start (SFS) website are documente
 A sweep aligning the repo with `docs/astro-conversion-checklist-v6.4.md`
 (the canonical ICJIA Astro pattern) and removing the Thumbor dependency.
 
+**Dependency bump (2026-08-10)** — Astro 6.4.6 → 7.2.0:
+
+- **chore(deps):** upgraded Astro to 7.2.0 (Vite 8, Rust compiler by default)
+  and added `@astrojs/markdown-remark@7.2.2`. Astro 7 swaps the default
+  markdown pipeline to Sätteri, which has its own plugin model and does not run
+  remark/rehype — so `markdown.rehypePlugins` was migrated to
+  `markdown.processor: unified({ rehypePlugins: [...] })`. Left alone this
+  fails **silently**: the build succeeds and `rehype-external-links` simply
+  stops decorating external links. Verified by diffing the rendered DOM of all
+  11 pages against the 6.4.6 build — every `target="_blank"`/`rel` pair is
+  still present and identical (6, 7, 8, 11, 15, 17 external links per page).
+- **fix(build):** pinned `compressHTML: true`. Astro 7 changed the default from
+  `true` to `'jsx'`, which strips whitespace between inline elements the way
+  JSX does. On this site that silently joined words on **every page**:
+  "(SFS) programprovides" (/), "Visit theResources page" (/404),
+  "(2022).State fiscal year" (/research), and "© 2026Illinois Criminal Justice
+  Information Authority" in the footer of all 11. Confirmed by comparing
+  rendered `innerText` per page against the 6.4.6 build — 11/11 regress under
+  `'jsx'`, 11/11 byte-identical under `true`.
+- **fix(csp):** rotated the inline-script sha256 allow-list in `netlify.toml`
+  (all three CSP blocks) and `public/_headers`. Astro 7's compiler re-minifies
+  inline scripts (backticks, shorter identifiers), which invalidated 3 of the 4
+  hashes. Also corrects a hash that the /sites change below had already
+  invalidated on 6.4.6 — that inline script was CSP-blocked in production
+  between the two commits, disabling the sites-table scroll a11y and the agency
+  link tooltips. Verified by serving `dist/` with the production CSP enforced
+  and confirming in Chrome that all four inline scripts execute (11 tooltips
+  wired, nav active-link marked, scroll sync applied) with zero violations.
+- **chore(csp):** dropped `https://illinois.maps.arcgis.com` from `frame-src`
+  now that the map embed is gone; the site frames no third-party origin.
+- Measured on this repo (median, Apple Silicon): warm rebuild 1973 → 1294 ms
+  wall (−34%), Astro's own page-build phase 1210 → 595 ms (−51%); cold build
+  3246 → 2396 ms (−26%), page-build phase 2470 → 1650 ms (−33%). Dev-server
+  cold start is **slower**: 1573 → 1749 ms to first rendered /sites (+11%).
+  Output is a wash — HTML +836 B across 11 pages, JS −674 B.
+- Behaviour change worth knowing: `astro dev` now runs as a **background
+  daemon** that survives SIGTERM to its process group. Stop it with
+  `astro dev stop` (also `astro dev status` / `astro dev logs`); killing the
+  `pnpm dev` process alone leaves the server listening.
+- Not applicable to this repo, checked explicitly: no `experimental` config
+  block, no `src/fetch.ts`, no `astro:transitions` usage, no framework
+  integrations needing the new `/container-renderer` import path, no
+  `@astrojs/db`. `@astrojs/sitemap@3.7.3` and `astro-seo@1.1.0` both build
+  clean. Node engine requirement (>=22.12.0) was already satisfied.
+
 **Content update (2026-08-10)** — /sites: ArcGIS map removed, SFY 2027 grantee
 table:
 
