@@ -7,6 +7,27 @@ All notable changes to the ICJIA Safe From the Start (SFS) website are documente
 A sweep aligning the repo with `docs/astro-conversion-checklist-v6.4.md`
 (the canonical ICJIA Astro pattern) and removing the Thumbor dependency.
 
+**Tooling (2026-08-10)** — one dev-server entry point:
+
+- **feat(dev):** replaced the root `start-dev-server` launcher with
+  `./dev-server.sh`, a single script taking `start` / `stop` / `restart` /
+  `status` / `logs`. The old script ended with `exec pnpm dev`, which no longer
+  describes reality: since Astro 7 the dev server is a background daemon behind
+  a lock file, so closing the launching terminal leaves it holding the port.
+  `stop` clears both the Astro-managed server (`astro dev stop`) **and** any
+  unmanaged process squatting on the socket — a stray `pnpm dev`, an old
+  `astro preview` — which Astro's lock file knows nothing about. Kept from the
+  old script: the pnpm check, the `pnpm install`-if-missing step, `--port` /
+  `--port=` parsing, and the SIGTERM → SIGKILL port escalation.
+- The bare command reports status rather than toggling start/stop. A toggle is
+  ambiguous exactly when you have lost track of the state, and running it twice
+  silently undoes itself.
+- Exercised end to end before commit: idle status, start, idempotent
+  re-start, status while running, stop, custom `--port`, `--all` sweeping the
+  preview port, an orphaned `pnpm dev`, and two unmanaged listeners on 4321 and
+  4322. Note `astro dev status`/`stop` exit 0 whether or not a server is up, so
+  the script branches on their message text, not the exit code.
+
 **Dependency bump (2026-08-10)** — Astro 6.4.6 → 7.2.0:
 
 - **chore(deps):** upgraded Astro to 7.2.0 (Vite 8, Rust compiler by default)

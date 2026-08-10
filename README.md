@@ -69,7 +69,7 @@ The Safe From the Start (SFS) program provides developmentally and culturally ap
     │   ├── [slug].astro      # /about, /childhood-exposure, /privacy,
     │   │                       /program-summary, /resources
     │   ├── research.astro    # /research (markdown + custom layout)
-    │   └── sites.astro       # /sites (markdown + ArcGIS iframe)
+    │   └── sites.astro       # /sites (markdown + agency table)
     └── styles/
         └── global.css        # Tailwind theme tokens + brand styles
 ```
@@ -83,14 +83,37 @@ pnpm build        # outputs to ./dist
 pnpm preview      # serve the built site locally
 ```
 
-Or use the root-level launcher, which checks pnpm, installs deps if needed,
-probes the port, and then runs `pnpm dev`:
+### `./dev-server.sh` — the safe way to run the dev server
+
+Since Astro 7 the dev server runs as a **background daemon**. It writes a lock
+file and keeps holding the port after you close the terminal that launched it —
+`Ctrl-C` or killing the shell does *not* stop it. Use the root-level wrapper so
+nothing gets orphaned:
 
 ```bash
-./start-dev-server
-./start-dev-server --host           # bind to LAN
-./start-dev-server --port 5000      # change port
+./dev-server.sh            # status: what's running, and what to type next
+./dev-server.sh start      # start detached on http://localhost:4321
+./dev-server.sh stop       # stop it and free the port
+./dev-server.sh restart
+./dev-server.sh logs -f    # follow the background server's log
 ```
+
+It checks pnpm, installs deps if `node_modules` is missing, and refuses to
+double-start. `stop` clears **both** the Astro-managed server and anything else
+squatting on the port (a stray `pnpm dev`, an old `astro preview`) — Astro's
+lock file only knows about servers it started itself.
+
+Flags pass through to `astro dev`:
+
+```bash
+./dev-server.sh start --host          # bind to LAN
+./dev-server.sh start --port 5000     # change port
+./dev-server.sh stop  --port 5000     # ...then stop that one
+./dev-server.sh stop  --all           # also sweep the preview port (4322)
+```
+
+The bare command reports status rather than toggling: a toggle does the wrong
+thing precisely when you've lost track of the state.
 
 **Package manager policy:** this repo uses **pnpm 10.x exclusively** —
 never yarn, never npm. The version is pinned in three places (`packageManager`
@@ -109,7 +132,7 @@ different installer.
 | `/program-summary` | `src/content/pages/program-summary.md` |
 | `/research` | `src/pages/research.astro` (markdown + custom layout) |
 | `/resources` | `src/content/pages/resources.md` |
-| `/sites` | `src/pages/sites.astro` (markdown + ArcGIS iframe) |
+| `/sites` | `src/pages/sites.astro` (markdown + agency table) |
 
 ## Accessibility
 
@@ -129,7 +152,8 @@ Local `pnpm preview` Lighthouse (mobile, 4x CPU throttle, no compression):
 - **/about:** Perf 100, A11y 100, BP 100, SEO 100
 - **/research:** Perf 98, A11y 100, BP 100, SEO 100
 - **Home:** Perf 96, A11y 100, BP 100, SEO 100 (LCP 2.3s on the hero)
-- **/sites:** Perf 93, A11y 100, BP 96, SEO 100 (capped by the 4 MB ArcGIS iframe)
+- **/sites:** Perf 96, A11y 100, BP 100, SEO 100 (was 93/96 while the 4 MB
+  ArcGIS iframe was embedded; removing it for the agency table lifted both)
 - Other routes: Perf 96+
 
 Production Netlify deploy adds gzip/brotli + real-network behavior, which
