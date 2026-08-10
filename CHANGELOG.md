@@ -29,6 +29,20 @@ A sweep aligning the repo with `docs/astro-conversion-checklist-v6.4.md`
   unaffected** by the script exiting — the watcher and update websocket belong
   to the server process. Confirmed by hot-patching a CSS edit into an
   already-open tab with no reload while the script was not running.
+- **fix(dev):** silenced the bash job-control notice
+  (`dev-server.sh: line N: 1234 Terminated: 15 { ... }`) that printed across
+  the output when `watch` shut its log streamer down. The notice was **not**
+  coming from the main shell: a backgrounded function whose body is
+  `producer | while read` is itself a subshell, and *it* reports its own dying
+  pipeline member. That is why nothing at the kill site suppressed it —
+  `disown`, `disown -a`, `wait`, `set +m`, and subshell wrapping were each
+  tested in an isolated reproduction and each still printed. Fixed at the
+  source by feeding the loop from process substitution (`< <(...)`) instead of
+  a pipeline, so no job exists to report, and by giving `pretty` an optional
+  argument form so the loop body is pipeline-free too. Chosen over blanket
+  `2>/dev/null` on the streamer, which also worked but would have hidden real
+  errors from the log command. Verified clean on all three paths: `q`,
+  detach, and non-interactive.
 - Two bugs found and fixed by testing rather than reading: `$key` was declared
   inside the interactive branch, so under `set -u` a piped `watch` died on the
   first heartbeat and orphaned its log streamer; and `cleanup_stream` killed

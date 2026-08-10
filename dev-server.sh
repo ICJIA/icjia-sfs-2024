@@ -113,9 +113,9 @@ hyperlink() {  # hyperlink <url> [label]
 # ({"message":"...","label":"SKIP_FORMAT","level":"info"}). Unwrap it to the
 # human-readable message, and turn the escaped newlines it embeds into real
 # ones. Falls back to printing the raw line if the shape ever changes.
-pretty() {
+pretty() {  # pretty [line]   -- reads stdin when given no argument
   local raw msg
-  raw="$(cat)"
+  if [ $# -gt 0 ]; then raw="$1"; else raw="$(cat)"; fi
   msg="$(printf '%s' "$raw" \
     | sed -n 's/.*"message"[[:space:]]*:[[:space:]]*"\(.*\)","label".*/\1/p' \
     | head -1)"
@@ -404,18 +404,29 @@ cleanup_stream() {
 # Astro 7 emits a mix of JSON envelopes and pre-formatted lines. Unwrap the
 # former, pass the latter through untouched, and stay line-buffered so output
 # appears as it happens rather than in 4KB gulps.
+#
+# Fed by process substitution rather than a pipeline, deliberately. A
+# backgrounded function whose body is `producer | while read` reports its own
+# dying pipeline member when we kill it, printing bash's
+# "<script>: line N: 1234 Terminated: 15 { ... }" notice across the output.
+# That notice comes from the streamer subshell itself, which is why nothing at
+# the kill site -- disown, wait, set +m, subshell wrapping -- suppresses it.
+# `< <(...)` creates no job, so there is nothing to report. `pretty "$line"`
+# rather than `| pretty` keeps the loop body pipeline-free for the same reason.
 stream_logs() {
   detect_supervision
-  {
+  if [ "$SUPERVISED" = "no" ]; then
+    [ -f "$LEGACY_LOG" ] || { mkdir -p "$(dirname "$LEGACY_LOG")"; : > "$LEGACY_LOG"; }
+  fi
+  while IFS= read -r line; do
+    pretty "$line"
+  done < <(
     if [ "$SUPERVISED" = "yes" ]; then
       pnpm exec astro dev logs --follow 2>&1
     else
-      [ -f "$LEGACY_LOG" ] || { mkdir -p "$(dirname "$LEGACY_LOG")"; : > "$LEGACY_LOG"; }
       tail -n 20 -f "$LEGACY_LOG" 2>&1
     fi
-  } | while IFS= read -r line; do
-    printf '%s' "$line" | pretty
-  done
+  )
 }
 
 cmd_watch() {
