@@ -247,7 +247,7 @@ searchMeta: null
         <tr role="row">
             <th scope="row" role="rowheader"><a href="https://anewdv.org/" target="_blank" rel="noopener noreferrer">Anew</a></th>
             <td role="cell"><span class="cell-label" aria-hidden="true">Areas Serviced</span>Cook and Will Counties</td>
-            <td role="cell"><span class="cell-label" aria-hidden="true">Contact Information</span>SFS Coordinator: Debra Nobles<br>18139 S. Harwood Ave.<br>Homewood, Illinois 60430-2118<br>County: Cook<br>Email: <a href="mailto:debra.n@anewdv.org">debra.n@anewdv.org</a></td>
+            <td role="cell"><span class="cell-label" aria-hidden="true">Contact Information</span>SFS Coordinator: Cristina Lopez<br>18139 S. Harwood Ave.<br>Homewood, Illinois 60430-2118<br>County: Cook<br>Email: <a href="mailto:cristina.l@anewdv.org">cristina.l@anewdv.org</a></td>
         </tr>
         <tr role="row">
             <th scope="row" role="rowheader"><a href="https://www.casacentral.org/" target="_blank" rel="noopener noreferrer">Casa Central Social Services Corporation</a></th>
