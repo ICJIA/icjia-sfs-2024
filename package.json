@@ -42,7 +42,7 @@
     "astro-seo": "^1.1.0",
     "fuse.js": "^7.4.2",
     "rehype-external-links": "^3.0.0",
-    "sharp": "^0.35.0"
+    "sharp": "^0.35.4"
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.7.3",
