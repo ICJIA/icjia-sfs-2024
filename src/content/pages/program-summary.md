@@ -19,7 +19,7 @@ The Safe From the Start (SFS) program provides developmentally and culturally ap
 
 • Public Awareness: Community outreach and education.
 
-**Coalition-Building and Collaboration**
+### Coalition-Building and Collaboration
 
 Coalition building, collaboration, and coordination are central components of the SFS program model. SFS coalitions build relationships with community partners that can both make referrals into the program and link program participants with other resources. Additionally, SFS coalitions focus on broader program implementation, organizational change, information sharing enhancements, protocol creation, and other tasks related to service collaboration and coordination.
 
@@ -56,7 +56,7 @@ Recommended partners:
 - Culturally specific organizations
 - Public health departments
 
-**Direct Services**
+### Direct Services
 
 SFS primarily serves young children from birth to 5 years of age who have been exposed to violence in the home or community and their families or caregivers. Children older than five years may be served if the primary client is aged 0 to 5. _Exposure to violence_ occurs with being victimized or witnessing abuse, neglect, or maltreatment or a witness to domestic, physical, or sexual violence, or other violent crime.
 
@@ -64,6 +64,6 @@ While sites may operate differently, a core group of case management and clinica
 
 When a child or family is referred to the SFS program, a staff member meets with the primary caregiver and child clients to share SFS service information and assess their needs. During the first few visits, assessment tools are completed with the primary caregiver for each child receiving services. These assessment tools allow staff and the SFS program and evaluation team to understand what the child clients are experiencing and how to best support them. They also serve as an educational tool for the caregiver and can facilitate relationship building between SFS staff and family.
 
-**Public Awareness**
+### Public Awareness
 
 The SFS program model’s third component is public awareness. Essential efforts include community member involvement, increased public awareness, community-informed planning, education about the scope and impact of childhood exposure to violence, and promoting healing services. Public awareness activities range from community presentations and events to professional trainings and media campaigns.

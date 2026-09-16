@@ -2,6 +2,87 @@
 
 All notable changes to the ICJIA Safe From the Start (SFS) website are documented in this file. Entries are in reverse chronological order.
 
+## 2.1.1 — 2026-09-16
+
+Fixes for the seven Level A and AA failures found by the **September 16, 2026
+WCAG 2.1 AA evaluation** of the live site, none of which the automated tools
+had caught (axe-core: 130 runs, 0 violations). Each fix was re-measured with
+the evaluation's own method against a local build served with the production
+`netlify.toml` headers, CSP enforced. "Before" is the unmodified 2.1.0 build,
+which reproduced the evaluation's numbers exactly.
+
+- **fix(a11y):** 1.1.1 — two photos had alt text for scenes they don't show:
+  "Research and data analysis" on a toddler holding an adult's hand while
+  walking up a fallen log (/research), and "Community members collaborating in
+  a meeting" on three girls walking hand in hand (home). Two more home photos
+  were only loosely described ("Healthcare provider…" on an adult playing
+  alphabet blocks with two toddlers; "Community presentation…" on a man reading
+  a picture book to preschoolers). All four are ambiance beside headings that
+  already carry the meaning, and appear only at ≥960px, so all four are now
+  `alt=""`, as the two home-page banners already were; a source comment records
+  what each photo shows. Chrome's accessibility tree: 4 named images → 0.
+- **fix(a11y):** 1.3.1 — seven bold paragraphs used as section titles are now
+  `###` headings: the four "Priority Area: …" titles on /about (one had no
+  blank line and ran into its paragraph) and the three core-component titles on
+  /program-summary, which the home page already marks up as `<h3>`. Outline:
+  /about H1 + 3 H2 → plus 4 H3; /program-summary H1 + H2 → plus 3 H3; bold
+  pseudo-headings 7 → 0. They take the existing `.markdown-body h3` style
+  (Roboto 700, 23.8px), and `search-index.json` is byte-identical.
+- **fix(a11y):** 1.4.3 — the search placeholders on /search and the 404 page
+  were Tailwind 4 preflight's `currentColor` at 50%: #8c8c8c on white, 3.36:1.
+  `global.css` now sets `#666666`: 5.74:1 measured from pixels at 1× and 2× on
+  both pages, and still clearly lighter than typed text (#1a1a1a, 17.4:1).
+- **fix(a11y):** 1.4.10 — /childhood-exposure scrolled sideways because its
+  citations are bare URLs. `.markdown-body a` now has `overflow-wrap: anywhere`,
+  which breaks only a link that would otherwise overflow its line. Page width
+  (`scrollWidth`): 992 → 320px at 320×640 (all 11 pages now 320), 992 → 375px
+  at 375, 992 → 640px at 640×512 (200% zoom); unchanged at 1280. The nav drawer
+  is now `overflow-y-auto overscroll-contain`: at 320×256 (400% zoom) "SFS
+  Sites" and "Resources" sat below the viewport and the mouse wheel scrolled the
+  page behind instead; now the wheel scrolls the drawer (99px, page 0) and
+  tabbing to "Resources" scrolls it fully into view.
+- **fix(a11y):** 1.4.11 — the footer copyright-row links ("Illinois Criminal
+  Justice Information Authority", "Privacy", "Accessibility") drew the blue
+  focus outline on the navy footer, 1.60:1; they now use the white outline the
+  rest of the footer uses, 10.02:1 on every changed pixel at 1280 and 375. The
+  home hero "Learn More" focus outline over the photo measured 1.9–2.9:1; it now
+  draws a white inner outline inside a black outer band (W3C technique C40,
+  `.sfs-btn--on-photo`), and the share of positions around the button where the
+  indicator reaches 3:1 went from 1.3% to 100% (worst position 4.70:1 at 1280,
+  4.83:1 at 375).
+- **fix(a11y):** 1.4.13 — removed the hover-only URL tooltip from the 11
+  /sites agency links (not hoverable, ignored Escape, covered neighbouring rows,
+  never shown on keyboard focus); the link text and the browser's status bar
+  already show the destination. Its half of the page's inline script went too,
+  so that script's CSP hash rotated in `netlify.toml` (×3) and
+  `public/_headers`. The table's scroll-accessibility half still runs under the
+  CSP, the rendered /sites DOM is otherwise identical, and the page is
+  pixel-identical at 1280, 375 and 320.
+- **fix(a11y):** 2.5.3 — the header and footer logo links show the "ICJIA"
+  logotype but their accessible names didn't contain it. They are now "ICJIA –
+  Safe From the Start home" and "ICJIA – Illinois Criminal Justice Information
+  Authority (opens in new window)" (Chrome's accessibility tree, all 11 pages,
+  1280 and 375).
+- **chore(content):** removed the two hosted documents,
+  `QuickStart_PartOne_NavIntakeBIF.pdf` and
+  `SFS_Evaluation_Protocol_FINAL_10012024.docx`: both failed WCAG 2.1 at Level
+  A and no page linked to them. The commented-out /research "SFS Evaluation
+  Resources" block that pointed at them (it still shipped in the page source)
+  went with them; git history keeps it.
+- Verified: `pnpm build` (11 pages), `pnpm check:links:internal` (0 broken),
+  neither document in `dist/`. axe-core 4.13.0 (`wcag2a`, `wcag2aa`, `wcag21a`,
+  `wcag21aa`) on all 11 pages at 1280 and 375, default and interactive states:
+  83 runs, 0 violations (its 8 needs-review items, the overflowing citations,
+  are gone). The evaluation's full keyboard focus walk (768 Tab stops on 11
+  pages at both widths, 1,536 screenshots, pixel-measured) matches 2.1.0 stop
+  for stop: same tab order, and the only indicators that changed are the 69
+  fixed ones, plus five /childhood-exposure citation links whose outline is
+  unchanged but now wraps with the text. No stop now falls under one strong
+  pixel per perimeter pixel (71 did). Full-page screenshots of all 11 pages
+  at 1280, 375 and 320 are pixel-identical to 2.1.0 except the intended changes
+  (the new headings, the wrapped citations, the placeholder colour); rendered
+  text is identical apart from the /about heading split; no CSP violations.
+
 ## Unreleased — checklist v2 → v6.4 alignment
 
 A sweep aligning the repo with `docs/astro-conversion-checklist-v6.4.md`

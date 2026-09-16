@@ -7,13 +7,19 @@
  * the tab order and the accessibility tree until opened. The interactions
  * script in Layout.astro toggles state, moves focus to the first link on
  * open, and restores focus to the hamburger on close.
+ *
+ * The drawer scrolls on its own (overflow-y-auto) because its links can
+ * outgrow a short viewport: at 400% zoom (320x256 CSS px) the last two were
+ * cut off and could not be scrolled into view (WCAG 1.4.10).
+ * overscroll-contain keeps a wheel or swipe at the drawer's end from
+ * scrolling the page behind it.
  */
 import { sidebarNav } from "../config/nav";
 ---
 
 <div
   id="site-sidebar"
-  class="lg:hidden fixed top-0 left-0 h-full w-[280px] max-w-[80vw] bg-white shadow-2xl z-[60] transform -translate-x-full transition-transform duration-200"
+  class="lg:hidden fixed top-0 left-0 h-full w-[280px] max-w-[80vw] overflow-y-auto overscroll-contain bg-white shadow-2xl z-[60] transform -translate-x-full transition-transform duration-200"
   inert
   aria-hidden="true"
 >

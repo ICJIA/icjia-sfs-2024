@@ -5,6 +5,14 @@
  * (Sharp at build time → WebP). Images are hidden on small screens
  * (md:block) to match the original Nuxt layout, so mobile doesn't fetch
  * them at all (lazy + display:none = no request).
+ *
+ * The photos are ambiance beside headings that already carry the meaning,
+ * so each alt is empty (WCAG 1.1.1, decorative) — the same treatment as the
+ * hero and secondary splash. What they show: three young girls walking hand
+ * in hand on a dirt path; an adult playing alphabet blocks on a rug with two
+ * toddlers; a man reading a picture book to preschool children on a
+ * classroom floor. If one ever needs alt text, describe the photo, not the
+ * section topic.
  */
 import { Image } from "astro:assets";
 import imgCoalition from "../assets/splash-29-large.jpg";
@@ -16,7 +24,7 @@ const splits = [
     title: "Coalition-Building and Collaboration",
     text: "Coalition building, collaboration, and coordination are central components of the SFS program model. SFS coalitions build relationships with community partners that can both make referrals into the program and link program participants with other resources. Additionally, SFS coalitions focus on broader program implementation, organizational change, information sharing enhancements, protocol creation, and other tasks related to service collaboration and coordination.",
     image: imgCoalition,
-    alt: "Community members collaborating in a meeting - representing coalition building and collaboration",
+    alt: "",
     imageFirst: false,
   },
   {
@@ -24,14 +32,14 @@ const splits = [
     textHtml:
       "SFS primarily serves young children from birth to 5 years of age who have been exposed to violence in the home or community and their families or caregivers. Children older than five years may be served if the primary client is aged 0 to 5. <em>Exposure to violence</em> occurs with being victimized or witnessing abuse, neglect, or maltreatment or a witness to domestic, physical, or sexual violence, or other violent crime.",
     image: imgDirectServices,
-    alt: "Healthcare provider working with a young child - representing direct services to children exposed to violence",
+    alt: "",
     imageFirst: true,
   },
   {
     title: "Public Awareness",
     text: "The SFS program model's third component is public awareness. Essential efforts include community member involvement, increased public awareness, community-informed planning, education about the scope and impact of childhood exposure to violence, and promoting healing services. Public awareness activities range from community presentations and events to professional trainings and media campaigns.",
     image: imgPublicAwareness,
-    alt: "Community presentation or training session - representing public awareness and education efforts",
+    alt: "",
     imageFirst: false,
   },
 ];

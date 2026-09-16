@@ -2,8 +2,12 @@
 /**
  * /research — markdown body from content/research.md, then a hardcoded
  * "Analysis of pre- and post-intervention data" callout with three SVG
- * stat cards, the Evaluation Resources block, and the publications list.
- * Mirrors app/pages/research/index.vue.
+ * stat cards, then the publications list. Mirrors app/pages/research/index.vue.
+ *
+ * The hero photo (a toddler holding an adult's hand while walking up a
+ * fallen log) is ambiance beside the page heading, not information, so its
+ * alt is empty (WCAG 1.1.1, decorative). Describe what a photo actually
+ * shows if one here ever needs a text alternative — not the page's topic.
  */
 import { getEntry, render } from "astro:content";
 import MarkdownPage from "../layouts/MarkdownPage.astro";
@@ -20,7 +24,7 @@ const { Content } = await render(page);
   description={page.data.summary ??
     "Research, publications, and outcomes of the Safe From the Start program."}
   hero={researchHero}
-  heroAlt="Research and data analysis - representing evidence-based practices in the Safe From the Start program"
+  heroAlt=""
   publishedAt={page.data.publishedAt}
 >
   <Content />
@@ -95,36 +99,6 @@ const { Content } = await render(page);
         trauma and its impact improved.
       </div>
     </div>
-
-    <!-- <h2 id="sfs-evaluation-resources" class="mt-8">SFS Evaluation Resources</h2>
-    <p><em>Forms</em></p>
-    <ul>
-      <li><p>Intake Form - Forthcoming</p></li>
-      <li><p>Exit Form - Forthcoming</p></li>
-    </ul>
-    <p><em>Evaluation Protocol</em></p>
-    <ul>
-      <li>
-        <p>
-          <a href="/SFS_Evaluation_Protocol_FINAL_10012024.docx" target="_blank"
-            >Evaluation Protocol<span class="sr-only">
-              (DOCX, opens in new window)</span
-            ></a
-          >
-        </p>
-      </li>
-      <li><p>Frequently Asked Questions - Forthcoming</p></li>
-    </ul>
-    <p><em>Training Materials</em></p>
-    <ul>
-      <li>
-        <a href="/QuickStart_PartOne_NavIntakeBIF.pdf" target="_blank"
-          >SFS Database 1.0 User's Quick Start Guide PT 1<span class="sr-only">
-            (PDF, opens in new window)</span
-          ></a
-        >
-      </li>
-    </ul> -->
 
     <h2 id="sfs-and-related-research-publications">
       SFS and Related Research Publications

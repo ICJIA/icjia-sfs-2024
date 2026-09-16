@@ -150,6 +150,11 @@ const { title, metaTitle, description, hero, heroAlt, publishedAt, updatedAt } =
     color: var(--color-sfs-blue-dark);
     text-decoration: underline;
     text-underline-offset: 2px;
+    /* Link text that is a bare URL (the /childhood-exposure citations) has no
+       break opportunities and pushed that page to 992px wide at 320px
+       (WCAG 1.4.10). Only breaks a link that would otherwise overflow its
+       line, so ordinary links wrap exactly as before. */
+    overflow-wrap: anywhere;
   }
   .markdown-body a:hover {
     text-decoration-thickness: 2px;

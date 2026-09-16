@@ -1,9 +1,14 @@
 ---
 /**
  * /sites — markdown body from content/sites.md (which contains the table
- * styles and the agency table itself) plus the client scripts that keep the
- * table's scroll container keyboard-reachable and decorate agency links with
- * hover tooltips. Mirrors app/pages/sites/index.vue.
+ * styles and the agency table itself) plus the client script that keeps the
+ * table's scroll container keyboard-reachable. Mirrors app/pages/sites/index.vue.
+ *
+ * The agency links used to show their URL in a hover-only CSS tooltip. It
+ * failed WCAG 1.4.13 (vanished when the pointer moved onto it, ignored
+ * Escape, covered neighbouring rows, never appeared on keyboard focus) and
+ * added nothing the link text and the browser's status bar don't already
+ * show, so it was removed in 2.1.1 rather than rebuilt.
  */
 import { getEntry, render } from "astro:content";
 import MarkdownPage from "../layouts/MarkdownPage.astro";
@@ -82,112 +87,5 @@ const { Content } = await render(page);
       );
     }
   }
-
-  /*
-   * Tooltip-on-hover for agency links in the responsive table — surfaces the
-   * destination URL without changing layout. Uses fixed positioning relative
-   * to the cursored link so the tooltip can escape table overflow.
-   */
-  const agencyLinks = document.querySelectorAll<HTMLAnchorElement>(
-    '.markdown-body .sfs-sites-wrap a[target="_blank"][rel="noopener noreferrer"]'
-  );
-  agencyLinks.forEach((link) => {
-    const href = link.getAttribute("href");
-    if (!href) return;
-    if (link.hasAttribute("data-tooltip-added")) return;
-    link.setAttribute("data-tooltip", href);
-    link.classList.add("agency-link-tooltip");
-    link.addEventListener("mouseenter", (e) => {
-      const t = e.currentTarget as HTMLElement;
-      const rect = t.getBoundingClientRect();
-      t.style.setProperty("--tooltip-top", `${rect.top - 10}px`);
-      t.style.setProperty(
-        "--tooltip-left",
-        `${rect.left + rect.width / 2}px`
-      );
-    });
-    link.setAttribute("data-tooltip-added", "true");
-  });
 </script>
 
-<style is:global>
-  /*
-   * Mirrors the tooltip CSS that lives in app/pages/sites/index.vue. Using
-   * `is:global` because the agency links live inside ContentRenderer'd
-   * markdown, which is out of any scoped style's reach.
-   */
-  /* Layout for .sfs-sites-wrap itself lives with the rest of the table CSS
-     in content/pages/sites.md; only the tooltip belongs here. */
-  .agency-link-tooltip {
-    position: relative;
-    cursor: pointer;
-  }
-  .agency-link-tooltip::before {
-    content: attr(data-tooltip);
-    position: fixed;
-    top: var(--tooltip-top, auto);
-    left: var(--tooltip-left, 50%);
-    transform: translateX(-50%) translateY(-100%);
-    background-color: rgba(0, 0, 0, 0.9);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 4px;
-    font-size: 0.875rem;
-    font-weight: normal;
-    white-space: normal;
-    text-align: center;
-    text-decoration: none;
-    opacity: 0;
-    visibility: hidden;
-    transition:
-      opacity 0.3s,
-      visibility 0.3s;
-    z-index: 99999;
-    pointer-events: none;
-    max-width: 300px;
-    word-wrap: break-word;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  }
-  .agency-link-tooltip::after {
-    content: "";
-    position: fixed;
-    top: var(--tooltip-top, auto);
-    left: var(--tooltip-left, 50%);
-    transform: translateX(-50%) translateY(-100%) translateY(-5px);
-    border: 5px solid transparent;
-    border-top-color: rgba(0, 0, 0, 0.9);
-    opacity: 0;
-    visibility: hidden;
-    transition:
-      opacity 0.3s,
-      visibility 0.3s;
-    z-index: 99999;
-  }
-  .agency-link-tooltip:hover::before,
-  .agency-link-tooltip:hover::after,
-  .agency-link-tooltip:active::before,
-  .agency-link-tooltip:active::after {
-    opacity: 1;
-    visibility: visible;
-  }
-  @media (max-width: 768px) {
-    .agency-link-tooltip::before {
-      font-size: 0.75rem;
-      padding: 6px 10px;
-      max-width: 250px;
-    }
-  }
-  @media (max-width: 480px) {
-    .agency-link-tooltip::before {
-      font-size: 0.6875rem;
-      padding: 5px 8px;
-      max-width: 200px;
-      left: 0;
-      transform: none;
-    }
-    .agency-link-tooltip::after {
-      left: 20px;
-      transform: none;
-    }
-  }
-</style>

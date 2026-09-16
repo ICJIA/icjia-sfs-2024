@@ -122,6 +122,15 @@
     outline: 2px solid var(--color-sfs-blue);
     outline-offset: 2px;
   }
+
+  /* Tailwind 4's preflight draws placeholders in currentColor at 50%
+     opacity: #8c8c8c on the white search fields, 3.36:1, which fails WCAG
+     1.4.3. #666666 is 5.74:1 on white and still clearly lighter than typed
+     text (#1a1a1a), so a placeholder never reads as an entered value. */
+  input::placeholder,
+  textarea::placeholder {
+    color: #666666;
+  }
 }
 
 /*
@@ -230,6 +239,15 @@
 .sfs-btn:focus-visible {
   outline: 2px solid var(--color-sfs-blue);
   outline-offset: 2px;
+}
+/* A button over a photo: no single ring colour holds 3:1 against every pixel
+   behind it (the blue ring measured 1.9–2.9:1 on the home hero). A white
+   inner ring plus a black outer ring (W3C technique C40) always leaves one
+   of the two above 3:1, whatever the photo does. */
+.sfs-btn--on-photo:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 0;
+  box-shadow: 0 0 0 4px #000;
 }
 .sfs-btn--outlined:hover {
   background: var(--color-sfs-blue-darker);

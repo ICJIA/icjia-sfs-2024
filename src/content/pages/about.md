@@ -47,17 +47,18 @@ An Advisory Committee was established in February 2001 to advise SFS on policies
 
 While this this program responds to several priorities established by the 2022 [ICJIA Victim Services Planning Committee](https://icjia.illinois.gov/researchhub/articles/2022-victim-service-planning-research-report/), SFS most directly addresses priority areas of public awareness, trauma services, evidence-informed practices, and data collection and evaluation.
 
-**Priority Area: Public Awareness**
+### Priority Area: Public Awareness
 
 The SFS Program Model shares the priority of public awareness. SFS increases public awareness of the prevalence and impacts of children’s exposure to violence, as well as opportunities for effective prevention and intervention. Engagement of children, families, and communities is critical to ensure awareness-raising efforts are relevant and inclusive. SFS increases awareness and education about children’s exposure to violence in a variety of ways, including community presentations and events, professional training, and media campaigns.
 
-**Priority Area: Trauma Services**
+### Priority Area: Trauma Services
 
 A foundational component of SFS is the provision of direct services to young children who have been exposed to violence and their families. Assessments are conducted to ensure that children are connected to the appropriate therapeutic services to mitigate the impact of trauma and provide paths to healing. SFS’s required community-based coalition enhance referral networks, reducing barriers and increasing accessibility to services.
 
-**Priority Area: Evidence-based Practices**
+### Priority Area: Evidence-based Practices
+
 SFS providers are trained in evidence-based practices that demonstrate efficacy in assessing and treating childhood trauma and strengthening families. A variety of evidence-based tools and interventions are used, such as Ages and Stages Questionnaire/Ages and Stages Questionnaire Social Emotional (ASQ/ASQSE), Childhood Behavior Checklist (CBCL), Parent Stress Index (PSI), and the Attachment, Regulation, and Competency (ARC) Framework.
 
-**Priority Area: Data Collection and Evaluation**
+### Priority Area: Data Collection and Evaluation
 
 Throughout the SFS, programs assess and document the needs of children and families. Not only is this information critical to helping individuals’ needs, the collected data provides insight into the overall efficacy of SFS, including trends in needs, services provided, and outcomes for children and caregivers who receive services.
