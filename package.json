@@ -38,7 +38,7 @@
     "@fontsource/lato": "^5.2.7",
     "@fontsource/raleway": "^5.2.8",
     "@fontsource/roboto": "^5.2.10",
-    "astro": "^7.2.0",
+    "astro": "^7.2.8",
     "astro-seo": "^1.1.0",
     "fuse.js": "^7.4.2",
     "rehype-external-links": "^3.0.0",
