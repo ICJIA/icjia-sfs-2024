@@ -2,6 +2,24 @@
 
 All notable changes to the ICJIA Safe From the Start (SFS) website are documented in this file. Entries are in reverse chronological order.
 
+## 2.1.2 — 2026-09-16
+
+The accessibility statement uses W3C's conformance label, backed by a full evaluation.
+
+- **"Substantially conforms" is gone.** It is not a W3C term. The statement now follows the W3C
+  Accessibility Statement Generator: the site is **fully conformant** with WCAG 2.1 at Level AA,
+  "fully conformant" meaning the content fully conforms to the accessibility standard without any
+  exceptions.
+- **The claim rests on evidence.** On September 16, 2026 every page was evaluated by hand against
+  every WCAG 2.1 Level A and AA success criterion. The seven failures that evaluation found were
+  fixed in 2.1.1, re-measured the same way, and confirmed on the live site: axe-core reports 0
+  violations on all 11 pages, no page scrolls sideways at 320px, and each fix holds.
+- **Scope is stated.** The status covers every web page at sfs.icjia.illinois.gov. A new
+  "Limitations and alternatives" section says that research articles and reports published by
+  other organizations and linked from the site are not covered, and offers help getting their
+  information in an accessible format. The testing section adds the evaluation by hand, and the
+  statement's review date is September 16, 2026.
+
 ## 2.1.1 — 2026-09-16
 
 Fixes for the seven Level A and AA failures found by the **September 16, 2026

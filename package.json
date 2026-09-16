@@ -1,7 +1,7 @@
 {
   "name": "icjia-sfs",
   "type": "module",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "ICJIA Safe From the Start — static site built with Astro 7 + Tailwind v4.",
   "repository": {
     "type": "git",

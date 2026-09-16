@@ -11,9 +11,11 @@ The Illinois Criminal Justice Information Authority (ICJIA) is committed to maki
 
 ## Conformance status
 
-This website **substantially conforms** to the [Web Content Accessibility Guidelines (WCAG) 2.1](https://www.w3.org/TR/WCAG21/) at **Level AA**. "Substantially conforms" means the site meets the WCAG 2.1 Level AA success criteria, with the understanding that some content may occasionally fall short despite our efforts.
+The Safe From the Start website is **fully conformant** with the [Web Content Accessibility Guidelines (WCAG) 2.1](https://www.w3.org/TR/WCAG21/) at **Level AA**. Fully conformant means that the content fully conforms to the accessibility standard without any exceptions.
 
-Meeting WCAG 2.1 Level AA also addresses the site's obligations under:
+This status covers every web page at sfs.icjia.illinois.gov. It is based on our own evaluation of each page against every WCAG 2.1 Level A and Level AA success criterion, completed on September 16, 2026.
+
+WCAG 2.1 Level AA is also the standard named by:
 
 - the **[Illinois Information Technology Accessibility Act (IITAA) 2.1](https://doit.illinois.gov/initiatives/accessibility/iitaa.html)**, the standard for State of Illinois agency websites, which is based on WCAG 2.1 Level AA; and
 - **Title II of the Americans with Disabilities Act (ADA)**, which requires state and local government web content to meet WCAG 2.1 Level AA.
@@ -34,7 +36,8 @@ Accessibility is built into how this site is designed and developed. Among other
 
 We evaluate accessibility ourselves throughout development rather than relying on a single point-in-time review. Testing includes:
 
-- automated checks with **axe-core** and **Lighthouse** during development; and
+- automated checks with **axe-core** and **Lighthouse** during development;
+- evaluation by hand of every page against every WCAG 2.1 Level A and Level AA success criterion, including keyboard use, visible focus, color contrast, and layout at narrow widths and high zoom; and
 - ongoing site-wide monitoring with **Siteimprove**.
 
 This is a self-evaluation and is not a third-party certification. Automated tools cannot catch every barrier, which is why feedback from people who use the site is important to us.
@@ -42,6 +45,10 @@ This is a self-evaluation and is not a third-party certification. Automated tool
 ## Technical specifications
 
 Accessibility of this site relies on the following technologies: **HTML**, **CSS**, and **JavaScript**. These are used in ways that conform to the standards above. Content pages are delivered as static HTML and remain accessible if JavaScript is turned off or unsupported; JavaScript enhances features such as site search but is not required to read the site's content.
+
+## Limitations and alternatives
+
+Some pages link to research articles and reports published by other organizations. Those documents are not part of this website, and this statement does not cover them. If you need information from one of them in an accessible format, contact us and we will help.
 
 ## Feedback and contact
 
@@ -51,4 +58,4 @@ We welcome your feedback on the accessibility of the Safe From the Start website
 
 To help us respond quickly, please include the web address (URL) of the page, a description of the problem, and the browser or assistive technology you were using. We aim to respond as quickly as possible.
 
-*This statement was last reviewed on July 6, 2026.*
+*This statement was last reviewed on September 16, 2026.*
