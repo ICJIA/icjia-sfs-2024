@@ -1,0 +1,32 @@
+---
+/**
+ * /candy-more-information — markdown body from content/candy-more-information. md,
+ * then a hardcoded
+ * "More information from Candy test page and design" .
+ *
+ * The hero photo (a man sitting down reading books to children in a library) is 
+ * beside the page heading, not information, so its
+ * alt is empty (WCAG 1.1.1, decorative). Describe what a photo actually
+ * shows if one here ever needs a text alternative — not the page's topic.
+ */
+import { getEntry, render } from "astro:content";
+import MarkdownPage from "../layouts/MarkdownPage.astro";
+import splash06 from "../assets/splash-06.jpg";
+
+const page = await getEntry("pages", "candy-more-information");
+if (!page) throw new Error("candy-more-information.md not found");
+const { Content } = await render(page);
+---
+
+<MarkdownPage
+  title={page.data.title}
+  metaTitle={page.data.metaTitle}
+  description={page.data.summary ??
+    "More information from Candy test page and design"
+  }
+  hero={splash06}
+  heroAlt=""
+  publishedAt={page.data.publishedAt}
+>
+  <Content />
+</MarkdownPage>
